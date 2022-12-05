@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.img {
+  height: 30px;
+}

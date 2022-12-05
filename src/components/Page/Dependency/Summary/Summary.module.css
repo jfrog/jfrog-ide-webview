@@ -1,0 +1,30 @@
+.container {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.details span {
+  color: #7f7f7f;
+}
+
+.halfText {
+  font-size: 16px;
+  max-height: 5.8em;
+  line-height: 22px;
+  overflow: hidden;
+  transition: max-height 0.6s ease-out;
+}
+
+.fullText {
+  composes: halfText;
+  transition: max-height 1s ease-out;
+  max-height: 20em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}

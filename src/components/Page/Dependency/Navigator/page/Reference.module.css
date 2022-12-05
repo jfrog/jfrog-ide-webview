@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+}
+.container a {
+  color: #a0a0a0;
+  text-decoration-line: underline;
+}
+
+.line {
+  border: 1px solid #454545;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
