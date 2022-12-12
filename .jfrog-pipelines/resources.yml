@@ -1,0 +1,8 @@
+resources:
+  - name: jfrogIdeWebviewReleaseGit
+    type: GitRepo
+    configuration:
+      path: jfrog/jfrog-ide-webview
+      gitProvider: il_automation
+      buildOn:
+        commit: false
