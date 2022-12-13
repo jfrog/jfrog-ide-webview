@@ -1,0 +1,70 @@
+pipelines:
+  - name: release_jfrog_ide_webview
+    configuration:
+      runtime:
+        type: image
+        image:
+          auto:
+            language: node
+            versions:
+              - "16"
+      environmentVariables:
+        readOnly:
+          NEXT_VERSION: 0.0.0
+
+    steps:
+      - name: Release
+        type: Bash
+        configuration:
+          inputResources:
+            - name: jfrogIdeWebviewReleaseGit
+          integrations:
+            - name: il_automation
+            - name: entplus_deployer
+        execution:
+          onExecute:
+            - cd $res_jfrogIdeWebviewReleaseGit_resourcePath
+
+            # Set env
+            - export CI=true
+            - export JFROG_BUILD_STATUS=PASS
+            - export JFROG_CLI_BUILD_NAME=ecosystem-jfrog-ide-webview-release
+            - export JFROG_CLI_BUILD_NUMBER=$run_number
+            - export JFROG_CLI_BUILD_PROJECT=ecosys
+
+            # Configure git
+            - git checkout main
+            - git remote set-url origin https://$int_il_automation_token@github.com/jfrog/jfrog-ide-webview.git
+
+            # Make sure version provided
+            - echo "Checking variables"
+            - test -n "$NEXT_VERSION" -a "$NEXT_VERSION" != "0.0.0"
+
+            # Configure JFrog CLI
+            - curl -fL https://install-cli.jfrog.io | sh
+            - jf c rm --quiet
+            - jf c add internal --url=$int_entplus_deployer_url --user=$int_entplus_deployer_user --password=$int_entplus_deployer_apikey
+            - jf npmc --repo-resolve ecosys-npm-remote --repo-deploy ecosys-npm-local
+
+            # Install and audit
+            - jf npm install
+            - jf audit --dep-type prodOnly
+
+            # Publish
+            - git status
+            - npm config set tag-version-prefix ''
+            - npm version $NEXT_VERSION --allow-same-version
+            - jf npm p
+            - jf rt bag && jf rt bce
+            - jf rt bp
+
+            # Distribute release bundle
+            - jf ds rbc jfrog-ide-webview $NEXT_VERSION --spec=./.jfrog-pipelines/specs/rbc-filespec.json --spec-vars="version=$NEXT_VERSION" --sign
+            - jf ds rbd jfrog-ide-webview $NEXT_VERSION --site="releases.jfrog.io" --sync
+
+            # Update version
+            - git push
+            - git push --tags
+          onComplete:
+            # Clean up
+            - jf c rm --quiet
