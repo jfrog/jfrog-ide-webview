@@ -28,11 +28,11 @@ const PublicResources = (props: Props) => (
 		{props.cve && (
 			<Wrapper headline="CVSS BREAKDOWN">
 				<div className={css.container}>
-					{createCvssBreakdownV3View(
+					{(props.cve.cvssV3Vector && props.cve.cvssV3Score) && createCvssBreakdownV3View(
 						props.cve.cvssV3Vector,
 						props.cve.cvssV3Score
 					)}
-					{createCvssBreakdownV2View(
+					{(props.cve.cvssV2Vector && props.cve.cvssV2Score) && createCvssBreakdownV2View(
 						props.cve.cvssV2Vector,
 						props.cve.cvssV2Score
 					)}

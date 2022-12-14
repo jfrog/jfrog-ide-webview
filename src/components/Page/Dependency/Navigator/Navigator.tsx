@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IDependencyPage, ICve, IReference, IResearch } from '../../../../model'
+import { IDependencyPage, ICve, IReference, IExtendedInformation } from '../../../../model'
 import PageHolder from './PageHolder'
 import Tab from './Tab'
 
@@ -25,7 +25,7 @@ const Navigator = (props: Props) => {
 							text: 'Contextual Analysis',
 							hide: isContextualAnalysisHidden(props.data.cve)
 						},
-						{ text: 'Public Resources', hide: false },
+						{ text: 'Public Resources', hide: isPublicResourcesHidden(props.data.cve) },
 						{ text: 'Impact Path', hide: false },
 						{
 							text: 'References',
@@ -44,5 +44,7 @@ const isJfrogResearchHidden = (researchData: IExtendedInformation | undefined): 
 const isReferenceHidden = (references: IReference[] | undefined): boolean => references === undefined || references.length === 0
 
 const isContextualAnalysisHidden = (cveData: ICve | undefined): boolean => cveData === undefined || cveData.applicably === undefined
+
+const isPublicResourcesHidden = (cveData: ICve | undefined): boolean => cveData === undefined || (cveData.cvssV2Score === undefined && cveData.cvssV3Score === undefined)
 
 export default Navigator
