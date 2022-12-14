@@ -3,10 +3,10 @@ import Wrapper from './Wrapper'
 import ReactMarkdown from 'react-markdown'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus'
-import { IResearch } from '../../../../../model/research'
+import { IExtendedInformation } from '../../../../../model/extendedInformation'
 
 interface Props {
-  data: IResearch
+  data: IExtendedInformation
 }
 
 const Research = (props: Props) => (

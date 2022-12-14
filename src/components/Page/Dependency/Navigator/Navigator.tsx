@@ -19,7 +19,7 @@ const Navigator = (props: Props) => {
 					items={[
 						{
 							text: 'JFrog Research',
-							hide: isJfrogResearchHidden(props.data.researchInfo)
+							hide: isJfrogResearchHidden(props.data.extendedInformation)
 						},
 						{
 							text: 'Contextual Analysis',
@@ -39,7 +39,7 @@ const Navigator = (props: Props) => {
 	)
 }
 
-const isJfrogResearchHidden = (researchData: IResearch | undefined): boolean => researchData === undefined
+const isJfrogResearchHidden = (researchData: IExtendedInformation | undefined): boolean => researchData === undefined
 
 const isReferenceHidden = (references: IReference[] | undefined): boolean => references === undefined || references.length === 0
 

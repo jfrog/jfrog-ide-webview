@@ -29,8 +29,8 @@ const PageHolder = (props: Props) => {
 	let pageHolder = <></>
 	switch (props.index) {
 		case 0:
-			if (props.DependencyData.researchInfo) {
-				pageHolder = <Research data={props.DependencyData.researchInfo}/>
+			if (props.DependencyData.extendedInformation) {
+				pageHolder = <Research data={props.DependencyData.extendedInformation}/>
 			}
 			break
 		case 1:

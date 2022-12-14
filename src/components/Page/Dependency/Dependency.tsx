@@ -18,9 +18,9 @@ function Dependency(props: Props) {
 			<div className={css.Container}>
 				<Header
 					Severity={props.data.severity}
-					text={props.data.id}
-					isResearch={props.data.researchInfo !== undefined}/>
-				<Edited date={props.data.edited}/>
+					text={props.data.cve ? props.data.cve.id : props.data.id}
+					isResearch={props.data.extendedInformation !== undefined}/>
+				{props.data.extendedInformation && <Edited date={props.data.edited}/>}
 				<Summary data={props.data} onSummaryExpanded={expanded => { setSummaryExpanded(expanded) }}/>
 				<Navigator data={props.data}/>
 			</div>

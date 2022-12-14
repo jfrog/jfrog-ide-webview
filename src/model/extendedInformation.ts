@@ -1,5 +1,5 @@
 import { ISeverity } from './severity'
-export interface IResearch {
+export interface IExtendedInformation {
   shortDescription: string
   fullDescription: string
   remediation?: string

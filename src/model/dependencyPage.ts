@@ -2,7 +2,7 @@ import { ICve } from './cve'
 import { IImpactedPath } from './impactedPath'
 import { ILicense } from './license'
 import { IReference } from './reference'
-import { IResearch } from './research'
+import { IExtendedInformation } from './extendedInformation'
 import { ISeverity } from './severity'
 
 export interface IDependencyPage {
@@ -19,5 +19,5 @@ export interface IDependencyPage {
   fixedVersion?: string[]
   infectedVersion?: string[]
   references?: IReference[]
-  researchInfo?: IResearch
+  extendedInformation?: IExtendedInformation
 }

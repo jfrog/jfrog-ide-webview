@@ -30,7 +30,7 @@ const Summary = (props: Props) => {
 						fixedVersion={props.data.fixedVersion}
 						license={props.data.license}
 						cve={props.data.cve}
-						jfrogSeverity={props.data.researchInfo?.jfrogResearchSeverity}/>
+						jfrogSeverity={props.data.extendedInformation?.jfrogResearchSeverity}/>
 				</ul>
 			</div>
 			<label
