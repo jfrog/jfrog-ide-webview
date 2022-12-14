@@ -2,7 +2,7 @@
   "files": [
     {
       "pattern": "ecosys-npm-local/(jfrog-ide-webview/-/jfrog-ide-webview-${version}.tgz)",
-      "target": "ide-webview/{1}"
+      "target": "ide-webview-npm/{1}"
     }
   ]
 }
