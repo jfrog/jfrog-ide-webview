@@ -1,5 +1,6 @@
 import { ISeverity } from '../model/severity'
 import severityLowImg from './../assets/Low.svg'
+import Unknown from './../assets/Unknown.svg'
 import severityMediumImg from './../assets/Medium.svg'
 import high from './../assets/High.svg'
 import critical from './../assets/Critical.svg'
@@ -8,6 +9,8 @@ import applicable from './../assets/Applicable.svg'
 
 export const getSeverityImage = (severity: ISeverity) => {
 	switch (severity) {
+		case ISeverity.Unknown:
+			return Unknown
 		case ISeverity.Low:
 			return severityLowImg
 		case ISeverity.Medium:
