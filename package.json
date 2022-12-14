@@ -21,7 +21,6 @@
     "build": "npm run rollup ",
     "rollup": "rm -rf dist && rollup -c",
     "start": "react-scripts start",
-    "b": "react-scripts build",
     "start-with-webpack": "webpack serve --config ./webpack.config.js --mode development",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
