@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { IDependencyPage, ICve, IReference, IExtendedInformation } from '../../../../model'
 import PageHolder from './PageHolder'
 import Tab from './Tab'
@@ -12,6 +12,20 @@ const Navigator = (props: Props) => {
 	const tabChangeHandler = (index: number) => {
 		setPageIndex(index)
 	}
+	const hideResearch = isJfrogResearchHidden(props.data.extendedInformation)
+	const hideContextual = isContextualAnalysisHidden(props.data.cve)
+	const hidePublicResources = isPublicResourcesHidden(props.data.cve)
+	useEffect(() => {
+		if (!hideResearch) {
+			setPageIndex(0)
+		} else if (!hideContextual) {
+			setPageIndex(1)
+		} else if (!hidePublicResources) {
+			setPageIndex(2)
+		} else {
+			setPageIndex(3)
+		}
+	}, [])
 	return (
 		<>
 			<div>
@@ -19,13 +33,13 @@ const Navigator = (props: Props) => {
 					items={[
 						{
 							text: 'JFrog Research',
-							hide: isJfrogResearchHidden(props.data.extendedInformation)
+							hide: hideResearch
 						},
 						{
 							text: 'Contextual Analysis',
-							hide: isContextualAnalysisHidden(props.data.cve)
+							hide: hideContextual
 						},
-						{ text: 'Public Resources', hide: isPublicResourcesHidden(props.data.cve) },
+						{ text: 'Public Resources', hide: hidePublicResources },
 						{ text: 'Impact Path', hide: false },
 						{
 							text: 'References',
