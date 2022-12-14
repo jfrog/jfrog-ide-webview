@@ -49,6 +49,7 @@ pipelines:
             # Install and audit
             - jf npm install
             - jf audit --dep-type prodOnly
+            - npm run build
 
             # Publish
             - git status
