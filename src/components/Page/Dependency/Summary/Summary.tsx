@@ -1,24 +1,17 @@
 import { IDependencyPage } from '../../../../model/dependencyPage'
 import CveVulnerability from './CveVulnerability'
 import css from './Summary.module.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import ExpandButton from '../../../UI/ExpandButton/ExpandButton'
 
 export interface Props {
   data: IDependencyPage
-  onSummaryExpanded: (a: boolean) => void
 }
 
 const Summary = (props: Props) => {
 	const [expanded, setExpanded] = useState(false)
-	const ref = useRef<HTMLDivElement>(null)
-	useEffect(() => {
-		setTimeout(() => {
-			props.onSummaryExpanded(expanded)
-		  }, 700)
-	}, [expanded])
 	return (
-		<div className={css.container} ref={ref}>
+		<div className={css.container}>
 			<div className={css.details}>
 				<ul className={expanded ? css.fullText : css.halfText}>
 					<CveVulnerability
