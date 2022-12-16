@@ -20,7 +20,7 @@
 
 .fullText {
   composes: halfText;
-  transition: max-height 1s ease-out;
+  transition: max-height 0.6s ease-out;
   max-height: 20em;
 }
 

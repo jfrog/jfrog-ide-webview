@@ -15,16 +15,7 @@ const Summary = (props: Props) => {
 			<div className={css.details}>
 				<ul className={expanded ? css.fullText : css.halfText}>
 					<CveVulnerability
-						id={props.data.id}
-						type={props.data.type}
-						dependencyName={props.data.name}
-						dependencyVersion={props.data.version}
-						severity={props.data.severity}
-						fixedVersion={props.data.fixedVersion}
-						license={props.data.license}
-						watchName={props.data.watchName}
-						cve={props.data.cve}
-						jfrogSeverity={props.data.extendedInformation?.jfrogResearchSeverity}/>
+						data={props.data}/>
 				</ul>
 			</div>
 			<label

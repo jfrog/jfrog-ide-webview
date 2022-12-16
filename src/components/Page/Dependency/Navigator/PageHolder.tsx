@@ -18,7 +18,6 @@ const PageHolder = (props: Props) => {
 	useEffect(() =>	resizeHandler(), [])
 	window.onresize = () =>	resizeHandler()
 	const resizeHandler = () => {
-		console.log(ref.current?.clientHeight)
 		setResize({
 			height: ref.current?.clientHeight || 0,
 			width: ref.current?.clientWidth || 0
@@ -44,6 +43,7 @@ const PageHolder = (props: Props) => {
 			break
 		case 3:
 			pageHolder = <ImpactedPath
+				id={props.DependencyData.id + props.DependencyData.cve?.id || ''}
 				height={resize.height}
 				width={resize.width}
 				impactedPath={props.DependencyData.impactedPath}/>
@@ -55,7 +55,7 @@ const PageHolder = (props: Props) => {
 	}
 	return (
 		<>
-			<div className={css.container} ref={ref}>{pageHolder}</div>
+			<div className={props.index === 3 ? css.impactedPathContainer : css.container} ref={ref}>{pageHolder}</div>
 		</>
 	)
 }

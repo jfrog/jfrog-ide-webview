@@ -7,6 +7,7 @@ import { AnimatedTree } from 'react-tree-graph'
 export interface Props {
   activeNode?: string
   filter: string
+  id: string
   width: number
   height: number
   root: ITreeNode
@@ -82,11 +83,12 @@ export default function TreeContainer(props: Props) {
 	}
 
 	return (
-		<main>
+		<main key={props.id}>
 			<AnimatedTree
 				data={root}
 				height={props.height}
 				width={props.width}
+				margins={{ bottom: 0, left: 5, right: props.width * 0.1, top: 0 }}
 				gProps={{
 					className: `${css.node} `,
 					onClick: handleClick
