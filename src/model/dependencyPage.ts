@@ -11,7 +11,7 @@ export interface IDependencyPage {
   name: string
   version: string
   cve?: ICve
-  license?: ILicense
+  license?: ILicense[]
   watchName?: string
   impactedPath: IImpactedPath
   severity: ISeverity
