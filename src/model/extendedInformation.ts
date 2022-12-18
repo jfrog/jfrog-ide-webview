@@ -12,5 +12,5 @@ export interface ISeverityReasons {
   /**
    * isPositive means that the severity is decreased due to this reason.
    */
-  isPositive: string
+  isPositive: boolean
 }
