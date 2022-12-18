@@ -14,7 +14,7 @@ function Dependency(props: Props) {
 		<div className={css.Container}>
 			<Header
 				Severity={props.data.severity}
-				text={props.data.cve ? props.data.cve.id : props.data.id}
+				text={props.data.cve?.id ? props.data.cve.id : props.data.id}
 				isResearch={props.data.extendedInformation !== undefined}/>
 			{props.data.extendedInformation && <Edited date={props.data.edited}/>}
 			<Summary data={props.data}/>
