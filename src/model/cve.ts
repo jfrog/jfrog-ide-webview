@@ -4,6 +4,13 @@ export interface ICve {
   cvssV2Vector?: string;
   cvssV3Score?: string;
   cvssV3Vector?: string;
-  applicably?: boolean;
+  applicableData?: ApplicableDetails;
 }
 
+export interface ApplicableDetails {
+  isApplicable: boolean;
+  applicableFixReason?:string;
+  filePathEvidence?:string
+  codeEvidence?:string
+  searchTarget?:string
+}

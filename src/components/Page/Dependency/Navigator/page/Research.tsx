@@ -50,7 +50,7 @@ const Research = (props: Props) => (
 					{props.data.jfrogResearchSeverityReason
 						.map((reason, i) => (
 							<div key={i}>
-								<h3 className={reason.isPositive === 'true' ? css.positiveReason : css.negativeReason}>
+								<h3 className={reason.isPositive === true ? css.positiveReason : css.negativeReason}>
 									{reason.name}
 								</h3>
 								{reason.description && (

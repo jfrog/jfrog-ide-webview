@@ -57,7 +57,7 @@ const isJfrogResearchHidden = (researchData: IExtendedInformation | undefined): 
 
 const isReferenceHidden = (references: IReference[] | undefined): boolean => references === undefined || references.length === 0
 
-const isContextualAnalysisHidden = (cveData: ICve | undefined): boolean => cveData === undefined || cveData.applicably === undefined
+const isContextualAnalysisHidden = (cveData: ICve | undefined): boolean => cveData === undefined || cveData.applicableData === undefined || cveData.applicableData.isApplicable === false
 
 const isPublicResourcesHidden = (cveData: ICve | undefined): boolean => cveData === undefined || (cveData.cvssV2Score === undefined && cveData.cvssV3Score === undefined)
 

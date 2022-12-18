@@ -31,7 +31,9 @@ const PageHolder = (props: Props) => {
 			}
 			break
 		case 1:
-			pageHolder = <ContextualAnalysis/>
+			if (props.DependencyData.cve?.applicableData) {
+				pageHolder = <ContextualAnalysis data={props.DependencyData.cve.applicableData}/>
+			}
 			break
 		case 2:
 			pageHolder = (
