@@ -1,11 +1,11 @@
-import { ApplicableDetails } from '../../../../../model/cve'
+import { IApplicableDetails } from '../../../../../model/cve'
 import Wrapper from './Wrapper'
 import css from './ContextualAnalysis.module.css'
 import Row from '../../../../UI/Row/Row'
 import ReactMarkdown from 'react-markdown'
 
 export interface Props {
-	data: ApplicableDetails
+	data: IApplicableDetails
 
 }
 const ContextualAnalysis = (props: Props) => (

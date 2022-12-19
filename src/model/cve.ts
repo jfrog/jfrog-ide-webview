@@ -4,10 +4,10 @@ export interface ICve {
   cvssV2Vector?: string;
   cvssV3Score?: string;
   cvssV3Vector?: string;
-  applicableData?: ApplicableDetails;
+  applicableData?: IApplicableDetails;
 }
 
-export interface ApplicableDetails {
+export interface IApplicableDetails {
   isApplicable: boolean;
   applicableFixReason?:string;
   filePathEvidence?:string
