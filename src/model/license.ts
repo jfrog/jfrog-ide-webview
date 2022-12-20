@@ -1,4 +1,4 @@
 export interface ILicense {
   name: string
-  link: string
+  link?: string
 }
