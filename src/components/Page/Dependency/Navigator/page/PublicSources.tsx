@@ -13,6 +13,7 @@ import {
 	ImpactValueTranslator,
 	UserInteractionTranslator
 } from '../../../../../model/cvss'
+import Row from '../../../../UI/Row/Row'
 
 export interface Props {
   summary: string;
@@ -20,7 +21,7 @@ export interface Props {
   infectedVersions?: string[];
 }
 
-const PublicResources = (props: Props) => (
+const PublicSources = (props: Props) => (
 	<>
 		<Wrapper headline="SUMMARY">
 			<span className={css.text}>{props.summary}</span>
@@ -158,11 +159,11 @@ const createCvssBreakdownV3View = (csvv: string, score: string) => {
 				<div>
 					{csvv3Breakdown
 						.getBaseMatrix()
-						.map((data, i) => (data.value ? Row(data.key, data.value, i) : <></>))}
+						.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
 
 					{csvv3Breakdown
 						.getImpact()
-						.map((data, i) => (data.value ? Row(data.key, data.value, i) : <></>))}
+						.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
 				</div>
 			</div>
 		</>
@@ -183,10 +184,10 @@ const createCvssBreakdownV2View = (csvv: string, score: string) => {
 			<div>
 				{csvv2Breakdown
 					.getBaseMatrix()
-					.map((data, i) => (data.value ? Row(data.key, data.value, i) : <></>))}
+					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
 				{csvv2Breakdown
 					.getImpact()
-					.map((data, i) => (data.value ? Row(data.key, data.value, i) : <></>))}
+					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
 			</div>
 		</div>
 	)
@@ -198,11 +199,4 @@ const defaultBreakdownView = (csvv: string, score: string) => (
 		<div>Vector: {csvv}</div>
 	</>
 )
-export default PublicResources
-
-const Row = (title: string, data: string, key:number) => (
-	<div key={key}>
-		<span className={css.key}>{title}: </span>
-		<span className={css.value}> {data}</span>
-	</div>
-)
+export default PublicSources

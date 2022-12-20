@@ -4,7 +4,7 @@ import Research from './page/Research'
 import css from './Page.module.css'
 import { IDependencyPage } from '../../../../model/dependencyPage'
 import ImpactedPath from './page/ImpactedPath'
-import PublicResources from './page/PublicResources'
+import PublicSources from './page/PublicSources'
 import { useState, useEffect, useRef } from 'react'
 
 interface Props {
@@ -37,7 +37,7 @@ const PageHolder = (props: Props) => {
 			break
 		case 2:
 			pageHolder = (
-				<PublicResources
+				<PublicSources
 					summary={props.DependencyData.summary}
 					cve={props.DependencyData.cve}
 					infectedVersions={props.DependencyData.infectedVersion}/>

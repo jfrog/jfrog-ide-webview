@@ -39,7 +39,7 @@ const Navigator = (props: Props) => {
 							text: 'Contextual Analysis',
 							hide: hideContextual
 						},
-						{ text: 'Public Resources', hide: hidePublicResources },
+						{ text: 'Public Sources', hide: hidePublicResources },
 						{ text: 'Impact Path', hide: false },
 						{
 							text: 'References',
