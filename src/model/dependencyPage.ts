@@ -8,7 +8,7 @@ import { ISeverity } from './severity'
 export interface IDependencyPage {
   id: string
   type: string
-  name: string
+  component: string
   version: string
   cve?: ICve
   license?: ILicense[]
