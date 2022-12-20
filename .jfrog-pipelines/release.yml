@@ -49,12 +49,13 @@ pipelines:
             # Install and audit
             - jf npm install
             - jf audit --dep-type prodOnly
-            - npm run build
 
-            # Publish
-            - git status
+            # Set version
             - npm config set tag-version-prefix ''
             - npm version $NEXT_VERSION --allow-same-version
+            
+            # Build and publish
+            - npm run build
             - jf npm p
             - jf rt bag && jf rt bce
             - jf rt bp
