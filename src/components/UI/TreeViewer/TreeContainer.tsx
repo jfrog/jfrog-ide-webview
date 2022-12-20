@@ -78,7 +78,8 @@ export default function TreeContainer(props: Props) {
 	}
 
 	setClassName(root)
-	const handleClick = (event:any, node: string) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const handleClick = (event: any, node: string) => {
 		props.handleClick(node)
 	}
 
