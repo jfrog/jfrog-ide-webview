@@ -1,0 +1,22 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          check-latest: true
+      - name: Install
+        run: npm i
+      - name: Lint
+        run: npm run lint
