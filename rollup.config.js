@@ -8,6 +8,7 @@ import json from '@rollup/plugin-json';
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
 import babel from 'rollup-plugin-babel'
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 const plugins = [
   peerDepsExternal(),
@@ -28,6 +29,7 @@ const plugins = [
   babel({
     exclude: "node_modules/**"
   }),
+  nodePolyfills(),
   terser(),
 ];
 
