@@ -55,7 +55,29 @@ const Research = (props: Props) => (
 									{reason.name}
 								</h3>
 								{reason.description && (
-									<ReactMarkdown className={css.text}>{reason.description}</ReactMarkdown>
+									<ReactMarkdown
+										className={css.text}
+										components={{
+											code({ inline, className, children, style, ...props }) {
+												const match = /language-(\w+)/.exec(className || css.text)
+												return !inline && match
+													? (
+														<SyntaxHighlighter
+															style={vscDarkPlus}
+															className={css.text}
+															language={match[1]}
+															PreTag="div"
+															{...props}>{String(children).replace(/\n\r$/, '')}
+														</SyntaxHighlighter>
+													)
+													: (
+														<code className={className} {...props}>
+															{children}
+														</code>
+													)
+											}
+										}}>{reason.description}
+									</ReactMarkdown>
 								)}
 							</div>
 						))}
