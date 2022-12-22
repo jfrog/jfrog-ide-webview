@@ -6,58 +6,65 @@ import { IDependencyPage } from '../../../../model/dependencyPage'
 import ImpactedPath from './page/ImpactedPath'
 import PublicSources from './page/PublicSources'
 import { useState, useEffect, useRef } from 'react'
+import { ActiveTab } from '../../../../model/tab'
 
 interface Props {
-  index: number
-  DependencyData: IDependencyPage
+  activeTab: ActiveTab
+  data: IDependencyPage
 }
 
 const PageHolder = (props: Props) => {
 	const ref = useRef<HTMLDivElement>(null)
+	let specialClassName: string | undefined
 	const [resize, setResize] = useState({ height: 0, width: 0 })
-	useEffect(() =>	resizeHandler(), [])
-	window.onresize = () =>	resizeHandler()
 	const resizeHandler = () => {
 		setResize({
 			height: ref.current?.clientHeight || 0,
 			width: ref.current?.clientWidth || 0
 		})
 	}
+	useEffect(() =>	resizeHandler(), [])
+	window.onresize = () =>	resizeHandler()
+
 	let pageHolder = <></>
-	switch (props.index) {
-		case 0:
-			if (props.DependencyData.extendedInformation) {
-				pageHolder = <Research data={props.DependencyData.extendedInformation}/>
+	switch (props.activeTab) {
+		case ActiveTab.Research:
+			if (props.data.extendedInformation) {
+				pageHolder = (
+					<>
+						<Research data={props.data.extendedInformation}/>
+					</>)
 			}
 			break
-		case 1:
-			if (props.DependencyData.cve?.applicableData) {
-				pageHolder = <ContextualAnalysis data={props.DependencyData.cve.applicableData}/>
+		case ActiveTab.ContextualAnalysis:
+			if (props.data.cve?.applicableData) {
+				pageHolder = <ContextualAnalysis data={props.data.cve.applicableData}/>
 			}
 			break
-		case 2:
+		case ActiveTab.PublicSources:
 			pageHolder = (
 				<PublicSources
-					summary={props.DependencyData.summary}
-					cve={props.DependencyData.cve}
-					infectedVersions={props.DependencyData.infectedVersion}/>
+					summary={props.data.summary}
+					cve={props.data.cve}
+					infectedVersions={props.data.infectedVersion}/>
 			)
 			break
-		case 3:
+		case ActiveTab.ImpactedPath:
 			pageHolder = <ImpactedPath
-				id={props.DependencyData.id + props.DependencyData.cve?.id || ''}
+				id={props.data.id + props.data.cve?.id || ''}
 				height={resize.height}
 				width={resize.width}
-				impactedPath={props.DependencyData.impactedPath}/>
+				impactedPath={props.data.impactedPath}/>
+			specialClassName = css.impactedPathContainer
 			break
-		case 4:
-			if (props.DependencyData.references) {
-				pageHolder = <Reference data={props.DependencyData.references}/>
+		case ActiveTab.Reference:
+			if (props.data.references) {
+				pageHolder = <Reference data={props.data.references}/>
 			}
 	}
 	return (
 		<>
-			<div className={props.index === 3 ? css.impactedPathContainer : css.container} ref={ref}>{pageHolder}</div>
+			<div className={specialClassName || css.container} ref={ref}>{pageHolder}</div>
 		</>
 	)
 }

@@ -21,7 +21,7 @@
     "build": "npm run rollup ",
     "rollup": "rm -rf dist && rollup -c",
     "start": "react-scripts start",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/jfrog-ide-webview/\"",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{ts,tsx}",
     "format": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'"

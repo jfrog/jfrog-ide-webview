@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
-import { IDependencyPage, ICve, IReference, IExtendedInformation } from '../../../../model'
+import { ICve } from '../../../../model/cve'
+import { IDependencyPage } from '../../../../model/dependencyPage'
+import { IExtendedInformation } from '../../../../model/extendedInformation'
+import { IReference } from '../../../../model/reference'
+import { ActiveTab } from '../../../../model/tab'
 import PageHolder from './PageHolder'
 import Tab from './Tab'
 
@@ -8,22 +12,22 @@ export interface Props {
 }
 
 const Navigator = (props: Props) => {
-	const [pageIndex, setPageIndex] = useState(0)
-	const tabChangeHandler = (index: number) => {
-		setPageIndex(index)
+	const [activeTab, setActiveTab] = useState<ActiveTab>(ActiveTab.None)
+	const tabChangeHandler = (index: ActiveTab) => {
+		setActiveTab(index)
 	}
 	const hideResearch = isJfrogResearchHidden(props.data.extendedInformation)
 	const hideContextual = isContextualAnalysisHidden(props.data.cve)
-	const hidePublicResources = isPublicResourcesHidden(props.data.cve)
+	const hidePublicSources = isPublicResourcesHidden(props.data.cve)
 	useEffect(() => {
 		if (!hideResearch) {
-			setPageIndex(0)
+			setActiveTab(ActiveTab.Research)
 		} else if (!hideContextual) {
-			setPageIndex(1)
-		} else if (!hidePublicResources) {
-			setPageIndex(2)
+			setActiveTab(ActiveTab.ContextualAnalysis)
+		} else if (!hidePublicSources) {
+			setActiveTab(ActiveTab.PublicSources)
 		} else {
-			setPageIndex(3)
+			setActiveTab(ActiveTab.ImpactedPath)
 		}
 	}, [])
 	return (
@@ -33,22 +37,25 @@ const Navigator = (props: Props) => {
 					items={[
 						{
 							text: 'JFrog Research',
-							hide: hideResearch
+							hide: hideResearch,
+							tabKey: ActiveTab.Research
 						},
 						{
 							text: 'Contextual Analysis',
-							hide: hideContextual
+							hide: hideContextual,
+							tabKey: ActiveTab.ContextualAnalysis
 						},
-						{ text: 'Public Sources', hide: hidePublicResources },
-						{ text: 'Impact Path', hide: false },
+						{ text: 'Public Sources', hide: hidePublicSources, tabKey: ActiveTab.PublicSources },
+						{ text: 'Impact Path', hide: false, tabKey: ActiveTab.ImpactedPath },
 						{
 							text: 'References',
-							hide: isReferenceHidden(props.data.references)
+							hide: isReferenceHidden(props.data.references),
+							tabKey: ActiveTab.Reference
 						}
 					]}
 					onChangeMenu={tabChangeHandler}/>
 			</div>
-			<PageHolder index={pageIndex} DependencyData={props.data}/>
+			<PageHolder activeTab={activeTab} data={props.data}/>
 		</>
 	)
 }
