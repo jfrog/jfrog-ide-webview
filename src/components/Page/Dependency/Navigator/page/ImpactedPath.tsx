@@ -1,14 +1,16 @@
-import { IImpactedPath, ITreeNode } from '../../../../../model'
+import { TreeNode } from '../../../../../model/treeNode'
 import TreeViewer from '../../../../UI/TreeViewer/TreeViewer'
 
 export interface Props {
   id: string
-  impactedPath: IImpactedPath
+  treeNode: TreeNode
   height: number
   width:number
 }
 
 const ImpactedPath = (props: Props) =>
-	<TreeViewer id={props.id} height={props.height} width={props.width} root={props.impactedPath as ITreeNode}/>
+	// addIdToTreeNode(props.impactedPath as ITreeNode)
+	<TreeViewer id={props.id} height={props.height} width={props.width} root={props.treeNode}/>
+
 
 export default ImpactedPath

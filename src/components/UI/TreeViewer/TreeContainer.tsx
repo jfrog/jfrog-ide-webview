@@ -1,5 +1,5 @@
 import clone from 'clone'
-import { ITreeNode } from '../../../model/treeNode'
+import { TreeNode } from '../../../model/treeNode'
 import css from './TreeContainer.module.css'
 // @ts-ignore
 import { AnimatedTree } from 'react-tree-graph'
@@ -10,13 +10,13 @@ export interface Props {
   id: string
   width: number
   height: number
-  root: ITreeNode
-  handleClick: (nodeName: string) => void
+  root: TreeNode
+  handleClick: (nodeId: string) => void
 }
 
 export default function TreeContainer(props: Props) {
-	function getRoot(node: ITreeNode): ITreeNode | undefined {
-		if (node.name === props.activeNode) {
+	function getRoot(node: TreeNode): TreeNode | undefined {
+		if (node.Id === props.activeNode) {
 			return node
 		}
 		if (!node.children) {
@@ -28,12 +28,11 @@ export default function TreeContainer(props: Props) {
 				return childJson
 			}
 		}
-
 		return undefined
 	}
 
-	function buildSubTree(root?: ITreeNode): ITreeNode | undefined {
-		const newChildren: ITreeNode[] = []
+	function buildSubTree(root?: TreeNode): TreeNode | undefined {
+		const newChildren: TreeNode[] = []
 		if (!root || !root.children) {
 			return undefined
 		}
@@ -48,15 +47,14 @@ export default function TreeContainer(props: Props) {
 		if (newChildren.length > 0) {
 			root.children = newChildren
 		}
-
-		if (newChildren.length > 0 || root.name.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1) {
+		if (newChildren.length > 0 || root.Id.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1) {
 			return root
 		}
 
 		return undefined
 	}
 
-	function setClassName(node?: ITreeNode) {
+	function setClassName(node?: TreeNode) {
 		if (!node) {
 			return
 		}
@@ -66,7 +64,7 @@ export default function TreeContainer(props: Props) {
 			return
 		}
 
-		node.className = node.name.toLowerCase().indexOf(props.filter) === -1 ? `${css.node} ${css.searchExcluded}` : `${css.node} ${css.searchIncluded}`
+		node.className = node.Id.toLowerCase().indexOf(props.filter.toLowerCase()) === -1 ? `${css.node} ${css.searchExcluded}` : `${css.node} ${css.searchIncluded}`
 	}
 
 	let root = props.activeNode ? getRoot(props.root) : props.root
@@ -90,6 +88,7 @@ export default function TreeContainer(props: Props) {
 				height={props.height}
 				width={props.width}
 				margins={{ bottom: 0, left: 5, right: props.width * 0.1, top: 0 }}
+				keyProp="id"
 				gProps={{
 					className: `${css.node} `,
 					onClick: handleClick

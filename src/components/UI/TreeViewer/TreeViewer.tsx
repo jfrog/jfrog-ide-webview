@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { ITreeNode } from '../../../model/treeNode'
+import { TreeNode } from '../../../model/treeNode'
 import Header from './Header'
 import TreeContainer from './TreeContainer'
 import css from './TreeViewer.module.css'
 
 export interface Props {
   id: string
-  root: ITreeNode
+  root: TreeNode
   height: number
   width:number
 }
