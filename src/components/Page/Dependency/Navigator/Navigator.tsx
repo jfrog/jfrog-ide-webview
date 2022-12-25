@@ -17,7 +17,7 @@ const Navigator = (props: Props) => {
 		setActiveTab(index)
 	}
 	const hideResearch = isJfrogResearchHidden(props.data.extendedInformation)
-	const hideContextual = isContextualAnalysisHidden(props.data.cve)
+	const hideContextual = isContextualAnalysisHidden(props.data.cve?.applicableData?.isApplicable)
 	const hidePublicSources = isPublicResourcesHidden(props.data.cve)
 	useEffect(() => {
 		if (!hideResearch) {
@@ -62,10 +62,10 @@ const Navigator = (props: Props) => {
 
 const isJfrogResearchHidden = (researchData: IExtendedInformation | undefined): boolean => researchData === undefined
 
-const isReferenceHidden = (references: IReference[] | undefined): boolean => references === undefined || references.length === 0
+const isReferenceHidden = (references: IReference[] | undefined): boolean => !!(references?.length === 0)
 
-const isContextualAnalysisHidden = (cveData: ICve | undefined): boolean => cveData === undefined || cveData.applicableData === undefined || cveData.applicableData.isApplicable === false
+const isContextualAnalysisHidden = (isApplicable: boolean | undefined): boolean => isApplicable === undefined || isApplicable === false
 
-const isPublicResourcesHidden = (cveData: ICve | undefined): boolean => cveData === undefined || (cveData.cvssV2Score === undefined && cveData.cvssV3Score === undefined)
+const isPublicResourcesHidden = (cveData: ICve | undefined): boolean => !!(cveData?.cvssV2Score === undefined && cveData?.cvssV3Score === undefined)
 
 export default Navigator
