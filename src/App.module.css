@@ -7,7 +7,6 @@
   color: white;
   padding: 10px;
   height: calc(100vh);
-  overflow: scroll;
 }
 
 * {
