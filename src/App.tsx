@@ -1,22 +1,33 @@
 import css from './App.module.css'
 import Dependency from './components/Page/Dependency/Dependency'
+import ZeroDay from './components/Page/ZeroDay/ZeroDay'
+import { IZeroDayPage } from './model/zeroDayPage'
 import { IDependencyPage } from './model/dependencyPage'
 import { PageType } from './model/pageType'
 
 export interface Props {
   PanelType: PageType
-  data?: IDependencyPage
+  dependencyPageData?: IDependencyPage
+  zeroDayPageData?: IZeroDayPage
 }
 
 function App(props: Props) {
 	let page = <>Nothing to show</>
-	if (props.data === undefined || props.PanelType === PageType.Empty) {
+	if (props.PanelType === PageType.Empty) {
 		return page
 	}
 
 	switch (props.PanelType) {
 		case PageType.Dependency:
-			page = <Dependency data={props.data}/>
+			if (props.dependencyPageData) {
+				page = <Dependency data={props.dependencyPageData}/>
+			}
+			break
+		case PageType.ZeroDays:
+			if (props.zeroDayPageData) {
+				page = <ZeroDay data={props.zeroDayPageData}/>
+			}
+			break
 	}
 
 	return (

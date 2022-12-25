@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { ISeverity } from '../../../../model'
+import { ISeverity } from '../../../model/severity'
 import Header from './Header'
 describe('Header component', () => {
 	test('renders vulnerability header', () => {

@@ -1,11 +1,10 @@
-import { IDependencyPage } from '../../../../model/dependencyPage'
-import CveVulnerability from './CveVulnerability'
 import css from './Summary.module.css'
 import { useState } from 'react'
-import ExpandButton from '../../../UI/ExpandButton/ExpandButton'
+import ExpandButton from './../../UI/ExpandButton/ExpandButton'
 
 export interface Props {
-  data: IDependencyPage
+	children: React.ReactNode
+	expandButton: boolean
 }
 
 const Summary = (props: Props) => {
@@ -14,16 +13,16 @@ const Summary = (props: Props) => {
 		<div className={css.container}>
 			<div className={css.details}>
 				<ul className={expanded ? css.fullText : css.halfText}>
-					<CveVulnerability
-						data={props.data}/>
+					{props.children}
 				</ul>
 			</div>
-			<label
-				onClick={() => {
-					setExpanded(prev => !prev)
-				}}>
-				<ExpandButton isExpand={expanded}/>
-			</label>
+			{props.expandButton
+			&& <>
+				<label onClick={() => setExpanded(prev => !prev)}>
+					<ExpandButton isExpand={expanded}/>
+				</label>
+			   </>
+			}
 		</div>
 	)
 }

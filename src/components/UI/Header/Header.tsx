@@ -1,7 +1,7 @@
-import research from './../../../../assets/Research.svg'
+import research from './../../../assets/Research.svg'
 import css from './Header.module.css'
-import { ISeverity } from '../../../../model/severity'
-import { getSeverityImage } from '../../../../utils/utils'
+import { ISeverity } from './../../../model/severity'
+import { getSeverityImage } from './../../../utils/utils'
 export interface Props {
   text: string
   Severity: ISeverity
