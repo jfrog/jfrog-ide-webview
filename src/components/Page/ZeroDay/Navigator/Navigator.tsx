@@ -20,7 +20,7 @@ const Navigator = (props: Props) => {
 				<Tab
 					items={[{
 						text: 'JFrog Research',
-						hide: false,
+						hide: isJfrogResearchHidden(props.data),
 						tabKey: ActiveTab.Research
 					}, {
 						text: 'Contextual Analysis',
@@ -33,5 +33,7 @@ const Navigator = (props: Props) => {
 		</>
 	)
 }
+
+const isJfrogResearchHidden = (researchData: IZeroDayPage): boolean => researchData.remediation?.length === 0 && researchData.description === undefined
 
 export default Navigator

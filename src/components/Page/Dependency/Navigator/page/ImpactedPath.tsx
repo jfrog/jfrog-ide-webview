@@ -9,7 +9,6 @@ export interface Props {
 }
 
 const ImpactedPath = (props: Props) =>
-	// addIdToTreeNode(props.impactedPath as ITreeNode)
 	<TreeViewer id={props.id} height={props.height} width={props.width} root={props.treeNode}/>
 
 

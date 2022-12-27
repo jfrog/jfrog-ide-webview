@@ -1,0 +1,14 @@
+.btn {
+    color: rgba(160, 160, 160, 1);
+    border: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btnHover,
+.btn:hover:enabled {
+    background: #252526;
+    color: #ffffff;
+}

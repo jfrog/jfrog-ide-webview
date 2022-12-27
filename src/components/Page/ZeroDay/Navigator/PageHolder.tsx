@@ -13,7 +13,6 @@ const PageHolder = (props: Props) => {
 	let pageHolder = <></>
 	switch (props.activeTab) {
 		case ActiveTab.Research:
-
 			pageHolder = (
 				<>
 					<Research description={props.activeTab} remediation={props.data.remediation}/>
@@ -21,7 +20,7 @@ const PageHolder = (props: Props) => {
 
 			break
 		case ActiveTab.ContextualAnalysis:
-			pageHolder = <ContextualAnalysis foundText={props.data.foundText}/>
+			pageHolder = <ContextualAnalysis foundText={props.data.foundText} analysisSteps={props.data.analysisStep}/>
 			break
 	}
 	return (
