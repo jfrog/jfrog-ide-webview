@@ -30,7 +30,7 @@ const PageHolder = (props: Props) => {
 	useEffect(() =>	{
 		resizeHandler()
 		setTreeNode(toTreeNode(props.data.impactedPath))
-	}, [])
+	}, [props.data.impactedPath])
 	window.onresize = () =>	resizeHandler()
 
 	let pageHolder = <></>
