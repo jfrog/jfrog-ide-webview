@@ -16,17 +16,19 @@ import {
 import Row from '../../../../UI/Row/Row'
 
 export interface Props {
-  summary: string;
+  summary?: string;
   cve?: ICve;
   infectedVersions?: string[];
 }
 
 const PublicSources = (props: Props) => (
 	<>
-		<Wrapper headline="SUMMARY">
-			<span className={css.text}>{props.summary}</span>
-		</Wrapper>
-		{props.cve && (
+		{props.summary && (
+			<Wrapper headline="SUMMARY">
+				<span className={css.text}>{props.summary}</span>
+			</Wrapper>
+		)}
+		{(!!props.cve?.cvssV2Vector || !!props.cve?.cvssV3Vector) && (
 			<Wrapper headline="CVSS BREAKDOWN">
 				<div className={css.container}>
 					{(props.cve.cvssV3Vector && props.cve.cvssV3Score) && createCvssBreakdownV3View(
@@ -40,19 +42,15 @@ const PublicSources = (props: Props) => (
 				</div>
 			</Wrapper>
 		)}
-		<Wrapper headline="VULNERABLE VERSIONS ">
-			{props.infectedVersions === undefined
-				? (
-					<span>None</span>
-				)
-				: (
-					props.infectedVersions.map((element, i) => (
-						<div key={i} className={css.text}>
-							<span>{element}</span>
-						</div>
-					))
-				)}
-		</Wrapper>
+		{props.infectedVersions
+			&& <Wrapper headline="VULNERABLE VERSIONS ">
+
+				{props.infectedVersions.map((element, i) => (
+					<div key={i} className={css.text}>
+						<span>{element}</span>
+					</div>
+				))}
+			   </Wrapper>}
 	</>
 )
 

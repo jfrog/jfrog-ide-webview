@@ -40,7 +40,7 @@ const isReferenceHidden = (references: IReference[] | undefined): boolean => !!(
 
 const isContextualAnalysisHidden = (isApplicable: boolean | undefined): boolean => isApplicable === undefined || isApplicable === false
 
-const isPublicResourcesHidden = (cveData: ICve | undefined): boolean => !!(cveData?.cvssV2Score === undefined && cveData?.cvssV3Score === undefined)
+const isPublicResourcesHidden = (data: IDependencyPage): boolean => !data.cve?.cvssV2Score && !data.cve?.cvssV3Score && !data.summary && !data.infectedVersion
 
 const createTabs = (props: Props):ITab[] => [
 	{
@@ -53,7 +53,7 @@ const createTabs = (props: Props):ITab[] => [
 		hide: isContextualAnalysisHidden(props.data.cve?.applicableData?.isApplicable),
 		tabKey: ActiveTab.ContextualAnalysis
 	},
-	{ text: 'Public Sources', hide: isPublicResourcesHidden(props.data.cve), tabKey: ActiveTab.PublicSources },
+	{ text: 'Public Sources', hide: isPublicResourcesHidden(props.data), tabKey: ActiveTab.PublicSources },
 	{ text: 'Impact Path', hide: false, tabKey: ActiveTab.ImpactedPath },
 	{
 		text: 'References',

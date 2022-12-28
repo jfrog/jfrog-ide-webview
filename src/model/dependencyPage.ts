@@ -16,7 +16,7 @@ export interface IDependencyPage {
   impactedPath: IImpactedPath
   severity: ISeverity
   edited: string
-  summary: string
+  summary?: string
   fixedVersion?: string[]
   infectedVersion?: string[]
   references?: IReference[]
