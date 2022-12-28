@@ -7,7 +7,7 @@ describe('Tab component', () => {
 		const SecondTab = 'Second-Tab'
 		const ThirdTab = 'Third-Tab'
 		// Arrange
-		render(<Tab items={[{ text: FirstTab, hide: false, tabKey: ActiveTab.ImpactedPath }, { text: SecondTab, hide: false, tabKey: ActiveTab.ImpactedPath }, { text: ThirdTab, hide: false, tabKey: ActiveTab.ImpactedPath }]} activeTab={ActiveTab.ImpactedPath} onChangeMenu={i => i}/>)
+		render(<Tab tabs={[{ text: FirstTab, hide: false, tabKey: ActiveTab.ImpactedPath }, { text: SecondTab, hide: false, tabKey: ActiveTab.ImpactedPath }, { text: ThirdTab, hide: false, tabKey: ActiveTab.ImpactedPath }]} activeTab={ActiveTab.ImpactedPath} onChangeMenu={i => i}/>)
 		// Assert
 		let tabElement = screen.getByText(FirstTab)
 		expect(tabElement).toBeInTheDocument()
