@@ -5,7 +5,6 @@ import TreeContainer from './TreeContainer'
 import css from './TreeViewer.module.css'
 
 export interface Props {
-  id: string
   root: TreeNode
   height: number
   width:number
@@ -24,7 +23,6 @@ const TreeViewer = (props: Props) => {
 		<div id="container" className={css.container}>
 			<Header filter={filter} setFilter={filterHandler} setActiveNode={activeNodeHandler}/>
 			<TreeContainer
-				id={props.id}
 				activeNode={activeNode}
 				root={props.root}
 				filter={filter}

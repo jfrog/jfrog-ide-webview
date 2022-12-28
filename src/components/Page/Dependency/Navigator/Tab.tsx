@@ -1,31 +1,33 @@
 import css from './Tab.module.css'
-import { useState } from 'react'
 import { ITab, ActiveTab } from '../../../../model/tab'
 
 export interface Props {
-  items: ITab[]
+  tabs: ITab[]
+  activeTab: ActiveTab
   onChangeMenu: (index: ActiveTab) => void
 }
 
 const Tab = (props: Props) => {
-	const [activeTab, setActiveTab] = useState<ActiveTab>(ActiveTab.None)
 	const onClickHandler = (tabKey: ActiveTab) => {
-		setActiveTab(tabKey)
 		props.onChangeMenu(tabKey)
 	}
+	const tabs:JSX.Element[] = []
+	props.tabs.forEach(value => {
+		if (!value.hide) {
+			tabs.push(
+				<button
+					key={value.text}
+					className={`${css.btn} ${props.activeTab === value.tabKey ? css.btnHover : ''}`}
+					onClick={onClickHandler.bind(null, value.tabKey)}>
+					{value.text}
+				</button>
+			)
+		}
+	})
 	return (
 		<>
 			<div className={css.container}>
-				{props.items.filter(tab => !tab.hide).map((item, i) => (
-					<button
-						key={i}
-						className={`${css.btn} ${activeTab === item.tabKey ? css.btnHover : ''} ${
-							item.hide ? css.btnNotAllowed : ''
-						}`}
-						onClick={onClickHandler.bind(null, item.tabKey)}>
-						{item.text}
-					</button>
-				))}
+				{tabs}
 			</div>
 		</>
 	)

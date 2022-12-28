@@ -3,7 +3,7 @@ import { ICve } from '../../../../model/cve'
 import { IDependencyPage } from '../../../../model/dependencyPage'
 import { IExtendedInformation } from '../../../../model/extendedInformation'
 import { IReference } from '../../../../model/reference'
-import { ActiveTab } from '../../../../model/tab'
+import { ActiveTab, ITab } from '../../../../model/tab'
 import PageHolder from './PageHolder'
 import Tab from './Tab'
 
@@ -12,47 +12,21 @@ export interface Props {
 }
 
 const Navigator = (props: Props) => {
-	const [activeTab, setActiveTab] = useState<ActiveTab>(ActiveTab.None)
+	const tabs:ITab[] = createTabs(props)
+	const defaultTab = tabs.find(tab => !tab.hide)?.tabKey || ActiveTab.None
+	const [activeTab, setActiveTab] = useState<ActiveTab>(defaultTab)
 	const tabChangeHandler = (index: ActiveTab) => {
 		setActiveTab(index)
 	}
-	const hideResearch = isJfrogResearchHidden(props.data.extendedInformation)
-	const hideContextual = isContextualAnalysisHidden(props.data.cve?.applicableData?.isApplicable)
-	const hidePublicSources = isPublicResourcesHidden(props.data.cve)
 	useEffect(() => {
-		if (!hideResearch) {
-			setActiveTab(ActiveTab.Research)
-		} else if (!hideContextual) {
-			setActiveTab(ActiveTab.ContextualAnalysis)
-		} else if (!hidePublicSources) {
-			setActiveTab(ActiveTab.PublicSources)
-		} else {
-			setActiveTab(ActiveTab.ImpactedPath)
-		}
-	}, [])
+		setActiveTab(tabs.find(tab => !tab.hide)?.tabKey || ActiveTab.None)
+	}, [props.data.id])
 	return (
 		<>
 			<div>
 				<Tab
-					items={[
-						{
-							text: 'JFrog Research',
-							hide: hideResearch,
-							tabKey: ActiveTab.Research
-						},
-						{
-							text: 'Contextual Analysis',
-							hide: hideContextual,
-							tabKey: ActiveTab.ContextualAnalysis
-						},
-						{ text: 'Public Sources', hide: hidePublicSources, tabKey: ActiveTab.PublicSources },
-						{ text: 'Impact Path', hide: false, tabKey: ActiveTab.ImpactedPath },
-						{
-							text: 'References',
-							hide: isReferenceHidden(props.data.references),
-							tabKey: ActiveTab.Reference
-						}
-					]}
+					tabs={tabs}
+					activeTab={activeTab}
 					onChangeMenu={tabChangeHandler}/>
 			</div>
 			<PageHolder activeTab={activeTab} data={props.data}/>
@@ -68,4 +42,23 @@ const isContextualAnalysisHidden = (isApplicable: boolean | undefined): boolean 
 
 const isPublicResourcesHidden = (cveData: ICve | undefined): boolean => !!(cveData?.cvssV2Score === undefined && cveData?.cvssV3Score === undefined)
 
+const createTabs = (props: Props):ITab[] => [
+	{
+		text: 'JFrog Research',
+		hide: isJfrogResearchHidden(props.data.extendedInformation),
+		tabKey: ActiveTab.Research
+	},
+	{
+		text: 'Contextual Analysis',
+		hide: isContextualAnalysisHidden(props.data.cve?.applicableData?.isApplicable),
+		tabKey: ActiveTab.ContextualAnalysis
+	},
+	{ text: 'Public Sources', hide: isPublicResourcesHidden(props.data.cve), tabKey: ActiveTab.PublicSources },
+	{ text: 'Impact Path', hide: false, tabKey: ActiveTab.ImpactedPath },
+	{
+		text: 'References',
+		hide: isReferenceHidden(props.data.references),
+		tabKey: ActiveTab.Reference
+	}
+]
 export default Navigator

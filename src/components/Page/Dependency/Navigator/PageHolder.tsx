@@ -58,7 +58,6 @@ const PageHolder = (props: Props) => {
 			break
 		case ActiveTab.ImpactedPath:
 			pageHolder = <ImpactedPath
-				id={props.data.id + props.data.cve?.id || ''}
 				height={resize.height}
 				width={resize.width}
 				treeNode={treeNode}/>
@@ -71,7 +70,7 @@ const PageHolder = (props: Props) => {
 	}
 	return (
 		<>
-			<div className={specialClassName || css.container} ref={ref}>{pageHolder}</div>
+			<div key={props.data.id + props.data.component} className={specialClassName || css.container} ref={ref}>{pageHolder}</div>
 		</>
 	)
 }
