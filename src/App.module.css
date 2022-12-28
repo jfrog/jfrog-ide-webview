@@ -1,12 +1,12 @@
 .App {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  height: calc(100vh);
 }
 
 .App-body {
   color: white;
   padding: 10px;
-  height: calc(100vh);
 }
 
 * {
