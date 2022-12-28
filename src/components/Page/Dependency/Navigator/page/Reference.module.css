@@ -10,6 +10,9 @@
 .container a {
   color: #a0a0a0;
   text-decoration-line: underline;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .line {
