@@ -86,7 +86,7 @@ export default function TreeContainer(props: Props) {
 				data={root}
 				height={props.height}
 				width={props.width}
-				margins={{ bottom: 0, left: 5, right: props.width * 0.1, top: 0 }}
+				margins={{ bottom: 0, left: 5, right: props.width * 0.2, top: 0 }}
 				keyProp="id"
 				gProps={{
 					className: `${css.node} `,
