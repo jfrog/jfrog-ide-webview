@@ -51,9 +51,9 @@ const Research = (props: Props) => (
 					{props.data.jfrogResearchSeverityReason
 						.map((reason, i) => (
 							<div key={i}>
-								<h3 className={reason.isPositive === true ? css.positiveReason : css.negativeReason}>
+								<h4 className={reason.isPositive === true ? css.positiveReason : css.negativeReason}>
 									{reason.name}
-								</h3>
+								</h4>
 								{reason.description && (
 									<ReactMarkdown
 										className={css.text}

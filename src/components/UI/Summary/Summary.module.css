@@ -2,7 +2,7 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 9px;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -11,16 +11,15 @@
 }
 
 .halfText {
-  font-size: 16px;
-  max-height: 5.8em;
+  max-height: 5.0em;
   line-height: 22px;
   overflow: hidden;
-  transition: max-height 0.6s ease-out;
+  transition: max-height 1s ease-out;
 }
 
 .fullText {
   composes: halfText;
-  transition: max-height 0.6s ease-out;
+  transition: max-height 1s ease-out;
   max-height: 20em;
 }
 

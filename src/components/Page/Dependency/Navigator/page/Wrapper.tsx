@@ -8,7 +8,10 @@ export interface Props {
 const Wrapper = (props: Props) => (
 	<>
 		{props.headline && <h3 className={css.headline}>{props.headline}</h3>}
-		{props.children}
+		<div className={css.content}>
+
+			{props.children}
+		</div>
 		<div className={css.line}/>
 	</>
 )
