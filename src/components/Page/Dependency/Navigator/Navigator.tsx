@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { ICve } from '../../../../model/cve'
 import { IDependencyPage } from '../../../../model/dependencyPage'
 import { IExtendedInformation } from '../../../../model/extendedInformation'
 import { IReference } from '../../../../model/reference'

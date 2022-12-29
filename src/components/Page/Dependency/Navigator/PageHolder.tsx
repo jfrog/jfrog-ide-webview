@@ -18,20 +18,10 @@ interface Props {
 const PageHolder = (props: Props) => {
 	const ref = useRef<HTMLDivElement>(null)
 	let specialClassName: string | undefined
-	const [resize, setResize] = useState({ height: 0, width: 0 })
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
-	const resizeHandler = () => {
-		setResize({
-			height: ref.current?.clientHeight || 0,
-			width: ref.current?.clientWidth || 0
-		})
-	}
-
 	useEffect(() =>	{
-		resizeHandler()
 		setTreeNode(toTreeNode(props.data.impactedPath))
 	}, [props.data.impactedPath])
-	window.onresize = () =>	resizeHandler()
 
 	let pageHolder = <></>
 	switch (props.activeTab) {
@@ -58,8 +48,7 @@ const PageHolder = (props: Props) => {
 			break
 		case ActiveTab.ImpactedPath:
 			pageHolder = <ImpactedPath
-				height={resize.height}
-				width={resize.width}
+				parentRef={ref}
 				treeNode={treeNode}/>
 			specialClassName = css.impactedPathContainer
 			break

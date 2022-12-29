@@ -79,12 +79,11 @@ export default function TreeContainer(props: Props) {
 	const handleClick = (event: any, node: string) => {
 		props.handleClick(node)
 	}
-
 	return (
 		<main>
 			<AnimatedTree
 				data={root}
-				height={props.height}
+				height={props.height * 0.95}
 				width={props.width}
 				margins={{ bottom: 0, left: 5, right: props.width * 0.2, top: 0 }}
 				keyProp="id"
