@@ -28,6 +28,15 @@ const PublicSources = (props: Props) => (
 				<span className={css.text}>{props.summary}</span>
 			</Wrapper>
 		)}
+		{props.infectedVersions
+			&& <Wrapper headline="VULNERABLE VERSIONS ">
+
+				{props.infectedVersions.map((element, i) => (
+					<div key={i} className={css.text}>
+						<span>{element}</span>
+					</div>
+				))}
+			   </Wrapper>}
 		{(!!props.cve?.cvssV2Vector || !!props.cve?.cvssV3Vector) && (
 			<Wrapper headline="CVSS BREAKDOWN">
 				<div className={css.container}>
@@ -42,15 +51,6 @@ const PublicSources = (props: Props) => (
 				</div>
 			</Wrapper>
 		)}
-		{props.infectedVersions
-			&& <Wrapper headline="VULNERABLE VERSIONS ">
-
-				{props.infectedVersions.map((element, i) => (
-					<div key={i} className={css.text}>
-						<span>{element}</span>
-					</div>
-				))}
-			   </Wrapper>}
 	</>
 )
 
