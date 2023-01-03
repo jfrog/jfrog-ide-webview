@@ -1,7 +1,6 @@
-import research from './../../../assets/Research.svg'
 import css from './Header.module.css'
 import { ISeverity } from './../../../model/severity'
-import { getSeverityImage } from './../../../utils/utils'
+import { getSeverityImage, getResearchImg } from './../../../utils/utils'
 export interface Props {
   text: string
   Severity: ISeverity
@@ -11,10 +10,14 @@ export interface Props {
 const Header = (props: Props) => (
 	<>
 		<div className={css.container}>
-			<img className={css.img} src={getSeverityImage(props.Severity)} alt="severity level"/>
+			<div className={css.img}>
+				{getSeverityImage(props.Severity)}
+			</div>
 			<span>{props.text}</span>
 			{props.isResearch && (
-				<img className={css.img} src={research} alt="Available Research information"/>
+				<div className={css.img}>
+					{getResearchImg()}
+				</div>
 			)}
 		</div>
 	</>
