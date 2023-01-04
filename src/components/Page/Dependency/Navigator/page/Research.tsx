@@ -58,6 +58,7 @@ const Research = (props: Props) => (
 									<ReactMarkdown
 										className={css.text}
 										components={{
+											// eslint-disable-next-line @typescript-eslint/no-unused-vars
 											code({ inline, className, children, style, ...props }) {
 												const match = /language-(\w+)/.exec(className || css.text)
 												return !inline && match
