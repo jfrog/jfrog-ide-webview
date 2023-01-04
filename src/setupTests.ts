@@ -15,7 +15,7 @@ const fakeDependencyPage: IDependencyPage = {
 		cvssV2Vector: 'CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:N/A:P',
 		cvssV3Score: '6.5',
 		cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H',
-		applicableData: { isApplicable: true, reason: 'applicable reason', searchTarget: 'search target', evidence: [{ filePathEvidence: 'filePathEvidence', codeEvidence: 'codeEvidence' }] }
+		applicableData: { isApplicable: true, searchTarget: 'search target', evidence: [{ filePathEvidence: 'filePathEvidence', codeEvidence: 'codeEvidence', reason: 'applicable reason' }] }
 	},
 	component: 'org.springframework:spring-core',
 	watchName: ['here-is-my-cool-new-watch', 'that-is-something-to-watch-out-for'],

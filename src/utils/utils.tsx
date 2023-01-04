@@ -7,11 +7,14 @@ export const getSeverityImage = (severity: ISeverity) => {
 		case ISeverity.Unknown:
 			return (
 				<svg
-					width={12}
-					height={12}
+					version="1.1"
+					id="Layer_1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlnsXlink="http://www.w3.org/1999/xlink"
+					x="0px"
+					y="0px"
 					viewBox="0 0 12 12"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg">
+					xmlSpace="preserve">
 					<path
 						fillRule="evenodd"
 						clipRule="evenodd"
@@ -34,10 +37,10 @@ export const getSeverityImage = (severity: ISeverity) => {
 						<style
 							type="text/css"
 							dangerouslySetInnerHTML={{
-					  __html: '\n\t.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FCD95C;}\n'
+					  __html: '\n\t.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FCD95C;}\n'
 							}}/>
 						<path
-							className="st0"
+							className="st1"
 							d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 				  S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 				  C10.9,3,10.8,2.8,10.7,2.7z M7.7,8.2H4.9V3.4h0.8v4.1h2V8.2z"/>
@@ -59,10 +62,10 @@ export const getSeverityImage = (severity: ISeverity) => {
 						<style
 							type="text/css"
 							dangerouslySetInnerHTML={{
-								__html: '\n\t.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FF9458;}\n'
+								__html: '\n\t.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF9458;}\n'
 							}}/>
 						<path
-							className="st0"
+							className="st2"
 							d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 	S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 	C10.9,3,10.8,2.8,10.7,2.7z M8.5,8.3H7.7V5.9c0-0.2,0-0.6,0-0.9c0-0.4,0-0.6,0-0.7h0l-1.4,4H5.6l-1.4-4h0c0,0.6,0.1,1.2,0.1,1.7v2.3
@@ -86,10 +89,10 @@ export const getSeverityImage = (severity: ISeverity) => {
 						<style
 							type="text/css"
 							dangerouslySetInnerHTML={{
-								__html: '\n\t.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#EA535E;}\n'
+								__html: '\n\t.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#EA535E;}\n'
 							}}/>
 						<path
-							className="st0"
+							className="st3"
 							d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 	S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 	C10.9,3,10.8,2.8,10.7,2.7z M7.9,8.2H7.1V6H4.9v2.2H4.1V3.4h0.8v2h2.2v-2h0.8V8.2z"/>
@@ -111,10 +114,10 @@ export const getSeverityImage = (severity: ISeverity) => {
 					<style
 						type="text/css"
 						dangerouslySetInnerHTML={{
-							__html: '\n\t.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#B91C1C;}\n'
+							__html: '\n\t.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#B91C1C;}\n'
 				  }}/>
 					<path
-						className="st0"
+						className="st4"
 						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 				S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 				C10.9,3,10.8,2.8,10.7,2.7z M6.3,8.5C6.2,8.6,6.1,8.7,6,8.7c-0.1,0-0.2,0-0.3-0.1C5.7,8.5,5.6,8.4,5.6,8.3c0-0.1,0-0.2,0.1-0.3
@@ -131,11 +134,14 @@ export const getApplicabilityImg = (isApplicable: boolean) => {
 	if (isApplicable) {
 		return (
 			<svg
-				width={14}
-				height={15}
-				viewBox="0 0 14 15"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg">
+				version="1.1"
+				id="Layer_1"
+				xmlns="http://www.w3.org/2000/svg"
+				xmlnsXlink="http://www.w3.org/1999/xlink"
+				x="0px"
+				y="0px"
+				viewBox="0 0 12 12"
+				xmlSpace="preserve">
 				<g clipPath="url(#clip0_3919_188486)">
 					<path
 						d="M13.13 11.1702L7.84001 5.86017C8.04062 5.174 8.05366 4.44662 7.87779 3.7537C7.70192 3.06077 7.34357 2.42762 6.84001 1.92017C6.42569 1.51596 5.92858 1.20649 5.38301 1.01312C4.83743 0.819757 4.25639 0.747105 3.68 0.800173C3.60367 0.805658 3.53061 0.833497 3.46998 0.88019C3.40522 0.921356 3.35872 0.985765 3.34001 1.06018C3.31996 1.13215 3.31996 1.20822 3.34001 1.28018C3.36042 1.35163 3.3982 1.41691 3.44999 1.47019L4.9 2.91019C4.99463 3.0044 5.06944 3.11659 5.12 3.24018C5.16912 3.36421 5.19289 3.49682 5.18998 3.63019C5.19289 3.76356 5.16912 3.89614 5.12 4.02017C5.06809 4.14304 4.99345 4.25498 4.9 4.35016L3.62 5.63019C3.52483 5.72363 3.41285 5.79824 3.28999 5.85016C3.16661 5.90242 3.034 5.92935 2.9 5.92935C2.76601 5.92935 2.63337 5.90242 2.50999 5.85016C2.38713 5.79824 2.27518 5.72363 2.18 5.63019L0.74 4.18018C0.683594 4.12938 0.614466 4.09482 0.539988 4.08017C0.465383 4.05502 0.384611 4.05502 0.310007 4.08017C0.236422 4.1061 0.173228 4.15525 0.129984 4.22019C0.0832907 4.28082 0.0554822 4.35385 0.0499973 4.43018C-0.00176876 5.05608 0.0905845 5.68553 0.319986 6.27017C0.55142 6.85178 0.9142 7.37199 1.37998 7.79016C1.89072 8.2331 2.50376 8.54185 3.16371 8.68851C3.82365 8.83517 4.50972 8.81513 5.15998 8.63019L10.45 13.9302C10.8124 14.2838 11.2987 14.4818 11.805 14.4818C12.3113 14.4818 12.7976 14.2838 13.16 13.9302C13.3381 13.7541 13.4777 13.543 13.57 13.3102C13.669 13.0796 13.7201 12.8312 13.7201 12.5802C13.7201 12.3292 13.669 12.0808 13.57 11.8502C13.4777 11.6174 13.3381 11.4062 13.16 11.2302L13.13 11.1702Z"
@@ -156,11 +162,14 @@ export const getApplicabilityImg = (isApplicable: boolean) => {
 	}
 	return (
 		<svg
-			width={14}
-			height={15}
-			viewBox="0 0 14 15"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg">
+			version="1.1"
+			id="Layer_1"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlnsXlink="http://www.w3.org/1999/xlink"
+			x="0px"
+			y="0px"
+			viewBox="0 0 12 12"
+			xmlSpace="preserve">
 			<g clipPath="url(#clip0_3935_168696)">
 				<path
 					d="M10.41 13.8384C10.7724 14.192 11.2587 14.39 11.765 14.39C12.2714 14.39 12.7576 14.192 13.12 13.8384C13.2996 13.6624 13.4423 13.4524 13.5397 13.2206C13.6371 12.9887 13.6873 12.7398 13.6873 12.4884C13.6873 12.2369 13.6371 11.988 13.5397 11.7562C13.4423 11.5244 13.2996 11.3143 13.12 11.1384V11.0584L10.12 8.05838L7.37 10.8084L10.41 13.8384Z"

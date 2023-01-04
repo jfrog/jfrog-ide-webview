@@ -1,32 +1,24 @@
 import css from './App.module.css'
 import Dependency from './components/Page/Dependency/Dependency'
-import ZeroDay from './components/Page/ZeroDay/ZeroDay'
-import { IZeroDayPage } from './model/zeroDayPage'
 import { IDependencyPage } from './model/dependencyPage'
 import { PageType } from './model/pageType'
+import { useState } from 'react'
 
-export interface Props {
-  PanelType: PageType
-  dependencyPageData?: IDependencyPage
-  zeroDayPageData?: IZeroDayPage
-}
-
-function App(props: Props) {
+function App() {
+	const [dependencyData, setDependencyData] = useState({} as IDependencyPage)
+	const [pageType, setPageType] = useState(PageType.Empty as PageType)
+	window.addEventListener('message', event => {
+		setDependencyData(event.data.data)
+		setPageType(event.data.pageType)
+	})
 	let page = <>Nothing to show</>
-	if (props.PanelType === PageType.Empty) {
+	if (pageType === PageType.Empty) {
 		return page
 	}
 
-	switch (props.PanelType) {
+	switch (pageType) {
 		case PageType.Dependency:
-			if (props.dependencyPageData) {
-				page = <Dependency data={props.dependencyPageData}/>
-			}
-			break
-		case PageType.ZeroDays:
-			if (props.zeroDayPageData) {
-				page = <ZeroDay data={props.zeroDayPageData}/>
-			}
+			page = <Dependency data={dependencyData}/>
 			break
 	}
 

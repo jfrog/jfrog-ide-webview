@@ -9,6 +9,7 @@
 
 # production
 /build
+/types
 /dist
 
 # JFrog
