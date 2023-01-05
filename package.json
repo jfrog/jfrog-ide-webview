@@ -2,6 +2,7 @@
   "name": "jfrog-ide-webview",
   "version": "0.1.13",
   "main": "types/index.js",
+  "homepage": ".",
   "files": [
     "build",
     "types"
