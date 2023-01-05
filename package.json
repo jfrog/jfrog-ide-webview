@@ -17,7 +17,7 @@
     "react-tree-graph": "^8.0.0"
   },
   "scripts": {
-    "build:types": "rm -rf types && rollup -c && cp package.json build",
+    "build:types": "rm -rf types && rollup -c",
     "start": "react-scripts start",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/jfrog-ide-webview/\"",
     "eject": "react-scripts eject",
