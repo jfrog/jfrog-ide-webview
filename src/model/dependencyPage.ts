@@ -4,10 +4,12 @@ import { ILicense } from './license'
 import { IReference } from './reference'
 import { IExtendedInformation } from './extendedInformation'
 import { ISeverity } from './severity'
+import { PageType } from './pageType'
 
 export interface IDependencyPage {
   id: string
-  type: string
+  pageType: PageType.Dependency;
+  componentType: string
   component: string
   version: string
   cve?: ICve

@@ -1,4 +1,7 @@
+import { PageType } from './pageType'
+
 export interface IZeroDayPage {
+  pageType: PageType.ZeroDays;
   header: string
   location: string
   description?: string
