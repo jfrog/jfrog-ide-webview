@@ -5,7 +5,7 @@ import css from './Page.module.css'
 import { IDependencyPage } from '../../../../model/dependencyPage'
 import ImpactedPath from './page/ImpactedPath'
 import PublicSources from './page/PublicSources'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { ActiveTab } from '../../../../model/tab'
 import { TreeNode } from '../../../../model/treeNode'
 import { toTreeNode } from '../../../../utils/utils'
@@ -16,8 +16,6 @@ interface Props {
 }
 
 const PageHolder = (props: Props) => {
-	const ref = useRef<HTMLDivElement>(null)
-	let specialClassName: string | undefined
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
 	useEffect(() =>	{
 		setTreeNode(toTreeNode(props.data.impactedPath))
@@ -48,9 +46,8 @@ const PageHolder = (props: Props) => {
 			break
 		case ActiveTab.ImpactedPath:
 			pageHolder = <ImpactedPath
-				parentRef={ref}
+				vulnerableComponentName={props.data.component + props.data.version}
 				treeNode={treeNode}/>
-			specialClassName = css.impactedPathContainer
 			break
 		case ActiveTab.Reference:
 			if (props.data.references) {
@@ -59,7 +56,7 @@ const PageHolder = (props: Props) => {
 	}
 	return (
 		<>
-			<div key={props.data.id + props.data.component} className={specialClassName || css.container} ref={ref}>{pageHolder}</div>
+			<div key={props.data.id + props.data.component} className={css.container}>{pageHolder}</div>
 		</>
 	)
 }

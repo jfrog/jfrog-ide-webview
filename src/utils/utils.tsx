@@ -1,7 +1,7 @@
 import { ISeverity } from '../model/severity'
-import { Queue } from './queue'
-import { TreeNode } from '../model/treeNode'
+import { CustomTreeNode, TreeNode } from '../model/treeNode'
 import { IImpactedPath } from '../model/impactedPath'
+import css from '../components/UI/TreeViewer/TreeViewer.module.css'
 export const getSeverityImage = (severity: ISeverity) => {
 	switch (severity) {
 		case ISeverity.Unknown:
@@ -207,27 +207,27 @@ export const getResearchImg = () => (
 			fill="#40BE46"/>
 	</svg>
 )
+
+
+let globalNodeNumber = 0
 export const toTreeNode = (impactedPath: IImpactedPath) => {
-	const impactedPathQueue = new Queue<IImpactedPath>()
-	const treeNodeQueue = new Queue<TreeNode>()
-	impactedPathQueue.enqueue(impactedPath)
-	let id = 0
-	const root = new TreeNode(`${id++}-${impactedPath.name}`, impactedPath.name)
-	let tmpImpactedPath: IImpactedPath|undefined
-	let tmpTreeNode: TreeNode|undefined
-	treeNodeQueue.enqueue(root)
-	while (impactedPathQueue.size() > 0) {
-		tmpImpactedPath = impactedPathQueue.dequeue()
-		tmpTreeNode = treeNodeQueue.dequeue()
-		if (!tmpImpactedPath || !tmpTreeNode) {
-			continue
-		}
-		tmpImpactedPath.children?.forEach(child => {
-			const rootChild = new TreeNode(`${id++}-${child.name}`, child.name)
-			tmpTreeNode?.children.push(rootChild)
-			impactedPathQueue.enqueue(child)
-			treeNodeQueue.enqueue(rootChild)
-		})
+	globalNodeNumber = 0
+	return toTreeNodeHelper(impactedPath)
+}
+const toTreeNodeHelper = (impactedPath: IImpactedPath) => {
+	const children: TreeNode[] = []
+	if (impactedPath.children === undefined || impactedPath.children.length === 0) {
+		return new CustomTreeNode(`${++globalNodeNumber}-${impactedPath.name}`, impactedPath.name, css.redNode, 1, 1, children)
 	}
-	return root
+	let subTreeHeight = 0
+	let subTreeWidth = 0
+	impactedPath.children?.forEach(child => {
+		const treeNodeChild = toTreeNodeHelper(child)
+		subTreeHeight = Math.max(treeNodeChild?.SubTreeHeight || 0, subTreeHeight)
+		subTreeWidth = Math.max(treeNodeChild?.SubTreeWidth || 0, subTreeWidth)
+		if (treeNodeChild) {
+			children.push(treeNodeChild)
+		}
+	})
+	return new TreeNode(`${globalNodeNumber++}-${impactedPath.name}`, impactedPath.name, subTreeHeight + 1, Math.max(children.length, subTreeWidth), children)
 }

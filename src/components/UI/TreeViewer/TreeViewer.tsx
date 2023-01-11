@@ -1,35 +1,106 @@
-import { useState } from 'react'
 import { TreeNode } from '../../../model/treeNode'
-import Header from './Header'
-import TreeContainer from './TreeContainer'
+import clone from 'clone'
 import css from './TreeViewer.module.css'
+// @ts-ignore
+import { AnimatedTree } from 'react-tree-graph'
 
 export interface Props {
+  activeNode?: string
+  filter: string
+  marginRight: number
   root: TreeNode
-  height: number
-  width:number
+  handleClick: (nodeId: string) => void
 }
 
-const TreeViewer = (props: Props) => {
-	const filterHandler = (filter: string) => {
-		setFilter(filter)
+export default function TreeViewer(props: Props) {
+	function getRoot(node: TreeNode): TreeNode | undefined {
+		if (node.Id === props.activeNode) {
+			return node
+		}
+		if (!node.Children) {
+			return undefined
+		}
+		for (let i = 0; i < node.Children?.length; i++) {
+			const childJson = getRoot(node.Children[i])
+			if (childJson) {
+				return childJson
+			}
+		}
+		return undefined
 	}
-	const activeNodeHandler = (nodeName: string) => {
-		setActiveNode(nodeName)
+
+	function buildSubTree(root?: TreeNode): TreeNode | undefined {
+		const newChildren: TreeNode[] = []
+		if (!root || !root.Children) {
+			return undefined
+		}
+		for (let i = 0; i < root.Children?.length || 0; i++) {
+			const child = buildSubTree(root.Children[i])
+			if (child) {
+				newChildren.push(child)
+			}
+		}
+		if (newChildren.length > 0) {
+			root.Children = newChildren
+		}
+		if (newChildren.length > 0 || root.Id.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1) {
+			return root
+		}
+		return undefined
 	}
-	const [filter, setFilter] = useState('')
-	const [activeNode, setActiveNode] = useState(undefined as string | undefined)
+
+	let root = clone(props.activeNode ? getRoot(props.root) : props.root)
+
+	if (props.filter) {
+		const SubTree = buildSubTree(root)
+		if (SubTree) {
+			SubTree.updateSubTreeDimension()
+			root = SubTree
+		}
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const handleClick = (event: any, node: string) => {
+		props.handleClick(node)
+	}
 	return (
-		<div id="container" className={css.container}>
-			<Header filter={filter} setFilter={filterHandler} setActiveNode={activeNodeHandler}/>
-			<TreeContainer
-				activeNode={activeNode}
-				root={props.root}
-				filter={filter}
-				height={props.height}
-				width={props.width}
-				handleClick={activeNodeHandler}/>
-		</div>
+		<main>
+			<AnimatedTree
+				data={root}
+				height={calcWindowHeighth(root?.SubTreeWidth) * 0.95}
+				width={calcWindowWidth(root?.SubTreeHeight, props.marginRight)}
+				margins={{ bottom: 0, left: 5, right: props.marginRight * 7, top: 0 }}
+				keyProp="id"
+				gProps={{
+					className: `${css.node} `,
+					onClick: handleClick
+				}}
+				pathProps={{
+					className: `${css.path} ${css.link} `
+				}}
+				textProps={{
+					dy: 3.5
+				}}
+				steps={30}/>
+		</main>
 	)
 }
-export default TreeViewer
+const calcWindowWidth = (treeHeight:number | undefined, extraMargin:number) =>
+	 (treeHeight || 1) * (100 + (extraMargin * 5))
+
+
+const calcWindowHeighth = (treeWidth:number | undefined) => {
+	switch (treeWidth) {
+		case undefined:
+		case 1:
+			return 300
+		case 2:
+			return 300
+		case 3:
+			return 400
+		case 4:
+			return 500
+		default:
+			return	treeWidth * 50
+	}
+}
