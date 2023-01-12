@@ -8,7 +8,7 @@ export interface ITreeNode {
 
 export class TreeNode {
 	// eslint-disable-next-line no-useless-constructor
-	constructor(protected id:string, protected name:string, protected subTreeHeight:number, protected subTreeWidth:number, protected children: TreeNode[]) {
+	constructor(protected id:string, protected name:string, protected treeHeight:number, protected treeWidth:number, protected children: TreeNode[]) {
 	}
 
 	public get Id() : string {
@@ -36,19 +36,19 @@ export class TreeNode {
 	}
 
 	public get SubTreeHeight() : number {
-		return this.subTreeHeight
+		return this.treeHeight
 	}
 
 	public get SubTreeWidth() : number {
-		return this.subTreeWidth
+		return this.treeWidth
 	}
 
-	public updateSubTreeDimension() {
-		this.subTreeHeight = 1
-		this.subTreeWidth = 1
-		this.children.forEach(child => {
-			this.subTreeHeight = Math.max(this.subTreeHeight, child.subTreeHeight)
-			this.subTreeWidth = Math.max(this.subTreeWidth, child.subTreeWidth)
+	public updateTreeDimension() {
+		this.treeHeight = 1
+		this.treeWidth = 1
+		this.children.forEach(node => {
+			this.treeHeight = Math.max(this.treeHeight, node.treeHeight + 1)
+			this.treeWidth += node.treeWidth
 		})
 	}
 }

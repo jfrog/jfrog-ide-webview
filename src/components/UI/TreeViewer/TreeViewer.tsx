@@ -54,10 +54,10 @@ export default function TreeViewer(props: Props) {
 	if (props.filter) {
 		const SubTree = buildSubTree(root)
 		if (SubTree) {
-			SubTree.updateSubTreeDimension()
 			root = SubTree
 		}
 	}
+	root?.updateTreeDimension()
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleClick = (event: any, node: string) => {
