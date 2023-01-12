@@ -93,13 +93,13 @@ const calcWindowHeighth = (treeWidth:number | undefined) => {
 	switch (treeWidth) {
 		case undefined:
 		case 1:
-			return 300
+			return 50
 		case 2:
-			return 300
+			return 100
 		case 3:
-			return 400
+			return 100
 		case 4:
-			return 500
+			return 200
 		default:
 			return	treeWidth * 50
 	}
