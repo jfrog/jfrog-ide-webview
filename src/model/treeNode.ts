@@ -7,8 +7,12 @@ export interface ITreeNode {
 }
 
 export class TreeNode {
-	// eslint-disable-next-line no-useless-constructor
-	constructor(protected id:string, protected name:string, protected treeHeight:number, protected treeWidth:number, protected children: TreeNode[]) {
+	gProps?: CustomTreeNodeData
+
+	constructor(private id:string, private name:string, private treeHeight:number, private treeWidth:number, private children: TreeNode[], className?: string) {
+		if (className) {
+			this.gProps = { className: className }
+		}
 	}
 
 	public get Id() : string {
@@ -43,6 +47,10 @@ export class TreeNode {
 		return this.treeWidth
 	}
 
+	public get GProps() : CustomTreeNodeData {
+		return this.GProps
+	}
+
 	public updateTreeDimension() {
 		this.treeHeight = 1
 		this.treeWidth = 1
@@ -55,13 +63,4 @@ export class TreeNode {
 
 interface CustomTreeNodeData {
 	className:string
-}
-
-export class CustomTreeNode extends TreeNode {
-	gProps: CustomTreeNodeData
-
-	constructor(id:string, name:string, className: string, subTreeHeight:number, subTreeWidth:number, children: TreeNode[]) {
-		super(id, name, subTreeHeight, subTreeWidth, children)
-		this.gProps = { className: className }
-	}
 }

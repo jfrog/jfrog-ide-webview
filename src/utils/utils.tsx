@@ -1,5 +1,5 @@
 import { ISeverity } from '../model/severity'
-import { CustomTreeNode, TreeNode } from '../model/treeNode'
+import { TreeNode } from '../model/treeNode'
 import { IImpactedPath } from '../model/impactedPath'
 import css from '../components/UI/TreeViewer/TreeViewer.module.css'
 export const getSeverityImage = (severity: ISeverity) => {
@@ -217,7 +217,7 @@ export const toTreeNode = (impactedPath: IImpactedPath) => {
 const toTreeNodeHelper = (impactedPath: IImpactedPath) => {
 	const children: TreeNode[] = []
 	if (impactedPath.children === undefined || impactedPath.children.length === 0) {
-		return new CustomTreeNode(`${++globalNodeNumber}-${impactedPath.name}`, impactedPath.name, css.redNode, 1, 1, children)
+		return new TreeNode(`${++globalNodeNumber}-${impactedPath.name}`, impactedPath.name, 1, 1, children, css.redNode)
 	}
 	let subTreeHeight = 0
 	let subTreeWidth = 0
