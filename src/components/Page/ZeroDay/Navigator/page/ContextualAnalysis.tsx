@@ -6,7 +6,7 @@ import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
 	foundText?: string
-	analysisSteps: IAnalysisStep[]
+	analysisSteps?: IAnalysisStep[]
 
 }
 const ContextualAnalysis = (props: Props) => (
@@ -19,14 +19,15 @@ const ContextualAnalysis = (props: Props) => (
 				</div>
 			</div>
 		   </Wrapper>}
-		<Wrapper headline="ANALYSIS STEPS">
+		{props.analysisSteps
+		&& <Wrapper headline="ANALYSIS STEPS">
 			<div>
 				<List>
 					<ZeroDayListElement items={props.analysisSteps}/>
 				</List>
 			</div>
-
-		</Wrapper>
+		   </Wrapper>
+		}
 	</>
 )
 

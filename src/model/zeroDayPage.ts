@@ -3,13 +3,14 @@ import { PageType } from './pageType'
 export interface IZeroDayPage {
   pageType: PageType.ZeroDays;
   header: string
-  location: string
+  location: IAnalysisStep
   description?: string
   remediation?: string[]
   foundText?: string
-  analysisStep :IAnalysisStep[]
+  analysisStep? :IAnalysisStep[]
 }
 export interface IAnalysisStep {
   file: string
-  line: string
+  row: number
+  colum: number
 }

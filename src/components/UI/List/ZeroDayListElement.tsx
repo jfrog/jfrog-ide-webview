@@ -17,7 +17,7 @@ const ZeroDayListElement = (props: Props) =>
 					</div>
 				</div>
 				<div className={css.file}>
-					{item.line}
+					{`${item.row}:${item.colum}`}
 				</div>
 			</li>))}
 	</>

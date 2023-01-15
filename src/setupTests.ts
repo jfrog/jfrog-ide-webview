@@ -6,6 +6,7 @@ import '@testing-library/jest-dom'
 import { IDependencyPage } from './model/dependencyPage'
 import { ISeverity } from './model/severity'
 import { MatcherFunction } from '@testing-library/react'
+import { PageType } from './types'
 
 const fakeDependencyPage: IDependencyPage = {
 	id: 'XRAY-210300',
@@ -19,7 +20,8 @@ const fakeDependencyPage: IDependencyPage = {
 	},
 	component: 'org.springframework:spring-core',
 	watchName: ['here-is-my-cool-new-watch', 'that-is-something-to-watch-out-for'],
-	type: 'Maven',
+	componentType: 'Maven',
+	pageType: PageType.Dependency,
 	version: '2.5.6',
 	infectedVersion: ['(,4.3.16)', '[5.0.0,5.0.5)'],
 	severity: ISeverity.Critical,

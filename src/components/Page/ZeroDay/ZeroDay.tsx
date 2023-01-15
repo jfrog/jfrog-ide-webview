@@ -18,7 +18,7 @@ function ZeroDay(props: Props) {
 				text={props.data.header}
 				isResearch={false}/>
 			<Summary expandButton={false}>
-				<ZeroDayVulnerability location={props.data.location}/>
+				<ZeroDayVulnerability location={`${props.data.location.file}:${props.data.location.row}`}/>
 			</Summary>
 			<Navigator data={props.data}/>
 		</div>
