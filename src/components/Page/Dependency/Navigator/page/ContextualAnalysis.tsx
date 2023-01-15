@@ -1,8 +1,8 @@
 import { IApplicableDetails } from '../../../../../model/cve'
-import Wrapper from './Wrapper'
 import css from './ContextualAnalysis.module.css'
 import Row from '../../../../UI/Row/Row'
 import ReactMarkdown from 'react-markdown'
+import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
 	data: IApplicableDetails

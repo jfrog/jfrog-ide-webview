@@ -1,5 +1,4 @@
 import { ICve } from '../../../../../model/cve'
-import Wrapper from './Wrapper'
 import css from './PublicResources.module.css'
 import {
 	AccessComplexityValueTranslator,
@@ -14,6 +13,7 @@ import {
 	UserInteractionTranslator
 } from '../../../../../model/cvss'
 import Row from '../../../../UI/Row/Row'
+import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
   summary?: string;

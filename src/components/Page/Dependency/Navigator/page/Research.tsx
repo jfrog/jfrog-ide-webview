@@ -1,9 +1,9 @@
 import css from './Research.module.css'
-import Wrapper from './Wrapper'
 import ReactMarkdown from 'react-markdown'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus'
 import { IExtendedInformation } from '../../../../../model/extendedInformation'
+import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 interface Props {
   data: IExtendedInformation

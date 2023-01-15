@@ -1,8 +1,8 @@
-import Wrapper from './Wrapper'
 import css from './ContextualAnalysis.module.css'
 import List from '../../../../UI/List/List'
 import ZeroDayListElement from '../../../../UI/List/ZeroDayListElement'
 import { IAnalysisStep } from '../../../../../model/zeroDayPage'
+import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
 	foundText?: string

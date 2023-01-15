@@ -2,11 +2,11 @@
   display: flex;
   column-gap: 8px;
   align-items: center;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .img {
-  height: 22px;
-  width: 22px;
+  height: 18px;
+  width: 18px;
 }
