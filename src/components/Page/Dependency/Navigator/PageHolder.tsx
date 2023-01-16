@@ -46,7 +46,6 @@ const PageHolder = (props: Props) => {
 			break
 		case ActiveTab.ImpactedPath:
 			pageHolder = <ImpactedPath
-				vulnerableComponentName={props.data.component + props.data.version}
 				treeNode={treeNode}/>
 			break
 		case ActiveTab.Reference:

@@ -214,20 +214,14 @@ export const toTreeNode = (impactedPath: IImpactedPath) => {
 	globalNodeNumber = 0
 	return toTreeNodeHelper(impactedPath)
 }
-const toTreeNodeHelper = (impactedPath: IImpactedPath) => {
-	const children: TreeNode[] = []
+const toTreeNodeHelper = (impactedPath: IImpactedPath):TreeNode => {
+	const node = new TreeNode(`${++globalNodeNumber}-${impactedPath.name}`, impactedPath.name)
 	if (impactedPath.children === undefined || impactedPath.children.length === 0) {
-		return new TreeNode(`${++globalNodeNumber}-${impactedPath.name}`, impactedPath.name, 1, 1, children, css.redNode)
+		node.ClassName = css.redNode
+		return node
 	}
-	let subTreeHeight = 0
-	let subTreeWidth = 0
-	impactedPath.children?.forEach(child => {
-		const treeNodeChild = toTreeNodeHelper(child)
-		subTreeHeight = Math.max(treeNodeChild?.SubTreeHeight || 0, subTreeHeight)
-		subTreeWidth = Math.max(treeNodeChild?.SubTreeWidth || 0, subTreeWidth)
-		if (treeNodeChild) {
-			children.push(treeNodeChild)
-		}
+	impactedPath.children.forEach(child => {
+		node.AddChild(toTreeNodeHelper(child))
 	})
-	return new TreeNode(`${globalNodeNumber++}-${impactedPath.name}`, impactedPath.name, subTreeHeight + 1, Math.max(children.length, subTreeWidth), children)
+	return node
 }

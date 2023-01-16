@@ -6,7 +6,6 @@ import css from './TreeContainer.module.css'
 
 export interface Props {
   root: TreeNode
-  marginRight:number
 }
 
 const TreeContainer = (props: Props) => {
@@ -28,7 +27,6 @@ const TreeContainer = (props: Props) => {
 					activeNode={activeNode}
 					root={props.root}
 					filter={filter}
-					marginRight={props.marginRight}
 					handleClick={activeNodeHandler}/>
 			</div>
 		</div>

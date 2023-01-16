@@ -7,7 +7,6 @@ import { AnimatedTree } from 'react-tree-graph'
 export interface Props {
   activeNode?: string
   filter: string
-  marginRight: number
   root: TreeNode
   handleClick: (nodeId: string) => void
 }
@@ -57,19 +56,21 @@ export default function TreeViewer(props: Props) {
 			root = SubTree
 		}
 	}
-	root?.updateTreeDimension()
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleClick = (event: any, node: string) => {
 		props.handleClick(node)
 	}
+	if (!root) {
+		return <></>
+	}
 	return (
 		<main>
 			<AnimatedTree
 				data={root}
-				height={calcWindowHeighth(root?.SubTreeWidth) * 0.95}
-				width={calcWindowWidth(root?.SubTreeHeight, props.marginRight)}
-				margins={{ bottom: 0, left: 5, right: props.marginRight * 7, top: 0 }}
+				height={calcWindowHeighth(root.Width) * 0.95}
+				width={calcWindowWidth(root.Height, root.EdgeLength)}
+				margins={{ bottom: 0, left: 5, right: root.LeafNameLength * 7, top: 0 }}
 				keyProp="id"
 				gProps={{
 					className: `${css.node} `,
@@ -85,19 +86,16 @@ export default function TreeViewer(props: Props) {
 		</main>
 	)
 }
-const calcWindowWidth = (treeHeight:number | undefined, extraMargin:number) =>
-	 (treeHeight || 1) * (100 + (extraMargin * 5))
 
+const calcWindowWidth = (treeHeight:number, extraMargin:number) =>
+	 treeHeight * (100 + (extraMargin * 4))
 
-const calcWindowHeighth = (treeWidth:number | undefined) => {
+const calcWindowHeighth = (treeWidth:number) => {
 	switch (treeWidth) {
-		case undefined:
 		case 1:
 			return 50
 		case 2:
-			return 100
 		case 3:
-			return 100
 		case 4:
 			return 200
 		default:
