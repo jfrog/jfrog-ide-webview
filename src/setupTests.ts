@@ -66,7 +66,7 @@ const fakeDependencyPage: IDependencyPage = {
 			}
 		]
 	},
-	impactedPath: {
+	impactGraph: {
 		name: 'org.jfrog.test:multi:3.7-SNAPSHOT',
 		children: [{
 			name: 'org.jfrog.test:multi3:3.7-SNAPSHOT',

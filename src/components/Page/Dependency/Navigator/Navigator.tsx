@@ -53,7 +53,7 @@ const createTabs = (props: Props):ITab[] => [
 		tabKey: ActiveTab.ContextualAnalysis
 	},
 	{ text: 'Public Sources', hide: isPublicResourcesHidden(props.data), tabKey: ActiveTab.PublicSources },
-	{ text: 'Impact Path', hide: false, tabKey: ActiveTab.ImpactedPath },
+	{ text: 'Impact Graph', hide: false, tabKey: ActiveTab.ImpactGraph },
 	{
 		text: 'References',
 		hide: isReferenceHidden(props.data.references),

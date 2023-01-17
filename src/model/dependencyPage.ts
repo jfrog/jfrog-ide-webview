@@ -1,5 +1,5 @@
 import { ICve } from './cve'
-import { IImpactedPath } from './impactedPath'
+import { IImpactGraph } from './impactGraph'
 import { ILicense } from './license'
 import { IReference } from './reference'
 import { IExtendedInformation } from './extendedInformation'
@@ -15,7 +15,7 @@ export interface IDependencyPage {
   cve?: ICve
   license?: ILicense[]
   watchName?: string[]
-  impactedPath: IImpactedPath
+  impactGraph: IImpactGraph
   severity: ISeverity
   edited: string
   summary?: string

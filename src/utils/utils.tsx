@@ -1,6 +1,6 @@
 import { ISeverity } from '../model/severity'
 import { TreeNode } from '../model/treeNode'
-import { IImpactedPath } from '../model/impactedPath'
+import { IImpactGraph } from '../model/impactGraph'
 import css from '../components/UI/TreeViewer/TreeViewer.module.css'
 export const getSeverityImage = (severity: ISeverity) => {
 	switch (severity) {
@@ -210,17 +210,17 @@ export const getResearchImg = () => (
 
 
 let globalNodeNumber = 0
-export const toTreeNode = (impactedPath: IImpactedPath) => {
+export const toTreeNode = (impactGraph: IImpactGraph) => {
 	globalNodeNumber = 0
-	return toTreeNodeHelper(impactedPath)
+	return toTreeNodeHelper(impactGraph)
 }
-const toTreeNodeHelper = (impactedPath: IImpactedPath):TreeNode => {
-	const node = new TreeNode(`${++globalNodeNumber}-${impactedPath.name}`, impactedPath.name)
-	if (impactedPath.children === undefined || impactedPath.children.length === 0) {
+const toTreeNodeHelper = (impactGraph: IImpactGraph):TreeNode => {
+	const node = new TreeNode(`${++globalNodeNumber}-${impactGraph.name}`, impactGraph.name)
+	if (impactGraph.children === undefined || impactGraph.children.length === 0) {
 		node.ClassName = css.redNode
 		return node
 	}
-	impactedPath.children.forEach(child => {
+	impactGraph.children.forEach(child => {
 		node.AddChild(toTreeNodeHelper(child))
 	})
 	return node

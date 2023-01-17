@@ -5,8 +5,8 @@ export interface Props {
   treeNode: TreeNode
 }
 
-const ImpactedPath = (props: Props) => <TreeContainer
+const ImpactGraph = (props: Props) => <TreeContainer
 	root={props.treeNode}/>
 
 
-export default ImpactedPath
+export default ImpactGraph

@@ -9,6 +9,6 @@ export enum ActiveTab {
   Research = 'research',
   ContextualAnalysis = 'contextualAnalysis',
   PublicSources = 'publicSources',
-  ImpactedPath = 'impactedPath',
+  ImpactGraph = 'impactGraph',
   Reference = 'reference',
 }

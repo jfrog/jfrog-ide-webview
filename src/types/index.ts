@@ -1,6 +1,6 @@
 export { PageType } from '../model/pageType'
 export { IDependencyPage } from '../model/dependencyPage'
-export { IImpactedPath } from '../model/impactedPath'
+export { IImpactGraph } from '../model/impactGraph'
 export { ILicense } from '../model/license'
 export { IExtendedInformation, ISeverityReasons } from '../model/extendedInformation'
 export { IReference } from '../model/reference'

@@ -3,7 +3,7 @@ import Reference from './page/Reference'
 import Research from './page/Research'
 import css from './Page.module.css'
 import { IDependencyPage } from '../../../../model/dependencyPage'
-import ImpactedPath from './page/ImpactedPath'
+import ImpactGraph from './page/ImpactGraph'
 import PublicSources from './page/PublicSources'
 import { useState, useEffect } from 'react'
 import { ActiveTab } from '../../../../model/tab'
@@ -18,8 +18,8 @@ interface Props {
 const PageHolder = (props: Props) => {
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
 	useEffect(() =>	{
-		setTreeNode(toTreeNode(props.data.impactedPath))
-	}, [props.data.impactedPath])
+		setTreeNode(toTreeNode(props.data.impactGraph))
+	}, [props.data.impactGraph])
 
 	let pageHolder = <></>
 	switch (props.activeTab) {
@@ -44,8 +44,8 @@ const PageHolder = (props: Props) => {
 					infectedVersions={props.data.infectedVersion}/>
 			)
 			break
-		case ActiveTab.ImpactedPath:
-			pageHolder = <ImpactedPath
+		case ActiveTab.ImpactGraph:
+			pageHolder = <ImpactGraph
 				treeNode={treeNode}/>
 			break
 		case ActiveTab.Reference:
