@@ -49,6 +49,8 @@ const Research = (props: Props) => (
 			<Wrapper headline="JFROG RESEARCH SEVERITY REASONS">
 				<div className={css.container}>
 					{props.data.jfrogResearchSeverityReason
+						// eslint-disable-next-line @typescript-eslint/no-unused-vars
+						.sort((reasonA, reasonB) => reasonA.isPositive ? 1 : -1)
 						.map((reason, i) => (
 							<div key={i}>
 								<h4 className={reason.isPositive === true ? css.positiveReason : css.negativeReason}>
