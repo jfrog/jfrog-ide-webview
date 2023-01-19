@@ -1,7 +1,7 @@
 import { PageType } from './pageType'
 
-export interface IZeroDayPage {
-  pageType: PageType.ZeroDays;
+export interface IEos {
+  pageType: PageType.Eos;
   header: string
   location: IAnalysisStep
   description?: string

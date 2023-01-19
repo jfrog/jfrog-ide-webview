@@ -1,16 +1,16 @@
-import css from './ZeroDay.module.css'
+import css from './Eos.module.css'
 import Summary from '../../UI/Summary/Summary'
 import Header from '../../UI/Header/Header'
-import { IZeroDayPage } from '../../../model/zeroDayPage'
+import { IEos } from '../../../model/EosPage'
 import { ISeverity } from '../../../model/severity'
-import ZeroDayVulnerability from '../../UI/Summary/ZeroDayVulnerability'
+import EosVulnerability from '../../UI/Summary/EosVulnerability'
 import Navigator from './Navigator/Navigator'
 
 export interface Props {
-  data: IZeroDayPage
+  data: IEos
 }
 
-function ZeroDay(props: Props) {
+function Eos(props: Props) {
 	return (
 		<div className={css.Container}>
 			<Header
@@ -18,11 +18,11 @@ function ZeroDay(props: Props) {
 				text={props.data.header}
 				isResearch={false}/>
 			<Summary expandButton={false}>
-				<ZeroDayVulnerability location={`${props.data.location.file}:${props.data.location.row}`}/>
+				<EosVulnerability location={`${props.data.location.file}:${props.data.location.row}`}/>
 			</Summary>
 			<Navigator data={props.data}/>
 		</div>
 	)
 }
 
-export default ZeroDay
+export default Eos

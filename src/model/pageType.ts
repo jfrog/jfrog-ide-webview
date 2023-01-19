@@ -1,6 +1,6 @@
 export enum PageType {
   Empty = 'EMPTY',
   Dependency = 'DEPENDENCY',
-  ZeroDays = 'ZERO_DAYS',
+  Eos = 'EOS',
   CveApplicability = 'CVE_APPLICABILITY',
 }

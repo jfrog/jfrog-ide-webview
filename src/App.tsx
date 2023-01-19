@@ -3,11 +3,11 @@ import Dependency from './components/Page/Dependency/Dependency'
 import { IDependencyPage } from './model/dependencyPage'
 import { PageType } from './model/pageType'
 import { useState } from 'react'
-import ZeroDay from './components/Page/ZeroDay/ZeroDay'
-import { IZeroDayPage } from './model/zeroDayPage'
+import Eos from './components/Page/Eos/Eos'
+import { IEos } from './model/EosPage'
 
 function App() {
-	const [data, setDependencyData] = useState<IDependencyPage | IZeroDayPage>({} as IDependencyPage | IZeroDayPage)
+	const [data, setDependencyData] = useState<IDependencyPage | IEos>({} as IDependencyPage | IEos)
 	window.addEventListener('message', event => {
 		setDependencyData(event.data.data)
 	})
@@ -17,8 +17,8 @@ function App() {
 		case PageType.Dependency:
 			page = <Dependency data={data}/>
 			break
-		case PageType.ZeroDays:
-			page = <ZeroDay data={data}/>
+		case PageType.Eos:
+			page = <Eos data={data}/>
 			break
 		default:
 			page = <>Nothing to show</>

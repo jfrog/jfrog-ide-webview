@@ -1,10 +1,10 @@
-import { IAnalysisStep } from '../../../model/zeroDayPage'
-import css from './ZeroDayListElement.module.css'
+import { IAnalysisStep } from '../../../model/EosPage'
+import css from './EosListElement.module.css'
 interface Props {
     items: IAnalysisStep[]
 }
 
-const ZeroDayListElement = (props: Props) =>
+const EosListElement = (props: Props) =>
 	<>
 		{props.items.map((item, i) => (
 			<li key={i} className={css.container}>
@@ -21,4 +21,4 @@ const ZeroDayListElement = (props: Props) =>
 				</div>
 			</li>))}
 	</>
-export default ZeroDayListElement
+export default EosListElement

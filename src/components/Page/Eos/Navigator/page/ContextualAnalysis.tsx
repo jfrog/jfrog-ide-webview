@@ -1,7 +1,7 @@
 import css from './ContextualAnalysis.module.css'
 import List from '../../../../UI/List/List'
-import ZeroDayListElement from '../../../../UI/List/ZeroDayListElement'
-import { IAnalysisStep } from '../../../../../model/zeroDayPage'
+import EosListElement from '../../../../UI/List/EosListElement'
+import { IAnalysisStep } from '../../../../../model/EosPage'
 import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
@@ -23,7 +23,7 @@ const ContextualAnalysis = (props: Props) => (
 		&& <Wrapper headline="ANALYSIS STEPS">
 			<div>
 				<List>
-					<ZeroDayListElement items={props.analysisSteps}/>
+					<EosListElement items={props.analysisSteps}/>
 				</List>
 			</div>
 		   </Wrapper>

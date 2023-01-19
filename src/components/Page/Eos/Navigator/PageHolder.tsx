@@ -2,11 +2,11 @@ import ContextualAnalysis from './page/ContextualAnalysis'
 import Research from './page/Research'
 import css from './Page.module.css'
 import { ActiveTab } from '../../../../model/tab'
-import { IZeroDayPage } from '../../../../model'
+import { IEos } from '../../../../model'
 
 interface Props {
   activeTab: ActiveTab
-  data: IZeroDayPage
+  data: IEos
 }
 
 const PageHolder = (props: Props) => {

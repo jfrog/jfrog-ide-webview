@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { IZeroDayPage } from '../../../../model/zeroDayPage'
+import { IEos } from '../../../../model/EosPage'
 import { ActiveTab } from '../../../../model/tab'
 import PageHolder from './PageHolder'
 import Tab from './Tab'
 
 export interface Props {
-  data: IZeroDayPage
+  data: IEos
 }
 
 const Navigator = (props: Props) => {
@@ -34,6 +34,6 @@ const Navigator = (props: Props) => {
 	)
 }
 
-const isJfrogResearchHidden = (researchData: IZeroDayPage): boolean => researchData.remediation?.length === 0 && researchData.description === undefined
+const isJfrogResearchHidden = (researchData: IEos): boolean => researchData.remediation?.length === 0 && researchData.description === undefined
 
 export default Navigator
