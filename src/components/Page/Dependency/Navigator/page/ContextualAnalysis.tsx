@@ -17,15 +17,11 @@ const ContextualAnalysis = (props: Props) => (
 				</h4>
 				{
 					props.data.evidence?.map((el, i) => (
-						<>
-							<div>
-								<div key={i}>
-									{el.filePathEvidence && <Row title="Reason" data={el.reason} key={`reason${i}`}/>}
-									{el.filePathEvidence && <Row title="Evidence file path" data={el.filePathEvidence} key={`file${i}`}/>}
-									{el.codeEvidence && <Row title="Evidence code" data={el.codeEvidence} key={`code${i}`}/>}
-								</div>
-							</div>
-						</>
+						<div key={i}>
+							{el.filePathEvidence && <Row title="Reason" data={el.reason} key={`reason${i}`}/>}
+							{el.filePathEvidence && <Row title="Evidence file path" data={el.filePathEvidence} key={`file${i}`}/>}
+							{el.codeEvidence && <Row title="Evidence code" data={el.codeEvidence} key={`code${i}`}/>}
+						</div>
 					))
 				}
 			</div>
