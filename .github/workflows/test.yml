@@ -1,4 +1,4 @@
-name: JFrog IDEs Webview
+name: Tests
 
 on: [ push, pull_request ]
 
@@ -19,7 +19,10 @@ jobs:
           node-version: "16"
           check-latest: true
 
+      - name: Install project
+        run: npm i
+
       - name: Run tests
         env:
           CI: true
-        run: npm t
+        run: npm test -- --coverage
