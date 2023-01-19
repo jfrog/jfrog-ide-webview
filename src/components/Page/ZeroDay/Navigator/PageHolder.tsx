@@ -15,7 +15,7 @@ const PageHolder = (props: Props) => {
 		case ActiveTab.Research:
 			pageHolder = (
 				<>
-					<Research description={props.activeTab} remediation={props.data.remediation}/>
+					<Research description={props.data.description} remediation={props.data.remediation}/>
 				</>)
 
 			break

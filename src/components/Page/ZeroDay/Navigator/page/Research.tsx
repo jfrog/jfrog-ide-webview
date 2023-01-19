@@ -5,15 +5,17 @@ import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark
 import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 interface Props {
-  description: string
+  description?: string
   remediation?: string[]
 }
 
 const Research = (props: Props) => (
 	<>
-		<Wrapper headline="DESCRIPTION">
+		{props.description && props.description.length > 0
+		&& <Wrapper headline="DESCRIPTION">
 			<span className={css.text}>{props.description}</span>
-		</Wrapper>
+		   </Wrapper>
+		}
 		{
 			props.remediation && props.remediation.length > 0
 			&& <Wrapper headline="REMEDIATION">
