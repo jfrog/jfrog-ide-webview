@@ -1,13 +1,13 @@
 import css from './Eos.module.css'
 import Summary from '../../UI/Summary/Summary'
 import Header from '../../UI/Header/Header'
-import { IEos } from '../../../model/EosPage'
+import { IEosPage } from '../../../model/EosPage'
 import { ISeverity } from '../../../model/severity'
 import EosVulnerability from '../../UI/Summary/EosVulnerability'
 import Navigator from './Navigator/Navigator'
 
 export interface Props {
-  data: IEos
+  data: IEosPage
 }
 
 function Eos(props: Props) {

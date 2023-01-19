@@ -4,13 +4,12 @@ import { ITab, ActiveTab } from '../../../../model/tab'
 
 export interface Props {
   items: ITab[]
+  activeTab: ActiveTab
   onChangeMenu: (index: ActiveTab) => void
 }
 
 const Tab = (props: Props) => {
-	const [activeTab, setActiveTab] = useState<ActiveTab>(ActiveTab.None)
 	const onClickHandler = (tabKey: ActiveTab) => {
-		setActiveTab(tabKey)
 		props.onChangeMenu(tabKey)
 	}
 	return (
@@ -19,7 +18,7 @@ const Tab = (props: Props) => {
 				{props.items.filter(tab => !tab.hide).map((item, i) => (
 					<button
 						key={i}
-						className={`${css.btn} ${activeTab === item.tabKey ? css.btnHover : ''} ${
+						className={`${css.btn} ${props.activeTab === item.tabKey ? css.btnHover : ''} ${
 							item.hide ? css.btnNotAllowed : ''
 						}`}
 						onClick={onClickHandler.bind(null, item.tabKey)}>

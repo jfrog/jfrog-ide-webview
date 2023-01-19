@@ -4,10 +4,10 @@ import { IDependencyPage } from './model/dependencyPage'
 import { PageType } from './model/pageType'
 import { useState } from 'react'
 import Eos from './components/Page/Eos/Eos'
-import { IEos } from './model/EosPage'
+import { IEosPage } from './model/EosPage'
 
 function App() {
-	const [data, setDependencyData] = useState<IDependencyPage | IEos>({} as IDependencyPage | IEos)
+	const [data, setDependencyData] = useState<IDependencyPage | IEosPage>({} as IDependencyPage | IEosPage)
 	window.addEventListener('message', event => {
 		setDependencyData(event.data.data)
 	})

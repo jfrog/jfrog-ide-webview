@@ -1,6 +1,6 @@
 import { PageType } from './pageType'
 
-export interface IEos {
+export interface IEosPage {
   pageType: PageType.Eos;
   header: string
   location: IAnalysisStep
