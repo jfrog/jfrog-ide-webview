@@ -1,5 +1,4 @@
 import css from './Tab.module.css'
-import { useState } from 'react'
 import { ITab, ActiveTab } from '../../../../model/tab'
 
 export interface Props {

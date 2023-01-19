@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { IEosPage } from '../../../../model/EosPage'
 import { ActiveTab, ITab } from '../../../../model/tab'
 import PageHolder from './PageHolder'
