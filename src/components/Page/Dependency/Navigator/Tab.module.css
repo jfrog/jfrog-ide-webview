@@ -15,6 +15,10 @@
   cursor: pointer;
 }
 
+*:focus {
+  outline: 0 !important;
+}
+
 .btnHover,
 .btn:hover:enabled {
   background: #1e1e1e;
