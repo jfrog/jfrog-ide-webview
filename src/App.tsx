@@ -1,27 +1,25 @@
 import css from './App.module.css'
-import Dependency from './components/Page/Dependency/Dependency'
-import { IDependencyPage } from './model/dependencyPage'
 import { PageType } from './model/pageType'
 import { useState } from 'react'
-import Eos from './components/Page/Eos/Eos'
-import { IEosPage } from './model/EosPage'
+import Eos2 from './components/Page/Eos2/Eos2'
+import { IEos2Page } from './model/Eos2Page'
 
 function App() {
-	const [data, setDependencyData] = useState<IDependencyPage | IEosPage>({} as IDependencyPage | IEosPage)
-	window.addEventListener('message', event => {
-		setDependencyData(event.data.data)
-	})
-	let page = <></>
+	const [dependencyData, setDependencyData] = useState({
+		'header': 'SQL Injection',
+		'pageType': PageType.Eos2
+	} as IEos2Page)
 
-	switch (data.pageType) {
-		case PageType.Dependency:
-			page = <Dependency data={data}/>
+	const [pageType, setPageType] = useState(PageType.Eos as PageType)
+	let page = <>Nothing to show</>
+	if (pageType === PageType.Empty) {
+		return page
+	}
+
+	switch (pageType) {
+		case PageType.Eos2:
+			page = <Eos2 data={dependencyData}/>
 			break
-		case PageType.Eos:
-			page = <Eos data={data}/>
-			break
-		default:
-			page = <>Nothing to show</>
 	}
 
 	return (
@@ -30,5 +28,6 @@ function App() {
 		</div>
 	)
 }
+
 
 export default App
