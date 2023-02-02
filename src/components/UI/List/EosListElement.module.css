@@ -25,11 +25,15 @@
     display: flex;
     font-size: small;
     font-weight: 500;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 3px 6px 2px;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
+    width: 21px;
+    height: 21px;
+}
+
+.row {
+    margin-right: 3px;
 }
 
 .container:hover .number {
