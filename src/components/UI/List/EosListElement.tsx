@@ -12,13 +12,14 @@ const EosListElement = (props: Props) =>
 					<div className={css.number}>
 						{i + 1}
 					</div>
+					<div className={css.row}> {item.row}: </div>
 					<div>
 						{item.file}
 					</div>
 				</div>
-				<div className={css.file}>
-					{`${item.row}:${item.colum}`}
-				</div>
+				{/* <div className={css.file}>*/}
+				{/*	{`${item.row}:${item.colum}`}*/}
+				{/* </div>*/}
 			</li>))}
 	</>
 export default EosListElement
