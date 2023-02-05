@@ -3,5 +3,5 @@ export enum PageType {
   Dependency = 'DEPENDENCY',
   Eos = 'EOS',
   CveApplicability = 'CVE_APPLICABILITY',
-  Eos2 = 'EOS'
+  IaC = 'IaC'
 }

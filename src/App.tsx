@@ -1,24 +1,29 @@
 import css from './App.module.css'
 import { PageType } from './model/pageType'
 import { useState } from 'react'
-import Eos2 from './components/Page/Eos2/Eos2'
-import { IEos2Page } from './model/Eos2Page'
+import IaC from './components/Page/IaC/IaC'
+import { IIaCPage } from './model/IaCPage'
+import { ISeverity } from './model/severity'
+
 
 function App() {
 	const [dependencyData, setDependencyData] = useState({
 		'header': 'SQL Injection',
-		'pageType': PageType.Eos2
-	} as IEos2Page)
+		'pageType': PageType.IaC,
+		'severity': ISeverity.Critical,
+		'status': 'TO FIX',
+		'id': 'EXP-1527-00001'
+	} as IIaCPage)
 
-	const [pageType, setPageType] = useState(PageType.Eos as PageType)
+	const [pageType, setPageType] = useState(PageType.IaC as PageType)
 	let page = <>Nothing to show</>
 	if (pageType === PageType.Empty) {
 		return page
 	}
 
 	switch (pageType) {
-		case PageType.Eos2:
-			page = <Eos2 data={dependencyData}/>
+		case PageType.IaC:
+			page = <IaC data={dependencyData}/>
 			break
 	}
 
