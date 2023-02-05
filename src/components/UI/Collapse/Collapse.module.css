@@ -1,0 +1,29 @@
+.collapseHeader{
+  cursor: pointer;
+  background: #6e6161;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapseContent{
+  border: 1px solid #6e6161;
+  -moz-transition: height .5s;
+  -ms-transition: height .5s;
+  -o-transition: height .5s;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+  overflow: hidden;
+  margin-top: -20px;
+}
+
+.collapseText{
+  padding: 15px;
+}
+
+.arrowUp {
+  display: inline-flex;
+  margin-right: 5px;
+  transition: transform 800ms ease;
+}

@@ -3,6 +3,6 @@ import { ISeverity } from '../../../model'
 interface Props{
     severity: ISeverity
 }
-const EosSeverity = (props: Props) => (<Row title="Severity" data={props.severity}/>)
+const Severity = (props: Props) => (<Row title="Severity" data={props.severity}/>)
 
-export default EosSeverity
+export default Severity

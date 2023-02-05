@@ -1,4 +1,4 @@
-import { IAnalysisStep } from '../../../model/EosPage'
+import { IAnalysisStep } from '../../../model/analysisStep'
 import css from './EosListElement.module.css'
 interface Props {
     items: IAnalysisStep[]
@@ -13,8 +13,8 @@ const EosListElement = (props: Props) =>
 						{i + 1}
 					</div>
 					<div className={css.row}> {item.row}: </div>
-					<div>
-						{item.file}
+					<div className={css.snippet}>
+						{item.snippet}
 					</div>
 				</div>
 				{/* <div className={css.file}>*/}

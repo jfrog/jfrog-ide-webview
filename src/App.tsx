@@ -1,30 +1,32 @@
 import css from './App.module.css'
+import Dependency from './components/Page/Dependency/Dependency'
+import { IDependencyPage } from './model/dependencyPage'
 import { PageType } from './model/pageType'
 import { useState } from 'react'
-import IaC from './components/Page/IaC/IaC'
+import Eos from './components/Page/Eos/Eos'
+import { IEosPage } from './model/EosPage'
 import { IIaCPage } from './model/IaCPage'
-import { ISeverity } from './model/severity'
-
+import IaC from './components/Page/IaC/IaC'
 
 function App() {
-	const [dependencyData, setDependencyData] = useState({
-		'header': 'SQL Injection',
-		'pageType': PageType.IaC,
-		'severity': ISeverity.Critical,
-		'status': 'TO FIX',
-		'id': 'EXP-1527-00001'
-	} as IIaCPage)
+	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>({} as IDependencyPage | IEosPage)
+	window.addEventListener('message', event => {
+		setDependencyData(event.data.data)
+	})
+	let page = <></>
 
-	const [pageType, setPageType] = useState(PageType.IaC as PageType)
-	let page = <>Nothing to show</>
-	if (pageType === PageType.Empty) {
-		return page
-	}
-
-	switch (pageType) {
-		case PageType.IaC:
-			page = <IaC data={dependencyData}/>
+	switch (data.pageType) {
+		case PageType.Dependency:
+			page = <Dependency data={data}/>
 			break
+		case PageType.Eos:
+			page = <Eos data={data}/>
+			break
+		case PageType.IaC:
+			page = <IaC data={data}/>
+			break
+		default:
+			page = <>Nothing to show</>
 	}
 
 	return (
@@ -33,6 +35,5 @@ function App() {
 		</div>
 	)
 }
-
 
 export default App

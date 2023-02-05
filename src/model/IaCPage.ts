@@ -1,21 +1,19 @@
 import { PageType } from './pageType'
 import { ISeverity } from './severity'
+import { IAnalysisStep } from './analysisStep'
 
 export interface IIaCPage {
   pageType: PageType.IaC;
   header: string
   severity: ISeverity
-  status?: string
-  id?: string
-  abbr?: string
-  fixCost?: string
+  abbreviation?: string
+  location: IAnalysisStep
+  description?: string
   finding?: IFindings
-  outcomes?: IOutcomes
 }
 export interface IFindings {
-  id: string
-}
-
-export interface IOutcomes {
-  id: string
+  snippet?: string
+  meaning?: string;
+  happen?: string;
+  do?: string;
 }

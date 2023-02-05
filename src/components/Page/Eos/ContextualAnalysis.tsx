@@ -1,7 +1,7 @@
 import css from './ContextualAnalysis.module.css'
 import List from '../../UI/List/List'
 import EosListElement from '../../UI/List/EosListElement'
-import { IAnalysisStep } from '../../../model/EosPage'
+import { IAnalysisStep } from '../../../model/analysisStep'
 import Wrapper from '../../UI/Wrapper/Wrapper'
 
 export interface Props {

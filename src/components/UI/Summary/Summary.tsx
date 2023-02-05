@@ -5,6 +5,7 @@ import ExpandButton from './../../UI/ExpandButton/ExpandButton'
 export interface Props {
 	children: React.ReactNode
 	expandButton: boolean
+	showAll ?: boolean
 }
 
 const Summary = (props: Props) => {
@@ -12,11 +13,11 @@ const Summary = (props: Props) => {
 	return (
 		<div className={css.container}>
 			<div className={css.details}>
-				<ul className={expanded ? css.fullText : css.halfText}>
+				<ul className={expanded || props.showAll ? css.fullText : css.halfText}>
 					{props.children}
 				</ul>
 			</div>
-			{props.expandButton
+			{props.expandButton && !props.showAll
 			&& <>
 				<label onClick={() => setExpanded(prev => !prev)}>
 					<ExpandButton isExpand={expanded}/>
