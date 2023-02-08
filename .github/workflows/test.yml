@@ -1,6 +1,10 @@
 name: Tests
 
-on: [ push, pull_request ]
+on: [ push, pull_request_target ]
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   test:
