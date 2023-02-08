@@ -8,7 +8,7 @@ export interface IIaCPage {
   severity: ISeverity
   abbreviation?: string
   location: IAnalysisStep
-  description?: string
+  description: string
   finding?: IFindings
 }
 export interface IFindings {

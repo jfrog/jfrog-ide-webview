@@ -11,9 +11,8 @@ export interface Props {
 
 const Findings = (props: Props) => (
 	<>
-		<Wrapper headline="FINDING">
-			<span className={css.text}>{props.snippet}</span>
-		</Wrapper>
+		{props.snippet
+            && <Collapse header="FINDING" text={props.snippet}/>}
 		{props.meaning
 			&& <Collapse header="What Does it mean?" text={props.meaning}/>}
 		{props.happen

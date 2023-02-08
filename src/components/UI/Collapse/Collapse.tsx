@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const Collapse = (props: Props) => {
-	const [collapse, setCollapse] = useState(false)
+	const [collapse, setCollapse] = useState(true)
 	const getStyle = () => {
 		if (collapse) {
 			const wrapper = document.getElementById('collapse-text')
@@ -21,8 +21,8 @@ const Collapse = (props: Props) => {
 	}
 	return (
 		<>
-			<div className={css.collapseHeader} onClick={() => setCollapse(prev => !prev)}>
-				<span>{props.header}</span>
+			<div className={css.collapseHeaderWrapper} onClick={() => setCollapse(prev => !prev)}>
+				<span className={css.collapseHeader}>{props.header}</span>
 				{ collapse && <ArrowUp/> }
 				{ !collapse && <ArrowDown/> }
 			</div>

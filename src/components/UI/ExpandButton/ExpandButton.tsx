@@ -8,7 +8,7 @@ const ExpandButton = (props: Props) => {
 	if (props.isExpand) {
 		return (
 			<>
-				<label className={css.btn}>
+				<div className={css.btn}>
 					<div className={css.arrowUp}>
 						<svg
 							width={9}
@@ -36,14 +36,14 @@ const ExpandButton = (props: Props) => {
 
 					</div>
 					<span className={css.text}>Show Less</span>
-				</label>
+				</div>
 			</>
 		)
 	}
 
 	return (
 		<>
-			<label className={css.btn}>
+			<div className={css.btn}>
 				<div className={css.arrowDown}>
 					<svg
 						width={9}
@@ -71,7 +71,7 @@ const ExpandButton = (props: Props) => {
 
 				</div>
 				<span className={css.text}>Show More</span>
-			</label>
+			</div>
 		</>
 	)
 }

@@ -9,6 +9,7 @@ import VulnerabilityLine from '../../UI/Summary/VulnerabilityLine'
 import Description from './Description'
 import Abbreviation from '../../UI/Summary/Abbreviation'
 import Findings from './Findings'
+import Collapse from '../../UI/Collapse/Collapse'
 
 export interface Props {
   data: IIaCPage
@@ -27,7 +28,7 @@ function IaC(props: Props) {
 				<VulnerabilityLine line={`${props.data.location.row}`}/>
 				<Abbreviation abbreviation={props.data.abbreviation ? props.data.abbreviation : ''}/>
 			</Summary>
-			<Description description={props.data.description}/>
+			<Collapse header="Description" text={props.data.description}/>
 			<Findings snippet={props.data.finding?.snippet} happen={props.data.finding?.happen} meaning={props.data.finding?.meaning} do={props.data.finding?.do}/>
 		</div>
 	)
