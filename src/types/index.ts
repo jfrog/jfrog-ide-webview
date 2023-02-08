@@ -8,4 +8,4 @@ export { ICve, IApplicableDetails, IEvidence } from '../model/cve'
 export { IEosPage } from '../model/EosPage'
 export { IAnalysisStep } from '../model/analysisStep'
 export { ISeverity } from '../model/severity'
-export { IIaCPage, IFindings } from '../model/IaCPage';
+export { IIaCPage, IFindings } from '../model/IaCPage'

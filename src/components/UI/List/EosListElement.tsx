@@ -17,9 +17,6 @@ const EosListElement = (props: Props) =>
 						{item.snippet}
 					</div>
 				</div>
-				{/* <div className={css.file}>*/}
-				{/*	{`${item.row}:${item.colum}`}*/}
-				{/* </div>*/}
 			</li>))}
 	</>
 export default EosListElement

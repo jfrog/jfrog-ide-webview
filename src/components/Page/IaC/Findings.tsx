@@ -1,5 +1,3 @@
-import css from './Findings.module.css'
-import Wrapper from '../../UI/Wrapper/Wrapper'
 import Collapse from '../../UI/Collapse/Collapse'
 
 export interface Props {

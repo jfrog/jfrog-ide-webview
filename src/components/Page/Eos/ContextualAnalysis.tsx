@@ -19,7 +19,7 @@ const ContextualAnalysis = (props: Props) => (
 				</div>
 			</div>
 		   </Wrapper>}
-		{props.analysisSteps
+		{props.analysisSteps && props.analysisSteps.length > 0
 		&& <Wrapper headline="DATA FLOW ANALYSIS">
 			<div>
 				<List>

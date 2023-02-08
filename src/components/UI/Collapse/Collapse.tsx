@@ -15,16 +15,14 @@ const Collapse = (props: Props) => {
 		if (collapse) {
 			const wrapper = document.getElementById('collapse-text')
 			return { height: `${wrapper?.clientHeight}px` }
-		} else {
-			return { height: 0 }
 		}
+		return { height: 0 }
 	}
 	return (
 		<>
 			<div className={css.collapseHeaderWrapper} onClick={() => setCollapse(prev => !prev)}>
 				<span className={css.collapseHeader}>{props.header}</span>
-				{ collapse && <ArrowUp/> }
-				{ !collapse && <ArrowDown/> }
+				{ !collapse ? <ArrowDown/> : <ArrowDown/> }
 			</div>
 			<div style={getStyle()} className={css.collapseContent}>
 				<div id="collapse-text" className={css.collapseText}>{props.text}</div>

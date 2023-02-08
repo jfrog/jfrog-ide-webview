@@ -6,7 +6,6 @@ import Severity from '../../UI/Summary/Severity'
 import { ISeverity } from '../../../model/severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
 import VulnerabilityLine from '../../UI/Summary/VulnerabilityLine'
-import Description from './Description'
 import Abbreviation from '../../UI/Summary/Abbreviation'
 import Findings from './Findings'
 import Collapse from '../../UI/Collapse/Collapse'
@@ -26,7 +25,7 @@ function IaC(props: Props) {
 				<Vulnerability location={`${props.data.location.file}`}/>
 				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown}/>
 				<VulnerabilityLine line={`${props.data.location.row}`}/>
-				<Abbreviation abbreviation={props.data.abbreviation ? props.data.abbreviation : ''}/>
+				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation}/>}
 			</Summary>
 			<Collapse header="Description" text={props.data.description}/>
 			<Findings snippet={props.data.finding?.snippet} happen={props.data.finding?.happen} meaning={props.data.finding?.meaning} do={props.data.finding?.do}/>
