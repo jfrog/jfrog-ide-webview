@@ -27,7 +27,7 @@ function IaC(props: Props) {
 				<VulnerabilityLine line={`${props.data.location.row}`}/>
 				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation}/>}
 			</Summary>
-			<Collapse header="Description" text={props.data.description}/>
+			<Collapse header="Description" text={props.data.description} id="description"/>
 			<Findings snippet={props.data.finding?.snippet} happen={props.data.finding?.happen} meaning={props.data.finding?.meaning} do={props.data.finding?.do}/>
 		</div>
 	)

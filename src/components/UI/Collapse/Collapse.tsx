@@ -4,6 +4,7 @@ import ArrowUp from '../ArrowUp/ArrowUp'
 import ArrowDown from '../ArrowDown/ArrowDown'
 
 export interface Props {
+	id: string
 	header: string
 	text: string
 
@@ -13,7 +14,7 @@ const Collapse = (props: Props) => {
 	const [collapse, setCollapse] = useState(true)
 	const getStyle = () => {
 		if (collapse) {
-			const wrapper = document.getElementById('collapse-text')
+			const wrapper = document.getElementById(props.id)
 			return { height: `${wrapper?.clientHeight}px` }
 		}
 		return { height: 0 }
@@ -22,10 +23,10 @@ const Collapse = (props: Props) => {
 		<>
 			<div className={css.collapseHeaderWrapper} onClick={() => setCollapse(prev => !prev)}>
 				<span className={css.collapseHeader}>{props.header}</span>
-				{ !collapse ? <ArrowDown/> : <ArrowDown/> }
+				{ collapse ? <ArrowUp/> : <ArrowDown/> }
 			</div>
 			<div style={getStyle()} className={css.collapseContent}>
-				<div id="collapse-text" className={css.collapseText}>{props.text}</div>
+				<div id={props.id} className={css.collapseText}>{props.text}</div>
 			</div>
 		</>
 	)
