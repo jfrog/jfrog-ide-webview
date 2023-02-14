@@ -1,6 +1,6 @@
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import css from './CodeBlock.module.css'
+import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus'
 
 export interface Props {
     codeString: string
@@ -16,7 +16,7 @@ const CodeBlock = (props: Props) => {
 
 	return (
 		<>
-			<SyntaxHighlighter id={props.id} language="javascript" style={docco} customStyle={{ backgroundColor: 'transparent', maxWidth: '500px', overflowX: 'hidden', textAlign: 'left' }}>
+			<SyntaxHighlighter id={props.id} language="javascript" style={vscDarkPlus} customStyle={{ backgroundColor: 'transparent', maxWidth: '500px', overflowX: 'hidden', textAlign: 'left' }}>
 				{props.codeString}
 			</SyntaxHighlighter>
 			{ isOverflow()

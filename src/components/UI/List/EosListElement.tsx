@@ -35,7 +35,6 @@ interface Props {
 const EosListElement = (props: Props) => {
 	 const vsCodeApi = useMemo(() => acquireVsCodeApi(), [])
 	const clickOutside = (event: React.MouseEvent<HTMLButtonElement>, item: any) => {
-		console.log(item)
 		event.preventDefault()
 		vsCodeApi.postMessage({ 'command': 'reverse_click', fileName: item.file, line: item.row })
 	}
