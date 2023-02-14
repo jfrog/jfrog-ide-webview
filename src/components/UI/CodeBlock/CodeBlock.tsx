@@ -16,7 +16,7 @@ const CodeBlock = (props: Props) => {
 
 	return (
 		<>
-			<SyntaxHighlighter id={props.id} language="javascript" style={vscDarkPlus} customStyle={{ backgroundColor: 'transparent', maxWidth: '500px', overflowX: 'hidden', textAlign: 'left' }}>
+			<SyntaxHighlighter id={props.id} language="javascript" style={vscDarkPlus} customStyle={{ padding: 0, backgroundColor: 'transparent', maxWidth: '500px', overflowX: 'hidden', textAlign: 'left' }}>
 				{props.codeString}
 			</SyntaxHighlighter>
 			{ isOverflow()

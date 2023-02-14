@@ -1,6 +1,6 @@
 import css from './ContextualAnalysis.module.css'
 import List from '../../UI/List/List'
-import EosListElement from '../../UI/List/EosListElement'
+import AnalysisStepsListElement from '../../UI/List/AnalysisStepsListElement'
 import { IAnalysisStep } from '../../../model/analysisStep'
 import Wrapper from '../../UI/Wrapper/Wrapper'
 
@@ -23,7 +23,7 @@ const ContextualAnalysis = (props: Props) => (
 		&& <Wrapper headline="DATA FLOW ANALYSIS">
 			<div>
 				<List>
-					<EosListElement items={props.analysisSteps}/>
+					<AnalysisStepsListElement items={props.analysisSteps}/>
 				</List>
 			</div>
 		   </Wrapper>
