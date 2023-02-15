@@ -34,3 +34,11 @@
 	margin-right: 5px;
 	transition: transform 800ms ease;
 }
+
+.markdownText {
+	color: rgba(255, 255, 255, 0.8);
+	line-height: 1.5;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+}

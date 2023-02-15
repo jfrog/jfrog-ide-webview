@@ -1,18 +1,18 @@
-import css from './IaC.module.css'
+import css from './Secrets.module.css'
 import Header from '../../UI/Header/Header'
-import { IIaCPage } from '../../../model/IaCPage'
 import Summary from '../../UI/Summary/Summary'
 import Severity from '../../UI/Summary/Severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
 import Abbreviation from '../../UI/Summary/Abbreviation'
 import Findings from '../../UI/Findings/Findings'
+import { ISecretsPage } from '../../../model/SecretsPage'
 import { Collapse } from '../../UI/Collapse/Collapse'
 
 export interface Props {
-	data: IIaCPage
+	data: ISecretsPage
 }
 
-function IaC(props: Props): JSX.Element {
+function Secrets(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
 			<Header Severity={props.data.severity} text={props.data.header} isResearch={false} />
@@ -32,4 +32,4 @@ function IaC(props: Props): JSX.Element {
 	)
 }
 
-export default IaC
+export default Secrets

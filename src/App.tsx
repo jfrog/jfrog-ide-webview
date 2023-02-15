@@ -7,13 +7,15 @@ import Eos from './components/Page/Eos/Eos'
 import { IEosPage } from './model/EosPage'
 import { IIaCPage } from './model/IaCPage'
 import IaC from './components/Page/IaC/IaC'
+import { ISecretsPage } from './model/SecretsPage'
+import Secrets from './components/Page/Secrets/Secrets'
 
 /**
  * The main page on which the Webview will be drawn based on the incoming request page type.
  */
 function App(): JSX.Element {
-	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>(
-		{} as IDependencyPage | IEosPage
+	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage | ISecretsPage>(
+		{} as IDependencyPage | IEosPage | IIaCPage | ISecretsPage
 	)
 	let page
 
@@ -30,6 +32,9 @@ function App(): JSX.Element {
 			break
 		case PageType.IaC:
 			page = <IaC data={data} />
+			break
+		case PageType.Secrets:
+			page = <Secrets data={data} />
 			break
 		default:
 			page = <>Nothing to show</>

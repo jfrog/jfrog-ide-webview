@@ -1,4 +1,4 @@
-import Collapse from '../../UI/Collapse/Collapse'
+import { Collapse } from '../Collapse/Collapse'
 
 export interface Props {
 	snippet?: string
