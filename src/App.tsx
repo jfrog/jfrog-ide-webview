@@ -5,9 +5,11 @@ import { PageType } from './model/pageType'
 import { useState } from 'react'
 import Eos from './components/Page/Eos/Eos'
 import { IEosPage } from './model/EosPage'
+import { IIaCPage } from './model/IaCPage'
+import IaC from './components/Page/IaC/IaC'
 
 function App() {
-	const [data, setDependencyData] = useState<IDependencyPage | IEosPage>({} as IDependencyPage | IEosPage)
+	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>({} as IDependencyPage | IEosPage)
 	window.addEventListener('message', event => {
 		setDependencyData(event.data.data)
 	})
@@ -19,6 +21,9 @@ function App() {
 			break
 		case PageType.Eos:
 			page = <Eos data={data}/>
+			break
+		case PageType.IaC:
+			page = <IaC data={data}/>
 			break
 		default:
 			page = <>Nothing to show</>

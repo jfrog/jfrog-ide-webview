@@ -1,11 +1,12 @@
 .container {
-    height: 2.4em;
     display: flex;
     justify-content: space-between;
     color: #A0A0A0;
     font-weight: 400;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
 
 .container:hover {
@@ -15,8 +16,8 @@
 
 .file {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: space-around
 }
 
 .number {
@@ -25,11 +26,17 @@
     display: flex;
     font-size: small;
     font-weight: 500;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 3px 6px 2px;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.row {
+    margin-right: 3px;
 }
 
 .container:hover .number {

@@ -1,8 +1,8 @@
 import css from './ContextualAnalysis.module.css'
-import List from '../../../../UI/List/List'
-import EosListElement from '../../../../UI/List/EosListElement'
-import { IAnalysisStep } from '../../../../../model/EosPage'
-import Wrapper from '../../../../UI/Wrapper/Wrapper'
+import List from '../../UI/List/List'
+import AnalysisStepsListElement from '../../UI/List/AnalysisStepsListElement'
+import { IAnalysisStep } from '../../../model/analysisStep'
+import Wrapper from '../../UI/Wrapper/Wrapper'
 
 export interface Props {
 	foundText?: string
@@ -19,11 +19,11 @@ const ContextualAnalysis = (props: Props) => (
 				</div>
 			</div>
 		   </Wrapper>}
-		{props.analysisSteps
-		&& <Wrapper headline="ANALYSIS STEPS">
+		{props.analysisSteps && props.analysisSteps.length > 0
+		&& <Wrapper headline="DATA FLOW ANALYSIS">
 			<div>
 				<List>
-					<EosListElement items={props.analysisSteps}/>
+					<AnalysisStepsListElement items={props.analysisSteps}/>
 				</List>
 			</div>
 		   </Wrapper>

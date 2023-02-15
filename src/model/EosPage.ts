@@ -1,4 +1,6 @@
 import { PageType } from './pageType'
+import { ISeverity } from './severity'
+import { IAnalysisStep } from './analysisStep'
 
 export interface IEosPage {
   pageType: PageType.Eos;
@@ -8,9 +10,5 @@ export interface IEosPage {
   remediation?: string[]
   foundText?: string
   analysisStep? :IAnalysisStep[]
-}
-export interface IAnalysisStep {
-  file: string
-  row: number
-  colum: number
+  severity?: ISeverity
 }
