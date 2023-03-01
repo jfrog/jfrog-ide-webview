@@ -61,8 +61,8 @@ pipelines:
             - jf rt bp
 
             # Distribute release bundle
-            - jf ds rbc jfrog-ide-webview $NEXT_VERSION --spec=./.jfrog-pipelines/specs/rbc-filespec.json --spec-vars="version=$NEXT_VERSION" --sign
-            - jf ds rbd jfrog-ide-webview $NEXT_VERSION --site="releases.jfrog.io" --sync
+            - jf ds rbc ecosystem-jfrog-ide-webview $NEXT_VERSION --spec=./.jfrog-pipelines/specs/rbc-filespec.json --spec-vars="version=$NEXT_VERSION" --sign
+            - jf ds rbd ecosystem-jfrog-ide-webview $NEXT_VERSION --site="releases.jfrog.io" --sync
 
             # Update version
             - git push
