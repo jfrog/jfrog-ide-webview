@@ -10,6 +10,7 @@
   "types": "types/index.d.ts",
   "dependencies": {
     "clone": "^2.1.2",
+    "css-what": "^5.0.1",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
