@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { ActiveTab } from '../../../../model'
 import Tab from './Tab'
 describe('Tab component', () => {
-	test('renders three tabs', () => {
+	test('Renders three tabs', () => {
 		const FirstTab = 'First-Tab'
 		const SecondTab = 'Second-Tab'
 		const ThirdTab = 'Third-Tab'
@@ -17,7 +17,7 @@ describe('Tab component', () => {
 		expect(tabElement).toBeInTheDocument()
 	})
 
-	test('renders two tabs and hides the third', () => {
+	test('Renders two tabs and hides the third', () => {
 		const FirstTab = 'First-Tab'
 		const SecondTab = 'Second-Tab'
 		const ThirdTab = 'Third-Tab'

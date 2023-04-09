@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Edited from './Edited'
 describe('Edited component', () => {
-	test('renders last time edited', () => {
+	test('Renders last time edited', () => {
 		// Arrange
 		render(<Edited date="2022-10-26T09:40:18Z"/>)
 		// Assert

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Row from './Row'
 describe('Row component', () => {
-	test('renders a row with title and text', () => {
+	test('Renders a row with title and text', () => {
 		const title = 'row-title'
 		const text = 'row-text'
 		// Arrange

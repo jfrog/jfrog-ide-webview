@@ -5,7 +5,7 @@ import withMarkup, { getFakeDependencyPage } from '../../../../setupTests'
 import PageHolder from './PageHolder'
 describe('PageHolder component', () => {
 	describe('Research page', () => {
-		test('renders short description', () => {
+		test('Renders short description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
@@ -14,7 +14,7 @@ describe('PageHolder component', () => {
 			expect(shortDescriptionElement).toBeInTheDocument()
 		})
 
-		test('renders full description', () => {
+		test('Renders full description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
@@ -23,7 +23,7 @@ describe('PageHolder component', () => {
 			expect(fullDescriptionElement).toBeInTheDocument()
 		})
 
-		test('renders remediation', () => {
+		test('Renders remediation', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
@@ -32,7 +32,7 @@ describe('PageHolder component', () => {
 			expect(remediationElement).toBeInTheDocument()
 		})
 
-		test('renders jfrog research severity reason', () => {
+		test('Renders jfrog research severity reason', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
@@ -57,7 +57,7 @@ describe('PageHolder component', () => {
 	})
 
 	describe('Contextual Analysis page', () => {
-		test('renders applicability reason description', () => {
+		test('Renders applicability reason description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
@@ -66,7 +66,7 @@ describe('PageHolder component', () => {
 			expect(shortDescriptionElement).toBeInTheDocument()
 		})
 
-		test('renders search target description', () => {
+		test('Renders search target description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
@@ -75,7 +75,7 @@ describe('PageHolder component', () => {
 			expect(shortDescriptionElement).toBeInTheDocument()
 		})
 
-		test('renders evidence description', () => {
+		test('Renders evidence description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
@@ -86,7 +86,7 @@ describe('PageHolder component', () => {
 	})
 
 	describe('Public Sources page', () => {
-		test('renders cvss V2 Score', () => {
+		test('Renders cvss V2 Score', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -97,7 +97,7 @@ describe('PageHolder component', () => {
 			expect(scoreElement).toBeInTheDocument()
 		})
 
-		test('renders cvss V2 Vector AV element', () => {
+		test('Renders cvss V2 Vector AV element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -107,7 +107,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V2 Vector AC element', () => {
+		test('Renders cvss V2 Vector AC element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -117,7 +117,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V2 Vector Au element', () => {
+		test('Renders cvss V2 Vector Au element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -127,7 +127,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V2 Vector C element', () => {
+		test('Renders cvss V2 Vector C element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -137,7 +137,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V2 Vector I element', () => {
+		test('Renders cvss V2 Vector I element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -147,7 +147,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V2 Vector A element', () => {
+		test('Renders cvss V2 Vector A element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -157,7 +157,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Score', () => {
+		test('Renders cvss V3 Score', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -168,7 +168,7 @@ describe('PageHolder component', () => {
 			expect(scoreElement).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Attack AV element', () => {
+		test('Renders cvss V3 Attack AV element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -178,7 +178,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Vector AC element', () => {
+		test('Renders cvss V3 Vector AC element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -188,7 +188,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Vector PR element', () => {
+		test('Renders cvss V3 Vector PR element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -197,7 +197,7 @@ describe('PageHolder component', () => {
 			const vectorElementValue = getByTextWithMarkup('Privileges Required (PR): Low')
 			expect(vectorElementValue).toBeInTheDocument()
 		})
-		test('renders cvss V3 Vector UI element', () => {
+		test('Renders cvss V3 Vector UI element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -207,7 +207,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Vector S element', () => {
+		test('Renders cvss V3 Vector S element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -217,7 +217,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Vector C element', () => {
+		test('Renders cvss V3 Vector C element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -227,7 +227,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Vector I element', () => {
+		test('Renders cvss V3 Vector I element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
@@ -237,7 +237,7 @@ describe('PageHolder component', () => {
 			expect(vectorElementValue).toBeInTheDocument()
 		})
 
-		test('renders cvss V3 Vector AV element', () => {
+		test('Renders cvss V3 Vector AV element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)

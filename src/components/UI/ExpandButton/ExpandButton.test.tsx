@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import ExpandButton from './ExpandButton'
 
 describe('ExpandButton component', () => {
-	test('renders "Show Less" button', () => {
+	test('Renders "Show Less" button', () => {
 		// Arrange
 		render(<ExpandButton isExpand/>)
 		// Assert
@@ -10,7 +10,7 @@ describe('ExpandButton component', () => {
 		expect(rowElement).toBeInTheDocument()
 	})
 
-	test('renders "Show More" button', () => {
+	test('Renders "Show More" button', () => {
 		// Arrange
 		render(<ExpandButton isExpand={false}/>)
 		// Assert

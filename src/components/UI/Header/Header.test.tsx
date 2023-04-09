@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { ISeverity } from '../../../model/severity'
 import Header from './Header'
 describe('Header component', () => {
-	test('renders vulnerability header', () => {
+	test('Renders vulnerability header', () => {
 		// Arrange
 		render(<Header text="Header" isResearch Severity={ISeverity.Critical}/>)
 		// Assert
