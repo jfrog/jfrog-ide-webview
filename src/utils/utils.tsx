@@ -154,6 +154,7 @@ export const getApplicabilityImg = (isApplicable: boolean): JSX.Element => {
 
 		)
 	}
+
 	return (
 		<svg
 			version="1.1"
@@ -188,6 +189,7 @@ export const getApplicabilityImg = (isApplicable: boolean): JSX.Element => {
 
 	)
 }
+
 export const getResearchImg = (): JSX.Element => (
 	<svg
 		viewBox="0 0 14 16"
@@ -208,12 +210,14 @@ export const toTreeNode = (impactGraph: IImpactGraph): TreeNode => {
 	globalNodeNumber = 0
 	return toTreeNodeHelper(impactGraph)
 }
+
 const toTreeNodeHelper = (impactGraph: IImpactGraph): TreeNode => {
 	const node = new TreeNode(`${++globalNodeNumber}-${impactGraph.name}`, impactGraph.name)
 	if (impactGraph.children === undefined || impactGraph.children.length === 0) {
 		node.ClassName = css.redNode
 		return node
 	}
+
 	impactGraph.children.forEach(child => {
 		node.AddChild(toTreeNodeHelper(child))
 	})

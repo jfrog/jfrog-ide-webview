@@ -61,6 +61,7 @@ const createCvssBreakdownV2 = (vector: string[]): Cvss2 | undefined => {
 		if (vectorElement.length !== 2) {
 			return undefined
 		}
+
 		switch (vectorElement[0]) {
 			case 'AV':
 				results.accessVector.value = AccessVectorTranslator(vectorElement[1])
@@ -92,6 +93,7 @@ const createCvssBreakdownV2 = (vector: string[]): Cvss2 | undefined => {
 				return undefined
 		}
 	}
+
 	return results
 }
 
@@ -102,6 +104,7 @@ const createCvssBreakdownV3 = (vector: string[]): Cvss3 | undefined => {
 		if (vectorElement.length !== 2) {
 			return undefined
 		}
+
 		switch (vectorElement[0]) {
 			case 'AV':
 				results.attackVector.value = AttackVectorTranslator(vectorElement[1])
@@ -139,6 +142,7 @@ const createCvssBreakdownV3 = (vector: string[]): Cvss3 | undefined => {
 				return undefined
 		}
 	}
+
 	return results
 }
 
@@ -148,6 +152,7 @@ const createCvssBreakdownV3View = (csvv: string, score: string): JSX.Element => 
 	if (!csvv3Breakdown) {
 		return defaultBreakdownView(csvv, score)
 	}
+
 	return (
 		<div className={css.container}>
 			<div className={css.header}>
@@ -172,6 +177,7 @@ const createCvssBreakdownV2View = (csvv: string, score: string): JSX.Element => 
 	if (!csvv2Breakdown) {
 		return defaultBreakdownView(csvv, score)
 	}
+
 	return (
 		<div className={css.container}>
 			<div className={css.header}>

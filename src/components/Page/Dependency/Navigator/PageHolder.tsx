@@ -28,11 +28,13 @@ const PageHolder = (props: Props): JSX.Element => {
 				pageHolder = (
 					<Research data={props.data.extendedInformation}/>)
 			}
+
 			break
 		case ActiveTab.ContextualAnalysis:
 			if (props.data.cve?.applicableData) {
 				pageHolder = <ContextualAnalysis data={props.data.cve.applicableData}/>
 			}
+
 			break
 		case ActiveTab.PublicSources:
 			pageHolder = (
@@ -51,6 +53,7 @@ const PageHolder = (props: Props): JSX.Element => {
 				pageHolder = <Reference data={props.data.references}/>
 			}
 	}
+
 	return (
 		<div key={props.data.id + props.data.component} className={css.container}>{pageHolder}</div>
 	)

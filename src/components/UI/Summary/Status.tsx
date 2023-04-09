@@ -20,4 +20,5 @@ const Status = (props: Props): JSX.Element => {
 		</>
 	)
 }
+
 export default Status

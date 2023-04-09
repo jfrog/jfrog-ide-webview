@@ -17,6 +17,7 @@ const Navigator = (props: Props): JSX.Element => {
 	const tabChangeHandler = (index: ActiveTab): void => {
 		setActiveTab(index)
 	}
+
 	useEffect(() => {
 		setActiveTab(tabs.find(tab => !tab.hide)?.tabKey ?? ActiveTab.None)
 	}, [props.data.id, tabs])

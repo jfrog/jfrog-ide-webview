@@ -102,6 +102,7 @@
 		"space-unary-ops": "error",
 		"switch-colon-spacing": "error",
 		"template-curly-spacing": "error",
+		"padding-line-between-statements": ["error",{"blankLine": "always","prev": "block","next": "*"},{"blankLine": "always","prev": "block-like","next": "*"}],
 		"@typescript-eslint/ban-ts-comment": 0,
 		"@typescript-eslint/consistent-type-assertions": "error",
 		"@typescript-eslint/array-type": ["error", {"default":"array"}],

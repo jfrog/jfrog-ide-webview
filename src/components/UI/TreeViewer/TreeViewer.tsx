@@ -16,15 +16,18 @@ export default function TreeViewer(props: Props): JSX.Element {
 		if (node.Id === props.activeNode) {
 			return node
 		}
+
 		if (node.Children.length) {
 			return undefined
 		}
+
 		for (const child of node.Children) {
 			const childJson = getRoot(child)
 			if (childJson) {
 				return childJson
 			}
 		}
+
 		return undefined
 	}
 
@@ -33,18 +36,22 @@ export default function TreeViewer(props: Props): JSX.Element {
 		if (!root || root.Children.length === 0) {
 			return undefined
 		}
+
 		for (const child of root.Children) {
 			const subTree = buildSubTree(child)
 			if (subTree) {
 				newChildren.push(subTree)
 			}
 		}
+
 		if (newChildren.length > 0) {
 			root.Children = newChildren
 		}
+
 		if (newChildren.length > 0 || root.Id.toLowerCase().includes(props.filter.toLowerCase())) {
 			return root
 		}
+
 		return undefined
 	}
 
@@ -61,9 +68,11 @@ export default function TreeViewer(props: Props): JSX.Element {
 	const handleClick = (event: any, node: string): void => {
 		props.handleClick(node)
 	}
+
 	if (!root) {
 		return <> </>
 	}
+
 	return (
 		<main>
 			<AnimatedTree

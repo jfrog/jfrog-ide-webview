@@ -11,6 +11,7 @@ const Tab = (props: Props): JSX.Element => {
 	const onClickHandler = (tabKey: ActiveTab): void => {
 		props.onChangeMenu(tabKey)
 	}
+
 	const tabs: JSX.Element[] = []
 	props.tabs.forEach(value => {
 		if (!value.hide) {

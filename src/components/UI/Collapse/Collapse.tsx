@@ -17,8 +17,10 @@ const Collapse = (props: Props): JSX.Element => {
 			const wrapper = document.getElementById(props.id)
 			return { height: `${wrapper?.clientHeight}px` }
 		}
+
 		return { height: 0 }
 	}
+
 	return (
 		<>
 			<div className={css.collapseHeaderWrapper} onClick={(): void => { setCollapse(prev => !prev) }}>

@@ -13,6 +13,7 @@ const TreeContainer = (props: Props): JSX.Element => {
 	const filterHandler = (filter: string): void => {
 		setFilter(filter)
 	}
+
 	const activeNodeHandler = (nodeName: string): void => {
 		setActiveNode(nodeName)
 	}

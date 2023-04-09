@@ -98,6 +98,7 @@ export const GeneralCvss3Translator = (str: string): GeneralCvss3Value | undefin
 		case 'H':
 			return GeneralCvss3Value.High
 	}
+
 	return undefined
 }
 
@@ -108,6 +109,7 @@ export const UserInteractionTranslator = (str: string): UserInteractionValue | u
 		case 'R':
 			return UserInteractionValue.Required
 	}
+
 	return undefined
 }
 
@@ -123,6 +125,7 @@ export const AttackVectorTranslator = (str: string): AttackVectorValue | undefin
 		case 'P':
 			return AttackVectorValue.Physical
 	}
+
 	return undefined
 }
 
@@ -134,6 +137,7 @@ export const CvssScopTranslator = (str: string): CvssScop | undefined => {
 		case 'C':
 			return CvssScop.Changed
 	}
+
 	return undefined
 }
 
@@ -175,6 +179,7 @@ export const AccessVectorTranslator = (str: string): AccessVectorValue | undefin
 		case 'N':
 			return AccessVectorValue.Network
 	}
+
 	return undefined
 }
 
@@ -187,6 +192,7 @@ export const AccessComplexityValueTranslator = (str: string): AccessComplexityVa
 		case 'H':
 			return AccessComplexityValue.High
 	}
+
 	return undefined
 }
 
@@ -199,6 +205,7 @@ export const AuthenticationValueTranslator = (str: string): AuthenticationValue 
 		case 'N':
 			return AuthenticationValue.None
 	}
+
 	return undefined
 }
 
@@ -211,5 +218,6 @@ export const ImpactValueTranslator = (str: string): ImpactValue | undefined => {
 		case 'C':
 			return ImpactValue.Complete
 	}
+
 	return undefined
 }
