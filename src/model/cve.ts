@@ -9,12 +9,12 @@ export interface ICve {
 
 export interface IApplicableDetails {
   isApplicable: boolean;
-  evidence?:IEvidence[]
-  searchTarget?:string
+  evidence?: IEvidence[]
+  searchTarget?: string
 }
 
 export interface IEvidence {
-  reason:string;
-  filePathEvidence:string
-  codeEvidence:string
+  reason: string;
+  filePathEvidence: string
+  codeEvidence: string
 }

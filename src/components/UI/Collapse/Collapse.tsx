@@ -10,9 +10,9 @@ export interface Props {
 
 }
 
-const Collapse = (props: Props) => {
+const Collapse = (props: Props): JSX.Element => {
 	const [collapse, setCollapse] = useState(true)
-	const getStyle = () => {
+	const getStyle = (): {height: string;} | {height: number;} => {
 		if (collapse) {
 			const wrapper = document.getElementById(props.id)
 			return { height: `${wrapper?.clientHeight}px` }
@@ -21,7 +21,7 @@ const Collapse = (props: Props) => {
 	}
 	return (
 		<>
-			<div className={css.collapseHeaderWrapper} onClick={() => setCollapse(prev => !prev)}>
+			<div className={css.collapseHeaderWrapper} onClick={(): void => { setCollapse(prev => !prev) }}>
 				<span className={css.collapseHeader}>{props.header}</span>
 				{ collapse ? <ArrowUp/> : <ArrowDown/> }
 			</div>

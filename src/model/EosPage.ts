@@ -9,6 +9,6 @@ export interface IEosPage {
   description?: string
   remediation?: string[]
   foundText?: string
-  analysisStep? :IAnalysisStep[]
+  analysisStep?: IAnalysisStep[]
   severity?: ISeverity
 }

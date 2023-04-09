@@ -6,7 +6,7 @@ export interface Props {
 	data: string
 }
 
-const Row = (props: Props) => (
+const Row = (props: Props): JSX.Element => (
 	<div className={css.value}>
 		<span className={css.key}>{props.title}: </span>
 		<span>{props.data}</span>

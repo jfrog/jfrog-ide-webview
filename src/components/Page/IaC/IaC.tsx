@@ -3,7 +3,6 @@ import Header from '../../UI/Header/Header'
 import { IIaCPage } from '../../../model/IaCPage'
 import Summary from '../../UI/Summary/Summary'
 import Severity from '../../UI/Summary/Severity'
-import { ISeverity } from '../../../model/severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
 import VulnerabilityLine from '../../UI/Summary/VulnerabilityLine'
 import Abbreviation from '../../UI/Summary/Abbreviation'
@@ -14,7 +13,7 @@ export interface Props {
   data: IIaCPage
 }
 
-function IaC(props: Props) {
+function IaC(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
 			<Header
@@ -23,7 +22,7 @@ function IaC(props: Props) {
 				isResearch={false}/>
 			<Summary showAll expandButton={false}>
 				<Vulnerability location={`${props.data.location.file}`}/>
-				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown}/>
+				<Severity severity={props.data.severity}/>
 				<VulnerabilityLine line={`${props.data.location.row}`}/>
 				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation}/>}
 			</Summary>

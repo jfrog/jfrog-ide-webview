@@ -5,8 +5,10 @@ export interface Props {
   treeNode: TreeNode
 }
 
-const ImpactGraph = (props: Props) => <TreeContainer
-	root={props.treeNode}/>
+const ImpactGraph = (props: Props): JSX.Element => (
+	<TreeContainer
+		root={props.treeNode}/>
+)
 
 
 export default ImpactGraph

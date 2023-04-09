@@ -8,12 +8,12 @@ import { IEosPage } from './model/EosPage'
 import { IIaCPage } from './model/IaCPage'
 import IaC from './components/Page/IaC/IaC'
 
-function App() {
+function App(): JSX.Element {
 	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>({} as IDependencyPage | IEosPage)
 	window.addEventListener('message', event => {
 		setDependencyData(event.data.data)
 	})
-	let page = <></>
+	let page
 
 	switch (data.pageType) {
 		case PageType.Dependency:

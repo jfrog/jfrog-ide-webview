@@ -9,16 +9,17 @@ interface Props {
   remediation?: string[]
 }
 
-const Research = (props: Props) => (
+const Research = (props: Props): JSX.Element => (
 	<>
-		{props.description && props.description.length > 0
-		&& <Wrapper headline="DESCRIPTION">
-			<span className={css.text}>{props.description}</span>
-		   </Wrapper>
+		{
+			props.description && props.description.length > 0 &&
+			<Wrapper headline="DESCRIPTION">
+				<span className={css.text}>{props.description}</span>
+			</Wrapper>
 		}
 		{
-			props.remediation && props.remediation.length > 0
-			&& <Wrapper headline="REMEDIATION">
+			props.remediation && props.remediation.length > 0 &&
+			<Wrapper headline="REMEDIATION">
 				<div className={css.container}>
 					{props.remediation
 						.map((reason, i) => (
@@ -26,11 +27,11 @@ const Research = (props: Props) => (
 								<ReactMarkdown
 									className={css.text}
 									components={{
-										// eslint-disable-next-line @typescript-eslint/no-unused-vars
+										// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
 										code({ inline, className, children, style, ...props }) {
-											const match = /language-(\w+)/.exec(className || css.text)
-											return !inline && match
-												? (
+											const match = /language-(\w+)/.exec(className ?? css.text)
+											return !inline && match ?
+												(
 													<SyntaxHighlighter
 														style={vscDarkPlus}
 														className={css.text}
@@ -38,8 +39,8 @@ const Research = (props: Props) => (
 														PreTag="div"
 														{...props}>{String(children).replace(/\n\r$/, '')}
 													</SyntaxHighlighter>
-												)
-												: (
+												) :
+												(
 													<code className={className} {...props}>
 														{children}
 													</code>
@@ -50,7 +51,7 @@ const Research = (props: Props) => (
 							</div>
 						))}
 				</div>
-			   </Wrapper>
+			</Wrapper>
 		}
 
 	</>

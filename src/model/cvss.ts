@@ -89,7 +89,7 @@ export class Cvss3 {
 	}
 }
 
-export const GeneralCvss3Translator = (str: string) => {
+export const GeneralCvss3Translator = (str: string): GeneralCvss3Value | undefined => {
 	switch (str) {
 		case 'N':
 			return GeneralCvss3Value.None
@@ -101,7 +101,7 @@ export const GeneralCvss3Translator = (str: string) => {
 	return undefined
 }
 
-export const UserInteractionTranslator = (str: string) => {
+export const UserInteractionTranslator = (str: string): UserInteractionValue | undefined => {
 	switch (str) {
 		case 'N':
 			return UserInteractionValue.None
@@ -112,7 +112,7 @@ export const UserInteractionTranslator = (str: string) => {
 }
 
 
-export const AttackVectorTranslator = (str: string) => {
+export const AttackVectorTranslator = (str: string): AttackVectorValue | undefined => {
 	switch (str) {
 		case 'N':
 			return AttackVectorValue.Network
@@ -127,7 +127,7 @@ export const AttackVectorTranslator = (str: string) => {
 }
 
 
-export const CvssScopTranslator = (str: string) => {
+export const CvssScopTranslator = (str: string): CvssScop | undefined => {
 	switch (str) {
 		case 'U':
 			return CvssScop.Unchanged
@@ -166,7 +166,7 @@ export class Cvss2 {
 	}
 }
 
-export const AccessVectorTranslator = (str: string) => {
+export const AccessVectorTranslator = (str: string): AccessVectorValue | undefined => {
 	switch (str) {
 		case 'L':
 			return AccessVectorValue.Local
@@ -178,7 +178,7 @@ export const AccessVectorTranslator = (str: string) => {
 	return undefined
 }
 
-export const AccessComplexityValueTranslator = (str: string) => {
+export const AccessComplexityValueTranslator = (str: string): AccessComplexityValue | undefined => {
 	switch (str) {
 		case 'L':
 			return AccessComplexityValue.Low
@@ -190,7 +190,7 @@ export const AccessComplexityValueTranslator = (str: string) => {
 	return undefined
 }
 
-export const AuthenticationValueTranslator = (str: string) => {
+export const AuthenticationValueTranslator = (str: string): AuthenticationValue | undefined => {
 	switch (str) {
 		case 'M':
 			return AuthenticationValue.Multiple
@@ -202,7 +202,7 @@ export const AuthenticationValueTranslator = (str: string) => {
 	return undefined
 }
 
-export const ImpactValueTranslator = (str: string) => {
+export const ImpactValueTranslator = (str: string): ImpactValue | undefined => {
 	switch (str) {
 		case 'N':
 			return ImpactValue.None

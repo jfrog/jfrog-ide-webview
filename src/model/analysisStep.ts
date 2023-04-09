@@ -3,5 +3,5 @@ export interface IAnalysisStep {
     fileName?: string
     row: number
     column: number
-    snippet ?: string
+    snippet?: string
 }

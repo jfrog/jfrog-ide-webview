@@ -2,7 +2,7 @@ import { ISeverity } from '../model/severity'
 import { TreeNode } from '../model/treeNode'
 import { IImpactGraph } from '../model/impactGraph'
 import css from '../components/UI/TreeViewer/TreeViewer.module.css'
-export const getSeverityImage = (severity: ISeverity) => {
+export const getSeverityImage = (severity: ISeverity): JSX.Element => {
 	switch (severity) {
 		case ISeverity.Unknown:
 			return (
@@ -24,80 +24,74 @@ export const getSeverityImage = (severity: ISeverity) => {
 			)
 		case ISeverity.Low:
 			return (
-				<>
-					<svg
-						version="1.1"
-						id="Layer_1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlnsXlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 12 12"
-						xmlSpace="preserve">
-						<style
-							type="text/css"
-							dangerouslySetInnerHTML={{
-					  __html: '\n\t.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FCD95C;}\n'
-							}}/>
-						<path
-							className="st1"
-							d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
+				<svg
+					version="1.1"
+					id="Layer_1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlnsXlink="http://www.w3.org/1999/xlink"
+					x="0px"
+					y="0px"
+					viewBox="0 0 12 12"
+					xmlSpace="preserve">
+					<style
+						type="text/css"
+						dangerouslySetInnerHTML={{
+							__html: '\n\t.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FCD95C;}\n'
+						}}/>
+					<path
+						className="st1"
+						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 				  S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 				  C10.9,3,10.8,2.8,10.7,2.7z M7.7,8.2H4.9V3.4h0.8v4.1h2V8.2z"/>
-					</svg>
-				</>
-			  )
+				</svg>
+			)
 		case ISeverity.Medium:
 			return (
-				<>
-					<svg
-						version="1.1"
-						id="Layer_1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlnsXlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 12 12"
-						xmlSpace="preserve">
-						<style
-							type="text/css"
-							dangerouslySetInnerHTML={{
-								__html: '\n\t.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF9458;}\n'
-							}}/>
-						<path
-							className="st2"
-							d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
+				<svg
+					version="1.1"
+					id="Layer_1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlnsXlink="http://www.w3.org/1999/xlink"
+					x="0px"
+					y="0px"
+					viewBox="0 0 12 12"
+					xmlSpace="preserve">
+					<style
+						type="text/css"
+						dangerouslySetInnerHTML={{
+							__html: '\n\t.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF9458;}\n'
+						}}/>
+					<path
+						className="st2"
+						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 	S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 	C10.9,3,10.8,2.8,10.7,2.7z M8.5,8.3H7.7V5.9c0-0.2,0-0.6,0-0.9c0-0.4,0-0.6,0-0.7h0l-1.4,4H5.6l-1.4-4h0c0,0.6,0.1,1.2,0.1,1.7v2.3
 	H3.5V3.5h1.1L6,7.3h0l1.4-3.8h1.1V8.3z"/>
-					</svg>
-				</>
+				</svg>
 
 			)
 		case ISeverity.High:
 			return (
-				<>
-					<svg
-						version="1.1"
-						id="Layer_1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlnsXlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 12 12"
-						xmlSpace="preserve">
-						<style
-							type="text/css"
-							dangerouslySetInnerHTML={{
-								__html: '\n\t.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#EA535E;}\n'
-							}}/>
-						<path
-							className="st3"
-							d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
+				<svg
+					version="1.1"
+					id="Layer_1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlnsXlink="http://www.w3.org/1999/xlink"
+					x="0px"
+					y="0px"
+					viewBox="0 0 12 12"
+					xmlSpace="preserve">
+					<style
+						type="text/css"
+						dangerouslySetInnerHTML={{
+							__html: '\n\t.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#EA535E;}\n'
+						}}/>
+					<path
+						className="st3"
+						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
 	S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
 	C10.9,3,10.8,2.8,10.7,2.7z M7.9,8.2H7.1V6H4.9v2.2H4.1V3.4h0.8v2h2.2v-2h0.8V8.2z"/>
-					</svg>
-				</>
+				</svg>
 
 			)
 		case ISeverity.Critical:
@@ -115,7 +109,7 @@ export const getSeverityImage = (severity: ISeverity) => {
 						type="text/css"
 						dangerouslySetInnerHTML={{
 							__html: '\n\t.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#B91C1C;}\n'
-				  }}/>
+						}}/>
 					<path
 						className="st4"
 						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
@@ -130,7 +124,7 @@ export const getSeverityImage = (severity: ISeverity) => {
 	}
 }
 
-export const getApplicabilityImg = (isApplicable: boolean) => {
+export const getApplicabilityImg = (isApplicable: boolean): JSX.Element => {
 	if (isApplicable) {
 		return (
 			<svg
@@ -194,7 +188,7 @@ export const getApplicabilityImg = (isApplicable: boolean) => {
 
 	)
 }
-export const getResearchImg = () => (
+export const getResearchImg = (): JSX.Element => (
 	<svg
 		viewBox="0 0 14 16"
 		fill="none"
@@ -210,11 +204,11 @@ export const getResearchImg = () => (
 
 
 let globalNodeNumber = 0
-export const toTreeNode = (impactGraph: IImpactGraph) => {
+export const toTreeNode = (impactGraph: IImpactGraph): TreeNode => {
 	globalNodeNumber = 0
 	return toTreeNodeHelper(impactGraph)
 }
-const toTreeNodeHelper = (impactGraph: IImpactGraph):TreeNode => {
+const toTreeNodeHelper = (impactGraph: IImpactGraph): TreeNode => {
 	const node = new TreeNode(`${++globalNodeNumber}-${impactGraph.name}`, impactGraph.name)
 	if (impactGraph.children === undefined || impactGraph.children.length === 0) {
 		node.ClassName = css.redNode

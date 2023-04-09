@@ -12,35 +12,35 @@ export class TreeNode {
 
 	children: TreeNode[] = []
 
-	constructor(private id:string, private name:string) {
+	constructor(private id: string, private name: string) {
 		this.edgeLength = name.length
 		this.leafNameLength = name.length
 	}
 
-	public get Id() : string {
+	public get Id(): string {
 		return this.id
 	}
 
-	public set Id(id : string) {
+	public set Id(id: string) {
 		this.id = id
 	}
 
-	public get Children() : TreeNode[] {
+	public get Children(): TreeNode[] {
 		return this.children
 	}
 
-	public set Children(children : TreeNode[]) {
+	public set Children(children: TreeNode[]) {
 		this.children = children
 		this.updateTreeDimensionOnAddChildren()
 	}
 
-	public AddChild(child: TreeNode) {
+	public AddChild(child: TreeNode): void {
 		this.children.push(child)
 		this.updateTreeDimensionOnAddChild(child)
 		this.updateNewSubTreeDimension(child)
 	}
 
-	private updateTreeDimensionOnAddChild(child: TreeNode) {
+	private updateTreeDimensionOnAddChild(child: TreeNode): void {
 		this.height = Math.max(child.height + 1, this.height)
 		if (this.children.length === 1) {
 			this.width = child.width
@@ -49,40 +49,40 @@ export class TreeNode {
 		}
 	}
 
-	private updateNewSubTreeDimension(child: TreeNode) {
+	private updateNewSubTreeDimension(child: TreeNode): void {
 		this.edgeLength = Math.max(child.EdgeLength, this.edgeLength)
 		this.leafNameLength = child.LeafNameLength
 	}
 
-	public set ClassName(className : string) {
+	public set ClassName(className: string) {
 		this.gProps = { className: className }
 	}
 
-	public get Name() : string {
+	public get Name(): string {
 		return this.name
 	}
 
-	public set Name(name : string) {
+	public set Name(name: string) {
 		this.name = name
 	}
 
-	public get Height() : number {
+	public get Height(): number {
 		return this.height
 	}
 
-	public get Width() : number {
+	public get Width(): number {
 		return this.width
 	}
 
-	public get GProps() : CustomTreeNodeData {
+	public get GProps(): CustomTreeNodeData {
 		return this.GProps
 	}
 
-	public get EdgeLength() : number {
+	public get EdgeLength(): number {
 		return this.edgeLength
 	}
 
-	public get LeafNameLength() : number {
+	public get LeafNameLength(): number {
 		return this.leafNameLength
 	}
 
@@ -90,7 +90,7 @@ export class TreeNode {
 		this.leafNameLength = length
 	}
 
-	public updateTreeDimensionOnAddChildren() {
+	public updateTreeDimensionOnAddChildren(): void {
 		this.height = 1
 		this.width = 0
 		this.edgeLength = this.name.length
@@ -102,5 +102,5 @@ export class TreeNode {
 }
 
 interface CustomTreeNodeData {
-	className:string
+	className: string
 }

@@ -4,7 +4,7 @@ export interface Props {
   date: string
 }
 
-const Edited = (props: Props) => (
+const Edited = (props: Props): JSX.Element => (
 	<div className={css.container}>
 		<div>JFrog Research last updated on {new Date(props.date).toUTCString()}</div>
 		JFrog Research is different than NVD information

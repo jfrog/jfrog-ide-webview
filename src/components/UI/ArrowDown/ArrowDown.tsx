@@ -1,7 +1,7 @@
 import css from './ArrowDown.module.css'
 
 
-const ArrowDown = () => (
+const ArrowDown = (): JSX.Element => (
 	<div className={css.arrowDown}>
 		<svg
 			width={9}
@@ -26,7 +26,6 @@ const ArrowDown = () => (
 				transform="rotate(-135 0.707031 5)"
 				fill="#D3D3D4"/>
 		</svg>
-
 	</div>
 )
 export default ArrowDown

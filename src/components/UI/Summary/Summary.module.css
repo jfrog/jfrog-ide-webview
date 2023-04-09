@@ -8,7 +8,7 @@
 }
 
 .halfText {
-  max-height: 5.0em;
+  max-height: 5em;
   line-height: 22px;
   overflow: hidden;
   transition: max-height 1s ease-out;

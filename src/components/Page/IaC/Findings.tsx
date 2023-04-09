@@ -7,16 +7,16 @@ export interface Props {
   do?: string;
 }
 
-const Findings = (props: Props) => (
+const Findings = (props: Props): JSX.Element => (
 	<>
-		{props.snippet
-            && <Collapse header="FINDING" text={props.snippet} id="snippet"/>}
-		{props.meaning
-			&& <Collapse header="What Does it mean?" text={props.meaning} id="meaning"/>}
-		{props.happen
-			&& <Collapse header="What can happen?" text={props.happen} id="happen"/>}
-		{props.do
-			&& <Collapse header="What should I do?" text={props.do} id="do"/>}
+		{props.snippet &&
+		<Collapse header="FINDING" text={props.snippet} id="snippet"/>}
+		{props.meaning &&
+			<Collapse header="What Does it mean?" text={props.meaning} id="meaning"/>}
+		{props.happen &&
+			<Collapse header="What can happen?" text={props.happen} id="happen"/>}
+		{props.do &&
+			<Collapse header="What should I do?" text={props.do} id="do"/>}
 	</>
 )
 export default Findings

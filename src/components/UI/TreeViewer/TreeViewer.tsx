@@ -11,16 +11,16 @@ export interface Props {
   handleClick: (nodeId: string) => void
 }
 
-export default function TreeViewer(props: Props) {
+export default function TreeViewer(props: Props): JSX.Element {
 	function getRoot(node: TreeNode): TreeNode | undefined {
 		if (node.Id === props.activeNode) {
 			return node
 		}
-		if (!node.Children) {
+		if (node.Children.length) {
 			return undefined
 		}
-		for (let i = 0; i < node.Children?.length; i++) {
-			const childJson = getRoot(node.Children[i])
+		for (const child of node.Children) {
+			const childJson = getRoot(child)
 			if (childJson) {
 				return childJson
 			}
@@ -30,19 +30,19 @@ export default function TreeViewer(props: Props) {
 
 	function buildSubTree(root?: TreeNode): TreeNode | undefined {
 		const newChildren: TreeNode[] = []
-		if (!root || !root.Children) {
+		if (!root || root.Children.length === 0) {
 			return undefined
 		}
-		for (let i = 0; i < root.Children?.length || 0; i++) {
-			const child = buildSubTree(root.Children[i])
-			if (child) {
-				newChildren.push(child)
+		for (const child of root.Children) {
+			const subTree = buildSubTree(child)
+			if (subTree) {
+				newChildren.push(subTree)
 			}
 		}
 		if (newChildren.length > 0) {
 			root.Children = newChildren
 		}
-		if (newChildren.length > 0 || root.Id.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1) {
+		if (newChildren.length > 0 || root.Id.toLowerCase().includes(props.filter.toLowerCase())) {
 			return root
 		}
 		return undefined
@@ -58,11 +58,11 @@ export default function TreeViewer(props: Props) {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const handleClick = (event: any, node: string) => {
+	const handleClick = (event: any, node: string): void => {
 		props.handleClick(node)
 	}
 	if (!root) {
-		return <></>
+		return <> </>
 	}
 	return (
 		<main>
@@ -87,10 +87,9 @@ export default function TreeViewer(props: Props) {
 	)
 }
 
-const calcWindowWidth = (treeHeight:number, extraMargin:number) =>
-	 treeHeight * (100 + (extraMargin * 4))
+const calcWindowWidth = (treeHeight: number, extraMargin: number): number => treeHeight * (100 + (extraMargin * 4))
 
-const calcWindowHeighth = (treeWidth:number) => {
+const calcWindowHeighth = (treeWidth: number): number => {
 	switch (treeWidth) {
 		case 1:
 			return 50

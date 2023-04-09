@@ -21,22 +21,22 @@ export interface Props {
   infectedVersions?: string[];
 }
 
-const PublicSources = (props: Props) => (
+const PublicSources = (props: Props): JSX.Element => (
 	<>
 		{props.summary && (
 			<Wrapper headline="SUMMARY">
 				<span className={css.text}>{props.summary}</span>
 			</Wrapper>
 		)}
-		{props.infectedVersions
-			&& <Wrapper headline="VULNERABLE VERSIONS ">
+		{props.infectedVersions &&
+			<Wrapper headline="VULNERABLE VERSIONS ">
 
 				{props.infectedVersions.map((element, i) => (
 					<div key={i} className={css.text}>
 						<span>{element}</span>
 					</div>
 				))}
-			   </Wrapper>}
+			</Wrapper>}
 		{(!!props.cve?.cvssV2Vector || !!props.cve?.cvssV3Vector) && (
 			<Wrapper headline="CVSS BREAKDOWN">
 				<div className={css.container}>
@@ -142,33 +142,31 @@ const createCvssBreakdownV3 = (vector: string[]): Cvss3 | undefined => {
 	return results
 }
 
-const createCvssBreakdownV3View = (csvv: string, score: string) => {
+const createCvssBreakdownV3View = (csvv: string, score: string): JSX.Element => {
 	const csvvArray = csvv.split('/')
 	const csvv3Breakdown = createCvssBreakdownV3(csvvArray)
 	if (!csvv3Breakdown) {
 		return defaultBreakdownView(csvv, score)
 	}
 	return (
-		<>
-			<div className={css.container}>
-				<div className={css.header}>
-					{csvvArray[0]} Base Score {score}
-				</div>
-				<div>
-					{csvv3Breakdown
-						.getBaseMatrix()
-						.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
-
-					{csvv3Breakdown
-						.getImpact()
-						.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
-				</div>
+		<div className={css.container}>
+			<div className={css.header}>
+				{csvvArray[0]} Base Score {score}
 			</div>
-		</>
+			<div>
+				{csvv3Breakdown
+					.getBaseMatrix()
+					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : null))}
+
+				{csvv3Breakdown
+					.getImpact()
+					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : null))}
+			</div>
+		</div>
 	)
 }
 
-const createCvssBreakdownV2View = (csvv: string, score: string) => {
+const createCvssBreakdownV2View = (csvv: string, score: string): JSX.Element => {
 	const csvvArray = csvv.split('/')
 	const csvv2Breakdown = createCvssBreakdownV2(csvvArray)
 	if (!csvv2Breakdown) {
@@ -182,16 +180,16 @@ const createCvssBreakdownV2View = (csvv: string, score: string) => {
 			<div>
 				{csvv2Breakdown
 					.getBaseMatrix()
-					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
+					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : null))}
 				{csvv2Breakdown
 					.getImpact()
-					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : <></>))}
+					.map((data, i) => (data.value ? <Row title={data.key} data={data.value} key={i}/> : null))}
 			</div>
 		</div>
 	)
 }
 
-const defaultBreakdownView = (csvv: string, score: string) => (
+const defaultBreakdownView = (csvv: string, score: string): JSX.Element => (
 	<>
 		<div>Score: {score}</div>
 		<div>Vector: {csvv}</div>

@@ -7,7 +7,7 @@ describe('Tab component', () => {
 		const SecondTab = 'Second-Tab'
 		const ThirdTab = 'Third-Tab'
 		// Arrange
-		render(<Tab tabs={[{ text: FirstTab, hide: false, tabKey: ActiveTab.ImpactGraph }, { text: SecondTab, hide: false, tabKey: ActiveTab.ImpactGraph }, { text: ThirdTab, hide: false, tabKey: ActiveTab.ImpactGraph }]} activeTab={ActiveTab.ImpactGraph} onChangeMenu={i => i}/>)
+		render(<Tab tabs={[{ text: FirstTab, hide: false, tabKey: ActiveTab.ImpactGraph }, { text: SecondTab, hide: false, tabKey: ActiveTab.ImpactGraph }, { text: ThirdTab, hide: false, tabKey: ActiveTab.ImpactGraph }]} activeTab={ActiveTab.ImpactGraph} onChangeMenu={(i): ActiveTab => i}/>)
 		// Assert
 		let tabElement = screen.getByText(FirstTab)
 		expect(tabElement).toBeInTheDocument()
@@ -22,7 +22,7 @@ describe('Tab component', () => {
 		const SecondTab = 'Second-Tab'
 		const ThirdTab = 'Third-Tab'
 		// Arrange
-		render(<Tab tabs={[{ text: FirstTab, hide: false, tabKey: ActiveTab.ImpactGraph }, { text: SecondTab, hide: true, tabKey: ActiveTab.ImpactGraph }, { text: ThirdTab, hide: false, tabKey: ActiveTab.ImpactGraph }]} activeTab={ActiveTab.ImpactGraph} onChangeMenu={i => i}/>)
+		render(<Tab tabs={[{ text: FirstTab, hide: false, tabKey: ActiveTab.ImpactGraph }, { text: SecondTab, hide: true, tabKey: ActiveTab.ImpactGraph }, { text: ThirdTab, hide: false, tabKey: ActiveTab.ImpactGraph }]} activeTab={ActiveTab.ImpactGraph} onChangeMenu={(i): ActiveTab => i}/>)
 		// Assert
 		const tabElement = screen.getByText(FirstTab)
 		expect(tabElement).toBeInTheDocument()

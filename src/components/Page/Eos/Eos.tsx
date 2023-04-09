@@ -13,7 +13,7 @@ export interface Props {
   data: IEosPage
 }
 
-function Eos(props: Props) {
+function Eos(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
 			<Header

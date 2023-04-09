@@ -10,7 +10,7 @@ export interface Props {
   data: IDependencyPage
 }
 
-function Dependency(props: Props) {
+function Dependency(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
 			<Header

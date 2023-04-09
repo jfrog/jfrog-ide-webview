@@ -7,11 +7,11 @@ export interface Props {
   onChangeMenu: (index: ActiveTab) => void
 }
 
-const Tab = (props: Props) => {
-	const onClickHandler = (tabKey: ActiveTab) => {
+const Tab = (props: Props): JSX.Element => {
+	const onClickHandler = (tabKey: ActiveTab): void => {
 		props.onChangeMenu(tabKey)
 	}
-	const tabs:JSX.Element[] = []
+	const tabs: JSX.Element[] = []
 	props.tabs.forEach(value => {
 		if (!value.hide) {
 			tabs.push(
@@ -25,11 +25,9 @@ const Tab = (props: Props) => {
 		}
 	})
 	return (
-		<>
-			<div className={css.container}>
-				{tabs}
-			</div>
-		</>
+		<div className={css.container}>
+			{tabs}
+		</div>
 	)
 }
 

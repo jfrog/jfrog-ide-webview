@@ -9,12 +9,12 @@ interface Props {
   data: IExtendedInformation
 }
 
-const Research = (props: Props) => (
+const Research = (props: Props): JSX.Element => (
 	<>
 		<Wrapper headline="SUMMARY">
 			<span className={css.text}>{props.data.shortDescription}</span>
 		</Wrapper>
-		{props.data?.remediation && (
+		{props.data.remediation && (
 			<Wrapper headline="REMEDIATION">
 				<ReactMarkdown className={css.text}>{props.data.remediation}</ReactMarkdown>
 			</Wrapper>
@@ -23,11 +23,11 @@ const Research = (props: Props) => (
 			<ReactMarkdown
 				className={css.text}
 				components={{
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
 					code({ inline, className, children, style, ...props }) {
-						const match = /language-(\w+)/.exec(className || css.text)
-						return !inline && match
-							? (
+						const match = /language-(\w+)/.exec(className ?? css.text)
+						return !inline && match ?
+							(
 								<SyntaxHighlighter
 									style={vscDarkPlus}
 									className={css.text}
@@ -35,8 +35,8 @@ const Research = (props: Props) => (
 									PreTag="div"
 									{...props}>{String(children).replace(/\n\r$/, '')}
 								</SyntaxHighlighter>
-							)
-							: (
+							) :
+							(
 								<code className={className} {...props}>
 									{children}
 								</code>
@@ -45,7 +45,7 @@ const Research = (props: Props) => (
 				}}>{props.data.fullDescription}
 			</ReactMarkdown>
 		</Wrapper>
-		{props.data?.jfrogResearchSeverityReason && (
+		{props.data.jfrogResearchSeverityReason && (
 			<Wrapper headline="JFROG RESEARCH SEVERITY REASONS">
 				<div className={css.container}>
 					{props.data.jfrogResearchSeverityReason
@@ -53,18 +53,18 @@ const Research = (props: Props) => (
 						.sort((reasonA, reasonB) => reasonA.isPositive ? 1 : -1)
 						.map((reason, i) => (
 							<div key={i}>
-								<h4 className={reason.isPositive === true ? css.positiveReason : css.negativeReason}>
+								<h4 className={reason.isPositive ? css.positiveReason : css.negativeReason}>
 									{reason.name}
 								</h4>
 								{reason.description && (
 									<ReactMarkdown
 										className={css.text}
 										components={{
-											// eslint-disable-next-line @typescript-eslint/no-unused-vars
+											// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
 											code({ inline, className, children, style, ...props }) {
-												const match = /language-(\w+)/.exec(className || css.text)
-												return !inline && match
-													? (
+												const match = /language-(\w+)/.exec(className ?? css.text)
+												return !inline && match ?
+													(
 														<SyntaxHighlighter
 															style={vscDarkPlus}
 															className={css.text}
@@ -72,8 +72,8 @@ const Research = (props: Props) => (
 															PreTag="div"
 															{...props}>{String(children).replace(/\n\r$/, '')}
 														</SyntaxHighlighter>
-													)
-													: (
+													) :
+													(
 														<code className={className} {...props}>
 															{children}
 														</code>

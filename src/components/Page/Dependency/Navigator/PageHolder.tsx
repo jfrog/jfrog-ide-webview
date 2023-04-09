@@ -15,20 +15,18 @@ interface Props {
   data: IDependencyPage
 }
 
-const PageHolder = (props: Props) => {
+const PageHolder = (props: Props): JSX.Element => {
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
 	useEffect(() =>	{
 		setTreeNode(toTreeNode(props.data.impactGraph))
 	}, [props.data.impactGraph])
 
-	let pageHolder = <></>
+	let pageHolder
 	switch (props.activeTab) {
 		case ActiveTab.Research:
 			if (props.data.extendedInformation) {
 				pageHolder = (
-					<>
-						<Research data={props.data.extendedInformation}/>
-					</>)
+					<Research data={props.data.extendedInformation}/>)
 			}
 			break
 		case ActiveTab.ContextualAnalysis:
@@ -45,8 +43,8 @@ const PageHolder = (props: Props) => {
 			)
 			break
 		case ActiveTab.ImpactGraph:
-			pageHolder = <ImpactGraph
-				treeNode={treeNode}/>
+			pageHolder = (<ImpactGraph
+				treeNode={treeNode}/>)
 			break
 		case ActiveTab.Reference:
 			if (props.data.references) {
@@ -54,9 +52,7 @@ const PageHolder = (props: Props) => {
 			}
 	}
 	return (
-		<>
-			<div key={props.data.id + props.data.component} className={css.container}>{pageHolder}</div>
-		</>
+		<div key={props.data.id + props.data.component} className={css.container}>{pageHolder}</div>
 	)
 }
 

@@ -4,8 +4,8 @@ export interface Props {
   setFilter: (e: string) => void
 }
 
-export default function Filter(props: Props) {
-	const typeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+export default function Filter(props: Props): JSX.Element {
+	const typeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		props.setFilter(e.target.value)
 	}
 	return (

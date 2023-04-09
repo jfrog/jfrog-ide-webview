@@ -6,8 +6,7 @@ interface Props {
 }
 
 const Status = (props: Props): JSX.Element => {
-	let stat = <></>
-	stat = (
+	const stat = (
 		<div>
 			<Row title="Status" data="">
 				<label className={css.purpleBox}> {props.status} </label>

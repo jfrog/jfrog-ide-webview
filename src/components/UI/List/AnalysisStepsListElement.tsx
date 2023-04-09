@@ -6,7 +6,7 @@ interface Props {
 	items: IAnalysisStep[]
 }
 
-const AnalysisStepsListElement = (props: Props) => (
+const AnalysisStepsListElement = (props: Props): JSX.Element => (
 	<>
 		{props.items.map((item, i) => (
 			<button key={i} className={css.container}>
@@ -15,12 +15,13 @@ const AnalysisStepsListElement = (props: Props) => (
 						{i + 1}
 					</div>
 					<div className={css.row}> {item.fileName} {item.row}: </div>
-					{ item.snippet
-							 && 	<CodeBlock codeString={item.snippet} id={i.toString()}/>}
+					{ item.snippet 	&&
+					<CodeBlock codeString={item.snippet} id={i.toString()}/>}
 
 				</div>
-			</button>))}
+			</button>
+		))}
 	</>
-	 )
+)
 
 export default AnalysisStepsListElement

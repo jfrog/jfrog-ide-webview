@@ -8,7 +8,7 @@ export interface Props {
 	data: IApplicableDetails
 
 }
-const ContextualAnalysis = (props: Props) => (
+const ContextualAnalysis = (props: Props): JSX.Element => (
 	<>
 		<Wrapper headline="CONTEXTUAL ANALYSIS BREAKDOWN">
 			<div className={css.container}>
@@ -26,19 +26,20 @@ const ContextualAnalysis = (props: Props) => (
 				}
 			</div>
 		</Wrapper>
-		{props.data.searchTarget
-				&& (
-					<Wrapper>
-						<div className={css.innerContainer}>
-							<h4 className={css.smallHeader}>
-								What does the scanner checks / looking for?
-							</h4>
-							<div className={css.text}>
-								<ReactMarkdown className={css.text}>{props.data.searchTarget}</ReactMarkdown>
-							</div>
+		{
+			props.data.searchTarget &&
+			(
+				<Wrapper>
+					<div className={css.innerContainer}>
+						<h4 className={css.smallHeader}>
+							What does the scanner checks / looking for?
+						</h4>
+						<div className={css.text}>
+							<ReactMarkdown className={css.text}>{props.data.searchTarget}</ReactMarkdown>
 						</div>
-					</Wrapper>
-				)
+					</div>
+				</Wrapper>
+			)
 		}
 
 	</>

@@ -1,7 +1,7 @@
 import css from './ArrowUp.module.css'
 
 
-const ArrowUp = () => (
+const ArrowUp = (): JSX.Element => (
 	<div className={css.arrowUp}>
 		<svg
 			width={9}
@@ -26,7 +26,6 @@ const ArrowUp = () => (
 				transform="rotate(-135 0.707031 5)"
 				fill="#AAA"/>
 		</svg>
-
 	</div>
 )
 export default ArrowUp

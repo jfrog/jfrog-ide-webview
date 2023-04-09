@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "strict": true,
     "rootDirs": [
-      "src",
+      "src/**/*"
     ],
     "jsx": "react-jsx",
     "declarationDir": "types",
@@ -21,6 +21,7 @@
     "node_modules",
     "dist",
     "test",
+    "types",
     "setupTests.ts"
   ]
 }

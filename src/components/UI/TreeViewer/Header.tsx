@@ -6,8 +6,8 @@ export interface Props {
   OnActiveNode: (node: string) => void
 }
 
-export default function Header(props: Props) {
-	const handleClick = () => {
+export default function Header(props: Props): JSX.Element {
+	const handleClick = (): void => {
 		props.OnActiveNode('')
 		props.OnFilter('')
 	}

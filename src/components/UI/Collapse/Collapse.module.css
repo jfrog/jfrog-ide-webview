@@ -1,29 +1,29 @@
-.collapseHeaderWrapper{
+.collapseHeaderWrapper {
   cursor: pointer;
   padding: 10px;
   display: flex;
   align-items: center;
 }
 
-.collapseHeader{
+.collapseHeader {
   text-transform: uppercase;
   font-weight: 600;
   margin-right: 6px;
 }
 
-.collapseContent{
-  -moz-transition: height .5s;
-  -ms-transition: height .5s;
-  -o-transition: height .5s;
-  -webkit-transition: height .5s;
-  transition: height .5s;
+.collapseContent {
+  -moz-transition: height 0.5s;
+  -ms-transition: height 0.5s;
+  -o-transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
   overflow: hidden;
   margin-top: -20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #454545;
 }
 
-.collapseText{
+.collapseText {
   padding: 10px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;

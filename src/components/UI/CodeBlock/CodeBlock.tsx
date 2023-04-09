@@ -8,8 +8,8 @@ export interface Props {
 
 }
 
-const CodeBlock = (props: Props) => {
-	const isOverflow = () => {
+const CodeBlock = (props: Props): JSX.Element => {
+	const isOverflow = (): boolean | null => {
 		const element = document.getElementById(props.id)
 		return element && element.clientWidth > 500
 	}
@@ -19,8 +19,8 @@ const CodeBlock = (props: Props) => {
 			<SyntaxHighlighter id={props.id} language="javascript" style={vscDarkPlus} customStyle={{ padding: 0, backgroundColor: 'transparent', maxWidth: '500px', overflowX: 'hidden', textAlign: 'left' }}>
 				{props.codeString}
 			</SyntaxHighlighter>
-			{ isOverflow()
-				&& <div className={css.ellipsis}> ... </div>}
+			{ isOverflow() &&
+				<div className={css.ellipsis}> ... </div>}
 		</>
 	)
 }

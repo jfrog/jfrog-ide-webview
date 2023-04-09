@@ -23,8 +23,8 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/jfrog-ide-webview/\"",
     "eject": "react-scripts eject",
     "build": "react-scripts build && npm run build:types",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "format": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'"
+    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "format": "prettier --write src/**/*.{css,scss} --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -57,12 +57,11 @@
     "@types/react-syntax-highlighter": "^15.5.5",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.28.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.37.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "react-scripts": "5.0.1",
     "rollup": "^2.3.0",

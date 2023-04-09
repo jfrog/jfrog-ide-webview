@@ -1,8 +1,8 @@
-  .key {
-      color: #7f7f7f;
-      line-height: 1.5;
-  }
+.key {
+  color: #7f7f7f;
+  line-height: 1.5;
+}
 
-  .value {
-      color: rgba(255, 255, 255, 0.8);
-  }
+.value {
+  color: rgba(255, 255, 255, 0.8);
+}

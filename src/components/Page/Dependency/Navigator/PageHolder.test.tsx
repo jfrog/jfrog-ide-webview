@@ -6,8 +6,8 @@ import PageHolder from './PageHolder'
 describe('PageHolder component', () => {
 	describe('Research page', () => {
 		test('renders short description', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
 			// Assert
 			const shortDescriptionElement = screen.getByText('shortDescription-text')
@@ -15,8 +15,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders full description', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
 			// Assert
 			const fullDescriptionElement = screen.getByText('fullDescription-text')
@@ -24,8 +24,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders remediation', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
 			// Assert
 			const remediationElement = screen.getByText('remediation-text')
@@ -33,8 +33,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders jfrog research severity reason', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
 			// Assert
 			const reasonOneElement = screen.getByText('jfrogResearchSeverityReason-name-1')
@@ -58,8 +58,8 @@ describe('PageHolder component', () => {
 
 	describe('Contextual Analysis page', () => {
 		test('renders applicability reason description', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
 			// Assert
 			const shortDescriptionElement = screen.getByText('applicable reason')
@@ -67,8 +67,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders search target description', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
 			// Assert
 			const shortDescriptionElement = screen.getByText('search target')
@@ -76,8 +76,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders evidence description', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
 			// Assert
 			const shortDescriptionElement = screen.getByText('search target')
@@ -87,8 +87,8 @@ describe('PageHolder component', () => {
 
 	describe('Public Sources page', () => {
 		test('renders cvss V2 Score', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			let scoreElement = screen.getByText('Base Score 4.0', { exact: false })
@@ -98,8 +98,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders cvss V2 Vector AV element', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -109,7 +109,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V2 Vector AC element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -119,7 +119,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V2 Vector Au element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -129,7 +129,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V2 Vector C element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -139,7 +139,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V2 Vector I element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -149,7 +149,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V2 Vector A element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -158,8 +158,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders cvss V3 Score', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			let scoreElement = screen.getByText('Base Score 6.5', { exact: false })
@@ -169,8 +169,8 @@ describe('PageHolder component', () => {
 		})
 
 		test('renders cvss V3 Attack AV element', () => {
-		    // Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			// Arrange
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -180,7 +180,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V3 Vector AC element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -190,7 +190,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V3 Vector PR element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -199,7 +199,7 @@ describe('PageHolder component', () => {
 		})
 		test('renders cvss V3 Vector UI element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -209,7 +209,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V3 Vector S element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -219,7 +219,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V3 Vector C element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -229,7 +229,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V3 Vector I element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
@@ -239,7 +239,7 @@ describe('PageHolder component', () => {
 
 		test('renders cvss V3 Vector AV element', () => {
 			// Arrange
-			const dependencyPath:IDependencyPage = getFakeDependencyPage()
+			const dependencyPath: IDependencyPage = getFakeDependencyPage()
 			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
