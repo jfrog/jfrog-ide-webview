@@ -7,18 +7,18 @@ export interface Props {
   isResearch: boolean
 }
 
-const Header = (props: Props): JSX.Element => (
-	<div className={css.container}>
-		<div className={css.img}>
-			{getSeverityImage(props.Severity)}
-		</div>
-		<span>{props.text}</span>
-		{props.isResearch && (
+export default function Header(props: Props): JSX.Element {
+	return (
+		<div className={css.container}>
 			<div className={css.img}>
-				{getResearchImg()}
+				{getSeverityImage(props.Severity)}
 			</div>
-		)}
-	</div>
-)
-
-export default Header
+			<span>{props.text}</span>
+			{props.isResearch && (
+				<div className={css.img}>
+					{getResearchImg()}
+				</div>
+			)}
+		</div>
+	)
+}

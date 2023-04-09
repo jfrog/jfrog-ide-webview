@@ -8,26 +8,27 @@ export interface Props {
 	data: IApplicableDetails
 
 }
-const ContextualAnalysis = (props: Props): JSX.Element => (
-	<>
-		<Wrapper headline="CONTEXTUAL ANALYSIS BREAKDOWN">
-			<div className={css.container}>
-				<h4 className={css.header}>
-					Why is this CVE applicable?
-				</h4>
-				{
-					props.data.evidence?.map((el, i) => (
-						<div key={i}>
-							{el.filePathEvidence && <Row title="Reason" data={el.reason} key={`reason${i}`}/>}
-							{el.filePathEvidence && <Row title="Evidence file path" data={el.filePathEvidence} key={`file${i}`}/>}
-							{el.codeEvidence && <Row title="Evidence code" data={el.codeEvidence} key={`code${i}`}/>}
-						</div>
-					))
-				}
-			</div>
-		</Wrapper>
-		{
-			props.data.searchTarget &&
+export default function ContextualAnalysis(props: Props): JSX.Element {
+	return (
+		<>
+			<Wrapper headline="CONTEXTUAL ANALYSIS BREAKDOWN">
+				<div className={css.container}>
+					<h4 className={css.header}>
+						Why is this CVE applicable?
+					</h4>
+					{
+						props.data.evidence?.map((el, i) => (
+							<div key={i}>
+								{el.filePathEvidence && <Row title="Reason" data={el.reason} key={`reason${i}`}/>}
+								{el.filePathEvidence && <Row title="Evidence file path" data={el.filePathEvidence} key={`file${i}`}/>}
+								{el.codeEvidence && <Row title="Evidence code" data={el.codeEvidence} key={`code${i}`}/>}
+							</div>
+						))
+					}
+				</div>
+			</Wrapper>
+			{
+				props.data.searchTarget &&
 			(
 				<Wrapper>
 					<div className={css.innerContainer}>
@@ -40,9 +41,7 @@ const ContextualAnalysis = (props: Props): JSX.Element => (
 					</div>
 				</Wrapper>
 			)
-		}
-
-	</>
-)
-
-export default ContextualAnalysis
+			}
+		</>
+	)
+}

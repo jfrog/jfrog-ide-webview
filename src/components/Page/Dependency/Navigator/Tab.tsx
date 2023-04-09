@@ -2,15 +2,15 @@ import css from './Tab.module.css'
 import { ITab, ActiveTab } from '../../../../model/tab'
 
 export interface Props {
-  tabs: ITab[]
-  activeTab: ActiveTab
-  onChangeMenu: (index: ActiveTab) => void
+	tabs: ITab[]
+	activeTab: ActiveTab
+	onChangeMenu: (index: ActiveTab) => void
 }
 
 /**
  * Renders a set of tabs as buttons.
  */
-const Tab = (props: Props): JSX.Element => {
+export default function Tab(props: Props): JSX.Element {
 	const onClickHandler = (tabKey: ActiveTab): void => {
 		props.onChangeMenu(tabKey)
 	}
@@ -34,5 +34,3 @@ const Tab = (props: Props): JSX.Element => {
 		</div>
 	)
 }
-
-export default Tab

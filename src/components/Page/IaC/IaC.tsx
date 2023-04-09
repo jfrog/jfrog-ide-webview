@@ -10,7 +10,7 @@ import Findings from './Findings'
 import Collapse from '../../UI/Collapse/Collapse'
 
 export interface Props {
-  data: IIaCPage
+	data: IIaCPage
 }
 
 function IaC(props: Props): JSX.Element {

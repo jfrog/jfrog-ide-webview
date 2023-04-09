@@ -6,22 +6,22 @@ interface Props {
 	items: IAnalysisStep[]
 }
 
-const AnalysisStepsListElement = (props: Props): JSX.Element => (
-	<>
-		{props.items.map((item, i) => (
-			<button key={i} className={css.container}>
-				<div className={css.file}>
-					<div className={css.number}>
-						{i + 1}
+export default function AnalysisStepsListElement(props: Props): JSX.Element {
+	return (
+		<>
+			{props.items.map((item, i) => (
+				<button key={i} className={css.container}>
+					<div className={css.file}>
+						<div className={css.number}>
+							{i + 1}
+						</div>
+						<div className={css.row}> {item.fileName} {item.row}: </div>
+						{ item.snippet 	&&
+						<CodeBlock codeString={item.snippet} id={i.toString()}/>}
+
 					</div>
-					<div className={css.row}> {item.fileName} {item.row}: </div>
-					{ item.snippet 	&&
-					<CodeBlock codeString={item.snippet} id={i.toString()}/>}
-
-				</div>
-			</button>
-		))}
-	</>
-)
-
-export default AnalysisStepsListElement
+				</button>
+			))}
+		</>
+	)
+}

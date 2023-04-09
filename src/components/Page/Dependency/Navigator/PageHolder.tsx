@@ -11,14 +11,14 @@ import { TreeNode } from '../../../../model/treeNode'
 import { toTreeNode } from '../../../../utils/utils'
 
 interface Props {
-  activeTab: ActiveTab
-  data: IDependencyPage
+	activeTab: ActiveTab
+	data: IDependencyPage
 }
 
 /**
  * Renders a page to the corresponding tab button.
  */
-const PageHolder = (props: Props): JSX.Element => {
+export default function PageHolder(props: Props): JSX.Element {
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
 	useEffect(() =>	{
 		setTreeNode(toTreeNode(props.data.impactGraph))
@@ -61,5 +61,3 @@ const PageHolder = (props: Props): JSX.Element => {
 		<div key={props.data.id + props.data.component} className={css.container}>{pageHolder}</div>
 	)
 }
-
-export default PageHolder

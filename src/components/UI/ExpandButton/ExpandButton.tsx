@@ -4,7 +4,7 @@ export interface Props {
   isExpand: boolean
 }
 
-const ExpandButton = (props: Props): JSX.Element => {
+export default function ExpandButton(props: Props): JSX.Element {
 	if (props.isExpand) {
 		return (
 			<div className={css.btn}>
@@ -71,5 +71,3 @@ const ExpandButton = (props: Props): JSX.Element => {
 		</div>
 	)
 }
-
-export default ExpandButton

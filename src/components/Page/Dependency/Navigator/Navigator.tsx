@@ -7,13 +7,13 @@ import PageHolder from './PageHolder'
 import Tab from './Tab'
 
 export interface Props {
-  data: IDependencyPage
+	data: IDependencyPage
 }
 
 /**
  * Render the tabs section on the webview page and the content of the selected tab page.
  */
-const Navigator = (props: Props): JSX.Element => {
+export default function Navigator(props: Props): JSX.Element {
 	const tabs: ITab[] = createTabs(props)
 	const defaultTab = tabs.find(tab => !tab.hide)?.tabKey ?? ActiveTab.None
 	const [activeTab, setActiveTab] = useState<ActiveTab>(defaultTab)
@@ -64,4 +64,3 @@ const createTabs = (props: Props): ITab[] => [
 		tabKey: ActiveTab.Reference
 	}
 ]
-export default Navigator

@@ -7,10 +7,10 @@ import { IDependencyPage } from '../../../model/dependencyPage'
 import CveVulnerability from '../../UI/Summary/CveVulnerability'
 
 export interface Props {
-  data: IDependencyPage
+	data: IDependencyPage
 }
 
-function Dependency(props: Props): JSX.Element {
+export default function Dependency(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
 			<Header
@@ -25,5 +25,3 @@ function Dependency(props: Props): JSX.Element {
 		</div>
 	)
 }
-
-export default Dependency

@@ -16,19 +16,20 @@ import Row from '../../../../UI/Row/Row'
 import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
-  summary?: string;
-  cve?: ICve;
-  infectedVersions?: string[];
+	summary?: string;
+	cve?: ICve;
+	infectedVersions?: string[];
 }
 
-const PublicSources = (props: Props): JSX.Element => (
-	<>
-		{props.summary && (
-			<Wrapper headline="SUMMARY">
-				<span className={css.text}>{props.summary}</span>
-			</Wrapper>
-		)}
-		{props.infectedVersions &&
+export default function PublicSources(props: Props): JSX.Element {
+	return (
+		<>
+			{props.summary && (
+				<Wrapper headline="SUMMARY">
+					<span className={css.text}>{props.summary}</span>
+				</Wrapper>
+			)}
+			{props.infectedVersions &&
 			<Wrapper headline="VULNERABLE VERSIONS ">
 
 				{props.infectedVersions.map((element, i) => (
@@ -37,24 +38,25 @@ const PublicSources = (props: Props): JSX.Element => (
 					</div>
 				))}
 			</Wrapper>}
-		{(!!props.cve?.cvssV2Vector || !!props.cve?.cvssV3Vector) && (
-			<Wrapper headline="CVSS BREAKDOWN">
-				<div className={css.container}>
-					{(props.cve.cvssV3Vector && props.cve.cvssV3Score) && createCvssBreakdownV3View(
-						props.cve.cvssV3Vector,
-						props.cve.cvssV3Score
-					)}
-					{(props.cve.cvssV2Vector && props.cve.cvssV2Score) && createCvssBreakdownV2View(
-						props.cve.cvssV2Vector,
-						props.cve.cvssV2Score
-					)}
-				</div>
-			</Wrapper>
-		)}
-	</>
-)
+			{(!!props.cve?.cvssV2Vector || !!props.cve?.cvssV3Vector) && (
+				<Wrapper headline="CVSS BREAKDOWN">
+					<div className={css.container}>
+						{(props.cve.cvssV3Vector && props.cve.cvssV3Score) && createCvssBreakdownV3View(
+							props.cve.cvssV3Vector,
+							props.cve.cvssV3Score
+						)}
+						{(props.cve.cvssV2Vector && props.cve.cvssV2Score) && createCvssBreakdownV2View(
+							props.cve.cvssV2Vector,
+							props.cve.cvssV2Score
+						)}
+					</div>
+				</Wrapper>
+			)}
+		</>
+	)
+}
 
-const createCvssBreakdownV2 = (vector: string[]): Cvss2 | undefined => {
+function createCvssBreakdownV2(vector: string[]): Cvss2 | undefined {
 	const results = new Cvss2()
 	for (let index = 1; index < vector.length; index++) {
 		const vectorElement = vector[index].split(':')
@@ -97,7 +99,7 @@ const createCvssBreakdownV2 = (vector: string[]): Cvss2 | undefined => {
 	return results
 }
 
-const createCvssBreakdownV3 = (vector: string[]): Cvss3 | undefined => {
+function createCvssBreakdownV3(vector: string[]): Cvss3 | undefined {
 	const results = new Cvss3()
 	for (let index = 1; index < vector.length; index++) {
 		const vectorElement = vector[index].split(':')
@@ -146,7 +148,7 @@ const createCvssBreakdownV3 = (vector: string[]): Cvss3 | undefined => {
 	return results
 }
 
-const createCvssBreakdownV3View = (csvv: string, score: string): JSX.Element => {
+function createCvssBreakdownV3View(csvv: string, score: string): JSX.Element {
 	const csvvArray = csvv.split('/')
 	const csvv3Breakdown = createCvssBreakdownV3(csvvArray)
 	if (!csvv3Breakdown) {
@@ -171,7 +173,7 @@ const createCvssBreakdownV3View = (csvv: string, score: string): JSX.Element => 
 	)
 }
 
-const createCvssBreakdownV2View = (csvv: string, score: string): JSX.Element => {
+function createCvssBreakdownV2View(csvv: string, score: string): JSX.Element {
 	const csvvArray = csvv.split('/')
 	const csvv2Breakdown = createCvssBreakdownV2(csvvArray)
 	if (!csvv2Breakdown) {
@@ -201,4 +203,3 @@ const defaultBreakdownView = (csvv: string, score: string): JSX.Element => (
 		<div>Vector: {csvv}</div>
 	</>
 )
-export default PublicSources

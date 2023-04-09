@@ -1,10 +1,11 @@
 interface Props {
     children?: React.ReactNode
 }
-const List = (props: Props): JSX.Element => (
-	<ul>
-		{props.children}
-	</ul>
-)
 
-export default List
+export default function List(props: Props): JSX.Element {
+	return (
+		<ul>
+			{props.children}
+		</ul>
+	)
+}

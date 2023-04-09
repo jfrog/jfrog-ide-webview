@@ -9,7 +9,7 @@ export interface Props {
   root: TreeNode
 }
 
-const TreeContainer = (props: Props): JSX.Element => {
+export default function TreeContainer(props: Props): JSX.Element {
 	const filterHandler = (filter: string): void => {
 		setFilter(filter)
 	}
@@ -44,5 +44,3 @@ const TreeContainer = (props: Props): JSX.Element => {
 		</>
 	)
 }
-
-export default TreeContainer

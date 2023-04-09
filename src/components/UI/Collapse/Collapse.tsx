@@ -7,10 +7,9 @@ export interface Props {
 	id: string
 	header: string
 	text: string
-
 }
 
-const Collapse = (props: Props): JSX.Element => {
+export default function Collapse(props: Props): JSX.Element {
 	const [collapse, setCollapse] = useState(true)
 	const getStyle = (): {height: string;} | {height: number;} => {
 		if (collapse) {
@@ -33,5 +32,3 @@ const Collapse = (props: Props): JSX.Element => {
 		</>
 	)
 }
-
-export default Collapse

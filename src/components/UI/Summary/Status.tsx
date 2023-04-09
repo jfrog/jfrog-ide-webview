@@ -5,7 +5,7 @@ interface Props {
     status: string
 }
 
-const Status = (props: Props): JSX.Element => {
+export default function Status(props: Props): JSX.Element {
 	const stat = (
 		<div>
 			<Row title="Status" data="">
@@ -20,5 +20,3 @@ const Status = (props: Props): JSX.Element => {
 		</>
 	)
 }
-
-export default Status

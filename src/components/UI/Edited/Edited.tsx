@@ -4,10 +4,11 @@ export interface Props {
   date: string
 }
 
-const Edited = (props: Props): JSX.Element => (
-	<div className={css.container}>
-		<div>JFrog Research last updated on {new Date(props.date).toUTCString()}</div>
-		JFrog Research is different than NVD information
-	</div>
-)
-export default Edited
+export default function Edited(props: Props): JSX.Element {
+	return (
+		<div className={css.container}>
+			<div>JFrog Research last updated on {new Date(props.date).toUTCString()}</div>
+			JFrog Research is different than NVD information
+		</div>
+	)
+}

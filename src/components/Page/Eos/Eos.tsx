@@ -10,10 +10,10 @@ import ContextualAnalysis from './ContextualAnalysis'
 import Severity from '../../UI/Summary/Severity'
 
 export interface Props {
-  data: IEosPage
+	data: IEosPage
 }
 
-function Eos(props: Props): JSX.Element {
+export default function Eos(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
 			<Header
@@ -31,5 +31,3 @@ function Eos(props: Props): JSX.Element {
 		</div>
 	)
 }
-
-export default Eos

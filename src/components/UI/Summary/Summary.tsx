@@ -8,7 +8,7 @@ export interface Props {
 	showAll?: boolean
 }
 
-const Summary = (props: Props): JSX.Element => {
+export default function Summary(props: Props): JSX.Element {
 	const [expanded, setExpanded] = useState(false)
 	return (
 		<div className={css.container}>
@@ -26,5 +26,3 @@ const Summary = (props: Props): JSX.Element => {
 		</div>
 	)
 }
-
-export default Summary

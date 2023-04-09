@@ -2,6 +2,4 @@ import Row from '../Row/Row'
 interface Props{
     abbreviation: string
 }
-const Abbreviation = (props: Props): JSX.Element => (<Row title="Abbreviation" data={props.abbreviation}/>)
-
-export default Abbreviation
+export default function Abbreviation(props: Props): JSX.Element { return (<Row title="Abbreviation" data={props.abbreviation}/>) }

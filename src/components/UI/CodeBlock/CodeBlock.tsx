@@ -8,7 +8,7 @@ export interface Props {
 
 }
 
-const CodeBlock = (props: Props): JSX.Element => {
+export default function CodeBlock(props: Props): JSX.Element {
 	const isOverflow = (): boolean | null => {
 		const element = document.getElementById(props.id)
 		return element && element.clientWidth > 500
@@ -24,5 +24,3 @@ const CodeBlock = (props: Props): JSX.Element => {
 		</>
 	)
 }
-
-export default CodeBlock
