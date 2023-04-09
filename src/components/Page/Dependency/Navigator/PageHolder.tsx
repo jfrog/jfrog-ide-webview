@@ -15,6 +15,9 @@ interface Props {
   data: IDependencyPage
 }
 
+/**
+ * Renders a page to the corresponding tab button.
+ */
 const PageHolder = (props: Props): JSX.Element => {
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
 	useEffect(() =>	{

@@ -8,12 +8,16 @@ import { IEosPage } from './model/EosPage'
 import { IIaCPage } from './model/IaCPage'
 import IaC from './components/Page/IaC/IaC'
 
+/**
+ * The main page on which the Webview will be drawn based on the incoming request page type.
+ */
 function App(): JSX.Element {
 	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>({} as IDependencyPage | IEosPage)
+	let page
+
 	window.addEventListener('message', event => {
 		setDependencyData(event.data.data)
 	})
-	let page
 
 	switch (data.pageType) {
 		case PageType.Dependency:

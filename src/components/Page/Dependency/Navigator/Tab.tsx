@@ -7,6 +7,9 @@ export interface Props {
   onChangeMenu: (index: ActiveTab) => void
 }
 
+/**
+ * Renders a set of tabs as buttons.
+ */
 const Tab = (props: Props): JSX.Element => {
 	const onClickHandler = (tabKey: ActiveTab): void => {
 		props.onChangeMenu(tabKey)

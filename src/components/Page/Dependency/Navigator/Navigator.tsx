@@ -10,6 +10,9 @@ export interface Props {
   data: IDependencyPage
 }
 
+/**
+ * Render the tabs section on the webview page and the content of the selected tab page.
+ */
 const Navigator = (props: Props): JSX.Element => {
 	const tabs: ITab[] = createTabs(props)
 	const defaultTab = tabs.find(tab => !tab.hide)?.tabKey ?? ActiveTab.None
