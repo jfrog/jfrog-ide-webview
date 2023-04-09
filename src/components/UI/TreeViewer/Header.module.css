@@ -1,20 +1,20 @@
 .container {
-  display: inline-flex;
-  gap: 10px;
+	display: inline-flex;
+	gap: 10px;
 }
 .btn {
-  display: inline-flex;
-  align-items: center;
-  background-color: #292929;
-  color: rgba(255, 255, 255, 0.8);
-  border: none;
-  font-style: normal;
-  font-weight: 500;
-  text-align: center;
-  flex: 1;
-  cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	background-color: #292929;
+	color: rgba(255, 255, 255, 0.8);
+	border: none;
+	font-style: normal;
+	font-weight: 500;
+	text-align: center;
+	flex: 1;
+	cursor: pointer;
 }
 .btnHover,
 .btn:hover:enabled {
-  color: #ffffff;
+	color: #ffffff;
 }

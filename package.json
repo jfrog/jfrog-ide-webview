@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "build": "react-scripts build && npm run build:types",
     "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "format": "prettier --write src/**/*.{css,scss} --config ./.prettierrc"
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css} --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [

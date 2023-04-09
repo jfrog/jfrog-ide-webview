@@ -1,41 +1,41 @@
 .node circle {
-  fill: #f3f3ff;
-  stroke: #2593b8;
-  stroke-width: 1.5px;
+	fill: #f3f3ff;
+	stroke: #2593b8;
+	stroke-width: 1.5px;
 }
 
 .node text {
-  font-size: 11px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #444;
-  fill: #f4f4f4;
-  text-shadow: 0 1px 4px black;
+	font-size: 11px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	background-color: #444;
+	fill: #f4f4f4;
+	text-shadow: 0 1px 4px black;
 }
 
 .node {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .redNode {
-  composes: node;
+	composes: node;
 }
 
 .redNode circle {
-  fill: #b91c1c;
-  stroke: #10101080;
+	fill: #b91c1c;
+	stroke: #10101080;
 }
 
 .node.searchIncluded text {
-  font-weight: bold;
-  font-size: 14px;
+	font-weight: bold;
+	font-size: 14px;
 }
 
 .node.searchExcluded text {
-  opacity: 0.6;
+	opacity: 0.6;
 }
 
 path.link {
-  fill: none;
-  stroke: #2593b8;
-  stroke-width: 1.5px;
+	fill: none;
+	stroke: #2593b8;
+	stroke-width: 1.5px;
 }

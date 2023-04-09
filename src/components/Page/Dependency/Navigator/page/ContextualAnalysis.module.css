@@ -1,24 +1,24 @@
 .header {
-  color: rgba(241, 76, 76, 0.8);
+	color: rgba(241, 76, 76, 0.8);
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
 }
 
 .innerContainer {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .text {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
+	color: rgba(255, 255, 255, 0.8);
+	line-height: 1.5;
 }
 
 .smallHeader {
-  color: rgba(255, 255, 255);
-  line-height: 1.5;
+	color: rgba(255, 255, 255);
+	line-height: 1.5;
 }

@@ -1,32 +1,32 @@
 .container {
-  display: flex;
-  height: 2.2em;
+	display: flex;
+	height: 2.2em;
 }
 
 .btn {
-  background-color: #292929;
-  color: rgba(255, 255, 255, 0.8);
-  border: none;
-  font-style: normal;
-  font-weight: 300;
-  text-align: center;
-  flex: 1;
-  transition: transform 100ms ease;
-  cursor: pointer;
+	background-color: #292929;
+	color: rgba(255, 255, 255, 0.8);
+	border: none;
+	font-style: normal;
+	font-weight: 300;
+	text-align: center;
+	flex: 1;
+	transition: transform 100ms ease;
+	cursor: pointer;
 }
 
 *:focus {
-  outline: 0 !important;
+	outline: 0 !important;
 }
 
 .btnHover,
 .btn:hover:enabled {
-  background: #1e1e1e;
-  color: #ffffff;
-  transform: translateY(-0.3rem);
-  transition: transform 100ms ease;
+	background: #1e1e1e;
+	color: #ffffff;
+	transform: translateY(-0.3rem);
+	transition: transform 100ms ease;
 }
 
 .btnNotAllowed {
-  display: none;
+	display: none;
 }

@@ -1,14 +1,14 @@
 export interface ITab {
-  tabKey: ActiveTab
-  text: string
-  hide: boolean
+	tabKey: ActiveTab
+	text: string
+	hide: boolean
 }
 
 export enum ActiveTab {
-  None = 'None',
-  Research = 'research',
-  ContextualAnalysis = 'contextualAnalysis',
-  PublicSources = 'publicSources',
-  ImpactGraph = 'impactGraph',
-  Reference = 'reference',
+	None = 'None',
+	Research = 'research',
+	ContextualAnalysis = 'contextualAnalysis',
+	PublicSources = 'publicSources',
+	ImpactGraph = 'impactGraph',
+	Reference = 'reference'
 }

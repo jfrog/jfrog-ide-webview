@@ -7,20 +7,20 @@ import { ISeverity } from './severity'
 import { PageType } from './pageType'
 
 export interface IDependencyPage {
-  id: string
-  pageType: PageType.Dependency;
-  componentType: string
-  component: string
-  version: string
-  cve?: ICve
-  license?: ILicense[]
-  watchName?: string[]
-  impactGraph: IImpactGraph
-  severity: ISeverity
-  edited: string
-  summary?: string
-  fixedVersion?: string[]
-  infectedVersion?: string[]
-  references?: IReference[]
-  extendedInformation?: IExtendedInformation
+	id: string
+	pageType: PageType.Dependency
+	componentType: string
+	component: string
+	version: string
+	cve?: ICve
+	license?: ILicense[]
+	watchName?: string[]
+	impactGraph: IImpactGraph
+	severity: ISeverity
+	edited: string
+	summary?: string
+	fixedVersion?: string[]
+	infectedVersion?: string[]
+	references?: IReference[]
+	extendedInformation?: IExtendedInformation
 }

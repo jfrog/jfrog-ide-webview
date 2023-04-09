@@ -1,63 +1,63 @@
 .container {
-  display: flex;
-  justify-content: space-between;
-  color: #a0a0a0;
-  font-weight: 400;
-  padding: 6px 10px;
-  cursor: pointer;
-  background: none;
-  border: none;
+	display: flex;
+	justify-content: space-between;
+	color: #a0a0a0;
+	font-weight: 400;
+	padding: 6px 10px;
+	cursor: pointer;
+	background: none;
+	border: none;
 }
 
 .container:hover {
-  color: #ffffff;
-  background: #37373c;
+	color: #ffffff;
+	background: #37373c;
 }
 
 .file {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .number {
-  background: #454545;
-  border-radius: 20px;
-  display: flex;
-  font-size: small;
-  font-weight: 500;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-  width: 21px;
-  height: 21px;
-  flex-shrink: 0;
-  flex-grow: 0;
+	background: #454545;
+	border-radius: 20px;
+	display: flex;
+	font-size: small;
+	font-weight: 500;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+	width: 21px;
+	height: 21px;
+	flex-shrink: 0;
+	flex-grow: 0;
 }
 
 .row {
-  margin-right: 3px;
+	margin-right: 3px;
 }
 
 .container:hover .number {
-  background: #6c6cc4;
+	background: #6c6cc4;
 }
 
 .line {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .btn {
-  color: rgba(160, 160, 160, 1);
-  border: none;
-  font-style: normal;
-  font-weight: 500;
-  cursor: pointer;
+	color: rgba(160, 160, 160, 1);
+	border: none;
+	font-style: normal;
+	font-weight: 500;
+	cursor: pointer;
 }
 
 .btnHover,
 .btn:hover:enabled {
-  background: #252526;
-  color: #ffffff;
+	background: #252526;
+	color: #ffffff;
 }

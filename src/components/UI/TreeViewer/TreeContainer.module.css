@@ -1,9 +1,9 @@
 .container {
-  overflow: scroll;
+	overflow: scroll;
 }
 .box {
-  color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 0.8);
 }
 .box > :first-child {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }

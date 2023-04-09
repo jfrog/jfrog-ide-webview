@@ -1,47 +1,47 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .text {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
-  padding: 0px;
-  margin: 0px;
-  width: 100%;
+	color: rgba(255, 255, 255, 0.8);
+	line-height: 1.5;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
 }
 
 .negativeReason {
-  composes: text;
-  color: rgba(241, 76, 76, 1);
+	composes: text;
+	color: rgba(241, 76, 76, 1);
 }
 
 .positiveReason {
-  composes: text;
-  color: rgba(22, 130, 93, 1);
+	composes: text;
+	color: rgba(22, 130, 93, 1);
 }
 
 a {
-  color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 0.8);
 }
 
 .line {
-  border: 1px solid #454545;
-  margin-top: 20px;
+	border: 1px solid #454545;
+	margin-top: 20px;
 }
 
 code {
-  padding: 0.2em 0.4em;
-  margin: 0;
-  font-size: 85%;
-  color: #e8912d;
-  background-color: rgb(30, 30, 30);
-  border-radius: 6px;
-  width: 100%;
+	padding: 0.2em 0.4em;
+	margin: 0;
+	font-size: 85%;
+	color: #e8912d;
+	background-color: rgb(30, 30, 30);
+	border-radius: 6px;
+	width: 100%;
 }

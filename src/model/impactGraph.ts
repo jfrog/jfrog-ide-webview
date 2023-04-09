@@ -1,4 +1,4 @@
 export interface IImpactGraph {
-  name: string
-  children?: IImpactGraph[]
+	name: string
+	children?: IImpactGraph[]
 }

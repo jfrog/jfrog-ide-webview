@@ -1,29 +1,29 @@
 export enum GeneralCvss3Value {
 	None = 'None',
 	Low = 'Low',
-	High = 'High',
+	High = 'High'
 }
 
 export enum UserInteractionValue {
 	None = 'None',
-	Required = 'Required',
+	Required = 'Required'
 }
 
 export enum CvssScop {
 	Unchanged = 'Unchanged',
-	Changed = 'Changed',
+	Changed = 'Changed'
 }
 
 export enum AccessVectorValue {
 	Local = 'Local',
 	AdjacentNetwork = 'Adjacent Network',
-	Network = 'Network',
+	Network = 'Network'
 }
 
 enum AuthenticationValue {
 	Multiple = 'Multiple',
 	Single = 'Single',
-	None = 'None',
+	None = 'None'
 }
 
 export interface Cvss3Data {
@@ -34,20 +34,20 @@ export interface Cvss3Data {
 export enum AccessComplexityValue {
 	Low = 'Low',
 	Medium = 'Medium',
-	High = 'High',
+	High = 'High'
 }
 
 enum ImpactValue {
 	None = 'None',
 	Partial = 'Partial',
-	Complete = 'Complete',
+	Complete = 'Complete'
 }
 
 export enum AttackVectorValue {
 	Network = 'Network',
 	Adjacent = 'Adjacent',
 	Local = 'Local',
-	Physical = 'Physical',
+	Physical = 'Physical'
 }
 
 export class Cvss3 {
@@ -113,7 +113,6 @@ export const UserInteractionTranslator = (str: string): UserInteractionValue | u
 	return undefined
 }
 
-
 export const AttackVectorTranslator = (str: string): AttackVectorValue | undefined => {
 	switch (str) {
 		case 'N':
@@ -128,7 +127,6 @@ export const AttackVectorTranslator = (str: string): AttackVectorValue | undefin
 
 	return undefined
 }
-
 
 export const CvssScopTranslator = (str: string): CvssScop | undefined => {
 	switch (str) {

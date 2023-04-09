@@ -1,26 +1,26 @@
 .container {
-  margin-bottom: 10px;
-  color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 10px;
+	color: rgba(255, 255, 255, 0.8);
 }
 
 .details {
-  color: #7f7f7f;
+	color: #7f7f7f;
 }
 
 .halfText {
-  max-height: 5em;
-  line-height: 22px;
-  overflow: hidden;
-  transition: max-height 1s ease-out;
+	max-height: 5em;
+	line-height: 22px;
+	overflow: hidden;
+	transition: max-height 1s ease-out;
 }
 
 .fullText {
-  composes: halfText;
-  transition: max-height 1s ease-out;
-  max-height: 20em;
+	composes: halfText;
+	transition: max-height 1s ease-out;
+	max-height: 20em;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
+	list-style-type: none;
+	padding: 0;
 }

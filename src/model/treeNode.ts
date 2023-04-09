@@ -1,4 +1,3 @@
-
 export class TreeNode {
 	gProps?: CustomTreeNodeData
 

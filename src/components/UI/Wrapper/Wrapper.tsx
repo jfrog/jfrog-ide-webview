@@ -1,8 +1,8 @@
 import css from './Wrapper.module.css'
 
 export interface Props {
-  headline?: string
-  children?: React.ReactNode
+	headline?: string
+	children?: React.ReactNode
 }
 
 export default function Wrapper(props: Props): JSX.Element {

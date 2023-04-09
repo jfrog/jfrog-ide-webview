@@ -1,14 +1,14 @@
 .headline {
-  margin-bottom: 10px;
-  font-weight: 600;
+	margin-bottom: 10px;
+	font-weight: 600;
 }
 
 .line {
-  border: 1px solid #454545;
-  margin-bottom: 15px;
-  margin-top: 15px;
+	border: 1px solid #454545;
+	margin-bottom: 15px;
+	margin-top: 15px;
 }
 
 .content {
-  padding-left: 5px;
+	padding-left: 5px;
 }

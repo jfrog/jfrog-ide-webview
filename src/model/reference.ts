@@ -1,4 +1,4 @@
 export interface IReference {
-  text?: string
-  url: string
+	text?: string
+	url: string
 }
