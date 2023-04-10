@@ -20,11 +20,11 @@ interface Props {
  */
 export default function PageHolder(props: Props): JSX.Element {
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
+	let pageHolder
 	useEffect(() =>	{
 		setTreeNode(toTreeNode(props.data.impactGraph))
 	}, [props.data.impactGraph])
 
-	let pageHolder
 	switch (props.activeTab) {
 		case ActiveTab.Research:
 			if (props.data.extendedInformation) {

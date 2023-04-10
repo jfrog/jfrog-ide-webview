@@ -12,17 +12,17 @@ export interface Props {
 }
 
 export default function TreeViewer(props: Props): JSX.Element {
-	function getRoot(node: TreeNode): TreeNode | undefined {
-		if (node.Id === props.activeNode) {
-			return node
+	function getSelectedNodeSubTree(selectedNode: TreeNode): TreeNode | undefined {
+		if (selectedNode.Id === props.activeNode) {
+			return selectedNode
 		}
 
-		if (node.Children.length) {
+		if (selectedNode.Children.length) {
 			return undefined
 		}
 
-		for (const child of node.Children) {
-			const childJson = getRoot(child)
+		for (const child of selectedNode.Children) {
+			const childJson = getSelectedNodeSubTree(child)
 			if (childJson) {
 				return childJson
 			}
@@ -55,12 +55,12 @@ export default function TreeViewer(props: Props): JSX.Element {
 		return undefined
 	}
 
-	let root = clone(props.activeNode ? getRoot(props.root) : props.root)
+	let root = clone(props.activeNode ? getSelectedNodeSubTree(props.root) : props.root)
 
 	if (props.filter) {
-		const SubTree = buildSubTree(root)
-		if (SubTree) {
-			root = SubTree
+		const subTree = buildSubTree(root)
+		if (subTree) {
+			root = subTree
 		}
 	}
 

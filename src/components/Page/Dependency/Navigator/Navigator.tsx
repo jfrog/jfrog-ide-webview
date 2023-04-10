@@ -37,7 +37,7 @@ export default function Navigator(props: Props): JSX.Element {
 	)
 }
 
-const isJfrogResearchHidden = (researchData: IExtendedInformation | undefined): boolean => researchData === undefined
+const isJFrogResearchHidden = (researchData: IExtendedInformation | undefined): boolean => researchData === undefined
 
 const isReferenceHidden = (references: IReference[] | undefined): boolean => !!(references?.length === 0)
 
@@ -48,7 +48,7 @@ const isPublicResourcesHidden = (data: IDependencyPage): boolean => !data.cve?.c
 const createTabs = (props: Props): ITab[] => [
 	{
 		text: 'JFrog Research',
-		hide: isJfrogResearchHidden(props.data.extendedInformation),
+		hide: isJFrogResearchHidden(props.data.extendedInformation),
 		tabKey: ActiveTab.Research
 	},
 	{

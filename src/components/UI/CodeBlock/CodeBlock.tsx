@@ -20,7 +20,7 @@ export default function CodeBlock(props: Props): JSX.Element {
 				{props.codeString}
 			</SyntaxHighlighter>
 			{ isOverflow() &&
-				<div className={css.ellipsis}> ... </div>}
+				<div className={css.ellipsis}> ... </div> }
 		</>
 	)
 }

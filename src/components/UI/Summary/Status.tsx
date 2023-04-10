@@ -6,17 +6,11 @@ interface Props {
 }
 
 export default function Status(props: Props): JSX.Element {
-	const stat = (
+	return (
 		<div>
 			<Row title="Status" data="">
 				<label className={css.purpleBox}> {props.status} </label>
 			</Row>
 		</div>
-	)
-
-	return (
-		<>
-			{stat}
-		</>
 	)
 }
