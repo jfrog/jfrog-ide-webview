@@ -23,7 +23,7 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/jfrog-ide-webview/\"",
     "eject": "react-scripts eject",
     "build": "react-scripts build && npm run build:types",
-    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css} --config ./.prettierrc"
   },
   "eslintConfig": {
