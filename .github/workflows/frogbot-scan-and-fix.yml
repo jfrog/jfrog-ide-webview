@@ -13,7 +13,7 @@ jobs:
   create-fix-pull-requests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # Install prerequisites
       - name: Setup NodeJS
@@ -23,6 +23,7 @@ jobs:
 
       - uses: jfrog/frogbot@v2
         env:
+          JFROG_CLI_LOG_LEVEL: "DEBUG"
           # [Mandatory]
           # JFrog platform URL
           JF_URL: ${{ secrets.FROGBOT_URL }}
