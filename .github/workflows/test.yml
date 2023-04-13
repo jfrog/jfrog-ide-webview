@@ -1,4 +1,4 @@
-name: Tests
+name: Webview Tests
 
 on: [ push, pull_request ]
 
@@ -7,7 +7,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  test:
+  tests:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -25,6 +25,12 @@ jobs:
 
       - name: Install project
         run: npm i
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format
+        run: npm run format
 
       - name: Run tests
         env:
