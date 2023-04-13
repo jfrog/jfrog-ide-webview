@@ -1,0 +1,6 @@
+# https://prettier.io/docs/en/options.html#end-of-line
+# When people collaborate on a project from different operating systems,
+# it becomes easy to end up with mixed line endings in a shared git repository.
+# It is also possible for Windows users to accidentally change line endings in a previously committed file from LF to CRLF.
+# Doing so produces a large git diff and thus makes the line-by-line history for a file (git blame) harder to explore.
+* text=auto eol=lf
