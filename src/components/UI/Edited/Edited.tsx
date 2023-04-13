@@ -1,7 +1,7 @@
 import css from './Edited.module.css'
 
 export interface Props {
-  date: string
+	date: string
 }
 
 export default function Edited(props: Props): JSX.Element {

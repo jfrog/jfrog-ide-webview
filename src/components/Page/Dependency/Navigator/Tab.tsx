@@ -22,15 +22,12 @@ export default function Tab(props: Props): JSX.Element {
 				<button
 					key={value.text}
 					className={`${css.btn} ${props.activeTab === value.tabKey ? css.btnHover : ''}`}
-					onClick={onClickHandler.bind(null, value.tabKey)}>
+					onClick={onClickHandler.bind(null, value.tabKey)}
+				>
 					{value.text}
 				</button>
 			)
 		}
 	})
-	return (
-		<div className={css.container}>
-			{tabs}
-		</div>
-	)
+	return <div className={css.container}>{tabs}</div>
 }

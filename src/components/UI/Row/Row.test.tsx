@@ -5,7 +5,7 @@ describe('Row component', () => {
 		const title = 'row-title'
 		const text = 'row-text'
 		// Arrange
-		render(<Row title={title} data={text}/>)
+		render(<Row title={title} data={text} />)
 		// Assert
 		const titleElement = screen.getByText(`${title}`, { exact: false })
 		expect(titleElement).toBeInTheDocument()

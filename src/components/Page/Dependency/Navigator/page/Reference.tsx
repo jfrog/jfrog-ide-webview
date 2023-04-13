@@ -12,7 +12,7 @@ export default function Reference(props: Props): JSX.Element {
 				<div key={i} className={css.innerContainer}>
 					{ref.text && <h3>{ref.text}</h3>}
 					<a href={ref.url}>{ref.url}</a>
-					<div className={css.line}/>
+					<div className={css.line} />
 				</div>
 			))}
 		</div>

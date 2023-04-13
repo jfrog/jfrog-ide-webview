@@ -53,21 +53,9 @@
 				]
 			}
 		],
-		"array-bracket-newline": [
-			"error",
-			{
-				"minItems": 4
-			}
-		],
 		"array-bracket-spacing": [
 			"error",
 			"never"
-		],
-		"array-element-newline": [
-			"error",
-			{
-				"minItems": 4
-			}
 		],
 		"arrow-body-style": [
 			"error",
@@ -129,17 +117,6 @@
 				"allowArrowFunctions": true
 			}
 		],
-		"function-paren-newline": [
-			"error",
-			"consistent"
-		],
-		"indent": [
-			"error",
-			"tab",
-			{
-				"SwitchCase": 1
-			}
-		],
 		"key-spacing": [
 			"error",
 			{
@@ -187,10 +164,6 @@
 			"error",
 			"always"
 		],
-		"operator-linebreak": [
-			"error",
-			"after"
-		],
 		"padded-blocks": [
 			"error",
 			"never"
@@ -202,10 +175,6 @@
 		"quotes": [
 			"error",
 			"single"
-		],
-		"multiline-ternary": [
-			"error",
-			"always-multiline"
 		],
 		"rest-spread-spacing": [
 			"error",
@@ -332,13 +301,6 @@
 			{
 				"multiline": "consistent",
 				"singleline": "consistent"
-			}
-		],
-		"react/jsx-max-props-per-line": [
-			"error",
-			{
-				"maximum": 4,
-				"when": "always"
 			}
 		],
 		"react/boolean-prop-naming": "error",

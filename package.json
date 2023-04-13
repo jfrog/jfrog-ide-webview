@@ -25,8 +25,8 @@
     "build": "react-scripts build && npm run build:types",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --check --no-error-on-unmatched-pattern src/**/*.{js,jsx,ts,tsx,json,css} --config ./.prettierrc",
-    "format:fix": "prettier --write --no-error-on-unmatched-pattern src/**/*.{js,jsx,ts,tsx,json,css} --config ./.prettierrc"
+    "format": "prettier --check --no-error-on-unmatched-pattern \"src/**/*.{js,jsx,ts,tsx,json,css}\" --config ./.prettierrc",
+    "format:fix": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{js,jsx,ts,tsx,json,css}\" --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -62,9 +62,9 @@
     "eslint": "^8.37.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "2.8.7",
     "react-scripts": "5.0.1",
     "rollup": "^2.3.0",
     "rollup-plugin-dts": "^4.0.0",

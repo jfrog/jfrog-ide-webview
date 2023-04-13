@@ -17,12 +17,15 @@ export default function Summary(props: Props): JSX.Element {
 					{props.children}
 				</ul>
 			</div>
-			{
-				props.expandButton && !props.showAll &&
-				<label onClick={(): void => { setExpanded(prev => !prev) }}>
-					<ExpandButton isExpand={expanded}/>
+			{props.expandButton && !props.showAll && (
+				<label
+					onClick={(): void => {
+						setExpanded(prev => !prev)
+					}}
+				>
+					<ExpandButton isExpand={expanded} />
 				</label>
-			}
+			)}
 		</div>
 	)
 }

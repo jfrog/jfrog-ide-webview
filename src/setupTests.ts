@@ -16,7 +16,17 @@ const fakeDependencyPage: IDependencyPage = {
 		cvssV2Vector: 'CVSS:2.0/AV:N/AC:L/Au:S/C:N/I:N/A:P',
 		cvssV3Score: '6.5',
 		cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H',
-		applicableData: { isApplicable: true, searchTarget: 'search target', evidence: [{ filePathEvidence: 'filePathEvidence', codeEvidence: 'codeEvidence', reason: 'applicable reason' }] }
+		applicableData: {
+			isApplicable: true,
+			searchTarget: 'search target',
+			evidence: [
+				{
+					filePathEvidence: 'filePathEvidence',
+					codeEvidence: 'codeEvidence',
+					reason: 'applicable reason'
+				}
+			]
+		}
 	},
 	component: 'org.springframework:spring-core',
 	watchName: ['here-is-my-cool-new-watch', 'that-is-something-to-watch-out-for'],
@@ -26,18 +36,25 @@ const fakeDependencyPage: IDependencyPage = {
 	infectedVersion: ['(,4.3.16)', '[5.0.0,5.0.5)'],
 	severity: ISeverity.Critical,
 	edited: '2022-11-23T17:41:22Z',
-	summary: 'In spring framework versions prior to 5.3.20+ , 5.2.22+ and old unsupported versions, application with a STOMP over WebSocket endpoint is vulnerable to a denial of service attack by an authenticated user.',
+	summary:
+		'In spring framework versions prior to 5.3.20+ , 5.2.22+ and old unsupported versions, application with a STOMP over WebSocket endpoint is vulnerable to a denial of service attack by an authenticated user.',
 	fixedVersion: ['[4.3.16]', '[5.0.5]'],
-	license: [{
-		name: 'Apache-2.0'
-	}],
-	references: [{
-		url: 'https://security.netapp.com/advisory/ntap-20220616-0003/'
-	}, {
-		url: 'https://tanzu.vmware.com/security/cve-2022-22971'
-	}, {
-		url: 'https://www.oracle.com/security-alerts/cpujul2022.html'
-	}],
+	license: [
+		{
+			name: 'Apache-2.0'
+		}
+	],
+	references: [
+		{
+			url: 'https://security.netapp.com/advisory/ntap-20220616-0003/'
+		},
+		{
+			url: 'https://tanzu.vmware.com/security/cve-2022-22971'
+		},
+		{
+			url: 'https://www.oracle.com/security-alerts/cpujul2022.html'
+		}
+	],
 	extendedInformation: {
 		shortDescription: 'shortDescription-text',
 		fullDescription: 'fullDescription-text',
@@ -68,31 +85,43 @@ const fakeDependencyPage: IDependencyPage = {
 	},
 	impactGraph: {
 		name: 'org.jfrog.test:multi:3.7-SNAPSHOT',
-		children: [{
-			name: 'org.jfrog.test:multi3:3.7-SNAPSHOT',
-			children: [{
+		children: [
+			{
+				name: 'org.jfrog.test:multi3:3.7-SNAPSHOT',
+				children: [
+					{
+						name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
+						children: [
+							{
+								name: 'org.springframework:spring-aop:2.5.6',
+								children: [
+									{
+										name: 'org.springframework:spring-core:2.5.6',
+										children: []
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
 				name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
-				children: [{
-					name: 'org.springframework:spring-aop:2.5.6',
-					children: [{
-						name: 'org.springframework:spring-core:2.5.6',
-						children: []
-					}]
-				}]
-			}]
-		}, {
-			name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
-			children: [{
-				name: 'org.springframework:spring-aop:2.5.6',
-				children: [{
-					name: 'org.springframework:spring-core:2.5.6',
-					children: []
-				}]
-			}]
-		}]
+				children: [
+					{
+						name: 'org.springframework:spring-aop:2.5.6',
+						children: [
+							{
+								name: 'org.springframework:spring-core:2.5.6',
+								children: []
+							}
+						]
+					}
+				]
+			}
+		]
 	}
-}as IDependencyPage
-
+} as IDependencyPage
 
 // Returns a fake (but reasonable) DependencyPage object that can be used for testing
 export const getFakeDependencyPage = (): IDependencyPage => fakeDependencyPage
@@ -116,13 +145,15 @@ export const getFakeDependencyPage = (): IDependencyPage => fakeDependencyPage
  */
 type Query = (f: MatcherFunction) => HTMLElement
 
-const withMarkup = (query: Query) => (text: string): HTMLElement =>
-	query((content: string, node: Element | null) => {
-		const hasText = (node: Element | null): boolean => node?.textContent === text
-		const childrenDontHaveText = Array.from(node?.children ?? []).every(
-			child => !hasText(child as HTMLElement)
-		)
-		return hasText(node) && childrenDontHaveText
-	})
+const withMarkup =
+	(query: Query) =>
+	(text: string): HTMLElement =>
+		query((content: string, node: Element | null) => {
+			const hasText = (node: Element | null): boolean => node?.textContent === text
+			const childrenDontHaveText = Array.from(node?.children ?? []).every(
+				child => !hasText(child as HTMLElement)
+			)
+			return hasText(node) && childrenDontHaveText
+		})
 
 export default withMarkup

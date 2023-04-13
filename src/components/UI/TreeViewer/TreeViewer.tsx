@@ -5,10 +5,10 @@ import css from './TreeViewer.module.css'
 import { AnimatedTree } from 'react-tree-graph'
 
 export interface Props {
-  activeNode?: string
-  filter: string
-  root: TreeNode
-  handleClick: (nodeId: string) => void
+	activeNode?: string
+	filter: string
+	root: TreeNode
+	handleClick: (nodeId: string) => void
 }
 
 export default function TreeViewer(props: Props): JSX.Element {
@@ -96,12 +96,14 @@ export default function TreeViewer(props: Props): JSX.Element {
 				textProps={{
 					dy: 3.5
 				}}
-				steps={30}/>
+				steps={30}
+			/>
 		</main>
 	)
 }
 
-const calcWindowWidth = (treeHeight: number, extraMargin: number): number => treeHeight * (100 + (extraMargin * 4))
+const calcWindowWidth = (treeHeight: number, extraMargin: number): number =>
+	treeHeight * (100 + extraMargin * 4)
 
 const calcWindowHeighth = (treeWidth: number): number => {
 	switch (treeWidth) {
@@ -112,6 +114,6 @@ const calcWindowHeighth = (treeWidth: number): number => {
 		case 4:
 			return 200
 		default:
-			return	treeWidth * 50
+			return treeWidth * 50
 	}
 }

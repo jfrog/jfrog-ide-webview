@@ -3,9 +3,8 @@ import css from './CodeBlock.module.css'
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus'
 
 export interface Props {
-    codeString: string
+	codeString: string
 	id: string
-
 }
 
 export default function CodeBlock(props: Props): JSX.Element {
@@ -16,11 +15,21 @@ export default function CodeBlock(props: Props): JSX.Element {
 
 	return (
 		<>
-			<SyntaxHighlighter id={props.id} language="javascript" style={vscDarkPlus} customStyle={{ padding: 0, backgroundColor: 'transparent', maxWidth: '500px', overflowX: 'hidden', textAlign: 'left' }}>
+			<SyntaxHighlighter
+				id={props.id}
+				language="javascript"
+				style={vscDarkPlus}
+				customStyle={{
+					padding: 0,
+					backgroundColor: 'transparent',
+					maxWidth: '500px',
+					overflowX: 'hidden',
+					textAlign: 'left'
+				}}
+			>
 				{props.codeString}
 			</SyntaxHighlighter>
-			{ isOverflow() &&
-				<div className={css.ellipsis}> ... </div> }
+			{isOverflow() && <div className={css.ellipsis}> ... </div>}
 		</>
 	)
 }

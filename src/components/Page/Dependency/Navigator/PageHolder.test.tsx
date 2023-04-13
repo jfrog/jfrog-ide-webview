@@ -8,7 +8,7 @@ describe('PageHolder component', () => {
 		test('Renders short description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath} />)
 			// Assert
 			const shortDescriptionElement = screen.getByText('shortDescription-text')
 			expect(shortDescriptionElement).toBeInTheDocument()
@@ -17,7 +17,7 @@ describe('PageHolder component', () => {
 		test('Renders full description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath} />)
 			// Assert
 			const fullDescriptionElement = screen.getByText('fullDescription-text')
 			expect(fullDescriptionElement).toBeInTheDocument()
@@ -26,7 +26,7 @@ describe('PageHolder component', () => {
 		test('Renders remediation', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath} />)
 			// Assert
 			const remediationElement = screen.getByText('remediation-text')
 			expect(remediationElement).toBeInTheDocument()
@@ -35,7 +35,7 @@ describe('PageHolder component', () => {
 		test('Renders jfrog research severity reason', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.Research} data={dependencyPath} />)
 			// Assert
 			const reasonOneElement = screen.getByText('jfrogResearchSeverityReason-name-1')
 			expect(reasonOneElement).toBeInTheDocument()
@@ -60,7 +60,7 @@ describe('PageHolder component', () => {
 		test('Renders applicability reason description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath} />)
 			// Assert
 			const shortDescriptionElement = screen.getByText('applicable reason')
 			expect(shortDescriptionElement).toBeInTheDocument()
@@ -69,7 +69,7 @@ describe('PageHolder component', () => {
 		test('Renders search target description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath} />)
 			// Assert
 			const shortDescriptionElement = screen.getByText('search target')
 			expect(shortDescriptionElement).toBeInTheDocument()
@@ -78,7 +78,7 @@ describe('PageHolder component', () => {
 		test('Renders evidence description', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.ContextualAnalysis} data={dependencyPath} />)
 			// Assert
 			const shortDescriptionElement = screen.getByText('search target')
 			expect(shortDescriptionElement).toBeInTheDocument()
@@ -89,7 +89,7 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Score', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />)
 			// Assert
 			let scoreElement = screen.getByText('Base Score 4.0', { exact: false })
 			expect(scoreElement).toBeInTheDocument()
@@ -100,7 +100,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Vector AV element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Attack Vector (AV): Network')
@@ -110,7 +112,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Vector AC element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Access Complexity (AC): Low')
@@ -120,7 +124,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Vector Au element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Authentication (Au): Single')
@@ -130,7 +136,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Vector C element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Confidentiality Impact (C): None')
@@ -140,7 +148,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Vector I element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Integrity (I): None')
@@ -150,7 +160,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V2 Vector A element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Availability (A): Partial')
@@ -160,7 +172,7 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Score', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />)
 			// Assert
 			let scoreElement = screen.getByText('Base Score 6.5', { exact: false })
 			expect(scoreElement).toBeInTheDocument()
@@ -171,7 +183,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Attack AV element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Attack Vector (AV): Network')
@@ -181,7 +195,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector AC element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Attack Complexity (AC): Low')
@@ -191,7 +207,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector PR element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Privileges Required (PR): Low')
@@ -200,7 +218,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector UI element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('User Interaction (UI): None')
@@ -210,7 +230,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector S element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Scope (S): Unchanged')
@@ -220,7 +242,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector C element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Confidentiality (C): None')
@@ -230,7 +254,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector I element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Integrity (I): Low')
@@ -240,7 +266,9 @@ describe('PageHolder component', () => {
 		test('Renders cvss V3 Vector AV element', () => {
 			// Arrange
 			const dependencyPath: IDependencyPage = getFakeDependencyPage()
-			const { getByText } = render(<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath}/>)
+			const { getByText } = render(
+				<PageHolder activeTab={ActiveTab.PublicSources} data={dependencyPath} />
+			)
 			// Assert
 			const getByTextWithMarkup = withMarkup(getByText)
 			const vectorElementValue = getByTextWithMarkup('Attack Vector (AV): High')

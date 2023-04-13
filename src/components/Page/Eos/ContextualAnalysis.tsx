@@ -12,22 +12,22 @@ export interface Props {
 export default function ContextualAnalysis(props: Props): JSX.Element {
 	return (
 		<>
-			{props.foundText &&
-			<Wrapper headline="WHAT WAS FOUND">
-				<div className={css.container}>
-					<div className={css.text}>
-						{props.foundText}
+			{props.foundText && (
+				<Wrapper headline="WHAT WAS FOUND">
+					<div className={css.container}>
+						<div className={css.text}>{props.foundText}</div>
 					</div>
-				</div>
-			</Wrapper>}
-			{props.analysisSteps && props.analysisSteps.length > 0 &&
-			<Wrapper headline="DATA FLOW ANALYSIS">
-				<div>
-					<List>
-						<AnalysisStepsListElement items={props.analysisSteps}/>
-					</List>
-				</div>
-			</Wrapper>}
+				</Wrapper>
+			)}
+			{props.analysisSteps && props.analysisSteps.length > 0 && (
+				<Wrapper headline="DATA FLOW ANALYSIS">
+					<div>
+						<List>
+							<AnalysisStepsListElement items={props.analysisSteps} />
+						</List>
+					</div>
+				</Wrapper>
+			)}
 		</>
 	)
 }

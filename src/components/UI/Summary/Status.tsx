@@ -2,7 +2,7 @@ import Row from '../Row/Row'
 import css from './Status.module.css'
 
 interface Props {
-    status: string
+	status: string
 }
 
 export default function Status(props: Props): JSX.Element {

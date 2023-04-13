@@ -1,7 +1,7 @@
 import css from './Filter.module.css'
 export interface Props {
-  filter: string
-  setFilter: (e: string) => void
+	filter: string
+	setFilter: (e: string) => void
 }
 
 export default function Filter(props: Props): JSX.Element {
@@ -17,6 +17,7 @@ export default function Filter(props: Props): JSX.Element {
 			type="text"
 			placeholder="Filter nodes..."
 			value={props.filter}
-			onChange={typeHandler}/>
+			onChange={typeHandler}
+		/>
 	)
 }

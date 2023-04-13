@@ -6,8 +6,5 @@ export interface Props {
 }
 
 export default function ImpactGraph(props: Props): JSX.Element {
-	return (
-		<TreeContainer
-			root={props.treeNode}/>
-	)
+	return <TreeContainer root={props.treeNode} />
 }

@@ -16,18 +16,20 @@ export interface Props {
 function IaC(props: Props): JSX.Element {
 	return (
 		<div className={css.Container}>
-			<Header
-				Severity={props.data.severity}
-				text={props.data.header}
-				isResearch={false}/>
+			<Header Severity={props.data.severity} text={props.data.header} isResearch={false} />
 			<Summary showAll expandButton={false}>
-				<Vulnerability location={`${props.data.location.file}`}/>
-				<Severity severity={props.data.severity}/>
-				<VulnerabilityLine line={`${props.data.location.row}`}/>
-				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation}/>}
+				<Vulnerability location={`${props.data.location.file}`} />
+				<Severity severity={props.data.severity} />
+				<VulnerabilityLine line={`${props.data.location.row}`} />
+				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation} />}
 			</Summary>
-			<Collapse header="Description" text={props.data.description} id="description"/>
-			<Findings snippet={props.data.finding?.snippet} happen={props.data.finding?.happen} meaning={props.data.finding?.meaning} do={props.data.finding?.do}/>
+			<Collapse header="Description" text={props.data.description} id="description" />
+			<Findings
+				snippet={props.data.finding?.snippet}
+				happen={props.data.finding?.happen}
+				meaning={props.data.finding?.meaning}
+				do={props.data.finding?.do}
+			/>
 		</div>
 	)
 }

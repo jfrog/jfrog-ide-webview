@@ -20,20 +20,20 @@ export default function Research(props: Props): JSX.Element {
 				</Wrapper>
 			)}
 			<Wrapper headline="DETAILS">
-				<MarkDown text={props.data.fullDescription}/>
+				<MarkDown text={props.data.fullDescription} />
 			</Wrapper>
 			{props.data.jfrogResearchSeverityReason && (
 				<Wrapper headline="JFROG RESEARCH SEVERITY REASONS">
 					<div className={css.container}>
 						{props.data.jfrogResearchSeverityReason
-						// eslint-disable-next-line @typescript-eslint/no-unused-vars
-							.sort((reasonA, reasonB) => reasonA.isPositive ? 1 : -1)
+							// eslint-disable-next-line @typescript-eslint/no-unused-vars
+							.sort((reasonA, reasonB) => (reasonA.isPositive ? 1 : -1))
 							.map((reason, i) => (
 								<div key={i}>
 									<h4 className={reason.isPositive ? css.positiveReason : css.negativeReason}>
 										{reason.name}
 									</h4>
-									{reason.description && <MarkDown text={reason.description}/>}
+									{reason.description && <MarkDown text={reason.description} />}
 								</div>
 							))}
 					</div>

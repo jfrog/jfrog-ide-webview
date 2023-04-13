@@ -16,12 +16,13 @@ export default function Dependency(props: Props): JSX.Element {
 			<Header
 				Severity={props.data.severity}
 				text={props.data.cve?.id ? props.data.cve.id : props.data.id}
-				isResearch={props.data.extendedInformation !== undefined}/>
-			{props.data.extendedInformation && <Edited date={props.data.edited}/>}
+				isResearch={props.data.extendedInformation !== undefined}
+			/>
+			{props.data.extendedInformation && <Edited date={props.data.edited} />}
 			<Summary expandButton>
-				<CveVulnerability data={props.data}/>
+				<CveVulnerability data={props.data} />
 			</Summary>
-			<Navigator data={props.data}/>
+			<Navigator data={props.data} />
 		</div>
 	)
 }

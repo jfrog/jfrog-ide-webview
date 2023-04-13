@@ -15,23 +15,25 @@ export default function MarkDown(props: Props): JSX.Element {
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
 				code({ inline, className, children, style, ...props }) {
 					const match = /language-(\w+)/.exec(className ?? css.text)
-					return !inline && match ?
-						(
-							<SyntaxHighlighter
-								style={vscDarkPlus}
-								className={css.text}
-								language={match[1]}
-								PreTag="div"
-								{...props}>{String(children).replace(/\n\r$/, '')}
-							</SyntaxHighlighter>
-						) :
-						(
-							<code className={className} {...props}>
-								{children}
-							</code>
-						)
+					return !inline && match ? (
+						<SyntaxHighlighter
+							style={vscDarkPlus}
+							className={css.text}
+							language={match[1]}
+							PreTag="div"
+							{...props}
+						>
+							{String(children).replace(/\n\r$/, '')}
+						</SyntaxHighlighter>
+					) : (
+						<code className={className} {...props}>
+							{children}
+						</code>
+					)
 				}
-			}}>{props.text}
+			}}
+		>
+			{props.text}
 		</ReactMarkdown>
 	)
 }

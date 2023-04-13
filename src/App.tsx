@@ -12,7 +12,9 @@ import IaC from './components/Page/IaC/IaC'
  * The main page on which the Webview will be drawn based on the incoming request page type.
  */
 function App(): JSX.Element {
-	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>({} as IDependencyPage | IEosPage)
+	const [data, setDependencyData] = useState<IDependencyPage | IEosPage | IIaCPage>(
+		{} as IDependencyPage | IEosPage
+	)
 	let page
 
 	window.addEventListener('message', event => {
@@ -21,13 +23,13 @@ function App(): JSX.Element {
 
 	switch (data.pageType) {
 		case PageType.Dependency:
-			page = <Dependency data={data}/>
+			page = <Dependency data={data} />
 			break
 		case PageType.Eos:
-			page = <Eos data={data}/>
+			page = <Eos data={data} />
 			break
 		case PageType.IaC:
-			page = <IaC data={data}/>
+			page = <IaC data={data} />
 			break
 		default:
 			page = <>Nothing to show</>

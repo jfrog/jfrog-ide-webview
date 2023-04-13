@@ -19,15 +19,18 @@ export default function Eos(props: Props): JSX.Element {
 			<Header
 				Severity={props.data.severity ? props.data.severity : ISeverity.Unknown}
 				text={props.data.header}
-				isResearch={false}/>
+				isResearch={false}
+			/>
 			<Summary expandButton={false}>
-				<Vulnerability location={`${props.data.location.file}`}/>
-				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown}/>
-				<VulnerabilityLine line={`${props.data.location.row}`}/>
-
+				<Vulnerability location={`${props.data.location.file}`} />
+				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown} />
+				<VulnerabilityLine line={`${props.data.location.row}`} />
 			</Summary>
-			<Research description={props.data.description} remediation={props.data.remediation}/>
-			<ContextualAnalysis foundText={props.data.foundText} analysisSteps={props.data.analysisStep}/>
+			<Research description={props.data.description} remediation={props.data.remediation} />
+			<ContextualAnalysis
+				foundText={props.data.foundText}
+				analysisSteps={props.data.analysisStep}
+			/>
 		</div>
 	)
 }

@@ -21,21 +21,20 @@ interface Props {
 export default function PageHolder(props: Props): JSX.Element {
 	const [treeNode, setTreeNode] = useState<TreeNode>({} as TreeNode)
 	let pageHolder
-	useEffect(() =>	{
+	useEffect(() => {
 		setTreeNode(toTreeNode(props.data.impactGraph))
 	}, [props.data.impactGraph])
 
 	switch (props.activeTab) {
 		case ActiveTab.Research:
 			if (props.data.extendedInformation) {
-				pageHolder = (
-					<Research data={props.data.extendedInformation}/>)
+				pageHolder = <Research data={props.data.extendedInformation} />
 			}
 
 			break
 		case ActiveTab.ContextualAnalysis:
 			if (props.data.cve?.applicableData) {
-				pageHolder = <ContextualAnalysis data={props.data.cve.applicableData}/>
+				pageHolder = <ContextualAnalysis data={props.data.cve.applicableData} />
 			}
 
 			break
@@ -44,21 +43,23 @@ export default function PageHolder(props: Props): JSX.Element {
 				<PublicSources
 					summary={props.data.summary}
 					cve={props.data.cve}
-					infectedVersions={props.data.infectedVersion}/>
+					infectedVersions={props.data.infectedVersion}
+				/>
 			)
 			break
 		case ActiveTab.ImpactGraph:
-			pageHolder = (<ImpactGraph
-				treeNode={treeNode}/>)
+			pageHolder = <ImpactGraph treeNode={treeNode} />
 			break
 
 		case ActiveTab.Reference:
 			if (props.data.references) {
-				pageHolder = <Reference data={props.data.references}/>
+				pageHolder = <Reference data={props.data.references} />
 			}
 	}
 
 	return (
-		<div key={props.data.id + props.data.component} className={css.container}>{pageHolder}</div>
+		<div key={props.data.id + props.data.component} className={css.container}>
+			{pageHolder}
+		</div>
 	)
 }
