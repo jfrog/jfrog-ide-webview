@@ -2,6 +2,7 @@ import { ISeverity } from '../model/severity'
 import { TreeNode } from '../model/treeNode'
 import { IImpactGraph } from '../model/impactGraph'
 import css from '../components/UI/TreeViewer/TreeViewer.module.css'
+
 export function getSeverityImage(severity: ISeverity): JSX.Element {
 	switch (severity) {
 		case ISeverity.Unknown:
@@ -213,6 +214,7 @@ export function getResearchImg(): JSX.Element {
 }
 
 let globalNodeNumber = 0
+
 export function toTreeNode(impactGraph: IImpactGraph): TreeNode {
 	globalNodeNumber = 0
 	return toTreeNodeHelper(impactGraph)
@@ -220,6 +222,7 @@ export function toTreeNode(impactGraph: IImpactGraph): TreeNode {
 
 function toTreeNodeHelper(impactGraph: IImpactGraph): TreeNode {
 	const node = new TreeNode(`${++globalNodeNumber}-${impactGraph.name}`, impactGraph.name)
+
 	if (impactGraph.children === undefined || impactGraph.children.length === 0) {
 		node.className = css.redNode
 		return node

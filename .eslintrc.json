@@ -242,6 +242,11 @@
 			},
 			{
 				"blankLine": "always",
+				"prev": "*",
+				"next": "block-like"
+			},
+			{
+				"blankLine": "always",
 				"prev": "block-like",
 				"next": "*"
 			}

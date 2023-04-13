@@ -58,8 +58,10 @@ export default function PublicSources(props: Props): JSX.Element {
 
 function createCvssBreakdownV2(vector: string[]): Cvss2 | undefined {
 	const results = new Cvss2()
+
 	for (let index = 1; index < vector.length; index++) {
 		const vectorElement = vector[index].split(':')
+
 		if (vectorElement.length !== 2) {
 			return undefined
 		}
@@ -101,8 +103,10 @@ function createCvssBreakdownV2(vector: string[]): Cvss2 | undefined {
 
 function createCvssBreakdownV3(vector: string[]): Cvss3 | undefined {
 	const results = new Cvss3()
+
 	for (let index = 1; index < vector.length; index++) {
 		const vectorElement = vector[index].split(':')
+
 		if (vectorElement.length !== 2) {
 			return undefined
 		}
@@ -151,6 +155,7 @@ function createCvssBreakdownV3(vector: string[]): Cvss3 | undefined {
 function createCvssBreakdownV3View(csvv: string, score: string): JSX.Element {
 	const csvvArray = csvv.split('/')
 	const csvv3Breakdown = createCvssBreakdownV3(csvvArray)
+
 	if (!csvv3Breakdown) {
 		return defaultBreakdownView(csvv, score)
 	}
@@ -176,6 +181,7 @@ function createCvssBreakdownV3View(csvv: string, score: string): JSX.Element {
 function createCvssBreakdownV2View(csvv: string, score: string): JSX.Element {
 	const csvvArray = csvv.split('/')
 	const csvv2Breakdown = createCvssBreakdownV2(csvvArray)
+
 	if (!csvv2Breakdown) {
 		return defaultBreakdownView(csvv, score)
 	}

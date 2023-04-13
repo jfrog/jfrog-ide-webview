@@ -51,6 +51,7 @@ export default function PageHolder(props: Props): JSX.Element {
 			pageHolder = (<ImpactGraph
 				treeNode={treeNode}/>)
 			break
+
 		case ActiveTab.Reference:
 			if (props.data.references) {
 				pageHolder = <Reference data={props.data.references}/>

@@ -8,6 +8,7 @@ export interface Props {
 	data: IApplicableDetails
 
 }
+
 export default function ContextualAnalysis(props: Props): JSX.Element {
 	return (
 		<>

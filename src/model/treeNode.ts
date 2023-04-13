@@ -41,6 +41,7 @@ export class TreeNode {
 
 	private updateTreeDimensionOnAddChild(child: TreeNode): void {
 		this._height = Math.max(child._height + 1, this._height)
+
 		if (this._children.length === 1) {
 			this._width = child._width
 		} else {

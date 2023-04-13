@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { IDependencyPage } from '../../../../model/dependencyPage'
 import { IExtendedInformation } from '../../../../model/extendedInformation'
 import { IReference } from '../../../../model/reference'
@@ -17,13 +17,11 @@ export default function Navigator(props: Props): JSX.Element {
 	const tabs: ITab[] = createTabs(props)
 	const defaultTab = tabs.find(tab => !tab.hide)?.tabKey ?? ActiveTab.None
 	const [activeTab, setActiveTab] = useState<ActiveTab>(defaultTab)
+
 	const tabChangeHandler = (index: ActiveTab): void => {
 		setActiveTab(index)
 	}
 
-	useEffect(() => {
-		setActiveTab(tabs.find(tab => !tab.hide)?.tabKey ?? ActiveTab.None)
-	}, [props.data.id, tabs])
 	return (
 		<>
 			<div>

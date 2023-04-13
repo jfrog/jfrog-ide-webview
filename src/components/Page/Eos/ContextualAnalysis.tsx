@@ -7,8 +7,8 @@ import Wrapper from '../../UI/Wrapper/Wrapper'
 export interface Props {
 	foundText?: string
 	analysisSteps?: IAnalysisStep[]
-
 }
+
 export default function ContextualAnalysis(props: Props): JSX.Element {
 	return (
 		<>
