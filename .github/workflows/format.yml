@@ -1,9 +1,9 @@
-name: Lint
+name: Format & Lint
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  format_and_lint:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -20,3 +20,5 @@ jobs:
         run: npm i
       - name: Lint
         run: npm run lint
+      - name: Format
+        run: npm run format
