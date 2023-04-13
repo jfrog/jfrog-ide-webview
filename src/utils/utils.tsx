@@ -221,12 +221,12 @@ export function toTreeNode(impactGraph: IImpactGraph): TreeNode {
 function toTreeNodeHelper(impactGraph: IImpactGraph): TreeNode {
 	const node = new TreeNode(`${++globalNodeNumber}-${impactGraph.name}`, impactGraph.name)
 	if (impactGraph.children === undefined || impactGraph.children.length === 0) {
-		node.ClassName = css.redNode
+		node.className = css.redNode
 		return node
 	}
 
 	impactGraph.children.forEach(child => {
-		node.AddChild(toTreeNodeHelper(child))
+		node.addChild(toTreeNodeHelper(child))
 	})
 	return node
 }

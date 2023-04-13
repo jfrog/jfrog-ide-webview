@@ -13,16 +13,17 @@ export interface Props {
 
 export default function TreeViewer(props: Props): JSX.Element {
 	function getSelectedNodeSubTree(selectedNode: TreeNode): TreeNode | undefined {
-		if (selectedNode.Id === props.activeNode) {
+		if (selectedNode.id === props.activeNode) {
 			return selectedNode
 		}
 
-		if (selectedNode.Children.length) {
+		if (!selectedNode.children.length) {
 			return undefined
 		}
 
-		for (const child of selectedNode.Children) {
+		for (const child of selectedNode.children) {
 			const childJson = getSelectedNodeSubTree(child)
+
 			if (childJson) {
 				return childJson
 			}
@@ -33,22 +34,24 @@ export default function TreeViewer(props: Props): JSX.Element {
 
 	function buildSubTree(root?: TreeNode): TreeNode | undefined {
 		const newChildren: TreeNode[] = []
-		if (!root || root.Children.length === 0) {
+
+		if (!root || root.children.length === 0) {
 			return undefined
 		}
 
-		for (const child of root.Children) {
+		for (const child of root.children) {
 			const subTree = buildSubTree(child)
+
 			if (subTree) {
 				newChildren.push(subTree)
 			}
 		}
 
 		if (newChildren.length > 0) {
-			root.Children = newChildren
+			root.children = newChildren
 		}
 
-		if (newChildren.length > 0 || root.Id.toLowerCase().includes(props.filter.toLowerCase())) {
+		if (newChildren.length > 0 || root.id.toLowerCase().includes(props.filter.toLowerCase())) {
 			return root
 		}
 
@@ -59,6 +62,7 @@ export default function TreeViewer(props: Props): JSX.Element {
 
 	if (props.filter) {
 		const subTree = buildSubTree(root)
+
 		if (subTree) {
 			root = subTree
 		}
@@ -77,16 +81,17 @@ export default function TreeViewer(props: Props): JSX.Element {
 		<main>
 			<AnimatedTree
 				data={root}
-				height={calcWindowHeighth(root.Width) * 0.95}
-				width={calcWindowWidth(root.Height, root.EdgeLength)}
-				margins={{ bottom: 0, left: 5, right: root.LeafNameLength * 7, top: 0 }}
-				keyProp="id"
+				height={calcWindowHeighth(root.width) * 0.95}
+				width={calcWindowWidth(root.height, root.edgeLength)}
+				margins={{ bottom: 0, left: 5, right: root.leafNameLength * 7, top: 0 }}
+				keyProp="_id"
+				labelProp="_name"
 				gProps={{
-					className: `${css.node} `,
+					className: `${css.node}`,
 					onClick: handleClick
 				}}
 				pathProps={{
-					className: `${css.path} ${css.link} `
+					className: `${css.path} ${css.link}`
 				}}
 				textProps={{
 					dy: 3.5

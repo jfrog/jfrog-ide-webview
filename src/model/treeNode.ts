@@ -1,99 +1,99 @@
 export class TreeNode {
-	gProps?: CustomTreeNodeData
+	_gProps?: CustomTreeNodeData
 
-	height = 1
+	_height = 1
 
-	width = 1
+	_width = 1
 
-	edgeLength = 1
+	_edgeLength = 1
 
-	leafNameLength = 1
+	_leafNameLength = 1
 
-	children: TreeNode[] = []
+	_children: TreeNode[] = []
 
-	constructor(private id: string, private name: string) {
-		this.edgeLength = name.length
-		this.leafNameLength = name.length
+	constructor(private _id: string, private _name: string) {
+		this._edgeLength = _name.length
+		this._leafNameLength = _name.length
 	}
 
-	public get Id(): string {
-		return this.id
+	public get id(): string {
+		return this._id
 	}
 
-	public set Id(id: string) {
-		this.id = id
+	public set id(id: string) {
+		this._id = id
 	}
 
-	public get Children(): TreeNode[] {
-		return this.children
+	public get children(): TreeNode[] {
+		return this._children
 	}
 
-	public set Children(children: TreeNode[]) {
-		this.children = children
+	public set children(children: TreeNode[]) {
+		this._children = children
 		this.updateTreeDimensionOnAddChildren()
 	}
 
-	public AddChild(child: TreeNode): void {
-		this.children.push(child)
+	public addChild(child: TreeNode): void {
+		this._children.push(child)
 		this.updateTreeDimensionOnAddChild(child)
 		this.updateNewSubTreeDimension(child)
 	}
 
 	private updateTreeDimensionOnAddChild(child: TreeNode): void {
-		this.height = Math.max(child.height + 1, this.height)
-		if (this.children.length === 1) {
-			this.width = child.width
+		this._height = Math.max(child._height + 1, this._height)
+		if (this._children.length === 1) {
+			this._width = child._width
 		} else {
-			this.width += child.width
+			this._width += child._width
 		}
 	}
 
 	private updateNewSubTreeDimension(child: TreeNode): void {
-		this.edgeLength = Math.max(child.EdgeLength, this.edgeLength)
-		this.leafNameLength = child.LeafNameLength
+		this._edgeLength = Math.max(child.edgeLength, this._edgeLength)
+		this._leafNameLength = child.leafNameLength
 	}
 
-	public set ClassName(className: string) {
-		this.gProps = { className: className }
+	public set className(className: string) {
+		this._gProps = { className: className } as CustomTreeNodeData
 	}
 
-	public get Name(): string {
-		return this.name
+	public get name(): string {
+		return this._name
 	}
 
-	public set Name(name: string) {
-		this.name = name
+	public set name(name: string) {
+		this._name = name
 	}
 
-	public get Height(): number {
-		return this.height
+	public get height(): number {
+		return this._height
 	}
 
-	public get Width(): number {
-		return this.width
+	public get width(): number {
+		return this._width
 	}
 
-	public get GProps(): CustomTreeNodeData {
-		return this.GProps
+	public get gProps(): CustomTreeNodeData | undefined {
+		return this._gProps
 	}
 
-	public get EdgeLength(): number {
-		return this.edgeLength
+	public get edgeLength(): number {
+		return this._edgeLength
 	}
 
-	public get LeafNameLength(): number {
-		return this.leafNameLength
+	public get leafNameLength(): number {
+		return this._leafNameLength
 	}
 
-	public set LeafNameLength(length: number) {
-		this.leafNameLength = length
+	public set leafNameLength(length: number) {
+		this._leafNameLength = length
 	}
 
 	public updateTreeDimensionOnAddChildren(): void {
-		this.height = 1
-		this.width = 0
-		this.edgeLength = this.name.length
-		this.children.forEach(child => {
+		this._height = 1
+		this._width = 0
+		this._edgeLength = this._name.length
+		this._children.forEach(child => {
 			this.updateTreeDimensionOnAddChild(child)
 			this.updateNewSubTreeDimension(child)
 		})
