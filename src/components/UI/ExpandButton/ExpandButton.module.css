@@ -2,20 +2,18 @@
 	display: inline-flex;
 	transform: rotate(180deg);
 	transition: transform 800ms ease;
-	margin-right: 5px;
 }
 
 .arrowUp {
 	display: inline-flex;
-	margin-right: 5px;
 	transition: transform 800ms ease;
 }
 
 .text {
 	color: #fff;
+	margin-left: 7px;
 }
 
 .btn {
 	cursor: pointer;
-	margin-top: 7px;
 }

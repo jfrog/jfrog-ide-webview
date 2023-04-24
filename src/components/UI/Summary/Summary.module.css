@@ -24,3 +24,8 @@ ul {
 	list-style-type: none;
 	padding: 0;
 }
+
+.buttonContainer {
+	margin-top: 7px;
+	display: inline-flex;
+}

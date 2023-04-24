@@ -19,11 +19,12 @@ export default function Summary(props: Props): JSX.Element {
 			</div>
 			{props.expandButton && !props.showAll && (
 				<label
+					className={css.buttonContainer}
 					onClick={(): void => {
 						setExpanded(prev => !prev)
 					}}
 				>
-					<ExpandButton isExpand={expanded} />
+					<ExpandButton isExpand={expanded} showText />
 				</label>
 			)}
 		</div>

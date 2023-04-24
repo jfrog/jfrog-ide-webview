@@ -1,8 +1,7 @@
 import css from './Collapse.module.css'
 import { useState } from 'react'
-import ArrowUp from '../ArrowUp/ArrowUp'
-import ArrowDown from '../ArrowDown/ArrowDown'
 import ReactMarkdown from 'react-markdown'
+import ExpandButton from '../ExpandButton/ExpandButton'
 
 export interface Props {
 	id: string
@@ -24,7 +23,7 @@ export function Collapse(props: Props): JSX.Element {
 				}}
 			>
 				<span className={css.collapseHeader}>{props.header}</span>
-				{collapse ? <ArrowUp /> : <ArrowDown />}
+				<ExpandButton isExpand={collapse} />
 			</div>
 			<div style={collapse ? close : open} className={css.collapseContent}>
 				{props.markdown && (
