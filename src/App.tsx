@@ -5,9 +5,9 @@ import { PageType } from './model/pageType'
 import { useState } from 'react'
 import Eos from './components/Page/Eos/Eos'
 import { IEosPage } from './model/EosPage'
-import { IIaCPage } from './model/IaCPage'
+import { IIaCPage } from './model/iacPage'
 import IaC from './components/Page/IaC/IaC'
-import { ISecretsPage } from './model/SecretsPage'
+import { ISecretsPage } from './model/secretsPage'
 import Secrets from './components/Page/Secrets/Secrets'
 
 /**

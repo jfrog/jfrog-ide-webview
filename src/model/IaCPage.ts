@@ -9,9 +9,9 @@ export interface IIaCPage {
 	abbreviation?: string
 	location: IAnalysisStep
 	description: string
-	finding?: IFindings
+	finding?: IIacFindings
 }
-export interface IFindings {
+export interface IIacFindings {
 	snippet?: string
 	meaning?: string
 	happen?: string

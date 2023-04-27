@@ -1,6 +1,6 @@
 import css from './IaC.module.css'
 import Header from '../../UI/Header/Header'
-import { IIaCPage } from '../../../model/IaCPage'
+import { IIaCPage } from '../../../model/iacPage'
 import Summary from '../../UI/Summary/Summary'
 import Severity from '../../UI/Summary/Severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'

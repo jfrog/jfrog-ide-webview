@@ -5,7 +5,7 @@ import Severity from '../../UI/Summary/Severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
 import Abbreviation from '../../UI/Summary/Abbreviation'
 import Findings from '../../UI/Findings/Findings'
-import { ISecretsPage } from '../../../model/SecretsPage'
+import { ISecretsPage } from '../../../model/secretsPage'
 import { Collapse } from '../../UI/Collapse/Collapse'
 
 export interface Props {

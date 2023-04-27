@@ -9,9 +9,9 @@ export interface ISecretsPage {
 	abbreviation?: string
 	location: IAnalysisStep
 	description: string
-	finding?: IFindings
+	finding?: ISecretFindings
 }
-export interface IFindings {
+export interface ISecretFindings {
 	snippet?: string
 	meaning?: string
 	happen?: string
