@@ -3,8 +3,8 @@ import Summary from '../../UI/Summary/Summary'
 import Edited from '../../UI/Edited/Edited'
 import Header from '../../UI/Header/Header'
 import Navigator from './Navigator/Navigator'
-import { IDependencyPage } from '../../../model/dependencyPage'
 import CveVulnerability from '../../UI/Summary/CveVulnerability'
+import { IDependencyPage } from '../../../model/webviewPages'
 
 export interface Props {
 	data: IDependencyPage

@@ -5,7 +5,7 @@ import Severity from '../../UI/Summary/Severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
 import Abbreviation from '../../UI/Summary/Abbreviation'
 import Findings from '../../UI/Findings/Findings'
-import { ISecretsPage } from '../../../model/secretsPage'
+import { ISecretsPage } from '../../../model/webviewPages'
 import { Collapse } from '../../UI/Collapse/Collapse'
 
 export interface Props {
@@ -17,7 +17,7 @@ function Secrets(props: Props): JSX.Element {
 		<div className={css.Container}>
 			<Header Severity={props.data.severity} text={props.data.header} isResearch={false} />
 			<Summary showAll expandButton={false}>
-				<Vulnerability location={`${props.data.location.file}: ${props.data.location.row}`} />
+				<Vulnerability location={`${props.data.location.file}: ${props.data.location.startRow}`} />
 				<Severity severity={props.data.severity} />
 				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation} />}
 			</Summary>

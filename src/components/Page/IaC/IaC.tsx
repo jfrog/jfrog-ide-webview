@@ -1,6 +1,6 @@
 import css from './IaC.module.css'
 import Header from '../../UI/Header/Header'
-import { IIaCPage } from '../../../model/iacPage'
+import { IIaCPage } from '../../../model/webviewPages'
 import Summary from '../../UI/Summary/Summary'
 import Severity from '../../UI/Summary/Severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
@@ -17,7 +17,7 @@ function IaC(props: Props): JSX.Element {
 		<div className={css.Container}>
 			<Header Severity={props.data.severity} text={props.data.header} isResearch={false} />
 			<Summary showAll expandButton={false}>
-				<Vulnerability location={`${props.data.location.file}: ${props.data.location.row}`} />
+				<Vulnerability location={`${props.data.location.file}: ${props.data.location.startRow}`} />
 				<Severity severity={props.data.severity} />
 				{props.data.abbreviation && <Abbreviation abbreviation={props.data.abbreviation} />}
 			</Summary>

@@ -2,13 +2,13 @@ import ContextualAnalysis from './page/ContextualAnalysis'
 import Reference from './page/Reference'
 import Research from './page/Research'
 import css from './Page.module.css'
-import { IDependencyPage } from '../../../../model/dependencyPage'
 import ImpactGraph from './page/ImpactGraph'
 import PublicSources from './page/PublicSources'
 import { useState, useEffect } from 'react'
 import { ActiveTab } from '../../../../model/tab'
 import { TreeNode } from '../../../../model/treeNode'
 import { toTreeNode } from '../../../../utils/utils'
+import { IDependencyPage } from '../../../../model/webviewPages'
 
 interface Props {
 	activeTab: ActiveTab

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import { ActiveTab } from '../../../../model'
 import Tab from './Tab'
+import { ActiveTab } from '../../../../model/tab'
 describe('Tab component', () => {
 	test('Renders three tabs', () => {
 		const FirstTab = 'First-Tab'

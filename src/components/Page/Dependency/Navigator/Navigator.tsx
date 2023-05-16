@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { IDependencyPage } from '../../../../model/dependencyPage'
 import { IExtendedInformation } from '../../../../model/extendedInformation'
 import { IReference } from '../../../../model/reference'
 import { ActiveTab, ITab } from '../../../../model/tab'
 import PageHolder from './PageHolder'
 import Tab from './Tab'
+import { IDependencyPage } from '../../../../model/webviewPages'
 
 export interface Props {
 	data: IDependencyPage

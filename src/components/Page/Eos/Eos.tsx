@@ -1,13 +1,13 @@
 import css from './Eos.module.css'
 import Summary from '../../UI/Summary/Summary'
 import Header from '../../UI/Header/Header'
-import { IEosPage } from '../../../model/EosPage'
 import { ISeverity } from '../../../model/severity'
 import Vulnerability from '../../UI/Summary/Vulnerability'
 import VulnerabilityLine from '../../UI/Summary/VulnerabilityLine'
 import Research from './Research'
 import ContextualAnalysis from './ContextualAnalysis'
 import Severity from '../../UI/Summary/Severity'
+import { IEosPage } from '../../../model/webviewPages'
 
 export interface Props {
 	data: IEosPage
@@ -24,7 +24,7 @@ export default function Eos(props: Props): JSX.Element {
 			<Summary expandButton={false}>
 				<Vulnerability location={`${props.data.location.file}`} />
 				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown} />
-				<VulnerabilityLine line={`${props.data.location.row}`} />
+				<VulnerabilityLine line={`${props.data.location.startRow}`} />
 			</Summary>
 			<Research description={props.data.description} remediation={props.data.remediation} />
 			<ContextualAnalysis
