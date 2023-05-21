@@ -48,32 +48,6 @@ To view a specific page example, choose one of the following options and enter t
 
 <details>
 
-<summary>Secret Page</summary>
-
-```javascript
-window.postMessage({
-  "type": "SHOW_DATA",
-  "pageData": {
-    "header": "SQL Injection",
-    "pageType": "SECRETS",
-    "severity": "Critical",
-    "location": "EXP-1527-00001",
-  'description': '\n SQL injection \n    ',
-    "abbreviation": "RES.KEY.API.ENCRYPT",
-      'finding': {
-   'snippet': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ',
-   'meaning': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ',
-   'happen': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ',
-   'do': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud '
-  }
-  }
-}, '*');
-```
-
-</details>
-
-<details>
-
 <summary>Dependency Page</summary>
 
 ```javascript
@@ -146,6 +120,63 @@ window.postMessage({
  }
 }
 }, '*');
+```
+
+</details>
+
+<details>
+
+<summary>Secret Page</summary>
+
+```javascript
+window.postMessage({
+  "type": "SHOW_DATA",
+  "pageData": {
+    "header": "SQL Injection",
+    "pageType": "SECRETS",
+    "severity": "Critical",
+    "location": "EXP-1527-00001",
+  'description': '\n SQL injection \n    ',
+    "abbreviation": "RES.KEY.API.ENCRYPT",
+      'finding': {
+   'snippet': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ',
+   'meaning': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ',
+   'happen': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ',
+   'do': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud '
+  }
+  }
+}, '*');
+```
+
+</details>
+
+<details>
+
+<summary>IaC Page</summary>
+
+```javascript
+window.postMessage({
+"type": "SHOW_DATA",
+  "pageData": {
+  'header': 'SQL Injection',
+  'pageType': 'IAC',
+  'severity': 'Critical',
+  'id': 'EXP-1527-00001',
+  'abbreviation': 'RES.KEY.API.ENCRYPT',
+  'location': {
+   'file': '/Users/assafa/Documents/code/flask-webgoat/flask_webgoat/__init__.py',
+   'row': 14,
+   'column': 15
+  },
+  'description': '\n SQL injection is a type of vulnerability that allows an attacker to execute arbitrary SQL\n    commands on a database.\n    This can allow the attacker to gain access to sensitive information, such as user credentials\n    or sensitive data, or to perform unauthorized actions, such as deleting or modifying data.\n\n    In this query we check if a user input can flow un-sanitized into the DB in order to do this.\n    ',
+  'finding': {
+   'snippet': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+   'meaning': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+   'happen': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+   'do': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  }
+  }
+ }, '*');
 ```
 
 </details>
