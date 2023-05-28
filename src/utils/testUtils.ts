@@ -7,11 +7,11 @@ export const getByTextAcrossMultipleElements = (
 	text: string
 ): HTMLElement => getByText((content, element) => element?.textContent === text)
 
-export const sendWebviewPage = (pageData: IPageData): MessageEvent => {
+export const sendWebviewPage = async (pageData: IPageData): Promise<MessageEvent> => {
 	const messageEvent = new MessageEvent('message', {
 		data: pageData
 	})
-	act(() => {
+	await act(() => {
 		window.dispatchEvent(messageEvent)
 	})
 	return messageEvent

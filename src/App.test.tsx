@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import App from './App'
 import { webviewEventType } from './api/webviewEvent'
 import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from './model/webviewPages'
@@ -25,12 +25,10 @@ describe('App component', () => {
 				edited: '0'
 			} as IDependencyPage
 		}
-		sendWebviewPage(pageData)
+		await sendWebviewPage(pageData)
 
 		// Assert that the Dependency component is rendered
-		await waitFor(() => {
-			expect(screen.getAllByText('Dependency-ID')).toHaveLength(2)
-		})
+		expect(screen.getAllByText('Dependency-ID')).toHaveLength(2)
 	})
 
 	test('renders the Eos page when the page type is "Eos"', async () => {
@@ -45,12 +43,10 @@ describe('App component', () => {
 				location: { file: 'file' } as IAnalysisStep
 			} as IEosPage
 		}
-		sendWebviewPage(pageData)
+		await sendWebviewPage(pageData)
 
 		// Assert that the Eos component is rendered
-		await waitFor(() => {
-			expect(screen.getByText('Header-eos')).toBeInTheDocument()
-		})
+		expect(screen.getByText('Header-eos')).toBeInTheDocument()
 	})
 
 	test('renders the IaC page when the page type is "IaC"', async () => {
@@ -67,12 +63,10 @@ describe('App component', () => {
 				description: 'description'
 			} as IIaCPage
 		}
-		sendWebviewPage(pageData)
+		await sendWebviewPage(pageData)
 
 		// Assert that the Iac component is rendered.
-		await waitFor(() => {
-			expect(screen.getByText('Header-iac')).toBeInTheDocument()
-		})
+		expect(screen.getByText('Header-iac')).toBeInTheDocument()
 	})
 
 	test('renders the Secrets page when the page type is "Secrets"', async () => {
@@ -89,12 +83,10 @@ describe('App component', () => {
 				description: 'description'
 			} as ISecretsPage
 		}
-		sendWebviewPage(pageData)
+		await sendWebviewPage(pageData)
 
 		// Assert that the Dependency component is rendered.
-		await waitFor(() => {
-			expect(screen.getByText('Header-secret')).toBeInTheDocument()
-		})
+		expect(screen.getByText('Header-secret')).toBeInTheDocument()
 	})
 
 	test('renders "Nothing to show" when the page type is not recognized', () => {

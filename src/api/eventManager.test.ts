@@ -14,18 +14,18 @@ describe('EventManager util', () => {
 		jest.restoreAllMocks()
 	})
 
-	test('sets the event receiver and handles ShowPage event', () => {
+	test('sets the event receiver and handles ShowPage event', async () => {
 		const pageData = {
 			type: webviewEventType.ShowPage,
 			pageData: { title: 'Test Page' }
 		}
-		sendWebviewPage(pageData)
+		await sendWebviewPage(pageData)
 
 		expect(setPageStateMock).toHaveBeenCalledTimes(1)
 		expect(setPageStateMock).toHaveBeenCalledWith({ title: 'Test Page' })
 	})
 
-	test('sets the event receiver and handles the SetEmitter event with the correct data', () => {
+	test('sets the event receiver and handles the SetEmitter event with the correct data', async () => {
 		const consoleLogSpy = jest.spyOn(global.console, 'warn')
 		const emitterFunc = 'return console.warn'
 		const setEmitterEvent = {
@@ -33,7 +33,7 @@ describe('EventManager util', () => {
 			emitterFunc
 		} as IPageData
 
-		sendWebviewPage(setEmitterEvent)
+		await sendWebviewPage(setEmitterEvent)
 
 		const data = {
 			file: 'file-example',
