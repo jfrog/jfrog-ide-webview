@@ -1,5 +1,6 @@
 import { Matcher, SelectorMatcherOptions } from '@testing-library/react'
 import { webviewEventType } from '../api/webviewEvent'
+import { act } from 'react-dom/test-utils'
 
 export const getByTextAcrossMultipleElements = (
 	getByText: (text: Matcher, options?: SelectorMatcherOptions | undefined) => HTMLElement,
@@ -10,7 +11,9 @@ export const sendWebviewPage = (pageData: IPageData): MessageEvent => {
 	const messageEvent = new MessageEvent('message', {
 		data: pageData
 	})
-	window.dispatchEvent(messageEvent)
+	act(() => {
+		window.dispatchEvent(messageEvent)
+	})
 	return messageEvent
 }
 
