@@ -11,7 +11,11 @@ import {
 	AuthenticationValueTranslator,
 	ImpactValueTranslator,
 	AuthenticationValue,
-	ImpactValue
+	ImpactValue,
+	GeneralCvss3Translator,
+	UserInteractionTranslator,
+	AttackVectorTranslator,
+	CvssScopTranslator
 } from './cvss'
 
 describe('Cvss3 model', () => {
@@ -84,7 +88,7 @@ describe('Cvss3 model', () => {
 		expect(AccessComplexityValue.High).toBe('High')
 	})
 
-	describe('AccessVectorTranslator', () => {
+	describe('CVSS Translator Functions', () => {
 		test('translates string to AccessVectorValue correctly', () => {
 			expect(AccessVectorTranslator('L')).toBe(AccessVectorValue.Local)
 			expect(AccessVectorTranslator('A')).toBe(AccessVectorValue.AdjacentNetwork)
@@ -94,9 +98,7 @@ describe('Cvss3 model', () => {
 		test('returns undefined for unknown string', () => {
 			expect(AccessVectorTranslator('X')).toBeUndefined()
 		})
-	})
 
-	describe('AccessComplexityValueTranslator', () => {
 		test('translates string to AccessComplexityValue correctly', () => {
 			expect(AccessComplexityValueTranslator('L')).toBe(AccessComplexityValue.Low)
 			expect(AccessComplexityValueTranslator('M')).toBe(AccessComplexityValue.Medium)
@@ -106,9 +108,7 @@ describe('Cvss3 model', () => {
 		test('returns undefined for unknown string', () => {
 			expect(AccessComplexityValueTranslator('X')).toBeUndefined()
 		})
-	})
 
-	describe('AuthenticationValueTranslator', () => {
 		test('translates string to AuthenticationValue correctly', () => {
 			expect(AuthenticationValueTranslator('M')).toBe(AuthenticationValue.Multiple)
 			expect(AuthenticationValueTranslator('S')).toBe(AuthenticationValue.Single)
@@ -120,15 +120,44 @@ describe('Cvss3 model', () => {
 		})
 	})
 
-	describe('ImpactValueTranslator', () => {
-		test('translates string to ImpactValue correctly', () => {
-			expect(ImpactValueTranslator('N')).toBe(ImpactValue.None)
-			expect(ImpactValueTranslator('P')).toBe(ImpactValue.Partial)
-			expect(ImpactValueTranslator('C')).toBe(ImpactValue.Complete)
-		})
+	test('translates string to ImpactValue correctly', () => {
+		expect(ImpactValueTranslator('N')).toBe(ImpactValue.None)
+		expect(ImpactValueTranslator('P')).toBe(ImpactValue.Partial)
+		expect(ImpactValueTranslator('C')).toBe(ImpactValue.Complete)
+	})
 
-		test('returns undefined for unknown string', () => {
-			expect(ImpactValueTranslator('X')).toBeUndefined()
-		})
+	test('returns undefined for unknown string', () => {
+		expect(ImpactValueTranslator('X')).toBeUndefined()
+	})
+
+	test('GeneralCvss3Translator translates values correctly', () => {
+		expect(GeneralCvss3Translator('N')).toBe(GeneralCvss3Value.None)
+		expect(GeneralCvss3Translator('L')).toBe(GeneralCvss3Value.Low)
+		expect(GeneralCvss3Translator('H')).toBe(GeneralCvss3Value.High)
+		expect(GeneralCvss3Translator('')).toBeUndefined()
+		expect(GeneralCvss3Translator('Invalid')).toBeUndefined()
+	})
+
+	test('UserInteractionTranslator translates values correctly', () => {
+		expect(UserInteractionTranslator('N')).toBe(UserInteractionValue.None)
+		expect(UserInteractionTranslator('R')).toBe(UserInteractionValue.Required)
+		expect(UserInteractionTranslator('')).toBeUndefined()
+		expect(UserInteractionTranslator('Invalid')).toBeUndefined()
+	})
+
+	test('AttackVectorTranslator translates values correctly', () => {
+		expect(AttackVectorTranslator('N')).toBe(AttackVectorValue.Network)
+		expect(AttackVectorTranslator('A')).toBe(AttackVectorValue.Adjacent)
+		expect(AttackVectorTranslator('L')).toBe(AttackVectorValue.Local)
+		expect(AttackVectorTranslator('P')).toBe(AttackVectorValue.Physical)
+		expect(AttackVectorTranslator('')).toBeUndefined()
+		expect(AttackVectorTranslator('Invalid')).toBeUndefined()
+	})
+
+	test('CvssScopTranslator translates values correctly', () => {
+		expect(CvssScopTranslator('U')).toBe(CvssScop.Unchanged)
+		expect(CvssScopTranslator('C')).toBe(CvssScop.Changed)
+		expect(CvssScopTranslator('')).toBeUndefined()
+		expect(CvssScopTranslator('Invalid')).toBeUndefined()
 	})
 })

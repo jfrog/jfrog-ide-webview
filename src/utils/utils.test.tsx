@@ -1,5 +1,5 @@
 import { CustomTreeNodeData, TreeNode } from '../model/treeNode'
-import { toTreeNode } from './utils'
+import { getApplicabilityImg, toTreeNode } from './utils'
 
 describe('Utils', () => {
 	test('should convert the impact graph to a tree node with 0 children', () => {
@@ -57,6 +57,18 @@ describe('Utils', () => {
 		expectedRoot.addChild(expectedChild2)
 		const result = toTreeNode(mockImpactGraph)
 		expect(result).toEqual(expectedRoot)
+	})
+
+	test('should return the applicable SVG when isApplicable is true', () => {
+		const isApplicable = true
+		const result = getApplicabilityImg(isApplicable)
+		expect(result.type).toBe('svg')
+	})
+
+	test('should return the non-applicable SVG when isApplicable is false', () => {
+		const isApplicable = false
+		const result = getApplicabilityImg(isApplicable)
+		expect(result.type).toBe('svg')
 	})
 })
 
