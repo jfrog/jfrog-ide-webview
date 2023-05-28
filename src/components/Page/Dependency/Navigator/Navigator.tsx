@@ -36,7 +36,7 @@ const isJFrogResearchHidden = (researchData: IExtendedInformation | undefined): 
 	researchData === undefined
 
 const isReferenceHidden = (references: IReference[] | undefined): boolean =>
-	!!(references?.length === 0)
+	references == undefined || references.length === 0
 
 const isContextualAnalysisHidden = (isApplicable: boolean | undefined): boolean =>
 	isApplicable === undefined || !isApplicable

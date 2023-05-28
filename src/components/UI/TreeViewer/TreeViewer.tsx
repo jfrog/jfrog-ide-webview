@@ -32,12 +32,8 @@ export default function TreeViewer(props: Props): JSX.Element {
 		return undefined
 	}
 
-	function buildSubTree(root?: TreeNode): TreeNode | undefined {
+	function buildSubTree(root: TreeNode): TreeNode | undefined {
 		const newChildren: TreeNode[] = []
-
-		if (!root || root.children.length === 0) {
-			return undefined
-		}
 
 		for (const child of root.children) {
 			const subTree = buildSubTree(child)
@@ -60,7 +56,7 @@ export default function TreeViewer(props: Props): JSX.Element {
 
 	let root = clone(props.activeNode ? getSelectedNodeSubTree(props.root) : props.root)
 
-	if (props.filter) {
+	if (root != undefined && props.filter) {
 		const subTree = buildSubTree(root)
 
 		if (subTree) {
@@ -73,7 +69,7 @@ export default function TreeViewer(props: Props): JSX.Element {
 		props.handleClick(node)
 	}
 
-	if (!root) {
+	if (root == undefined) {
 		return <> </>
 	}
 

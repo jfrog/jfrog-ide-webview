@@ -11,21 +11,24 @@ export interface Props {
 }
 
 export function Collapse(props: Props): JSX.Element {
-	const [collapse, setCollapse] = useState(false)
-	const close = { height: 0 }
-	const open = { height: `${document.getElementById(props.id)?.clientHeight}px` }
+	const close = { height: '0px' }
+	const [collapseStyle, setCollapseStyle] = useState(close)
 	return (
 		<>
 			<div
 				className={css.collapseHeaderWrapper}
 				onClick={(): void => {
-					setCollapse(prev => !prev)
+					setCollapseStyle(prev =>
+						prev.height === '0px'
+							? { height: `${document.getElementById(props.id)?.clientHeight}1px` }
+							: close
+					)
 				}}
 			>
 				<span className={css.collapseHeader}>{props.header}</span>
-				<ExpandButton isExpand={collapse} />
+				<ExpandButton isExpand={collapseStyle.height !== '0px'} />
 			</div>
-			<div style={collapse ? close : open} className={css.collapseContent}>
+			<div style={collapseStyle} className={css.collapseContent}>
 				{props.markdown && (
 					<div id={props.id} className={css.collapseText}>
 						{' '}

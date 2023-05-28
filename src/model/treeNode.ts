@@ -101,6 +101,6 @@ export class TreeNode {
 	}
 }
 
-interface CustomTreeNodeData {
+export interface CustomTreeNodeData {
 	className: string
 }

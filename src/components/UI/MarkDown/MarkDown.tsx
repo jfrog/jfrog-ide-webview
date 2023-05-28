@@ -1,13 +1,13 @@
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus'
-import css from './MarkDown.module.css'
+import css from './Markdown.module.css'
 
 interface Props {
 	text: string
 }
 
-export default function MarkDown(props: Props): JSX.Element {
+export default function Markdown(props: Props): JSX.Element {
 	return (
 		<ReactMarkdown
 			className={css.text}
