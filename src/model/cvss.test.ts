@@ -5,7 +5,13 @@ import {
 	CvssScop,
 	AccessVectorValue,
 	AttackVectorValue,
-	AccessComplexityValue
+	AccessComplexityValue,
+	AccessVectorTranslator,
+	AccessComplexityValueTranslator,
+	AuthenticationValueTranslator,
+	ImpactValueTranslator,
+	AuthenticationValue,
+	ImpactValue
 } from './cvss'
 
 describe('Cvss3 model', () => {
@@ -76,5 +82,53 @@ describe('Cvss3 model', () => {
 		expect(AccessComplexityValue.Low).toBe('Low')
 		expect(AccessComplexityValue.Medium).toBe('Medium')
 		expect(AccessComplexityValue.High).toBe('High')
+	})
+
+	describe('AccessVectorTranslator', () => {
+		test('translates string to AccessVectorValue correctly', () => {
+			expect(AccessVectorTranslator('L')).toBe(AccessVectorValue.Local)
+			expect(AccessVectorTranslator('A')).toBe(AccessVectorValue.AdjacentNetwork)
+			expect(AccessVectorTranslator('N')).toBe(AccessVectorValue.Network)
+		})
+
+		test('returns undefined for unknown string', () => {
+			expect(AccessVectorTranslator('X')).toBeUndefined()
+		})
+	})
+
+	describe('AccessComplexityValueTranslator', () => {
+		test('translates string to AccessComplexityValue correctly', () => {
+			expect(AccessComplexityValueTranslator('L')).toBe(AccessComplexityValue.Low)
+			expect(AccessComplexityValueTranslator('M')).toBe(AccessComplexityValue.Medium)
+			expect(AccessComplexityValueTranslator('H')).toBe(AccessComplexityValue.High)
+		})
+
+		test('returns undefined for unknown string', () => {
+			expect(AccessComplexityValueTranslator('X')).toBeUndefined()
+		})
+	})
+
+	describe('AuthenticationValueTranslator', () => {
+		test('translates string to AuthenticationValue correctly', () => {
+			expect(AuthenticationValueTranslator('M')).toBe(AuthenticationValue.Multiple)
+			expect(AuthenticationValueTranslator('S')).toBe(AuthenticationValue.Single)
+			expect(AuthenticationValueTranslator('N')).toBe(AuthenticationValue.None)
+		})
+
+		test('returns undefined for unknown string', () => {
+			expect(AuthenticationValueTranslator('X')).toBeUndefined()
+		})
+	})
+
+	describe('ImpactValueTranslator', () => {
+		test('translates string to ImpactValue correctly', () => {
+			expect(ImpactValueTranslator('N')).toBe(ImpactValue.None)
+			expect(ImpactValueTranslator('P')).toBe(ImpactValue.Partial)
+			expect(ImpactValueTranslator('C')).toBe(ImpactValue.Complete)
+		})
+
+		test('returns undefined for unknown string', () => {
+			expect(ImpactValueTranslator('X')).toBeUndefined()
+		})
 	})
 })
