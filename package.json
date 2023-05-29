@@ -46,6 +46,9 @@
       "last 1 safari version"
     ]
   },
+  "coveragePathIgnorePatterns": [
+    "src/**/index.*"
+  ],
   "devDependencies": {
     "@rollup/plugin-typescript": "^9.0.2",
     "@testing-library/jest-dom": "^5.16.5",
