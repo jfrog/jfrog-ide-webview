@@ -1,3 +1,4 @@
+import { buildSubTree, getSelectedNodeSubTree } from '../components/UI/TreeViewer/TreeViewer'
 import { TreeNode } from './treeNode'
 
 describe('TreeNode', () => {
@@ -43,5 +44,69 @@ describe('TreeNode', () => {
 		const className = 'custom-class'
 		treeNode.className = className
 		expect(treeNode.gProps).toEqual({ className })
+	})
+
+	const treeNode1: TreeNode = new TreeNode('1', 'Node 1')
+	const treeNode2: TreeNode = new TreeNode('2', 'Node 2')
+	const treeNode3: TreeNode = new TreeNode('3', 'Node 3')
+	const treeNode4: TreeNode = new TreeNode('4', 'Node 4')
+
+	treeNode1.addChild(treeNode2)
+	treeNode2.addChild(treeNode3)
+	treeNode2.addChild(treeNode4)
+
+	describe('getSelectedNodeSubTree', () => {
+		const selectedNode: TreeNode = treeNode1
+		test('returns the selected node if its ID matches the active node', () => {
+			const activeNode = '1'
+			const result = getSelectedNodeSubTree(selectedNode, activeNode)
+			expect(result).toBe(selectedNode)
+		})
+
+		test('returns undefined if the selected node has no children', () => {
+			const activeNode = '5'
+			const result = getSelectedNodeSubTree(treeNode3, activeNode)
+			expect(result).toBeUndefined()
+		})
+
+		test('returns the selected node subtree if a child matches the active node', () => {
+			const activeNode = '4'
+			const result = getSelectedNodeSubTree(selectedNode, activeNode)
+			expect(result).toBe(treeNode4)
+		})
+
+		test('returns undefined if no node in the subtree matches the active node', () => {
+			const activeNode = '5'
+			const result = getSelectedNodeSubTree(selectedNode, activeNode)
+			expect(result).toBeUndefined()
+		})
+	})
+
+	describe('buildSubTree', () => {
+		const root: TreeNode = treeNode1
+
+		test('returns the root if there is no filter', () => {
+			const result = buildSubTree(root, '')
+			expect(result).toBe(root)
+		})
+
+		test('returns the root if it matches the filter', () => {
+			const result = buildSubTree(root, '1')
+			expect(result).toBe(root)
+		})
+
+		test('returns undefined if the root and its children do not match the filter', () => {
+			const result = buildSubTree(root, '5')
+			expect(result).toBeUndefined()
+		})
+
+		test('returns the root with filtered children if at least one child matches the filter', () => {
+			const result = buildSubTree(root, '3')
+			expect(result).toBe(root)
+			expect(result?.children).toHaveLength(1)
+			expect(result?.children[0]).toBe(treeNode2)
+			expect(result?.children[0].children).toHaveLength(1)
+			expect(result?.children[0].children[0]).toBe(treeNode3)
+		})
 	})
 })

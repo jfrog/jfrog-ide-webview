@@ -12,52 +12,12 @@ export interface Props {
 }
 
 export default function TreeViewer(props: Props): JSX.Element {
-	function getSelectedNodeSubTree(selectedNode: TreeNode): TreeNode | undefined {
-		if (selectedNode.id === props.activeNode) {
-			return selectedNode
-		}
-
-		if (!selectedNode.children.length) {
-			return undefined
-		}
-
-		for (const child of selectedNode.children) {
-			const childJson = getSelectedNodeSubTree(child)
-
-			if (childJson) {
-				return childJson
-			}
-		}
-
-		return undefined
-	}
-
-	function buildSubTree(root: TreeNode): TreeNode | undefined {
-		const newChildren: TreeNode[] = []
-
-		for (const child of root.children) {
-			const subTree = buildSubTree(child)
-
-			if (subTree) {
-				newChildren.push(subTree)
-			}
-		}
-
-		if (newChildren.length > 0) {
-			root.children = newChildren
-		}
-
-		if (newChildren.length > 0 || root.id.toLowerCase().includes(props.filter.toLowerCase())) {
-			return root
-		}
-
-		return undefined
-	}
-
-	let root = clone(props.activeNode ? getSelectedNodeSubTree(props.root) : props.root)
+	let root = clone(
+		props.activeNode ? getSelectedNodeSubTree(props.root, props.activeNode) : props.root
+	)
 
 	if (root != undefined && props.filter) {
-		const subTree = buildSubTree(root)
+		const subTree = buildSubTree(root, props.filter)
 
 		if (subTree) {
 			root = subTree
@@ -98,10 +58,55 @@ export default function TreeViewer(props: Props): JSX.Element {
 	)
 }
 
-const calcWindowWidth = (treeHeight: number, extraMargin: number): number =>
+export const getSelectedNodeSubTree = (
+	selectedNode: TreeNode,
+	activeNode?: string
+): TreeNode | undefined => {
+	if (selectedNode.id === activeNode) {
+		return selectedNode
+	}
+
+	if (!selectedNode.children.length) {
+		return undefined
+	}
+
+	for (const child of selectedNode.children) {
+		const childJson = getSelectedNodeSubTree(child, activeNode)
+
+		if (childJson) {
+			return childJson
+		}
+	}
+
+	return undefined
+}
+
+export const buildSubTree = (root: TreeNode, filter: string): TreeNode | undefined => {
+	const newChildren: TreeNode[] = []
+
+	for (const child of root.children) {
+		const subTree = buildSubTree(child, filter)
+
+		if (subTree) {
+			newChildren.push(subTree)
+		}
+	}
+
+	if (newChildren.length > 0) {
+		root.children = newChildren
+	}
+
+	if (newChildren.length > 0 || root.id.toLowerCase().includes(filter.toLowerCase())) {
+		return root
+	}
+
+	return undefined
+}
+
+export const calcWindowWidth = (treeHeight: number, extraMargin: number): number =>
 	treeHeight * (100 + extraMargin * 4)
 
-const calcWindowHeighth = (treeWidth: number): number => {
+export const calcWindowHeighth = (treeWidth: number): number => {
 	switch (treeWidth) {
 		case 1:
 			return 50
