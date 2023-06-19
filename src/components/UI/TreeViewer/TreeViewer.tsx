@@ -16,8 +16,8 @@ export default function TreeViewer(props: Props): JSX.Element {
 		props.activeNode ? getSelectedNodeSubTree(props.root, props.activeNode) : props.root
 	)
 
-	if (root != undefined && props.filter) {
-		const subTree = buildSubTree(root, props.filter)
+	if (root && props.filter) {
+		const subTree = buildSubTree(root, props.filter.toLowerCase())
 
 		if (subTree) {
 			root = subTree
@@ -96,7 +96,7 @@ export const buildSubTree = (root: TreeNode, filter: string): TreeNode | undefin
 		root.children = newChildren
 	}
 
-	if (newChildren.length > 0 || root.id.toLowerCase().includes(filter.toLowerCase())) {
+	if (newChildren.length > 0 || root.id.toLowerCase().includes(filter)) {
 		return root
 	}
 

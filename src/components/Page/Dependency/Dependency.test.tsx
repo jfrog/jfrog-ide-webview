@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import { IDependencyPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
+import { IApplicableDetails, ICve, IEvidence } from '../../../model/cve'
+import { IExtendedInformation } from '../../../model/extendedInformation'
 
 describe('Dependency page component', () => {
 	const mockData: IDependencyPage = {
@@ -25,10 +27,10 @@ describe('Dependency page component', () => {
 						filePathEvidence: 'filePathEvidence',
 						codeEvidence: 'codeEvidence',
 						reason: 'applicable reason'
-					}
+					} as IEvidence
 				]
-			}
-		},
+			} as IApplicableDetails
+		} as ICve,
 		edited: '2022-01-01',
 		extendedInformation: {
 			shortDescription: 'Short description',
@@ -36,7 +38,7 @@ describe('Dependency page component', () => {
 			remediation: 'Remediation steps',
 			jfrogResearchSeverity: ISeverity.Low,
 			jfrogResearchSeverityReason: []
-		},
+		} as IExtendedInformation,
 		impactGraph: {
 			name: 'Impact Graph'
 		},

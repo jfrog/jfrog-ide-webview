@@ -9,13 +9,12 @@ describe('Tab component', () => {
 		{ text: 'Tab 3', tabKey: ActiveTab.PublicSources, hide: true }
 	]
 
+	const props: Props = {
+		tabs: mockTabs,
+		activeTab: ActiveTab.ContextualAnalysis,
+		onChangeMenu: jest.fn()
+	}
 	test('renders two tabs', () => {
-		const props: Props = {
-			tabs: mockTabs,
-			activeTab: ActiveTab.ContextualAnalysis,
-			onChangeMenu: jest.fn()
-		}
-
 		render(<Tab {...props} />)
 
 		mockTabs.forEach(tab => {
@@ -27,12 +26,6 @@ describe('Tab component', () => {
 	})
 
 	test('renders the component with tabs and highlights the active tab', () => {
-		const props: Props = {
-			tabs: mockTabs,
-			activeTab: ActiveTab.ContextualAnalysis,
-			onChangeMenu: jest.fn()
-		}
-
 		render(<Tab {...props} />)
 
 		// Check if the component renders the correct number of tabs

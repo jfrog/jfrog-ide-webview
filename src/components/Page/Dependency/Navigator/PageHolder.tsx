@@ -19,7 +19,7 @@ interface Props {
  * Renders a page to the corresponding tab button.
  */
 export default function PageHolder(props: Props): JSX.Element {
-	const [treeNode, setTreeNode] = useState<TreeNode | undefined>(undefined)
+	const [treeNode, setTreeNode] = useState<TreeNode | undefined>()
 	let pageHolder
 	useEffect(() => {
 		setTreeNode(toTreeNode(props.data.impactGraph))
@@ -48,7 +48,7 @@ export default function PageHolder(props: Props): JSX.Element {
 			)
 			break
 		case ActiveTab.ImpactGraph:
-			if (treeNode != undefined) {
+			if (treeNode) {
 				pageHolder = <ImpactGraph treeNode={treeNode} />
 			}
 

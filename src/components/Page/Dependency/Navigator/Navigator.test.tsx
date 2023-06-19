@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import Navigator from './Navigator'
 import { ISeverity } from '../../../../model/severity'
 import { IDependencyPage, PageType } from '../../../../model/webviewPages'
+import { IExtendedInformation } from '../../../../model/extendedInformation'
 
 describe('Navigator component', () => {
 	const mockData: IDependencyPage = {
@@ -29,7 +30,7 @@ describe('Navigator component', () => {
 					isPositive: false
 				}
 			]
-		},
+		} as IExtendedInformation,
 		cve: {
 			id: 'CVE-2021-12345',
 			cvssV2Score: '7.5',
