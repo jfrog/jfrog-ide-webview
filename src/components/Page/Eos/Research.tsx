@@ -12,7 +12,7 @@ export default function Research(props: Props): JSX.Element {
 		<>
 			{props.description && props.description.length > 0 && (
 				<Wrapper headline="DESCRIPTION">
-					<MarkDown text={props.description} />
+					<Markdown text={props.description} />
 				</Wrapper>
 			)}
 			{props.remediation && props.remediation.length > 0 && (
