@@ -1,0 +1,59 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	color: rgb(242, 243, 245);
+	font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue';
+	line-height: 40px;
+	padding: 8px;
+	margin-top: 30px;
+}
+
+.welcome {
+	color: rgb(242, 243, 245);
+	font-size: 15px;
+	font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.text {
+	color: rgb(165, 175, 187);
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+.textBold {
+	font-weight: 700;
+}
+
+.closeBtn {
+	display: flex;
+	position: absolute;
+	top: 16px;
+	right: 12px;
+	height: 26px;
+	padding: 4px;
+	opacity: 0.5;
+	color: rgba(255, 255, 255, 0.8);
+	cursor: pointer;
+	border-radius: 3px;
+	box-sizing: content-box;
+	background: transparent;
+	border: none;
+}
+
+.autoConnectBtn {
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 6px 11px;
+	min-width: 90px;
+	min-height: 35px;
+	color: #ffffff;
+	background: rgb(35, 39, 42);
+	border-radius: 30px;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.1s ease;
+	margin-top: 30px;
+	font-size: small;
+}

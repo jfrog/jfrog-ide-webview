@@ -5,6 +5,9 @@ import { IReference } from './reference'
 import { IExtendedInformation } from './extendedInformation'
 import { ISeverity } from './severity'
 import { IAnalysisStep } from './analysisStep'
+import { ISecretFindings } from './secret'
+import { IIacFindings } from './iac'
+import { LoginProgressStatus, LoginConnectionType } from './login'
 
 export enum PageType {
 	Empty = 'EMPTY',
@@ -12,7 +15,8 @@ export enum PageType {
 	Eos = 'EOS',
 	CveApplicability = 'CVE_APPLICABILITY',
 	IaC = 'IaC',
-	Secrets = 'SECRETS'
+	Secrets = 'SECRETS',
+	Login = 'LOGIN'
 }
 
 export interface IDependencyPage {
@@ -44,13 +48,6 @@ export interface ISecretsPage {
 	finding?: ISecretFindings
 }
 
-export interface ISecretFindings {
-	snippet?: string
-	meaning?: string
-	happen?: string
-	do?: string
-}
-
 export interface IEosPage {
 	pageType: PageType.Eos
 	header: string
@@ -72,11 +69,11 @@ export interface IIaCPage {
 	finding?: IIacFindings
 }
 
-export interface IIacFindings {
-	snippet?: string
-	meaning?: string
-	happen?: string
-	do?: string
+export interface ILoginPage {
+	pageType: PageType.Login
+	url: string
+	status: LoginProgressStatus
+	connectionType: LoginConnectionType
 }
 
-export type WebviewPage = IDependencyPage | IEosPage | IIaCPage | ISecretsPage
+export type WebviewPage = IDependencyPage | IEosPage | IIaCPage | ISecretsPage | ILoginPage

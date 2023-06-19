@@ -1,0 +1,120 @@
+/* Variables */
+:root {
+	--scale: 36px;
+	--speed: 2s;
+	--angle: 25;
+	--color-element: hsl(123, 50%, 50%);
+}
+
+@keyframes loader-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loader {
+	display: inline-block;
+	border: calc(var(--scale) * 0.1) solid var(--color-element);
+	overflow: hidden;
+	border-radius: 30px;
+	width: var(--scale);
+	height: var(--scale);
+	animation: loader-spin var(--speed) linear infinite reverse;
+	filter: url(#goo);
+	box-shadow: 0 0 0 1px var(--color-element) inset;
+}
+
+.loader:before {
+	content: '';
+	position: absolute;
+	animation: loader-spin var(--speed) cubic-bezier(0.59, 0.25, 0.4, 0.69) infinite;
+	background: var(--color-element);
+	transform-origin: top center;
+	border-radius: 50%;
+	width: 150%;
+	height: 150%;
+	top: 50%;
+	left: -12.5%;
+}
+
+.checkmark {
+	stroke: var(--color-element);
+	stroke-width: calc(var(--scale) * 0.1);
+	display: inline-block;
+	border: calc(var(--scale) * 0.1) solid var(--color-element);
+	overflow: hidden;
+	border-radius: 30px;
+	width: var(--scale);
+	height: var(--scale);
+	box-shadow: 0 0 0 1px var(--color-element) inset;
+}
+
+.checkmark path {
+	transform: translate(-1%, -2%) scale(1.5);
+	animation: checkmark-draw var(--speed) ease-in-out forwards;
+	stroke-dasharray: 100;
+	stroke-dashoffset: 100;
+}
+
+@keyframes checkmark-draw {
+	0% {
+		stroke-dashoffset: 100;
+	}
+
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+/* Failure animation */
+@keyframes failure-animation {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.xmark {
+	display: inline-block;
+	overflow: hidden;
+	width: var(--scale);
+	height: var(--scale);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: calc(var(--scale) * 0.1) solid red;
+	border-radius: 50%;
+	animation: failure-animation 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.xmark::before,
+.xmark::after {
+	content: '';
+	position: absolute;
+	background-color: red;
+}
+
+.xmark::before,
+.xmark::after {
+	width: calc(var(--scale) * 0.7);
+	height: calc(var(--scale) * 0.08);
+	top: calc(var(--scale) * 0.48);
+	left: calc(var(--scale) * 0.16);
+}
+
+.xmark::before {
+	transform: rotate(45deg);
+}
+
+.xmark::after {
+	transform: rotate(-45deg);
+}

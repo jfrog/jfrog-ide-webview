@@ -1,7 +1,14 @@
+import {
+	WebviewReceiveEvent,
+	WebviewReceiveEventType,
+	WebviewSendEvent,
+	WebviewSendEventType
+} from '.'
 import { IAnalysisStep } from '../model/analysisStep'
+import { ISendLoginEventData } from '../model/login'
 import { WebviewPage } from '../model/webviewPages'
-import { IdeEvent, IdeEventType, JumpToCodeEvent } from './ideEvent'
-import { WebviewEvent, webviewEventType } from './webviewEvent'
+import { SendJumpToCodeEvent } from './sendEvent/jumpToCode'
+import { SendLoginEvent } from './sendEvent/login'
 
 export class EventManager {
 	private sendFunc = new Function('request', 'console.log(request)')
@@ -10,19 +17,19 @@ export class EventManager {
 		this.setEventReceiver()
 	}
 
-	private sendEvent = (req: IdeEvent): void => {
+	private sendEvent = (req: WebviewSendEvent): void => {
 		this.sendFunc(req)
 	}
 
 	private setEventReceiver(): void {
 		window.addEventListener('message', event => {
-			const eventData: WebviewEvent = event.data
+			const eventData: WebviewReceiveEvent = event.data
 
 			switch (eventData.type) {
-				case webviewEventType.SetEmitter:
+				case WebviewReceiveEventType.SetEmitter:
 					this.sendFunc = new Function(eventData.emitterFunc)()
 					break
-				case webviewEventType.ShowPage:
+				case WebviewReceiveEventType.ShowPage:
 					this.setPageState(eventData.pageData)
 					break
 			}
@@ -30,6 +37,10 @@ export class EventManager {
 	}
 
 	public jumpToCode(data: IAnalysisStep): void {
-		this.sendEvent({ type: IdeEventType.JUMP_TO_CODE, data: data } as JumpToCodeEvent)
+		this.sendEvent({ type: WebviewSendEventType.JUMP_TO_CODE, data: data } as SendJumpToCodeEvent)
+	}
+
+	public Login(data: ISendLoginEventData): void {
+		this.sendEvent({ type: WebviewSendEventType.LOGIN, data: data } as SendLoginEvent)
 	}
 }
