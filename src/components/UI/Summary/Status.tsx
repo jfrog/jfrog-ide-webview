@@ -1,7 +1,7 @@
 import Row from '../Row/Row'
 import css from './Status.module.css'
 
-interface Props {
+export interface Props {
 	status: string
 }
 

@@ -20,7 +20,7 @@ export enum AccessVectorValue {
 	Network = 'Network'
 }
 
-enum AuthenticationValue {
+export enum AuthenticationValue {
 	Multiple = 'Multiple',
 	Single = 'Single',
 	None = 'None'
@@ -37,7 +37,7 @@ export enum AccessComplexityValue {
 	High = 'High'
 }
 
-enum ImpactValue {
+export enum ImpactValue {
 	None = 'None',
 	Partial = 'Partial',
 	Complete = 'Complete'

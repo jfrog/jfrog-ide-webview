@@ -1,9 +1,10 @@
 import { IAnalysisStep } from '../../../model/analysisStep'
 import css from './AnalysisStepsListElement.module.css'
-import CodeBlock from '../CodeBlock/CodeBlock'
 import { useContext } from 'react'
 import { eventManagerContext } from '../../../store/eventContext'
-interface Props {
+import Markdown from '../Markdown/Markdown'
+
+export interface Props {
 	items: IAnalysisStep[]
 }
 
@@ -25,13 +26,13 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					key={i}
 					className={css.container}
 				>
-					<div className={css.file}>
+					<div className={css.file} id={i.toString()}>
 						<div className={css.number}>{i + 1}</div>
 						<div className={css.row}>
 							{' '}
 							{item.fileName} {item.startRow}:{' '}
 						</div>
-						{item.snippet && <CodeBlock codeString={item.snippet} id={i.toString()} />}
+						{item.snippet && <Markdown text={item.snippet} />}
 					</div>
 				</button>
 			))}

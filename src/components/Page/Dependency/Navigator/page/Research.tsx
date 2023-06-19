@@ -2,9 +2,9 @@ import css from './Research.module.css'
 import ReactMarkdown from 'react-markdown'
 import { IExtendedInformation } from '../../../../../model/extendedInformation'
 import Wrapper from '../../../../UI/Wrapper/Wrapper'
-import MarkDown from '../../../../UI/MarkDown/MarkDown'
+import Markdown from '../../../../UI/Markdown/Markdown'
 
-interface Props {
+export interface Props {
 	data: IExtendedInformation
 }
 
@@ -20,7 +20,7 @@ export default function Research(props: Props): JSX.Element {
 				</Wrapper>
 			)}
 			<Wrapper headline="DETAILS">
-				<MarkDown text={props.data.fullDescription} />
+				<Markdown text={props.data.fullDescription} />
 			</Wrapper>
 			{props.data.jfrogResearchSeverityReason && (
 				<Wrapper headline="JFROG RESEARCH SEVERITY REASONS">
@@ -33,7 +33,7 @@ export default function Research(props: Props): JSX.Element {
 									<h4 className={reason.isPositive ? css.positiveReason : css.negativeReason}>
 										{reason.name}
 									</h4>
-									{reason.description && <MarkDown text={reason.description} />}
+									{reason.description && <Markdown text={reason.description} />}
 								</div>
 							))}
 					</div>

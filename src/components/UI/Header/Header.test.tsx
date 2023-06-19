@@ -9,4 +9,12 @@ describe('Header component', () => {
 		const headerElement = screen.getByText('Header')
 		expect(headerElement).toBeInTheDocument()
 	})
+
+	test('Renders vulnerability header with no isResearch', () => {
+		// Arrange
+		render(<Header text="Header" isResearch={false} Severity={ISeverity.Low} />)
+		// Assert
+		const headerElement = screen.getByText('Header')
+		expect(headerElement).toBeInTheDocument()
+	})
 })

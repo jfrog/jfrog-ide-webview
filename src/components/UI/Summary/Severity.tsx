@@ -1,6 +1,7 @@
 import { ISeverity } from '../../../model/severity'
 import Row from '../Row/Row'
-interface Props {
+
+export interface Props {
 	severity: ISeverity
 }
 

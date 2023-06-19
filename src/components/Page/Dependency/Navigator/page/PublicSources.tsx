@@ -54,7 +54,7 @@ export default function PublicSources(props: Props): JSX.Element {
 	)
 }
 
-function createCvssBreakdownV2(vector: string[]): Cvss2 | undefined {
+export function createCvssBreakdownV2(vector: string[]): Cvss2 | undefined {
 	const results = new Cvss2()
 
 	for (let index = 1; index < vector.length; index++) {
@@ -91,7 +91,7 @@ function createCvssBreakdownV2(vector: string[]): Cvss2 | undefined {
 	return results
 }
 
-function createCvssBreakdownV3(vector: string[]): Cvss3 | undefined {
+export function createCvssBreakdownV3(vector: string[]): Cvss3 | undefined {
 	const results = new Cvss3()
 
 	for (let index = 1; index < vector.length; index++) {
@@ -134,7 +134,7 @@ function createCvssBreakdownV3(vector: string[]): Cvss3 | undefined {
 	return results
 }
 
-function createCvssBreakdownV3View(csvv: string, score: string): JSX.Element {
+export function createCvssBreakdownV3View(csvv: string, score: string): JSX.Element {
 	const csvvArray = csvv.split('/')
 	const csvv3Breakdown = createCvssBreakdownV3(csvvArray)
 
@@ -164,7 +164,7 @@ function createCvssBreakdownV3View(csvv: string, score: string): JSX.Element {
 	)
 }
 
-function createCvssBreakdownV2View(csvv: string, score: string): JSX.Element {
+export function createCvssBreakdownV2View(csvv: string, score: string): JSX.Element {
 	const csvvArray = csvv.split('/')
 	const csvv2Breakdown = createCvssBreakdownV2(csvvArray)
 
@@ -193,7 +193,7 @@ function createCvssBreakdownV2View(csvv: string, score: string): JSX.Element {
 	)
 }
 
-const defaultBreakdownView = (csvv: string, score: string): JSX.Element => (
+export const defaultBreakdownView = (csvv: string, score: string): JSX.Element => (
 	<>
 		<div>Score: {score}</div>
 		<div>Vector: {csvv}</div>

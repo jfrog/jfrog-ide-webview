@@ -1,6 +1,6 @@
 import css from './Research.module.css'
 import Wrapper from '../../UI/Wrapper/Wrapper'
-import MarkDown from '../../UI/MarkDown/MarkDown'
+import Markdown from '../../UI/Markdown/Markdown'
 
 interface Props {
 	description?: string
@@ -20,7 +20,7 @@ export default function Research(props: Props): JSX.Element {
 					<div className={css.container}>
 						{props.remediation.map((reason, i) => (
 							<div key={i}>
-								<MarkDown text={reason} />
+								<Markdown text={reason} />
 							</div>
 						))}
 					</div>
