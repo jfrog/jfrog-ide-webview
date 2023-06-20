@@ -11,14 +11,16 @@ export function AccessToken(props: Props): JSX.Element {
 	return (
 		<div className={css.credContainer}>
 			<div className={css.passBox}>
-				<label className={css.inputHeader}>Access Token</label>
+				<label htmlFor="input-at" className={css.inputHeader}>
+					Access Token
+				</label>
 				<button className={css.switchBtn} onClick={props.handlePasswordSwitch}>
 					Have Password?
 				</button>
 			</div>
 			<input
+				id="input-at"
 				className={`${css.input} ${props.inputError ? css.inputError : ''}`}
-				id="search"
 				type="password"
 				onChange={props.handleAccessToken}
 			/>

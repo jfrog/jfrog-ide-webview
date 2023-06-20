@@ -21,13 +21,14 @@ function ModalOverlay(props: modalProps): JSX.Element {
 	)
 }
 
-const overlayElement: HTMLElement | null = document.getElementById('overlay')
-interface Props {
+export interface Props {
 	children: React.ReactNode
 	onClose: () => void
 }
 
 export function Modal(props: Props): JSX.Element {
+	const overlayElement: HTMLElement | null = document.getElementById('overlay')
+
 	if (!overlayElement) {
 		throw new Error('The element #overlay was not found')
 	}

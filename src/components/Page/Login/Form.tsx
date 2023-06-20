@@ -48,9 +48,6 @@ export function Form(): JSX.Element {
 	const handleSighIn = (): void => {
 		if (!isLoginDataValid(loginData)) {
 			setInputError(true)
-			setTimeout(() => {
-				setInputError(false)
-			}, 1000)
 		} else {
 			ctx.Login(loginData)
 		}

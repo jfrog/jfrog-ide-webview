@@ -13,26 +13,30 @@ export function Password(props: Props): JSX.Element {
 		<>
 			<div className={css.credContainer}>
 				<div>
-					<label className={css.inputHeader}>Username</label>
+					<label htmlFor="input-u" className={css.inputHeader}>
+						Username
+					</label>
 				</div>
 				<input
+					id="input-u"
 					className={`${css.input} ${props.inputError ? css.inputError : ''}`}
-					id="search"
 					type="text"
 					onChange={props.handleUsername}
 				/>
 			</div>
 			<div className={css.credContainer}>
 				<div className={css.passBox}>
-					<label className={css.inputHeader}>Password</label>
+					<label htmlFor="input-p" className={css.inputHeader}>
+						Password
+					</label>
 					<button className={css.switchBtn} onClick={props.handleAccessTokenSwitch}>
 						Have Access-Token?
 					</button>
 				</div>
 
 				<input
+					id="input-p"
 					className={`${css.input} ${props.inputError ? css.inputError : ''}`}
-					id="search"
 					type="password"
 					onChange={props.handlePassword}
 				/>

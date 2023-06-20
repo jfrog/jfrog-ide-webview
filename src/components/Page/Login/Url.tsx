@@ -16,7 +16,9 @@ export function Url(props: Props): JSX.Element {
 		<>
 			<div className={css.credContainer}>
 				<div className={css.passBox}>
-					<label className={css.inputHeader}>Platform URL</label>
+					<label htmlFor="input-u" className={css.inputHeader}>
+						Platform URL
+					</label>
 					<button className={css.switchBtn} onClick={props.handleAdvancedUrl}>
 						Advanced
 						<BlueArrowIcon
@@ -25,8 +27,8 @@ export function Url(props: Props): JSX.Element {
 					</button>
 				</div>
 				<input
+					id="input-u"
 					className={`${css.input} ${props.inputError ? css.inputError : ''}`}
-					id="search"
 					type="text"
 					onChange={props.handleUrl}
 				/>
@@ -35,22 +37,26 @@ export function Url(props: Props): JSX.Element {
 				<>
 					<div className={css.credContainer}>
 						<div>
-							<label className={css.inputHeader}>Artifactory URL</label>
+							<label htmlFor="input-au" className={css.inputHeader}>
+								Artifactory URL
+							</label>
 						</div>
 						<input
+							id="input-au"
 							className={`${css.input} ${props.inputError ? css.inputError : ''}`}
-							id="search"
 							type="text"
 							onChange={props.handleArtifactoryUrl}
 						/>
 					</div>
 					<div className={css.credContainer}>
 						<div>
-							<label className={css.inputHeader}>Xray URL</label>
+							<label htmlFor="input-xu" className={css.inputHeader}>
+								Xray URL
+							</label>
 						</div>
 						<input
+							id="input-xu"
 							className={`${css.input} ${props.inputError ? css.inputError : ''}`}
-							id="search"
 							type="text"
 							onChange={props.handleXrayUrl}
 						/>

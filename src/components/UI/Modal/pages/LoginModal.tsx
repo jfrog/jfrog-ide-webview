@@ -19,7 +19,6 @@ export interface Props {
 
 export function LoginModal(props: Props): JSX.Element {
 	const ctx: EventManager = useContext(eventManagerContext)
-
 	return (
 		<Modal onClose={props.onClose}>
 			<div className={css.container}>
@@ -38,7 +37,9 @@ export function LoginModal(props: Props): JSX.Element {
 						<button
 							className={css.autoConnectBtn}
 							onClick={(): void => {
-								ctx.Login({ loginConnectionType: LoginConnectionType.Cli } as ISendLoginEventData)
+								ctx.Login({
+									loginConnectionType: props.loginData.connectionType
+								} as ISendLoginEventData)
 							}}
 						>
 							Sure!
@@ -73,7 +74,7 @@ function createBody(data: ILoginPage): JSX.Element {
 		case LoginConnectionType.Cli:
 			pageBody = (
 				<div>
-					You have a predefined JFrog CLI. Would you like to sign-in to{' '}
+					<span>You have a predefined JFrog CLI. Would you like to sign-in to </span>
 					<span className={css.textBold}>{data.url}</span>?
 				</div>
 			)
@@ -81,17 +82,13 @@ function createBody(data: ILoginPage): JSX.Element {
 		case LoginConnectionType.EnvVars:
 			pageBody = (
 				<div>
-					You have a predefined Environment Variable. Would you like to sign-in to{' '}
+					<span>You have a predefined Environment Variable. Would you like to sign-in to </span>
 					<span className={css.textBold}>{data.url}</span>?
 				</div>
 			)
 			break
 		case LoginConnectionType.Sso:
-			pageBody = (
-				<div>
-					Waiting for you to sign in...
-				</div>
-			)
+			pageBody = <div>Waiting for you to sign in...</div>
 			break
 	}
 
@@ -112,11 +109,7 @@ function createBody(data: ILoginPage): JSX.Element {
 			pageBody = <div>The server is not compatible with SSO login.</div>
 			break
 		case LoginProgressStatus.Success:
-			pageBody = (
-				<div>
-					Your credentials will be securely stored on the machine for future use.
-				</div>
-			)
+			pageBody = <div>Your credentials will be securely stored on the machine for future use.</div>
 			break
 	}
 

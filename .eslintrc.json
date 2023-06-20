@@ -172,10 +172,6 @@
 		"prefer-rest-params": "error",
 		"prefer-spread": "error",
 		"prefer-template": "error",
-		"quotes": [
-			"error",
-			"single"
-		],
 		"rest-spread-spacing": [
 			"error",
 			"never"

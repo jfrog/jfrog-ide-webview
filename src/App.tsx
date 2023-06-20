@@ -7,8 +7,8 @@ import Secrets from './components/Page/Secrets/Secrets'
 import { WebviewPage, PageType } from './model/webviewPages'
 import { EventManager } from './api/eventManager'
 import { eventManagerContext } from './store/eventContext'
-import { Login } from './components/Page/Login/Login'
 import { Spinner, State } from './components/UI/Spinner/Spinner'
+import { Login } from './components/Page/Login/Login'
 
 /**
  * The main page on which the Webview will be drawn based on the incoming request page type.

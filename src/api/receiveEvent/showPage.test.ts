@@ -17,7 +17,6 @@ describe('Event Types', () => {
 		expect(eventData.pageData).toBeDefined()
 	})
 
-
 	test('defines WebviewEvent union type correctly', () => {
 		const event: ReceiveShowPageEvent = {
 			type: WebviewReceiveEventType.ShowPage,

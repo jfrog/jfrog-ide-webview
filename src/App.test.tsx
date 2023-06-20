@@ -1,11 +1,19 @@
 import { render, screen } from '@testing-library/react'
 import App from './App'
-import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from './model/webviewPages'
+import {
+	IDependencyPage,
+	IEosPage,
+	IIaCPage,
+	ILoginPage,
+	ISecretsPage,
+	PageType
+} from './model/webviewPages'
 import { ISeverity } from './model/severity'
 import { IImpactGraph } from './model/impactGraph'
 import { sendWebviewPage } from './utils/testUtils'
 import { IAnalysisStep } from './model/analysisStep'
 import { WebviewReceiveEventType } from './api'
+import { LoginConnectionType, LoginProgressStatus } from './model/login'
 
 describe('App component', () => {
 	test('renders the Dependency page when the page type is "Dependency"', async () => {
@@ -89,10 +97,25 @@ describe('App component', () => {
 		expect(screen.getByText('Header-secret')).toBeInTheDocument()
 	})
 
-	test('renders "Nothing to show" when the page type is not recognized', () => {
+	test('renders the Login page when the page type is "Login"', async () => {
 		render(<App />)
 
-		// Assert that "Nothing to show" text is rendered.
-		expect(screen.getByText('Nothing to show')).toBeInTheDocument()
+		const pageData = {
+			type: WebviewReceiveEventType.ShowPage,
+			pageData: {
+				pageType: PageType.Login,
+				url: 'www.example.com',
+				status: LoginProgressStatus.Initial,
+				connectionType: LoginConnectionType.Default
+			} as ILoginPage
+		}
+		await sendWebviewPage(pageData)
+
+		expect(screen.getByText('Welcome to JFrog')).toBeInTheDocument()
+	})
+
+	test('renders loading spinner initially', () => {
+		const { container } = render(<App />)
+		expect(container.querySelector('.loader')).toBeInTheDocument()
 	})
 })

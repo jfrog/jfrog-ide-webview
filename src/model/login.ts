@@ -2,7 +2,7 @@ export enum LoginConnectionType {
 	Default = 'DEFAULT',
 	Sso = 'SSO',
 	Cli = 'CLI',
-	EnvVars = 'ENV_Vars'
+	EnvVars = 'ENV_VARS'
 }
 
 export enum LoginProgressStatus {

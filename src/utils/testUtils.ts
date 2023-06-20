@@ -1,6 +1,8 @@
 import { Matcher, SelectorMatcherOptions } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 import { WebviewReceiveEventType } from '../api'
+import { EventManager } from '../api/eventManager'
+import { WebviewPage } from '../model'
 
 export const getByTextAcrossMultipleElements = (
 	getByText: (text: Matcher, options?: SelectorMatcherOptions | undefined) => HTMLElement,
@@ -21,4 +23,11 @@ export interface IPageData {
 	type: WebviewReceiveEventType
 	pageData?: unknown
 	emitterFunc?: string
+}
+
+export class TestEventManager extends EventManager {
+	constructor(setPageState: React.Dispatch<React.SetStateAction<WebviewPage>>, f: () => void) {
+		super(setPageState)
+		this.sendFunc = f
+	}
 }

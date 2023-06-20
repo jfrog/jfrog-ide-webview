@@ -11,7 +11,7 @@ import { SendJumpToCodeEvent } from './sendEvent/jumpToCode'
 import { SendLoginEvent } from './sendEvent/login'
 
 export class EventManager {
-	private sendFunc = new Function('request', 'console.log(request)')
+	protected sendFunc = new Function('request', 'console.log(request)')
 
 	constructor(private setPageState: React.Dispatch<React.SetStateAction<WebviewPage>>) {
 		this.setEventReceiver()
