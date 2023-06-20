@@ -19,6 +19,32 @@ describe('Form component', () => {
 		expect(signInButton).toBeInTheDocument()
 	})
 
+	test('renders the form with Advanced url button', () => {
+		const { getByText } = render(
+			<eventManagerContext.Provider value={mockEventManager}>
+				<Form />
+			</eventManagerContext.Provider>
+		)
+		const signInButton = getByText('Advanced')
+		expect(signInButton).toBeInTheDocument()
+	})
+
+	test('renders the form with Artifactory & Xray urls on click at Advanced url button', () => {
+		const { getByLabelText, getByText } = render(
+			<eventManagerContext.Provider value={mockEventManager}>
+				<Form />
+			</eventManagerContext.Provider>
+		)
+		fireEvent.click(getByText('Advanced'))
+
+		const artifactoryUrlInput = getByLabelText('Artifactory URL') as HTMLInputElement
+		const xrayUrlInput = getByLabelText('Xray URL') as HTMLInputElement
+		fireEvent.change(artifactoryUrlInput, { target: { value: 'rtUrl' } })
+		fireEvent.change(xrayUrlInput, { target: { value: 'xrayUrl' } })
+		expect(artifactoryUrlInput.value).toBe('rtUrl')
+		expect(xrayUrlInput.value).toBe('xrayUrl')
+	})
+
 	test('calls handleAccessTokenSwitch when "Have Password?" button is clicked', () => {
 		const { getByText } = render(
 			<eventManagerContext.Provider value={mockEventManager}>
@@ -40,6 +66,21 @@ describe('Form component', () => {
 		expect(getByText('Username')).toBeInTheDocument()
 		expect(getByText('Password')).toBeInTheDocument()
 		expect(getByText('Sign in')).toBeInTheDocument()
+	})
+
+	test('renders the form with the access token input after "Have Access Token" have been clicked', () => {
+		const { getByText } = render(
+			<eventManagerContext.Provider value={mockEventManager}>
+				<Form />
+			</eventManagerContext.Provider>
+		)
+		let button = getByText('Have Password?')
+		fireEvent.click(button)
+		expect(getByText('Username')).toBeInTheDocument()
+		expect(getByText('Password')).toBeInTheDocument()
+		button = getByText('Have Access-Token?')
+		fireEvent.click(button)
+		expect(getByText('Access Token')).toBeInTheDocument()
 	})
 
 	test('calls accessTokenHandler when access token inputs change', () => {
