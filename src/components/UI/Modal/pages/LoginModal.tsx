@@ -100,10 +100,10 @@ function createBody(data: ILoginPage): JSX.Element {
 			pageBody = <div>Invalid credentials.</div>
 			break
 		case LoginProgressStatus.FailedTimeout:
-			pageBody = <div>A timeout occurred. Please try again</div>
+			pageBody = <div>A timeout occurred. Please try again.</div>
 			break
 		case LoginProgressStatus.FailedServerNotFound:
-			pageBody = <div>Server not found</div>
+			pageBody = <div>Server not found.</div>
 			break
 		case LoginProgressStatus.FailedServerNotSupported:
 			pageBody = <div>The server is not compatible with SSO login.</div>
