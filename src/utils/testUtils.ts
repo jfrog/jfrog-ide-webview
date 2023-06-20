@@ -1,6 +1,6 @@
 import { Matcher, SelectorMatcherOptions } from '@testing-library/react'
-import { webviewEventType } from '../api/webviewEvent'
 import { act } from 'react-dom/test-utils'
+import { WebviewReceiveEventType } from '../api'
 
 export const getByTextAcrossMultipleElements = (
 	getByText: (text: Matcher, options?: SelectorMatcherOptions | undefined) => HTMLElement,
@@ -18,7 +18,7 @@ export const sendWebviewPage = async (pageData: IPageData): Promise<MessageEvent
 }
 
 export interface IPageData {
-	type: webviewEventType
+	type: WebviewReceiveEventType
 	pageData?: unknown
 	emitterFunc?: string
 }

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
 import App from './App'
-import { webviewEventType } from './api/webviewEvent'
 import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from './model/webviewPages'
 import { ISeverity } from './model/severity'
 import { IImpactGraph } from './model/impactGraph'
 import { sendWebviewPage } from './utils/testUtils'
 import { IAnalysisStep } from './model/analysisStep'
+import { WebviewReceiveEventType } from './api'
 
 describe('App component', () => {
 	test('renders the Dependency page when the page type is "Dependency"', async () => {
@@ -13,7 +13,7 @@ describe('App component', () => {
 
 		// Load Dependency.
 		const pageData = {
-			type: webviewEventType.ShowPage,
+			type: WebviewReceiveEventType.ShowPage,
 			pageData: {
 				id: 'Dependency-ID',
 				pageType: PageType.Dependency,
@@ -36,7 +36,7 @@ describe('App component', () => {
 
 		// Load Eos page.
 		const pageData = {
-			type: webviewEventType.ShowPage,
+			type: WebviewReceiveEventType.ShowPage,
 			pageData: {
 				pageType: PageType.Eos,
 				header: 'Header-eos',
@@ -54,7 +54,7 @@ describe('App component', () => {
 
 		// Load IaC page.
 		const pageData = {
-			type: webviewEventType.ShowPage,
+			type: WebviewReceiveEventType.ShowPage,
 			pageData: {
 				pageType: PageType.IaC,
 				header: 'Header-iac',
@@ -74,7 +74,7 @@ describe('App component', () => {
 
 		// Load Secrets page.
 		const pageData = {
-			type: webviewEventType.ShowPage,
+			type: WebviewReceiveEventType.ShowPage,
 			pageData: {
 				pageType: PageType.Secrets,
 				header: 'Header-secret',

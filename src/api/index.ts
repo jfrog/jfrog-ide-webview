@@ -5,8 +5,8 @@ import { ReceiveShowPageEvent } from './receiveEvent/showPage'
 
 // Send event to the IDEs.
 export enum WebviewSendEventType {
-	JUMP_TO_CODE = 'SHOW_CODE',
-	LOGIN = 'LOGIN'
+	JumpToCode = 'SHOW_CODE',
+	Login = 'LOGIN'
 }
 
 export type WebviewSendEvent = SendJumpToCodeEvent | SendLoginEvent

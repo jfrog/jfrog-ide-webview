@@ -37,10 +37,10 @@ export class EventManager {
 	}
 
 	public jumpToCode(data: IAnalysisStep): void {
-		this.sendEvent({ type: WebviewSendEventType.JUMP_TO_CODE, data: data } as SendJumpToCodeEvent)
+		this.sendEvent({ type: WebviewSendEventType.JumpToCode, data: data } as SendJumpToCodeEvent)
 	}
 
 	public Login(data: ISendLoginEventData): void {
-		this.sendEvent({ type: WebviewSendEventType.LOGIN, data: data } as SendLoginEvent)
+		this.sendEvent({ type: WebviewSendEventType.Login, data: data } as SendLoginEvent)
 	}
 }
