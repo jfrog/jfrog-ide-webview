@@ -27,7 +27,7 @@
 }
 
 .containerSso {
-	height: 264px;
+	height: 255px
 }
 
 .containerAdvancedUrlWitSso {
@@ -130,7 +130,7 @@
 .paragraph {
 	color: rgb(165, 175, 187);
 	font-size: 13px;
-	width: 244px;
+	width: 254px;
 	font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 

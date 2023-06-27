@@ -14,7 +14,7 @@ export function Form(): JSX.Element {
 	const [advancedUrl, setAdvancedUrl] = useState<boolean>(false)
 	const [loginData, setLoginData] = useState<ISendLoginEventData>({
 		url: '',
-		loginConnectionType: LoginConnectionType.Default,
+		loginConnectionType: LoginConnectionType.BasicAuthOrToken,
 		username: '',
 		password: '',
 		accessToken: ''
@@ -79,7 +79,7 @@ export function Form(): JSX.Element {
 	let containerCss = css.containerPassword
 
 	switch (loginData.loginConnectionType) {
-		case LoginConnectionType.Default:
+		case LoginConnectionType.BasicAuthOrToken:
 			if (!showPassword) {
 				form = (
 					<AccessToken

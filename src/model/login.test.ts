@@ -2,7 +2,7 @@ import { ISendLoginEventData, LoginConnectionType, LoginProgressStatus } from '.
 
 describe('Login Enums', () => {
 	test('should have correct values for LoginConnectionType', () => {
-		expect(LoginConnectionType.Default).toBe('DEFAULT')
+		expect(LoginConnectionType.BasicAuthOrToken).toBe('BASIC_AUTH_OR_TOKEN')
 		expect(LoginConnectionType.Sso).toBe('SSO')
 		expect(LoginConnectionType.Cli).toBe('CLI')
 		expect(LoginConnectionType.EnvVars).toBe('ENV_VARS')
@@ -26,7 +26,7 @@ describe('Login Enums', () => {
 describe('ISendLoginEventData', () => {
 	test('should have the required properties', () => {
 		const eventData: ISendLoginEventData = {
-			loginConnectionType: LoginConnectionType.Default
+			loginConnectionType: LoginConnectionType.BasicAuthOrToken
 		}
 
 		expect(eventData).toHaveProperty('loginConnectionType')
@@ -34,7 +34,7 @@ describe('ISendLoginEventData', () => {
 
 	test('should allow optional properties', () => {
 		const eventData: ISendLoginEventData = {
-			loginConnectionType: LoginConnectionType.Default,
+			loginConnectionType: LoginConnectionType.BasicAuthOrToken,
 			url: 'https://example.com',
 			username: 'username',
 			password: 'password'

@@ -22,7 +22,7 @@ describe('Login component', () => {
 		pageType: PageType.Login,
 		url: 'https://example.com',
 		status: LoginProgressStatus.Initial,
-		connectionType: LoginConnectionType.Default
+		connectionType: LoginConnectionType.BasicAuthOrToken
 	}
 
 	test('renders Login component', () => {

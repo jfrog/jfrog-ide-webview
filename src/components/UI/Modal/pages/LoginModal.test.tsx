@@ -142,10 +142,10 @@ describe('LoginModal component', () => {
 		})
 	})
 
-	describe('Default', () => {
+	describe('BasicAuthOrToken', () => {
 		const mockLoginData: ILoginPage = {
 			status: LoginProgressStatus.Verifying,
-			connectionType: LoginConnectionType.Default,
+			connectionType: LoginConnectionType.BasicAuthOrToken,
 			url: 'example.com',
 			pageType: PageType.Login
 		}
@@ -190,7 +190,7 @@ describe('LoginModal component', () => {
 
 				expect(mockLogin).toHaveBeenCalledWith({
 					type: WebviewSendEventType.Login,
-					data: { loginConnectionType: LoginConnectionType.Default }
+					data: { loginConnectionType: LoginConnectionType.BasicAuthOrToken }
 				} as SendLoginEvent)
 			})
 		})

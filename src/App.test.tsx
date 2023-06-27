@@ -106,7 +106,7 @@ describe('App component', () => {
 				pageType: PageType.Login,
 				url: 'www.example.com',
 				status: LoginProgressStatus.Initial,
-				connectionType: LoginConnectionType.Default
+				connectionType: LoginConnectionType.BasicAuthOrToken
 			} as ILoginPage
 		}
 		await sendWebviewPage(pageData)

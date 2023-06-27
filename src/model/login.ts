@@ -1,5 +1,5 @@
 export enum LoginConnectionType {
-	Default = 'DEFAULT',
+	BasicAuthOrToken = 'BASIC_AUTH_OR_TOKEN',
 	Sso = 'SSO',
 	Cli = 'CLI',
 	EnvVars = 'ENV_VARS'

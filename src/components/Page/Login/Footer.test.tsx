@@ -9,7 +9,7 @@ describe('Footer component', () => {
 	const defaultProps: Props = {
 		handleConnectionType: mockHandleConnectionType,
 		handleSighIn: mockHandleSignIn,
-		type: LoginConnectionType.Default
+		type: LoginConnectionType.BasicAuthOrToken
 	}
 
 	test('renders the default footer when type is not SSO', () => {
@@ -42,7 +42,7 @@ describe('Footer component', () => {
 		fireEvent.click(basicAuthButton)
 
 		expect(mockHandleConnectionType).toHaveBeenCalledTimes(1)
-		expect(mockHandleConnectionType).toHaveBeenCalledWith(LoginConnectionType.Default)
+		expect(mockHandleConnectionType).toHaveBeenCalledWith(LoginConnectionType.BasicAuthOrToken)
 	})
 
 	test('calls handleConnectionType with LoginConnectionType.Sso when "Continue With SSO" button is clicked', () => {

@@ -28,7 +28,7 @@ function SsoFooter(props: HandlersProps): JSX.Element {
 				<button
 					className={css.ssoBtn}
 					onClick={(): void => {
-						props.handleConnectionType(LoginConnectionType.Default)
+						props.handleConnectionType(LoginConnectionType.BasicAuthOrToken)
 					}}
 				>
 					Use Basic-Auth
