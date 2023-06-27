@@ -6,6 +6,7 @@
 [![Webview Tests](https://github.com/jfrog/jfrog-ide-webview/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/jfrog/jfrog-ide-webview/actions/workflows/test.yml)
 [![Scanned by Frogbot](https://raw.github.com/jfrog/frogbot/master/images/frogbot-badge.svg)](https://github.com/jfrog/frogbot#readme)
 </div>
+
 ## ℹ️ About This Project
 The JFrog IDE integrations allow developers to find and fix security vulnerabilities in their projects and to see valuable information about the status of their code by continuously scanning it locally with JFrog Xray.
 **JFrog-IDE-Webview** is a react-based HTML page designed to be seamlessly embedded within [JFrog VS Code Extension](https://github.com/jfrog/jfrog-vscode-extension#readme) and the [JFrog IDEA Plugin](https://github.com/jfrog/jfrog-idea-plugin#readme). It serves as a powerful web view that offers a comprehensive overview of vulnerabilities identified in the source code project.
