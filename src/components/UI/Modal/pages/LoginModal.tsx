@@ -74,16 +74,20 @@ function createBody(data: ILoginPage): JSX.Element {
 		case LoginConnectionType.Cli:
 			pageBody = (
 				<div>
-					<span>You have a predefined JFrog CLI. Would you like to sign-in to </span>
-					<span className={css.textBold}>{data.url}</span>?
+					<span>We found a JFrog CLI with connection details for </span>
+					<span className={css.textBold}>{data.url}</span>.
+					<div/>
+					<span>Would you like to use it for sigh in?</span>
 				</div>
 			)
 			break
 		case LoginConnectionType.EnvVars:
 			pageBody = (
 				<div>
-					<span>You have a predefined Environment Variable. Would you like to sign-in to </span>
-					<span className={css.textBold}>{data.url}</span>?
+					<span>We found environment variables with connection details for </span>
+					<span className={css.textBold}>{data.url}</span>.
+					<div/>
+					<span>Would you like to use it for sigh in?</span>
 				</div>
 			)
 			break
@@ -100,13 +104,13 @@ function createBody(data: ILoginPage): JSX.Element {
 			pageBody = <div>Invalid credentials.</div>
 			break
 		case LoginProgressStatus.FailedTimeout:
-			pageBody = <div>A timeout occurred. Please try again.</div>
+			pageBody = <div>A connection timeout occurred. Please try again.</div>
 			break
 		case LoginProgressStatus.FailedServerNotFound:
-			pageBody = <div>Server not found.</div>
+			pageBody = <div>JFrog Platform instance not found.</div>
 			break
 		case LoginProgressStatus.FailedServerNotSupported:
-			pageBody = <div>The server is not compatible with SSO login.</div>
+			pageBody = <div>The JFrog Platform instance does not support SSO login from VS Code.</div>
 			break
 		case LoginProgressStatus.Success:
 			pageBody = <div>Your credentials will be securely stored on the machine for future use.</div>
@@ -130,7 +134,7 @@ function createTitle(data: ILoginPage): JSX.Element {
 			title = <span>You&apos;re in!</span>
 			break
 		case LoginProgressStatus.AutoConnect:
-			title = <span>JFrog Server Found</span>
+			title = <span>Automatic Sign In</span>
 			break
 		case LoginProgressStatus.Verifying:
 			title =

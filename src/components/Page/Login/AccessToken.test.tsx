@@ -27,7 +27,7 @@ describe('AccessToken component', () => {
 
 	test('calls handlePasswordSwitch on button click', () => {
 		const { getByText } = render(<AccessToken {...defaultProps} />)
-		const buttonElement = getByText('Have Password?')
+		const buttonElement = getByText('Using Basic-Auth?')
 
 		fireEvent.click(buttonElement)
 

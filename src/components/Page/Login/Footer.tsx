@@ -21,7 +21,7 @@ function SsoFooter(props: HandlersProps): JSX.Element {
 	return (
 		<>
 			<button className={css.webLoginBtn} onClick={props.handleSighIn}>
-				Sign in with SSO
+				Sign In With SSO
 				<SsoIcon />
 			</button>
 			<div className={css.btnContainer}>
@@ -42,7 +42,7 @@ function DefaultFooter(props: HandlersProps): JSX.Element {
 	return (
 		<>
 			<button className={css.webLoginBtn} onClick={props.handleSighIn}>
-				Sign in
+				Sign In
 			</button>
 			<div className={css.btnContainer}>
 				<button

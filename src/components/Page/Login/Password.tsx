@@ -30,7 +30,7 @@ export function Password(props: Props): JSX.Element {
 						Password
 					</label>
 					<button className={css.switchBtn} onClick={props.handleAccessTokenSwitch}>
-						Have Access-Token?
+						Using Access-Token?
 					</button>
 				</div>
 

@@ -16,7 +16,7 @@ describe('Password component', () => {
 	test('renders the Password component', () => {
 		expect(screen.getByLabelText('Username')).toBeInTheDocument()
 		expect(screen.getByLabelText('Password')).toBeInTheDocument()
-		expect(screen.getByRole('button', { name: 'Have Access-Token?' })).toBeInTheDocument()
+		expect(screen.getByRole('button', { name: 'Using Access-Token?' })).toBeInTheDocument()
 	})
 
 	test('calls the handleUsername function when username input changes', () => {
@@ -46,7 +46,7 @@ describe('Password component', () => {
 	})
 
 	test('calls the handleAccessTokenSwitch function when access token button is clicked', () => {
-		const accessTokenButton = screen.getByRole('button', { name: 'Have Access-Token?' })
+		const accessTokenButton = screen.getByRole('button', { name: 'Using Access-Token?' })
 		fireEvent.click(accessTokenButton)
 		expect(mockProps.handleAccessTokenSwitch).toHaveBeenCalled()
 	})

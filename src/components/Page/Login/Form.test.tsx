@@ -14,7 +14,7 @@ describe('Form component', () => {
 			</eventManagerContext.Provider>
 		)
 		const accessTokenInput = getByLabelText('Access Token')
-		const signInButton = getByText('Sign in')
+		const signInButton = getByText('Sign In')
 		expect(accessTokenInput).toBeInTheDocument()
 		expect(signInButton).toBeInTheDocument()
 	})
@@ -45,13 +45,13 @@ describe('Form component', () => {
 		expect(xrayUrlInput.value).toBe('xrayUrl')
 	})
 
-	test('calls handleAccessTokenSwitch when "Have Password?" button is clicked', () => {
+	test('calls handleAccessTokenSwitch when "Using Basic-Auth?" button is clicked', () => {
 		const { getByText } = render(
 			<eventManagerContext.Provider value={mockEventManager}>
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const switchButton = getByText('Have Password?')
+		const switchButton = getByText('Using Basic-Auth?')
 		expect(switchButton).toBeInTheDocument()
 	})
 
@@ -61,11 +61,11 @@ describe('Form component', () => {
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const passwordButton = getByText('Have Password?')
+		const passwordButton = getByText('Using Basic-Auth?')
 		fireEvent.click(passwordButton)
 		expect(getByText('Username')).toBeInTheDocument()
 		expect(getByText('Password')).toBeInTheDocument()
-		expect(getByText('Sign in')).toBeInTheDocument()
+		expect(getByText('Sign In')).toBeInTheDocument()
 	})
 
 	test('renders the form with the access token input after "Have Access Token" have been clicked', () => {
@@ -74,11 +74,11 @@ describe('Form component', () => {
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		let button = getByText('Have Password?')
+		let button = getByText('Using Basic-Auth?')
 		fireEvent.click(button)
 		expect(getByText('Username')).toBeInTheDocument()
 		expect(getByText('Password')).toBeInTheDocument()
-		button = getByText('Have Access-Token?')
+		button = getByText('Using Access-Token?')
 		fireEvent.click(button)
 		expect(getByText('Access Token')).toBeInTheDocument()
 	})
@@ -100,7 +100,7 @@ describe('Form component', () => {
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const passwordButton = getByText('Have Password?')
+		const passwordButton = getByText('Using Basic-Auth?')
 		fireEvent.click(passwordButton)
 		const usernameInput = getByLabelText('Username') as HTMLInputElement
 		const passwordInput = getByLabelText('Password') as HTMLInputElement
@@ -110,18 +110,18 @@ describe('Form component', () => {
 		expect(passwordInput.value).toBe('testPassword')
 	})
 
-	test('no calls Login when "Sign in" button is clicked with not valid login data', () => {
+	test('no calls Login when "Sign In" button is clicked with not valid login data', () => {
 		const { getByText } = render(
 			<eventManagerContext.Provider value={mockEventManager}>
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const signInButton = getByText('Sign in')
+		const signInButton = getByText('Sign In')
 		fireEvent.click(signInButton)
 		expect(mockLogin).toHaveBeenCalledTimes(0)
 	})
 
-	test('calls Login when "Sign in" button is clicked with valid login data', () => {
+	test('calls Login when "Sign In" button is clicked with valid login data', () => {
 		const { getByText, getByLabelText } = render(
 			<eventManagerContext.Provider value={mockEventManager}>
 				<Form />
@@ -131,7 +131,7 @@ describe('Form component', () => {
 		fireEvent.change(accessTokenInput, { target: { value: 'accessToken!' } })
 		const urlInput = getByLabelText('Platform URL') as HTMLInputElement
 		fireEvent.change(urlInput, { target: { value: 'url!' } })
-		const signInButton = getByText('Sign in')
+		const signInButton = getByText('Sign In')
 		fireEvent.click(signInButton)
 		expect(mockLogin).toHaveBeenCalledTimes(1)
 	})
