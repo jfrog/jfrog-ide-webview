@@ -193,7 +193,8 @@ To run tests for the project, use the following command:
 This will execute the tests using Jest and provide the test results, including any failures or errors encountered.
 
 ## 💻 Code Contributions
-Contributions to the JFrog-IDE-Webview project are welcome and encouraged! If you have any ideas, suggestions, bug reports, or code contributions, please follow these steps:
+Contributions to the JFrog-IDE-Webview project are welcome and encouraged!.
+Please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your contribution.
