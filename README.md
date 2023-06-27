@@ -6,10 +6,11 @@
 [![Webview Tests](https://github.com/jfrog/jfrog-ide-webview/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/jfrog/jfrog-ide-webview/actions/workflows/test.yml)
 [![Scanned by Frogbot](https://raw.github.com/jfrog/frogbot/master/images/frogbot-badge.svg)](https://github.com/jfrog/frogbot#readme)
 </div>
+## ℹ️ About This Project
+The JFrog IDE integrations allow developers to find and fix security vulnerabilities in their projects and to see valuable information about the status of their code by continuously scanning it locally with JFrog Xray.
+**JFrog-IDE-Webview** is a react-based HTML page designed to be seamlessly embedded within [JFrog VS Code Extension](https://github.com/jfrog/jfrog-vscode-extension#readme) and the [JFrog IDEA Plugin](https://github.com/jfrog/jfrog-idea-plugin#readme). It serves as a powerful web view that offers a comprehensive overview of vulnerabilities identified in the source code project.
 
- 🖥  A React-based HTML page designed to be seamlessly embedded within JFrog VS Code and IntelliJ Extensions. It serves as a powerful web view that offers a comprehensive overview of vulnerabilities identified in the source code project.
-
-## Build
+## 🚀 Build
 
 To build the project and generate the HTML page, follow these steps:
 
@@ -27,7 +28,7 @@ To build the project and generate the HTML page, follow these steps:
 
    This will generate the necessary artifacts, including the HTML page, in the build directory.
 
-## Watch
+## 🔍 Watch
 
 The `watch` script enables you to automatically rebuild the project whenever changes are made to the source code. This is useful during development when you want to see immediate updates without manually triggering a build.
 
@@ -181,7 +182,7 @@ window.postMessage({
 
 </details>
 
-## Run Tests
+## 🧪 Tests
 
 To run tests for the project, use the following command:
 
@@ -190,3 +191,14 @@ To run tests for the project, use the following command:
    ```
 
 This will execute the tests using Jest and provide the test results, including any failures or errors encountered.
+
+## 💻 Contributions
+Contributions to the JFrog-IDE-Webview project are welcome and encouraged! If you have any ideas, suggestions, bug reports, or code contributions, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your contribution.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Submit a pull request with a clear description of your changes.
+
+We appreciate your contribution to making JFrog-IDE-Webview even better!.
