@@ -5,9 +5,15 @@
 	height: calc(100vh);
 }
 
-.App-body {
+.AppBody {
 	color: white;
 	padding: 15px;
+}
+
+.loading {
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 * {

@@ -1,5 +1,13 @@
+import { LoginConnectionType, LoginProgressStatus } from './login'
 import { ISeverity } from './severity'
-import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from './webviewPages'
+import {
+	IDependencyPage,
+	IEosPage,
+	IIaCPage,
+	ILoginPage,
+	ISecretsPage,
+	PageType
+} from './webviewPages'
 
 describe('Model - WebviewPage', () => {
 	test('should have the correct properties for IDependencyPage', () => {
@@ -193,5 +201,19 @@ describe('Model - WebviewPage', () => {
 		expect(iacPage.header).toBe('IaC Page')
 		expect(iacPage.severity).toBe(ISeverity.Low)
 		expect(iacPage.abbreviation).toBe('DEF')
+	})
+
+	test('should correctly type LoginPage', () => {
+		const loginPage: ILoginPage = {
+			pageType: PageType.Login,
+			url: 'https://example.com',
+			status: LoginProgressStatus.Success,
+			connectionType: LoginConnectionType.Cli
+		}
+
+		expect(loginPage.pageType).toBe(PageType.Login)
+		expect(loginPage.url).toBe('https://example.com')
+		expect(loginPage.status).toBe(LoginProgressStatus.Success)
+		expect(loginPage.connectionType).toBe(LoginConnectionType.Cli)
 	})
 })

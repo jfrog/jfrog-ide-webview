@@ -7,36 +7,46 @@ import Secrets from './components/Page/Secrets/Secrets'
 import { WebviewPage, PageType } from './model/webviewPages'
 import { EventManager } from './api/eventManager'
 import { eventManagerContext } from './store/eventContext'
+import { Spinner, State } from './components/UI/Spinner/Spinner'
+import { Login } from './components/Page/Login/Login'
 
 /**
  * The main page on which the Webview will be drawn based on the incoming request page type.
  */
 function App(): JSX.Element {
-	const [data, setDependencyData] = useState<WebviewPage>({} as WebviewPage)
-	const eventManager = useMemo(() => new EventManager(setDependencyData), [])
+	const [pageData, setPageData] = useState<WebviewPage>({} as WebviewPage)
+
+	const eventManager = useMemo(() => new EventManager(setPageData), [])
 	let page
 
-	switch (data.pageType) {
+	switch (pageData.pageType) {
 		case PageType.Dependency:
-			page = <Dependency data={data} />
+			page = <Dependency data={pageData} />
 			break
 		case PageType.Eos:
-			page = <Eos data={data} />
+			page = <Eos data={pageData} />
 			break
 		case PageType.IaC:
-			page = <IaC data={data} />
+			page = <IaC data={pageData} />
 			break
 		case PageType.Secrets:
-			page = <Secrets data={data} />
+			page = <Secrets data={pageData} />
+			break
+		case PageType.Login:
+			page = <Login data={pageData} />
 			break
 		default:
-			page = <>Nothing to show</>
+			page = (
+				<div className={css.loading}>
+					<Spinner state={State.Loading} />
+				</div>
+			)
 	}
 
 	return (
 		<div className={css.App}>
 			<eventManagerContext.Provider value={eventManager}>
-				<div className={css['App-body']}>{page}</div>
+				<div className={css.AppBody}>{page}</div>
 			</eventManagerContext.Provider>
 		</div>
 	)

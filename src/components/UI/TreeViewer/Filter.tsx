@@ -13,7 +13,6 @@ export default function Filter(props: Props): JSX.Element {
 		<input
 			className={css.input}
 			aria-label="Filter nodes"
-			id="search"
 			type="text"
 			placeholder="Filter nodes..."
 			value={props.filter}
