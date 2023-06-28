@@ -49,7 +49,7 @@ export function Form(): JSX.Element {
 		if (!isLoginDataValid(loginData)) {
 			setInputError(true)
 		} else {
-			ctx.Login(loginData)
+			ctx.login(loginData)
 		}
 	}
 

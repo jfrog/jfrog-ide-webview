@@ -37,7 +37,7 @@ export function LoginModal(props: Props): JSX.Element {
 						<button
 							className={css.autoConnectBtn}
 							onClick={(): void => {
-								ctx.Login({
+								ctx.login({
 									loginConnectionType: props.loginData.connectionType
 								} as ISendLoginEventData)
 							}}

@@ -1,4 +1,4 @@
-export function JfrogIcon(): JSX.Element {
+export function JFrogIcon(): JSX.Element {
 	return (
 		<svg
 			data-testid="jfrog-icon"
