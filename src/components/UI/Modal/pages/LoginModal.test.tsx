@@ -36,9 +36,7 @@ describe('LoginModal component', () => {
 		test('renders the login modal correctly', async () => {
 			const { getByText } = render(<LoginModal onClose={mockOnClose} loginData={mockLoginData} />)
 			await waitFor(() => {
-				expect(
-					getByText('We found a JFrog CLI with connection details for')
-				).toBeInTheDocument()
+				expect(getByText('We found a JFrog CLI with connection details for')).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
@@ -330,7 +328,9 @@ describe('LoginModal component', () => {
 			)
 
 			await waitFor(() => {
-				expect(getByText('The JFrog Platform instance does not support SSO login from VS Code.')).toBeInTheDocument()
+				expect(
+					getByText('The JFrog Platform instance does not support SSO login from VS Code.')
+				).toBeInTheDocument()
 			})
 		})
 		test('should render FailedServerNotFound', async () => {

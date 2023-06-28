@@ -26,7 +26,10 @@ export interface IPageData {
 }
 
 export class TestEventManager extends EventManager {
-	constructor(setPageState: React.Dispatch<React.SetStateAction<WebviewPage>>, customSendFunc: () => void) {
+	constructor(
+		setPageState: React.Dispatch<React.SetStateAction<WebviewPage>>,
+		customSendFunc: () => void
+	) {
 		super(setPageState)
 		this.sendFunc = customSendFunc
 	}

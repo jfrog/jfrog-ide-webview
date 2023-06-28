@@ -76,7 +76,7 @@ function createBody(data: ILoginPage): JSX.Element {
 				<div>
 					<span>We found a JFrog CLI with connection details for </span>
 					<span className={css.textBold}>{data.url}</span>.
-					<div/>
+					<div />
 					<span>Would you like to use it for sigh in?</span>
 				</div>
 			)
@@ -86,7 +86,7 @@ function createBody(data: ILoginPage): JSX.Element {
 				<div>
 					<span>We found environment variables with connection details for </span>
 					<span className={css.textBold}>{data.url}</span>.
-					<div/>
+					<div />
 					<span>Would you like to use it for sigh in?</span>
 				</div>
 			)
