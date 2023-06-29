@@ -5,7 +5,6 @@ import { ISendLoginEventData, LoginConnectionType } from '../../../model/login'
 import { Password } from './Password'
 import { AccessToken } from './AccessToken'
 import { Sso } from './Sso'
-import { Footer } from './Footer'
 import { Url } from './Url'
 
 export function Form(): JSX.Element {
@@ -120,11 +119,6 @@ export function Form(): JSX.Element {
 				handleXrayUrl={xrayUrlHandler}
 			/>
 			{form}
-			<Footer
-				handleConnectionType={connectionTypeHandler}
-				handleSighIn={handleSighIn}
-				type={loginData.loginConnectionType}
-			/>
 		</div>
 	)
 }

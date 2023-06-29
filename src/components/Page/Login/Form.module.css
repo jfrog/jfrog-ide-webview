@@ -4,34 +4,33 @@
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
-	margin-top: 10px;
 	margin-bottom: 0px;
 	width: 320px;
 	transition: height 0.5s ease;
 }
 
 .containerAccessToken {
-	height: 255px;
+	height: 180px;
 }
 
 .containerAdvancedUrl {
-	height: 434px;
+	height: 359px;
 }
 
 .containerAdvancedUrlWithPass {
-	height: 484px;
+	height: 409px;
 }
 
 .containerPassword {
-	height: 334px;
+	height: 259px;
 }
 
 .containerSso {
-	height: 255px;
+	height: 180px;
 }
 
 .containerAdvancedUrlWitSso {
-	height: 419px;
+	height: 344px;
 }
 
 .advanceUrlArrowOpen {
