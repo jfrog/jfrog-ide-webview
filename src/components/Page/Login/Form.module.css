@@ -10,27 +10,27 @@
 }
 
 .containerAccessToken {
-	height: 180px;
+	height: 255px;
 }
 
 .containerAdvancedUrl {
-	height: 359px;
+	height: 434px;
 }
 
 .containerAdvancedUrlWithPass {
-	height: 409px;
+	height: 484px;
 }
 
 .containerPassword {
-	height: 259px;
+	height: 334px;
 }
 
 .containerSso {
-	height: 180px;
+	height: 255px;
 }
 
 .containerAdvancedUrlWitSso {
-	height: 344px;
+	height: 419px;
 }
 
 .advanceUrlArrowOpen {
@@ -59,6 +59,7 @@
 }
 
 .ssoBtn {
+	display: none;
 	color: rgb(0, 168, 252);
 	cursor: pointer;
 	font-size: x-small;

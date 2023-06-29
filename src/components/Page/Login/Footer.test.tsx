@@ -9,8 +9,7 @@ describe('Footer component', () => {
 	const defaultProps: Props = {
 		handleConnectionType: mockHandleConnectionType,
 		handleSighIn: mockHandleSignIn,
-		type: LoginConnectionType.BasicAuthOrToken,
-		showSsoButton: false
+		type: LoginConnectionType.BasicAuthOrToken
 	}
 
 	// test('renders the default footer when type is not SSO', () => {

@@ -124,7 +124,6 @@ export function Form(): JSX.Element {
 				handleConnectionType={connectionTypeHandler}
 				handleSighIn={handleSighIn}
 				type={loginData.loginConnectionType}
-				showSsoButton={false}
 			/>
 		</div>
 	)
