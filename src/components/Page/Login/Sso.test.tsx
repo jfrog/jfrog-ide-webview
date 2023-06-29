@@ -14,7 +14,7 @@ describe('Sso', () => {
 	})
 
 	test('renders the required Artifactory version paragraph', () => {
-		const versionElement = screen.getByText('Requires Artifactory version 7.57 or higher')
+		const versionElement = screen.getByText('Requires Artifactory version 7.63.1 or higher')
 		expect(versionElement).toBeInTheDocument()
 	})
 

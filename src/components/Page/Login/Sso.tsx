@@ -7,7 +7,7 @@ export function Sso(): JSX.Element {
 				To proceed with authentication, you will be redirected to the SSO login page.
 			</div>
 			<div className={css.paragraph}>
-				Requires Artifactory version 7.57 or higher<span className={css.redStar}>*</span>
+				Requires Artifactory version 7.63.1 or higher<span className={css.redStar}>*</span>
 			</div>
 		</div>
 	)

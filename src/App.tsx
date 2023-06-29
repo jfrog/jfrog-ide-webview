@@ -44,9 +44,9 @@ function App(): JSX.Element {
 	}
 
 	return (
-		<div className={css.App}>
+		<div className={css.app}>
 			<eventManagerContext.Provider value={eventManager}>
-				<div className={css.AppBody}>{page}</div>
+				<div className={css.appBody}>{page}</div>
 			</eventManagerContext.Provider>
 		</div>
 	)

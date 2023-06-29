@@ -14,7 +14,7 @@ export type WebviewSendEvent = SendJumpToCodeEvent | SendLoginEvent
 // Receive events from the IDEs.
 export enum WebviewReceiveEventType {
 	SetEmitter = 'SET_EMITTER',
-	ShowPage = 'SHOW_DATA'
+	ShowPage = 'SHOW_PAGE'
 }
 
 export type WebviewReceiveEvent = ReceiveShowPageEvent | ReceiveSetEmitterEvent

@@ -15,20 +15,20 @@ describe('Footer component', () => {
 	test('renders the default footer when type is not SSO', () => {
 		const { getByText } = render(<Footer {...defaultProps} />)
 
-		expect(getByText('Sign in')).toBeInTheDocument()
+		expect(getByText('Sign In')).toBeInTheDocument()
 		expect(getByText('Continue With SSO')).toBeInTheDocument()
 	})
 
 	test('renders the SSO footer when type is SSO', () => {
 		const { getByText } = render(<Footer {...defaultProps} type={LoginConnectionType.Sso} />)
 
-		expect(getByText('Sign in with SSO')).toBeInTheDocument()
+		expect(getByText('Sign In With SSO')).toBeInTheDocument()
 		expect(getByText('Use Basic-Auth')).toBeInTheDocument()
 	})
 
-	test('calls handleSighIn when "Sign in" button is clicked', () => {
+	test('calls handleSighIn when "Sign In" button is clicked', () => {
 		const { getByText } = render(<Footer {...defaultProps} />)
-		const signInButton = getByText('Sign in')
+		const signInButton = getByText('Sign In')
 
 		fireEvent.click(signInButton)
 

@@ -40,7 +40,7 @@ export class EventManager {
 		this.sendEvent({ type: WebviewSendEventType.JumpToCode, data: data } as SendJumpToCodeEvent)
 	}
 
-	public Login(data: ISendLoginEventData): void {
+	public login(data: ISendLoginEventData): void {
 		this.sendEvent({ type: WebviewSendEventType.Login, data: data } as SendLoginEvent)
 	}
 }

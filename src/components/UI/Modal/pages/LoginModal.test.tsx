@@ -36,9 +36,7 @@ describe('LoginModal component', () => {
 		test('renders the login modal correctly', async () => {
 			const { getByText } = render(<LoginModal onClose={mockOnClose} loginData={mockLoginData} />)
 			await waitFor(() => {
-				expect(
-					getByText('You have a predefined JFrog CLI. Would you like to sign-in to')
-				).toBeInTheDocument()
+				expect(getByText('We found a JFrog CLI with connection details for')).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
@@ -102,7 +100,7 @@ describe('LoginModal component', () => {
 			const { getByText } = render(<LoginModal onClose={mockOnClose} loginData={mockLoginData} />)
 			await waitFor(() => {
 				expect(
-					getByText('You have a predefined Environment Variable. Would you like to sign-in to')
+					getByText('We found environment variables with connection details for')
 				).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
@@ -156,7 +154,7 @@ describe('LoginModal component', () => {
 			)
 			await waitFor(() => {
 				expect(
-					queryByText('You have a predefined Environment Variable. Would you like to sign-in to')
+					queryByText('We found environment variables with connection details for')
 				).not.toBeInTheDocument()
 				expect(queryByText('example.com')).not.toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
@@ -209,7 +207,7 @@ describe('LoginModal component', () => {
 			)
 			await waitFor(() => {
 				expect(
-					queryByText('You have a predefined Environment Variable. Would you like to sign-in to')
+					queryByText('We found environment variables with connection details for')
 				).not.toBeInTheDocument()
 				expect(getByText('Almost there!')).toBeInTheDocument()
 				expect(getByText('Waiting for you to sign in...')).toBeInTheDocument()
@@ -296,7 +294,7 @@ describe('LoginModal component', () => {
 			)
 
 			await waitFor(() => {
-				expect(getByText('A timeout occurred. Please try again.')).toBeInTheDocument()
+				expect(getByText('A connection timeout occurred. Please try again.')).toBeInTheDocument()
 			})
 		})
 		test('should render FailedServerNotFound', async () => {
@@ -313,7 +311,7 @@ describe('LoginModal component', () => {
 			)
 
 			await waitFor(() => {
-				expect(getByText('Server not found.')).toBeInTheDocument()
+				expect(getByText('JFrog Platform instance not found.')).toBeInTheDocument()
 			})
 		})
 		test('should render FailedServerNotSupported', async () => {
@@ -330,7 +328,9 @@ describe('LoginModal component', () => {
 			)
 
 			await waitFor(() => {
-				expect(getByText('The server is not compatible with SSO login.')).toBeInTheDocument()
+				expect(
+					getByText('The JFrog Platform instance does not support SSO login from VS Code.')
+				).toBeInTheDocument()
 			})
 		})
 		test('should render FailedServerNotFound', async () => {
