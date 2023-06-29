@@ -15,7 +15,7 @@ export function AccessToken(props: Props): JSX.Element {
 					Access Token
 				</label>
 				<button className={css.switchBtn} onClick={props.handlePasswordSwitch}>
-					Using Basic-Auth?
+					Using Password
 				</button>
 			</div>
 			<input

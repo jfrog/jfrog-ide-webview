@@ -45,13 +45,13 @@ describe('Form component', () => {
 		expect(xrayUrlInput.value).toBe('xrayUrl')
 	})
 
-	test('calls handleAccessTokenSwitch when "Using Basic-Auth?" button is clicked', () => {
+	test('calls handleAccessTokenSwitch when "Using Password" button is clicked', () => {
 		const { getByText } = render(
 			<eventManagerContext.Provider value={mockEventManager}>
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const switchButton = getByText('Using Basic-Auth?')
+		const switchButton = getByText('Using Password')
 		expect(switchButton).toBeInTheDocument()
 	})
 
@@ -61,7 +61,7 @@ describe('Form component', () => {
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const passwordButton = getByText('Using Basic-Auth?')
+		const passwordButton = getByText('Using Password')
 		fireEvent.click(passwordButton)
 		expect(getByText('Username')).toBeInTheDocument()
 		expect(getByText('Password')).toBeInTheDocument()
@@ -74,11 +74,11 @@ describe('Form component', () => {
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		let button = getByText('Using Basic-Auth?')
+		let button = getByText('Using Password')
 		fireEvent.click(button)
 		expect(getByText('Username')).toBeInTheDocument()
 		expect(getByText('Password')).toBeInTheDocument()
-		button = getByText('Using Access-Token?')
+		button = getByText('Using Access-Token')
 		fireEvent.click(button)
 		expect(getByText('Access Token')).toBeInTheDocument()
 	})
@@ -100,7 +100,7 @@ describe('Form component', () => {
 				<Form />
 			</eventManagerContext.Provider>
 		)
-		const passwordButton = getByText('Using Basic-Auth?')
+		const passwordButton = getByText('Using Password')
 		fireEvent.click(passwordButton)
 		const usernameInput = getByLabelText('Username') as HTMLInputElement
 		const passwordInput = getByLabelText('Password') as HTMLInputElement
