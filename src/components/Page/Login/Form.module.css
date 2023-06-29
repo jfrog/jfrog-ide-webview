@@ -63,7 +63,6 @@
 	color: rgb(0, 168, 252);
 	cursor: pointer;
 	font-size: x-small;
-	display: flex;
 	flex-flow: column;
 	margin-top: 10px;
 	align-items: center;
