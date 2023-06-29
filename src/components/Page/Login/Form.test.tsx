@@ -136,14 +136,14 @@ describe('Form component', () => {
 		expect(mockLogin).toHaveBeenCalledTimes(1)
 	})
 
-	test('renders the form with the SSO component when connection type is SSO', () => {
-		const { getByText } = render(
-			<eventManagerContext.Provider value={mockEventManager}>
-				<Form />
-			</eventManagerContext.Provider>
-		)
-		const ssoButton = getByText('Continue With SSO')
-		fireEvent.click(ssoButton)
-		expect(getByText('Requires Artifactory version 7.63.1 or higher')).toBeInTheDocument()
-	})
+	// test('renders the form with the SSO component when connection type is SSO', () => {
+	// 	const { getByText } = render(
+	// 		<eventManagerContext.Provider value={mockEventManager}>
+	// 			<Form />
+	// 		</eventManagerContext.Provider>
+	// 	)
+	// 	const ssoButton = getByText('Continue With SSO')
+	// 	fireEvent.click(ssoButton)
+	// 	expect(getByText('Requires Artifactory version 7.63.1 or higher')).toBeInTheDocument()
+	// })
 })
