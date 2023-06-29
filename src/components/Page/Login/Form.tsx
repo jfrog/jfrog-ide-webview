@@ -6,6 +6,7 @@ import { Password } from './Password'
 import { AccessToken } from './AccessToken'
 import { Sso } from './Sso'
 import { Url } from './Url'
+import { Footer } from './Footer'
 
 export function Form(): JSX.Element {
 	const ctx = useContext(eventManagerContext)
@@ -119,6 +120,12 @@ export function Form(): JSX.Element {
 				handleXrayUrl={xrayUrlHandler}
 			/>
 			{form}
+			<Footer
+				handleConnectionType={connectionTypeHandler}
+				handleSighIn={handleSighIn}
+				type={loginData.loginConnectionType}
+				showSsoButton={false}
+			/>
 		</div>
 	)
 }

@@ -6,6 +6,7 @@ export interface Props {
 	handleConnectionType: (type: LoginConnectionType) => void
 	handleSighIn: () => void
 	type: LoginConnectionType
+	showSsoButton: boolean
 }
 
 export function Footer(props: Props): JSX.Element {
@@ -38,22 +39,30 @@ function SsoFooter(props: HandlersProps): JSX.Element {
 	)
 }
 
-function DefaultFooter(props: HandlersProps): JSX.Element {
+export interface DefaultFooterProps {
+	handleConnectionType: (type: LoginConnectionType) => void
+	handleSighIn: () => void
+	showSsoButton: boolean
+}
+
+function DefaultFooter(props: DefaultFooterProps): JSX.Element {
 	return (
 		<>
 			<button className={css.webLoginBtn} onClick={props.handleSighIn}>
 				Sign In
 			</button>
-			<div className={css.btnContainer}>
-				<button
-					className={css.ssoBtn}
-					onClick={(): void => {
-						props.handleConnectionType(LoginConnectionType.Sso)
-					}}
-				>
-					Continue With SSO
-				</button>
-			</div>
+			{props.showSsoButton && (
+				<div className={css.btnContainer}>
+					<button
+						className={css.ssoBtn}
+						onClick={(): void => {
+							props.handleConnectionType(LoginConnectionType.Sso)
+						}}
+					>
+						Continue With SSO
+					</button>
+				</div>
+			)}
 		</>
 	)
 }
