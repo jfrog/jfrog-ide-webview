@@ -9,9 +9,9 @@ export const getByTextAcrossMultipleElements = (
 	text: string
 ): HTMLElement => getByText((content, element) => element?.textContent === text)
 
-export const sendWebviewPage = async (pageData: IPageData): Promise<MessageEvent> => {
+export const sendWebviewPage = async (data: IData): Promise<MessageEvent> => {
 	const messageEvent = new MessageEvent('message', {
-		data: pageData
+		data: data
 	})
 	await act(() => {
 		window.dispatchEvent(messageEvent)
@@ -19,10 +19,9 @@ export const sendWebviewPage = async (pageData: IPageData): Promise<MessageEvent
 	return messageEvent
 }
 
-export interface IPageData {
+export interface IData {
 	type: WebviewReceiveEventType
-	pageData?: unknown
-	emitterFunc?: string
+	data?: unknown
 }
 
 export class TestEventManager extends EventManager {

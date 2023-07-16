@@ -27,10 +27,10 @@ export class EventManager {
 
 			switch (eventData.type) {
 				case WebviewReceiveEventType.SetEmitter:
-					this.sendFunc = new Function(eventData.emitterFunc)()
+					this.sendFunc = new Function(eventData.data)()
 					break
 				case WebviewReceiveEventType.ShowPage:
-					this.setPageState(eventData.pageData)
+					this.setPageState(eventData.data)
 					break
 			}
 		})

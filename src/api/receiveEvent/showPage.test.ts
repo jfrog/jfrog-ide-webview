@@ -10,20 +10,20 @@ describe('Event Types', () => {
 	test('defines ShowPageEvent interface correctly', () => {
 		const eventData: ReceiveShowPageEvent = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {} as IDependencyPage
+			data: {} as IDependencyPage
 		}
 
 		expect(eventData.type).toEqual(WebviewReceiveEventType.ShowPage)
-		expect(eventData.pageData).toBeDefined()
+		expect(eventData.data).toBeDefined()
 	})
 
 	test('defines WebviewEvent union type correctly', () => {
 		const event: ReceiveShowPageEvent = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {} as IDependencyPage
+			data: {} as IDependencyPage
 		}
 
 		expect(event.type).toEqual(WebviewReceiveEventType.ShowPage)
-		expect(event.pageData).toBeDefined()
+		expect(event.data).toBeDefined()
 	})
 })

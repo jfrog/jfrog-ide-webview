@@ -20,9 +20,9 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load Dependency.
-		const pageData = {
+		const mock = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {
+			data: {
 				id: 'Dependency-ID',
 				pageType: PageType.Dependency,
 				componentType: 'q',
@@ -33,7 +33,7 @@ describe('App component', () => {
 				edited: '0'
 			} as IDependencyPage
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(mock)
 
 		// Assert that the Dependency component is rendered
 		expect(screen.getAllByText('Dependency-ID')).toHaveLength(2)
@@ -43,15 +43,15 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load Eos page.
-		const pageData = {
+		const data = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {
+			data: {
 				pageType: PageType.Eos,
 				header: 'Header-eos',
 				location: { file: 'file' } as IAnalysisStep
 			} as IEosPage
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(data)
 
 		// Assert that the Eos component is rendered
 		expect(screen.getByText('Header-eos')).toBeInTheDocument()
@@ -61,9 +61,9 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load IaC page.
-		const pageData = {
+		const mock = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {
+			data: {
 				pageType: PageType.IaC,
 				header: 'Header-iac',
 				severity: ISeverity.High,
@@ -71,7 +71,7 @@ describe('App component', () => {
 				description: 'description'
 			} as IIaCPage
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(mock)
 
 		// Assert that the Iac component is rendered.
 		expect(screen.getByText('Header-iac')).toBeInTheDocument()
@@ -81,9 +81,9 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load Secrets page.
-		const pageData = {
+		const mock = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {
+			data: {
 				pageType: PageType.Secrets,
 				header: 'Header-secret',
 				location: { file: 'file' },
@@ -91,7 +91,7 @@ describe('App component', () => {
 				description: 'description'
 			} as ISecretsPage
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(mock)
 
 		// Assert that the Dependency component is rendered.
 		expect(screen.getByText('Header-secret')).toBeInTheDocument()
@@ -100,16 +100,16 @@ describe('App component', () => {
 	test('renders the Login page when the page type is "Login"', async () => {
 		render(<App />)
 
-		const pageData = {
+		const mock = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: {
+			data: {
 				pageType: PageType.Login,
 				url: 'www.example.com',
 				status: LoginProgressStatus.Initial,
 				connectionType: LoginConnectionType.BasicAuthOrToken
 			} as ILoginPage
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(mock)
 
 		expect(screen.getByText('Welcome to JFrog')).toBeInTheDocument()
 	})

@@ -1,5 +1,5 @@
 import { WebviewReceiveEventType } from '.'
-import { IPageData, sendWebviewPage } from '../utils/testUtils'
+import { IData, sendWebviewPage } from '../utils/testUtils'
 import { EventManager } from './eventManager'
 
 describe('EventManager util', () => {
@@ -15,11 +15,11 @@ describe('EventManager util', () => {
 	})
 
 	test('sets the event receiver and handles ShowPage event', async () => {
-		const pageData = {
+		const mock = {
 			type: WebviewReceiveEventType.ShowPage,
-			pageData: { title: 'Test Page' }
+			data: { title: 'Test Page' }
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(mock)
 
 		expect(setPageStateMock).toHaveBeenCalledTimes(1)
 		expect(setPageStateMock).toHaveBeenCalledWith({ title: 'Test Page' })
@@ -30,8 +30,8 @@ describe('EventManager util', () => {
 		const emitterFunc = 'return console.warn'
 		const setEmitterEvent = {
 			type: WebviewReceiveEventType.SetEmitter,
-			emitterFunc
-		} as IPageData
+			data: emitterFunc
+		} as IData
 
 		await sendWebviewPage(setEmitterEvent)
 
