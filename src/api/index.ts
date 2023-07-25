@@ -1,20 +1,20 @@
-import { SendLoginEvent } from './sendEvent/login'
-import { SendJumpToCodeEvent } from './sendEvent/jumpToCode'
-import { ReceiveSetEmitterEvent } from './receiveEvent/setEmitter'
-import { ReceiveShowPageEvent } from './receiveEvent/showPage'
+import { IdeEventSetEmitter } from './ideEvent'
+import { IdeEventShowPage } from './ideEvent/showPage'
+import { WebviewEventJumpToCode } from './webviewEvent/jumpToCode'
+import { WebviewEventLogin } from './webviewEvent/login'
 
-// Send event to the IDEs.
-export enum WebviewSendEventType {
+// Represents a Webview-specific event that can be sent from the Webview to the IDE.
+export enum WebviewEventType {
 	JumpToCode = 'SHOW_CODE',
 	Login = 'LOGIN'
 }
 
-export type WebviewSendEvent = SendJumpToCodeEvent | SendLoginEvent
+export type WebviewEvent = WebviewEventJumpToCode | WebviewEventLogin
 
-// Receive events from the IDEs.
-export enum WebviewReceiveEventType {
+// Represents an IDE-specific event that can be sent from the IDE to the Webview.
+export enum IdeEventType {
 	SetEmitter = 'SET_EMITTER',
 	ShowPage = 'SHOW_PAGE'
 }
 
-export type WebviewReceiveEvent = ReceiveShowPageEvent | ReceiveSetEmitterEvent
+export type IdeEvent = IdeEventShowPage | IdeEventSetEmitter

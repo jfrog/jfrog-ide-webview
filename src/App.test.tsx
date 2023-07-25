@@ -12,7 +12,7 @@ import { ISeverity } from './model/severity'
 import { IImpactGraph } from './model/impactGraph'
 import { sendWebviewPage } from './utils/testUtils'
 import { IAnalysisStep } from './model/analysisStep'
-import { WebviewReceiveEventType } from './api'
+import { IdeEventType } from './api'
 import { LoginConnectionType, LoginProgressStatus } from './model/login'
 
 describe('App component', () => {
@@ -21,7 +21,7 @@ describe('App component', () => {
 
 		// Load Dependency.
 		const mock = {
-			type: WebviewReceiveEventType.ShowPage,
+			type: IdeEventType.ShowPage,
 			data: {
 				id: 'Dependency-ID',
 				pageType: PageType.Dependency,
@@ -44,7 +44,7 @@ describe('App component', () => {
 
 		// Load Eos page.
 		const data = {
-			type: WebviewReceiveEventType.ShowPage,
+			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.Eos,
 				header: 'Header-eos',
@@ -62,7 +62,7 @@ describe('App component', () => {
 
 		// Load IaC page.
 		const mock = {
-			type: WebviewReceiveEventType.ShowPage,
+			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.IaC,
 				header: 'Header-iac',
@@ -82,7 +82,7 @@ describe('App component', () => {
 
 		// Load Secrets page.
 		const mock = {
-			type: WebviewReceiveEventType.ShowPage,
+			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.Secrets,
 				header: 'Header-secret',
@@ -101,7 +101,7 @@ describe('App component', () => {
 		render(<App />)
 
 		const mock = {
-			type: WebviewReceiveEventType.ShowPage,
+			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.Login,
 				url: 'www.example.com',

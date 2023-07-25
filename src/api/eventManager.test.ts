@@ -1,4 +1,4 @@
-import { WebviewReceiveEventType } from '.'
+import { IdeEventType } from '.'
 import { IData, sendWebviewPage } from '../utils/testUtils'
 import { EventManager } from './eventManager'
 
@@ -16,7 +16,7 @@ describe('EventManager util', () => {
 
 	test('sets the event receiver and handles ShowPage event', async () => {
 		const mock = {
-			type: WebviewReceiveEventType.ShowPage,
+			type: IdeEventType.ShowPage,
 			data: { title: 'Test Page' }
 		}
 		await sendWebviewPage(mock)
@@ -29,7 +29,7 @@ describe('EventManager util', () => {
 		const consoleLogSpy = jest.spyOn(global.console, 'warn')
 		const emitterFunc = 'return console.warn'
 		const setEmitterEvent = {
-			type: WebviewReceiveEventType.SetEmitter,
+			type: IdeEventType.SetEmitter,
 			data: emitterFunc
 		} as IData
 

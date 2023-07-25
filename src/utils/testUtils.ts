@@ -1,6 +1,6 @@
 import { Matcher, SelectorMatcherOptions } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
-import { WebviewReceiveEventType } from '../api'
+import { IdeEventType } from '../api'
 import { EventManager } from '../api/eventManager'
 import { WebviewPage } from '../model'
 
@@ -20,7 +20,7 @@ export const sendWebviewPage = async (data: IData): Promise<MessageEvent> => {
 }
 
 export interface IData {
-	type: WebviewReceiveEventType
+	type: IdeEventType
 	data?: unknown
 }
 

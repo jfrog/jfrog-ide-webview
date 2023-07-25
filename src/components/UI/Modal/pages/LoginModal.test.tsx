@@ -3,8 +3,8 @@ import { LoginModal } from './LoginModal'
 import { ILoginPage, LoginProgressStatus, LoginConnectionType, PageType } from '../../../../model'
 import { eventManagerContext } from '../../../../store/eventContext'
 import { TestEventManager } from '../../../../utils/testUtils'
-import { WebviewSendEventType } from '../../../../api'
-import { SendLoginEvent } from '../../../../api/sendEvent/login'
+import { WebviewEventType } from '../../../../api'
+import { WebviewEventLogin } from '../../../../api/webviewEvent/login'
 
 describe('LoginModal component', () => {
 	const mockOnClose = jest.fn()
@@ -82,9 +82,9 @@ describe('LoginModal component', () => {
 				}
 
 				expect(mockLogin).toHaveBeenCalledWith({
-					type: WebviewSendEventType.Login,
+					type: WebviewEventType.Login,
 					data: { loginConnectionType: LoginConnectionType.Cli }
-				} as SendLoginEvent)
+				} as WebviewEventLogin)
 			})
 		})
 	})
@@ -133,9 +133,9 @@ describe('LoginModal component', () => {
 				}
 
 				expect(mockLogin).toHaveBeenCalledWith({
-					type: WebviewSendEventType.Login,
+					type: WebviewEventType.Login,
 					data: { loginConnectionType: LoginConnectionType.EnvVars }
-				} as SendLoginEvent)
+				} as WebviewEventLogin)
 			})
 		})
 	})
@@ -187,9 +187,9 @@ describe('LoginModal component', () => {
 				}
 
 				expect(mockLogin).toHaveBeenCalledWith({
-					type: WebviewSendEventType.Login,
+					type: WebviewEventType.Login,
 					data: { loginConnectionType: LoginConnectionType.BasicAuthOrToken }
-				} as SendLoginEvent)
+				} as WebviewEventLogin)
 			})
 		})
 	})
@@ -240,9 +240,9 @@ describe('LoginModal component', () => {
 				}
 
 				expect(mockLogin).toHaveBeenCalledWith({
-					type: WebviewSendEventType.Login,
+					type: WebviewEventType.Login,
 					data: { loginConnectionType: LoginConnectionType.Sso }
-				} as SendLoginEvent)
+				} as WebviewEventLogin)
 			})
 		})
 
