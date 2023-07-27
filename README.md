@@ -54,7 +54,7 @@ To view a specific page example, choose one of the following options and enter t
 
 ```javascript
 window.postMessage({
-  "type": "SHOW_DATA",
+  "type": "SHOW_PAGE",
   "pageData": {
  "id": "210300",
  "pageType": "DEPENDENCY",
@@ -132,7 +132,7 @@ window.postMessage({
 
 ```javascript
 window.postMessage({
-  "type": "SHOW_DATA",
+  "type": "SHOW_PAGE",
   "pageData": {
     "header": "SQL Injection",
     "pageType": "SECRETS",
@@ -158,7 +158,7 @@ window.postMessage({
 
 ```javascript
 window.postMessage({
-"type": "SHOW_DATA",
+"type": "SHOW_PAGE",
   "pageData": {
   'header': 'SQL Injection',
   'pageType': 'IAC',
