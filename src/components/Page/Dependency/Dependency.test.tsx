@@ -1,9 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
-import { IDependencyPage, PageType } from '../../../model/webviewPages'
-import { ISeverity } from '../../../model/severity'
-import { IApplicableDetails, ICve, IEvidence } from '../../../model/cve'
-import { IExtendedInformation } from '../../../model/extendedInformation'
+import { IDependencyPage, PageType, ISeverity, IApplicableDetails, ICve, IEvidence, IExtendedInformation } from '../../../model'
 
 describe('Dependency page component', () => {
 	const mockData: IDependencyPage = {
@@ -42,6 +39,8 @@ describe('Dependency page component', () => {
 		impactGraph: {
 			name: 'Impact Graph'
 		},
+		pathsCount: 1,
+		pathsLimit: 10,
 		references: [{ url: 'url' }]
 	}
 	test('should render "JFrog Research last update"', () => {

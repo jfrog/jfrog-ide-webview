@@ -29,6 +29,8 @@ export interface IDependencyPage {
 	license?: ILicense[]
 	watchName?: string[]
 	impactGraph: IImpactGraph
+	pathsCount?: number
+	pathsLimit?: number
 	severity: ISeverity
 	edited: string
 	summary?: string

@@ -203,4 +203,4 @@ Please follow these steps:
 4. Push your changes to your forked repository.
 5. Submit a pull request with a clear description of your changes.
 
-We appreciate your contribution to making JFrog-IDE-Webview even better!.
+We appreciate your contribution to making JFrog-IDE-Webview even better!

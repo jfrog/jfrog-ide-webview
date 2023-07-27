@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import { ActiveTab } from '../../../../model/tab'
 import { TreeNode } from '../../../../model/treeNode'
 import { toTreeNode } from '../../../../utils/utils'
-import { IDependencyPage } from '../../../../model/webviewPages'
+import { IDependencyPage } from '../../../../model'
 
 interface Props {
 	activeTab: ActiveTab
@@ -49,7 +49,13 @@ export default function PageHolder(props: Props): JSX.Element {
 			break
 		case ActiveTab.ImpactGraph:
 			if (treeNode) {
-				pageHolder = <ImpactGraph treeNode={treeNode} />
+				pageHolder = (
+					<ImpactGraph
+						treeNode={treeNode}
+						pathsCount={props.data.pathsCount}
+						pathsLimit={props.data.pathsLimit}
+					/>
+				)
 			}
 
 			break
