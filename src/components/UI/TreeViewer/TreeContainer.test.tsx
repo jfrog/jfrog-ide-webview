@@ -80,8 +80,12 @@ describe('TreeContainer component', () => {
 
 		render(<TreeContainer {...props} />)
 
-		expect(screen.getByText('This dependency is requested by other dependencies 15 times in this project. ' +
-			'The Impact Graph shows only 10 of them.')).toBeInTheDocument()
+		expect(
+			screen.getByText(
+				'This dependency is requested by other dependencies 15 times in this project. ' +
+					'The Impact Graph shows only 10 of them.'
+			)
+		).toBeInTheDocument()
 	})
 
 	test('does not show a note about the tree being partial', () => {
@@ -94,7 +98,11 @@ describe('TreeContainer component', () => {
 
 		render(<TreeContainer {...props} />)
 
-		expect(screen.queryByText('This dependency is requested by other dependencies 15 times in this project. ' +
-			'The Impact Graph shows only 10 of them.')).not.toBeInTheDocument()
+		expect(
+			screen.queryByText(
+				'This dependency is requested by other dependencies 15 times in this project. ' +
+					'The Impact Graph shows only 10 of them.'
+			)
+		).not.toBeInTheDocument()
 	})
 })

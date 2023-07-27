@@ -1,6 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
-import { IDependencyPage, PageType, ISeverity, IApplicableDetails, ICve, IEvidence, IExtendedInformation } from '../../../model'
+import {
+	IDependencyPage,
+	PageType,
+	ISeverity,
+	IApplicableDetails,
+	ICve,
+	IEvidence,
+	IExtendedInformation
+} from '../../../model'
 
 describe('Dependency page component', () => {
 	const mockData: IDependencyPage = {
