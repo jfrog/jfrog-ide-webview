@@ -36,7 +36,9 @@ describe('LoginModal component', () => {
 		test('renders the login modal correctly', async () => {
 			const { getByText } = render(<LoginModal onClose={mockOnClose} loginData={mockLoginData} />)
 			await waitFor(() => {
-				expect(getByText('We found a JFrog CLI with connection details for')).toBeInTheDocument()
+				expect(
+					getByText('It looks like JFrog CLI is installed with the connection details ofq')
+				).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
@@ -100,7 +102,7 @@ describe('LoginModal component', () => {
 			const { getByText } = render(<LoginModal onClose={mockOnClose} loginData={mockLoginData} />)
 			await waitFor(() => {
 				expect(
-					getByText('We found environment variables with connection details for')
+					getByText('Environment variables are set with the connection details of')
 				).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
