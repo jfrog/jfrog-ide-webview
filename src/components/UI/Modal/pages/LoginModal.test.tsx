@@ -37,7 +37,7 @@ describe('LoginModal component', () => {
 			const { getByText } = render(<LoginModal onClose={mockOnClose} loginData={mockLoginData} />)
 			await waitFor(() => {
 				expect(
-					getByText('It looks like JFrog CLI is installed with the connection details ofq')
+					getByText('It looks like JFrog CLI is installed with the connection details of')
 				).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
 				expect(getByText('Verifying...')).toBeInTheDocument()
