@@ -35,12 +35,12 @@ export default function TreeContainer(props: Props): JSX.Element {
 							paths to the vulnerable dependency highlighted in red.
 						</span>
 					</div>
-					{props.pathsCount && props.pathsLimit && props.pathsCount > props.pathsLimit && (
+					{graphSizeLimitReached(props) && (
 						<div className={css.noteWrapper}>
 							<span className={css.title}>Note: </span>
 							<span>
 								Graph size limit reached. The Impact Graph shows only {props.pathsLimit} out of{' '}
-								{props.pathsCount.toLocaleString()} paths to this dependency.
+								{props.pathsCount?.toLocaleString()} paths to this dependency.
 							</span>
 						</div>
 					)}
@@ -59,4 +59,8 @@ export default function TreeContainer(props: Props): JSX.Element {
 			</Wrapper>
 		</>
 	)
+}
+
+function graphSizeLimitReached(props: Props): boolean {
+	return (props.pathsCount && props.pathsLimit && props.pathsCount > props.pathsLimit) as boolean
 }

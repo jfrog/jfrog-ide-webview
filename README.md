@@ -108,17 +108,21 @@ window.postMessage({
   ]
  },
  "impactGraph": {
-  "name": "jfrog-idea-plugin",
-  "children": [
-   {
-    "name": "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0",
-    "children": [
-     {
-      "name": "org.yaml:snakeyaml:1.33"
-     }
-    ]
-   }
-  ]
+  root: {
+   "name": "jfrog-idea-plugin",
+   "children": [
+    {
+     "name": "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0",
+     "children": [
+      {
+       "name": "org.yaml:snakeyaml:1.33"
+      }
+     ]
+    }
+   ]
+  },
+  pathsCount: 5,
+  pathsLimit: 1
  }
 }
 }, '*');

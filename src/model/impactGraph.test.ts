@@ -1,9 +1,9 @@
-import { IImpactGraph } from './impactGraph'
+import { IImpactGraphNode } from './impactGraph'
 
 describe('Model - IImpactGraph', () => {
 	test('should render the component correctly', () => {
 		// Define your test data
-		const data: IImpactGraph = {
+		const data: IImpactGraphNode = {
 			name: 'Parent',
 			children: [
 				{

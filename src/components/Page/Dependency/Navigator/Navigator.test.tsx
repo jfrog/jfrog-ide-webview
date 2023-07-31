@@ -1,8 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import Navigator from './Navigator'
-import { ISeverity } from '../../../../model/severity'
-import { IDependencyPage, PageType } from '../../../../model/webviewPages'
-import { IExtendedInformation } from '../../../../model/extendedInformation'
+import { IDependencyPage, IExtendedInformation, ISeverity, PageType } from '../../../../model'
 
 describe('Navigator component', () => {
 	const mockData: IDependencyPage = {
@@ -65,23 +63,25 @@ describe('Navigator component', () => {
 			}
 		],
 		impactGraph: {
-			name: 'Root',
-			children: [
-				{
-					name: 'Child 1',
-					children: [
-						{
-							name: 'Grandchild 1'
-						},
-						{
-							name: 'Grandchild 2'
-						}
-					]
-				},
-				{
-					name: 'Child 2'
-				}
-			]
+			root: {
+				name: 'Root',
+				children: [
+					{
+						name: 'Child 1',
+						children: [
+							{
+								name: 'Grandchild 1'
+							},
+							{
+								name: 'Grandchild 2'
+							}
+						]
+					},
+					{
+						name: 'Child 2'
+					}
+				]
+			}
 		}
 	}
 

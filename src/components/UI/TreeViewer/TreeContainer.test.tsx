@@ -82,8 +82,7 @@ describe('TreeContainer component', () => {
 
 		expect(
 			screen.getByText(
-				'This dependency is requested by other dependencies 15 times in this project. ' +
-					'The Impact Graph shows only 10 of them.'
+				'Graph size limit reached. The Impact Graph shows only 10 out of 15 paths to this dependency.'
 			)
 		).toBeInTheDocument()
 	})
@@ -100,8 +99,7 @@ describe('TreeContainer component', () => {
 
 		expect(
 			screen.queryByText(
-				'This dependency is requested by other dependencies 15 times in this project. ' +
-					'The Impact Graph shows only 10 of them.'
+				'Graph size limit reached. The Impact Graph shows only 10 out of 15 paths to this dependency.'
 			)
 		).not.toBeInTheDocument()
 	})

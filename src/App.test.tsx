@@ -6,14 +6,15 @@ import {
 	IIaCPage,
 	ILoginPage,
 	ISecretsPage,
-	PageType
-} from './model/webviewPages'
-import { ISeverity } from './model/severity'
-import { IImpactGraph } from './model/impactGraph'
+	PageType,
+	ISeverity,
+	IImpactGraph,
+	IAnalysisStep,
+	LoginConnectionType,
+	LoginProgressStatus
+} from './model'
 import { sendWebviewPage } from './utils/testUtils'
-import { IAnalysisStep } from './model/analysisStep'
 import { WebviewReceiveEventType } from './api'
-import { LoginConnectionType, LoginProgressStatus } from './model/login'
 
 describe('App component', () => {
 	test('renders the Dependency page when the page type is "Dependency"', async () => {
@@ -28,7 +29,7 @@ describe('App component', () => {
 				componentType: 'q',
 				component: 'component',
 				version: 'version',
-				impactGraph: { name: 'name', children: [] } as IImpactGraph,
+				impactGraph: { root: { name: 'name', children: [] } } as IImpactGraph,
 				severity: ISeverity.High,
 				edited: '0'
 			} as IDependencyPage

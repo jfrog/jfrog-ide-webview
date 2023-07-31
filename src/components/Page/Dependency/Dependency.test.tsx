@@ -45,10 +45,12 @@ describe('Dependency page component', () => {
 			jfrogResearchSeverityReason: []
 		} as IExtendedInformation,
 		impactGraph: {
-			name: 'Impact Graph'
+			root: {
+				name: 'Impact Graph'
+			},
+			pathsCount: 1,
+			pathsLimit: 10
 		},
-		pathsCount: 1,
-		pathsLimit: 10,
 		references: [{ url: 'url' }]
 	}
 	test('should render "JFrog Research last update"', () => {

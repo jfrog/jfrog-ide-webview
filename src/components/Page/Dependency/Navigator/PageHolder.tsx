@@ -22,7 +22,7 @@ export default function PageHolder(props: Props): JSX.Element {
 	const [treeNode, setTreeNode] = useState<TreeNode | undefined>()
 	let pageHolder
 	useEffect(() => {
-		setTreeNode(toTreeNode(props.data.impactGraph))
+		setTreeNode(toTreeNode(props.data.impactGraph.root))
 	}, [props.data.impactGraph])
 
 	switch (props.activeTab) {
@@ -52,8 +52,8 @@ export default function PageHolder(props: Props): JSX.Element {
 				pageHolder = (
 					<ImpactGraph
 						treeNode={treeNode}
-						pathsCount={props.data.pathsCount}
-						pathsLimit={props.data.pathsLimit}
+						pathsCount={props.data.impactGraph.pathsCount}
+						pathsLimit={props.data.impactGraph.pathsLimit}
 					/>
 				)
 			}
