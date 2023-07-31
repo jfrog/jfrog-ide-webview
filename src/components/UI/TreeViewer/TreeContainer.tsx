@@ -30,17 +30,17 @@ export default function TreeContainer(props: Props): JSX.Element {
 					<div className={css.box}>
 						<span className={css.title}>About this view: </span>
 						<span>
-							This graph shows the relationship between the dependencies in the project, which are
-							related to the vulnerable dependencies. Starting from the root on the left, it shows
-							the path to the vulnerable dependencies highlighted in red.
+							This graph shows the relationships between the dependencies in the project, which are
+							related to the vulnerable dependency. Starting from the root on the left, it shows the
+							paths to the vulnerable dependency highlighted in red.
 						</span>
 					</div>
 					{props.pathsCount && props.pathsLimit && props.pathsCount > props.pathsLimit && (
 						<div className={css.noteWrapper}>
 							<span className={css.title}>Note: </span>
 							<span>
-								This dependency is requested by other dependencies {props.pathsCount} times in this
-								project. The Impact Graph shows only {props.pathsLimit} of them.
+								Graph size limit reached. The Impact Graph shows only {props.pathsLimit} out of{' '}
+								{props.pathsCount.toLocaleString()} paths to this dependency.
 							</span>
 						</div>
 					)}
