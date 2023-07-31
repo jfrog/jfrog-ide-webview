@@ -3,8 +3,8 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import {IDependencyPage, ISeverity, PageType} from './model'
-import {MatcherFunction} from '@testing-library/react'
+import { IDependencyPage, ISeverity, PageType } from './model'
+import { MatcherFunction } from '@testing-library/react'
 
 const fakeDependencyPage: IDependencyPage = {
 	id: 'XRAY-210300',
