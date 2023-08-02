@@ -46,6 +46,6 @@ describe('EventManager util', () => {
 		manager.jumpToCode(data)
 
 		// The consoleLogSpy should be called with the new emitter function
-		expect(consoleLogSpy).toHaveBeenCalledWith({ data: data, type: 'SHOW_CODE' })
+		expect(consoleLogSpy).toHaveBeenCalledWith({ data: data, type: 'JUMP_TO_CODE' })
 	})
 })

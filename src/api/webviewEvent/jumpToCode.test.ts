@@ -4,7 +4,7 @@ import { WebviewEventJumpToCode } from './jumpToCode'
 
 describe('Event Types', () => {
 	test('defines IdeEventType enum correctly', () => {
-		expect(WebviewEventType.JumpToCode).toEqual('SHOW_CODE')
+		expect(WebviewEventType.JumpToCode).toEqual('JUMP_TO_CODE')
 	})
 
 	test('defines JumpToCodeEvent interface correctly', () => {

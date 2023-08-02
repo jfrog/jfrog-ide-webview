@@ -5,7 +5,7 @@ import { WebviewEventLogin } from './webviewEvent/login'
 
 // Represents a Webview-specific event that can be sent from the Webview to the IDE.
 export enum WebviewEventType {
-	JumpToCode = 'SHOW_CODE',
+	JumpToCode = 'JUMP_TO_CODE',
 	Login = 'LOGIN'
 }
 
