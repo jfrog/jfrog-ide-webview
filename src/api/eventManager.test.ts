@@ -15,11 +15,11 @@ describe('EventManager util', () => {
 	})
 
 	test('sets the event receiver and handles ShowPage event', async () => {
-		const mock = {
+		const mockPage = {
 			type: IdeEventType.ShowPage,
 			data: { title: 'Test Page' }
 		}
-		await sendWebviewPage(mock)
+		await sendWebviewPage(mockPage)
 
 		expect(setPageStateMock).toHaveBeenCalledTimes(1)
 		expect(setPageStateMock).toHaveBeenCalledWith({ title: 'Test Page' })

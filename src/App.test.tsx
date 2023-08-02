@@ -20,7 +20,7 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load Dependency.
-		const mock = {
+		const mockPage = {
 			type: IdeEventType.ShowPage,
 			data: {
 				id: 'Dependency-ID',
@@ -33,7 +33,7 @@ describe('App component', () => {
 				edited: '0'
 			} as IDependencyPage
 		}
-		await sendWebviewPage(mock)
+		await sendWebviewPage(mockPage)
 
 		// Assert that the Dependency component is rendered
 		expect(screen.getAllByText('Dependency-ID')).toHaveLength(2)
@@ -61,7 +61,7 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load IaC page.
-		const mock = {
+		const mockPage = {
 			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.IaC,
@@ -71,7 +71,7 @@ describe('App component', () => {
 				description: 'description'
 			} as IIaCPage
 		}
-		await sendWebviewPage(mock)
+		await sendWebviewPage(mockPage)
 
 		// Assert that the Iac component is rendered.
 		expect(screen.getByText('Header-iac')).toBeInTheDocument()
@@ -81,7 +81,7 @@ describe('App component', () => {
 		render(<App />)
 
 		// Load Secrets page.
-		const mock = {
+		const mockPage = {
 			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.Secrets,
@@ -91,7 +91,7 @@ describe('App component', () => {
 				description: 'description'
 			} as ISecretsPage
 		}
-		await sendWebviewPage(mock)
+		await sendWebviewPage(mockPage)
 
 		// Assert that the Dependency component is rendered.
 		expect(screen.getByText('Header-secret')).toBeInTheDocument()
@@ -100,7 +100,7 @@ describe('App component', () => {
 	test('renders the Login page when the page type is "Login"', async () => {
 		render(<App />)
 
-		const mock = {
+		const mockPage = {
 			type: IdeEventType.ShowPage,
 			data: {
 				pageType: PageType.Login,
@@ -109,7 +109,7 @@ describe('App component', () => {
 				connectionType: LoginConnectionType.BasicAuthOrToken
 			} as ILoginPage
 		}
-		await sendWebviewPage(mock)
+		await sendWebviewPage(mockPage)
 
 		expect(screen.getByText('Welcome to JFrog')).toBeInTheDocument()
 	})
