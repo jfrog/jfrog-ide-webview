@@ -9,10 +9,8 @@
 	top: 30%;
 	left: 10%;
 	width: 80%;
-	height: 35%;
 	transition: all 0.3s ease-out;
 	animation: openModal 0.4s ease-out forwards;
-	height: 300px;
 }
 
 @keyframes openModal {

@@ -16,7 +16,7 @@
 
 .text {
 	color: rgb(165, 175, 187);
-	font-size: 11px;
+	font-size: 13px;
 	line-height: 1.5;
 }
 
@@ -56,4 +56,8 @@
 	transition: all 0.1s ease;
 	margin-top: 30px;
 	font-size: small;
+}
+
+.autoLoginText {
+	line-height: 18px;
 }
