@@ -57,6 +57,7 @@ export interface IEosPage {
 	foundText?: string
 	analysisStep?: IAnalysisStep[]
 	severity?: ISeverity
+	ruleId?: string
 }
 
 export interface IIaCPage {
