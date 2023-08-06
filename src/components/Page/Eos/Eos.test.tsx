@@ -16,6 +16,7 @@ describe('Eos component', () => {
 			endRow: 1,
 			endColumn: 10
 		},
+		ruleId: 'ruleId-1',
 		description: 'Description example',
 		remediation: ['Remediation 1', 'Remediation 2'],
 		foundText: 'Found text example',
@@ -38,6 +39,7 @@ describe('Eos component', () => {
 			}
 		]
 	}
+
 	test('renders header', () => {
 		const { getByText } = render(<Eos data={mockData} />)
 		const headerElement = getByText('Header example')
@@ -63,6 +65,12 @@ describe('Eos component', () => {
 		const { getByText } = render(<Eos data={mockData} />)
 		expect(getByText('DESCRIPTION')).toBeInTheDocument()
 		expect(getByText('Description example')).toBeInTheDocument()
+	})
+
+	test('renders rule id', () => {
+		const { getByText } = render(<Eos data={mockData} />)
+		const severityElement = getByTextAcrossMultipleElements(getByText, 'Rule ID: ruleId-1')
+		expect(severityElement).toBeInTheDocument()
 	})
 
 	test('renders remediation 1', () => {
