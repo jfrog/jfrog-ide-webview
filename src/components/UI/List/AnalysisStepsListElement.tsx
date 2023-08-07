@@ -15,12 +15,12 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		ctx.jumpToCode(item)
 	}
 
-	const createSnippet = (snippet: string): string => {
-		if (snippet.length > 30) {
-			return `${snippet.substring(0, 100)}...`
+	const hideOverflowText = (text: string, max: number): string => {
+		if (text.length > max) {
+			return `${text.substring(0, max)}...`
 		}
 
-		return snippet
+		return text
 	}
 
 	return (
@@ -36,11 +36,11 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<div className={css.file} id={i.toString()}>
 						<div className={css.number}>{i + 1}</div>
 						<div className={css.row}>
-							{item.fileName}
+							{item.fileName && hideOverflowText(item.fileName, 30)}
 							{item.startRow}:
 						</div>
 						<div className={css.snippet}>
-							{item.snippet && <div>{createSnippet(item.snippet)}</div>}
+							{item.snippet && <div>{hideOverflowText(item.snippet, 100)}</div>}
 						</div>
 					</div>
 				</button>
