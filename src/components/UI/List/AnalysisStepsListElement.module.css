@@ -1,5 +1,6 @@
 .container {
 	display: flex;
+	width: 100%;
 	justify-content: space-between;
 	color: #a0a0a0;
 	font-weight: 400;
@@ -18,6 +19,10 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+
+.snippet {
+	color: rgba(255, 255, 255, 0.8);
 }
 
 .number {

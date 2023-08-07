@@ -2,7 +2,6 @@ import { IAnalysisStep } from '../../../model/analysisStep'
 import css from './AnalysisStepsListElement.module.css'
 import { useContext } from 'react'
 import { eventManagerContext } from '../../../store/eventContext'
-import Markdown from '../Markdown/Markdown'
 
 export interface Props {
 	items: IAnalysisStep[]
@@ -14,6 +13,14 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 	const onClick = (event: React.MouseEvent<HTMLButtonElement>, item: IAnalysisStep): void => {
 		event.preventDefault()
 		ctx.jumpToCode(item)
+	}
+
+	const createSnippet = (snippet: string): string => {
+		if (snippet.length > 30) {
+			return `${snippet.substring(0, 100)}...`
+		}
+
+		return snippet
 	}
 
 	return (
@@ -29,10 +36,12 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<div className={css.file} id={i.toString()}>
 						<div className={css.number}>{i + 1}</div>
 						<div className={css.row}>
-							{' '}
-							{item.fileName} {item.startRow}:{' '}
+							{item.fileName}
+							{item.startRow}:
 						</div>
-						{item.snippet && <Markdown text={item.snippet} />}
+						<div className={css.snippet}>
+							{item.snippet && <div>{createSnippet(item.snippet)}</div>}
+						</div>
 					</div>
 				</button>
 			))}
