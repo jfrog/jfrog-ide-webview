@@ -144,6 +144,6 @@ describe('Form component', () => {
 		)
 		const ssoButton = getByText('Continue With SSO')
 		fireEvent.click(ssoButton)
-		expect(getByText('Requires Artifactory version 7.63.1 or higher')).toBeInTheDocument()
+		expect(getByText('Requires Artifactory version 7.64.0 or higher')).toBeInTheDocument()
 	})
 })
