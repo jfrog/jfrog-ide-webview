@@ -1,5 +1,5 @@
-import { WebviewReceiveEventType } from '.'
-import { IPageData, sendWebviewPage } from '../utils/testUtils'
+import { IdeEventType } from '.'
+import { IData, sendWebviewPage } from '../utils/testUtils'
 import { EventManager } from './eventManager'
 
 describe('EventManager util', () => {
@@ -15,11 +15,11 @@ describe('EventManager util', () => {
 	})
 
 	test('sets the event receiver and handles ShowPage event', async () => {
-		const pageData = {
-			type: WebviewReceiveEventType.ShowPage,
-			pageData: { title: 'Test Page' }
+		const mockPage = {
+			type: IdeEventType.ShowPage,
+			data: { title: 'Test Page' }
 		}
-		await sendWebviewPage(pageData)
+		await sendWebviewPage(mockPage)
 
 		expect(setPageStateMock).toHaveBeenCalledTimes(1)
 		expect(setPageStateMock).toHaveBeenCalledWith({ title: 'Test Page' })
@@ -29,9 +29,9 @@ describe('EventManager util', () => {
 		const consoleLogSpy = jest.spyOn(global.console, 'warn')
 		const emitterFunc = 'return console.warn'
 		const setEmitterEvent = {
-			type: WebviewReceiveEventType.SetEmitter,
-			emitterFunc
-		} as IPageData
+			type: IdeEventType.SetEmitter,
+			data: emitterFunc
+		} as IData
 
 		await sendWebviewPage(setEmitterEvent)
 
@@ -46,6 +46,6 @@ describe('EventManager util', () => {
 		manager.jumpToCode(data)
 
 		// The consoleLogSpy should be called with the new emitter function
-		expect(consoleLogSpy).toHaveBeenCalledWith({ data: data, type: 'SHOW_CODE' })
+		expect(consoleLogSpy).toHaveBeenCalledWith({ data: data, type: 'JUMP_TO_CODE' })
 	})
 })

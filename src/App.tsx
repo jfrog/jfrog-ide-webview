@@ -14,26 +14,26 @@ import { Login } from './components/Page/Login/Login'
  * The main page on which the Webview will be drawn based on the incoming request page type.
  */
 function App(): JSX.Element {
-	const [pageData, setPageData] = useState<WebviewPage>({} as WebviewPage)
+	const [data, setData] = useState<WebviewPage>({} as WebviewPage)
 
-	const eventManager = useMemo(() => new EventManager(setPageData), [])
+	const eventManager = useMemo(() => new EventManager(setData), [])
 	let page
 
-	switch (pageData.pageType) {
+	switch (data.pageType) {
 		case PageType.Dependency:
-			page = <Dependency data={pageData} />
+			page = <Dependency data={data} />
 			break
 		case PageType.Eos:
-			page = <Eos data={pageData} />
+			page = <Eos data={data} />
 			break
 		case PageType.IaC:
-			page = <IaC data={pageData} />
+			page = <IaC data={data} />
 			break
 		case PageType.Secrets:
-			page = <Secrets data={pageData} />
+			page = <Secrets data={data} />
 			break
 		case PageType.Login:
-			page = <Login data={pageData} />
+			page = <Login data={data} />
 			break
 		default:
 			page = (

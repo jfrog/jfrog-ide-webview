@@ -5,8 +5,8 @@ import { ISendLoginEventData, LoginConnectionType } from '../../../model/login'
 import { Password } from './Password'
 import { AccessToken } from './AccessToken'
 import { Sso } from './Sso'
-import { Url } from './Url'
 import { Footer } from './Footer'
+import { Url } from './Url'
 
 export function Form(): JSX.Element {
 	const ctx = useContext(eventManagerContext)

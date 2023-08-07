@@ -4,6 +4,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
+	margin-top: 10px;
 	margin-bottom: 0px;
 	width: 320px;
 	transition: height 0.5s ease;
@@ -59,10 +60,10 @@
 }
 
 .ssoBtn {
-	display: none;
 	color: rgb(0, 168, 252);
 	cursor: pointer;
 	font-size: x-small;
+	display: flex;
 	flex-flow: column;
 	margin-top: 10px;
 	align-items: center;

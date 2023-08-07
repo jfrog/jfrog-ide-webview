@@ -61,6 +61,9 @@ describe('AnalysisStepsListElement component', () => {
 		fireEvent.click(buttons[0])
 
 		// Assert that jumpToCode is called with the correct argument
-		expect(consoleLogSpy).toHaveBeenCalledWith({ data: defaultProps.items[0], type: 'SHOW_CODE' })
+		expect(consoleLogSpy).toHaveBeenCalledWith({
+			data: defaultProps.items[0],
+			type: 'JUMP_TO_CODE'
+		})
 	})
 })

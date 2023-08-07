@@ -73,21 +73,25 @@ function createBody(data: ILoginPage): JSX.Element {
 	switch (data.connectionType) {
 		case LoginConnectionType.Cli:
 			pageBody = (
-				<div>
-					<span>We found a JFrog CLI with connection details for </span>
-					<span className={css.textBold}>{data.url}</span>.
+				<div className={css.autoLoginText}>
+					<span> It looks like JFrog CLI is installed with the connection details of</span>
+					<div>
+						<span className={css.textBold}>{data.url}</span>
+					</div>
 					<div />
-					<span>Would you like to use it for sigh in?</span>
+					<span>Would you like to use this configuration?</span>
 				</div>
 			)
 			break
 		case LoginConnectionType.EnvVars:
 			pageBody = (
-				<div>
-					<span>We found environment variables with connection details for </span>
-					<span className={css.textBold}>{data.url}</span>.
+				<div className={css.autoLoginText}>
+					<span>Environment variables are set with the connection details of</span>
+					<div>
+						<span className={css.textBold}>{data.url}</span>
+					</div>
 					<div />
-					<span>Would you like to use it for sigh in?</span>
+					<span>Would you like to use this configuration?</span>
 				</div>
 			)
 			break
@@ -134,7 +138,12 @@ function createTitle(data: ILoginPage): JSX.Element {
 			title = <span>You&apos;re in!</span>
 			break
 		case LoginProgressStatus.AutoConnect:
-			title = <span>Automatic Sign In</span>
+			title =
+				data.connectionType === LoginConnectionType.Cli ? (
+					<span>Sign In Using JFrog CLI</span>
+				) : (
+					<span>Sign In Using Env-Var</span>
+				)
 			break
 		case LoginProgressStatus.Verifying:
 			title =
