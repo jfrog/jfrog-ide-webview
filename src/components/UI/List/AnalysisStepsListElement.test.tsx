@@ -42,8 +42,8 @@ describe('AnalysisStepsListElement component', () => {
 		expect(buttons).toHaveLength(defaultProps.items.length)
 
 		// Assert that the button content is rendered correctly
-		expect(getByText('Example File 1:')).toBeInTheDocument()
-		expect(getByText('Test File 10:')).toBeInTheDocument()
+		expect(getByText('Example File1:')).toBeInTheDocument()
+		expect(getByText('Test File10:')).toBeInTheDocument()
 	})
 
 	test('calls jumpToCode when button is clicked', () => {
