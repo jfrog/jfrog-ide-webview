@@ -69,4 +69,38 @@ describe('TreeContainer component', () => {
 			expect(screen.queryByText('Root Node')).not.toBeInTheDocument()
 		})
 	})
+
+	test('shows a note about the tree being partial', () => {
+		const root: TreeNode = new TreeNode('root', 'Root Node')
+		const props: Props = {
+			root: root,
+			pathsCount: 15,
+			pathsLimit: 10
+		}
+
+		render(<TreeContainer {...props} />)
+
+		expect(
+			screen.getByText(
+				'Graph size limit reached. The Impact Graph shows only 10 out of 15 paths to this dependency.'
+			)
+		).toBeInTheDocument()
+	})
+
+	test('does not show a note about the tree being partial', () => {
+		const root: TreeNode = new TreeNode('root', 'Root Node')
+		const props: Props = {
+			root: root,
+			pathsCount: 5,
+			pathsLimit: 10
+		}
+
+		render(<TreeContainer {...props} />)
+
+		expect(
+			screen.queryByText(
+				'Graph size limit reached. The Impact Graph shows only 10 out of 15 paths to this dependency.'
+			)
+		).not.toBeInTheDocument()
+	})
 })

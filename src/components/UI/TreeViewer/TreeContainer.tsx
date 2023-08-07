@@ -7,6 +7,8 @@ import Wrapper from '../Wrapper/Wrapper'
 
 export interface Props {
 	root: TreeNode
+	pathsCount?: number
+	pathsLimit?: number
 }
 
 export default function TreeContainer(props: Props): JSX.Element {
@@ -23,13 +25,25 @@ export default function TreeContainer(props: Props): JSX.Element {
 
 	return (
 		<>
-			<Wrapper headline="DESCRIPTION">
-				<div className={css.box}>
-					<div>
-						This graph shows the relationship between the dependencies in the project, which are
-						related to the vulnerable dependencies. The dependencies on the right hand side of the
-						graph, are requested directly by the project and marked in red are the vulnerable ones.
+			<Wrapper>
+				<div className={css.text}>
+					<div className={css.box}>
+						<span className={css.title}>About this view: </span>
+						<span>
+							This graph shows the relationships between the dependencies in the project, which are
+							related to the vulnerable dependency. Starting from the root on the left, it shows the
+							paths to the vulnerable dependency highlighted in red.
+						</span>
 					</div>
+					{graphSizeLimitReached(props) && (
+						<div className={css.noteWrapper}>
+							<span className={css.title}>Note: </span>
+							<span>
+								Graph size limit reached. The Impact Graph shows only {props.pathsLimit} out of{' '}
+								{props.pathsCount?.toLocaleString()} paths to this dependency.
+							</span>
+						</div>
+					)}
 				</div>
 			</Wrapper>
 			<Wrapper>
@@ -45,4 +59,8 @@ export default function TreeContainer(props: Props): JSX.Element {
 			</Wrapper>
 		</>
 	)
+}
+
+function graphSizeLimitReached(props: Props): boolean {
+	return (props.pathsCount && props.pathsLimit && props.pathsCount > props.pathsLimit) as boolean
 }

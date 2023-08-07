@@ -1,9 +1,24 @@
 .container {
 	overflow: scroll;
 }
+
 .box {
 	color: rgba(255, 255, 255, 0.8);
+	margin: 10px 0 20px 0;
 }
-.box > :first-child {
-	margin-bottom: 20px;
+
+.text {
+	color: rgba(255, 255, 255, 0.8);
+	line-height: 1.5;
+}
+
+.noteWrapper {
+	border: 1px solid #454545;
+	border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+}
+
+.title {
+	font-weight: 600;
 }

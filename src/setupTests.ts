@@ -3,9 +3,8 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import { ISeverity } from './model/severity'
+import { IDependencyPage, ISeverity, PageType } from './model'
 import { MatcherFunction } from '@testing-library/react'
-import { IDependencyPage, PageType } from './model/webviewPages'
 
 const fakeDependencyPage: IDependencyPage = {
 	id: 'XRAY-210300',
@@ -83,42 +82,46 @@ const fakeDependencyPage: IDependencyPage = {
 		]
 	},
 	impactGraph: {
-		name: 'org.jfrog.test:multi:3.7-SNAPSHOT',
-		children: [
-			{
-				name: 'org.jfrog.test:multi3:3.7-SNAPSHOT',
-				children: [
-					{
-						name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
-						children: [
-							{
-								name: 'org.springframework:spring-aop:2.5.6',
-								children: [
-									{
-										name: 'org.springframework:spring-core:2.5.6',
-										children: []
-									}
-								]
-							}
-						]
-					}
-				]
-			},
-			{
-				name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
-				children: [
-					{
-						name: 'org.springframework:spring-aop:2.5.6',
-						children: [
-							{
-								name: 'org.springframework:spring-core:2.5.6',
-								children: []
-							}
-						]
-					}
-				]
-			}
-		]
+		root: {
+			name: 'org.jfrog.test:multi:3.7-SNAPSHOT',
+			children: [
+				{
+					name: 'org.jfrog.test:multi3:3.7-SNAPSHOT',
+					children: [
+						{
+							name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
+							children: [
+								{
+									name: 'org.springframework:spring-aop:2.5.6',
+									children: [
+										{
+											name: 'org.springframework:spring-core:2.5.6',
+											children: []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					name: 'org.jfrog.test:multi1:3.7-SNAPSHOT',
+					children: [
+						{
+							name: 'org.springframework:spring-aop:2.5.6',
+							children: [
+								{
+									name: 'org.springframework:spring-core:2.5.6',
+									children: []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		pathsCount: 2,
+		pathsLimit: 10
 	}
 } as IDependencyPage
 

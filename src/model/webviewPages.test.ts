@@ -48,17 +48,21 @@ describe('Model - WebviewPage', () => {
 			],
 			watchName: ['Watch Name 1', 'Watch Name 2'],
 			impactGraph: {
-				name: 'Impact Graph',
-				children: [
-					{
-						name: 'Child 1',
-						children: []
-					},
-					{
-						name: 'Child 2',
-						children: []
-					}
-				]
+				root: {
+					name: 'Impact Graph',
+					children: [
+						{
+							name: 'Child 1',
+							children: []
+						},
+						{
+							name: 'Child 2',
+							children: []
+						}
+					]
+				},
+				pathsCount: 2,
+				pathsLimit: 10
 			},
 			severity: ISeverity.High,
 			edited: '2022-01-01',

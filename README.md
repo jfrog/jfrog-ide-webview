@@ -113,17 +113,21 @@ window.postMessage({
       ]
     },
     "impactGraph": {
-      "name": "jfrog-idea-plugin",
-      "children": [
-        {
-          "name": "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0",
-          "children": [
-            {
-              "name": "org.yaml:snakeyaml:1.33"
-            }
-          ]
-        }
-      ]
+      root: {
+        "name": "jfrog-idea-plugin",
+        "children": [
+          {
+            "name": "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0",
+            "children": [
+              {
+                "name": "org.yaml:snakeyaml:1.33"
+              }
+            ]
+          }
+        ]
+      },
+      pathsCount: 5,
+      pathsLimit: 1
     }
   }
 }, '*');
@@ -209,4 +213,4 @@ Please follow these steps:
 4. Push your changes to your forked repository.
 5. Submit a pull request with a clear description of your changes.
 
-We appreciate your contribution to making JFrog-IDE-Webview even better!.
+We appreciate your contribution to making JFrog-IDE-Webview even better!

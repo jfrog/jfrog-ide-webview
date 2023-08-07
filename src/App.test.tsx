@@ -28,7 +28,7 @@ describe('App component', () => {
 				componentType: 'q',
 				component: 'component',
 				version: 'version',
-				impactGraph: { name: 'name', children: [] } as IImpactGraph,
+				impactGraph: { root: { name: 'name', children: [] } } as IImpactGraph,
 				severity: ISeverity.High,
 				edited: '0'
 			} as IDependencyPage
