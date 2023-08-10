@@ -1,6 +1,6 @@
 {
   "name": "jfrog-ide-webview",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "main": "types/index.js",
   "homepage": ".",
   "files": [
