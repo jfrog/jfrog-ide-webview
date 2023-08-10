@@ -22,11 +22,11 @@ export default function Eos(props: Props): JSX.Element {
 				text={props.data.header}
 				isResearch={false}
 			/>
-			<Summary expandButton={false}>
+			<Summary showAll expandButton={false}>
 				<Vulnerability location={`${props.data.location.file}`} />
-				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown} />
 				<VulnerabilityLine line={`${props.data.location.startRow}`} />
 				{!!props.data.ruleId && <Row title="Rule ID" data={props.data.ruleId} />}
+				<Severity severity={props.data.severity ? props.data.severity : ISeverity.Unknown} />
 			</Summary>
 			<Research description={props.data.description} remediation={props.data.remediation} />
 			<ContextualAnalysis
