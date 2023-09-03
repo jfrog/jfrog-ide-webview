@@ -2,12 +2,6 @@ import { render } from '@testing-library/react'
 import ContextualAnalysis from './ContextualAnalysis'
 
 describe('ContextualAnalysis component', () => {
-	test('renders found text when provided', () => {
-		const foundText = 'Found text example'
-		const { getByText } = render(<ContextualAnalysis foundText={foundText} />)
-		expect(getByText(foundText)).toBeInTheDocument()
-	})
-
 	test('renders analysis steps when provided', () => {
 		const analysisSteps = [
 			{

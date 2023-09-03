@@ -2,136 +2,29 @@ import { IImpactGraphNode, ISeverity } from '../model'
 import { TreeNode } from '../model/treeNode'
 import css from '../components/UI/TreeViewer/TreeViewer.module.css'
 
-export function getSeverityImage(severity: ISeverity): JSX.Element {
+import unknownFilled from '../assets/icons/severity/unknown_filled.svg'
+import unknown from '../assets/icons/severity/unknown.svg'
+import criticalFilled from '../assets/icons/severity/critical_filled.svg'
+import critical from '../assets/icons/severity/critical.svg'
+import highFilled from '../assets/icons/severity/high_filled.svg'
+import high from '../assets/icons/severity/high.svg'
+import mediumFilled from '../assets/icons/severity/medium_filled.svg'
+import medium from '../assets/icons/severity/medium.svg'
+import lowFilled from '../assets/icons/severity/low_filled.svg'
+import low from '../assets/icons/severity/low.svg'
+
+export function getSeverityImage(severity: ISeverity, filled = false): JSX.Element {
 	switch (severity) {
 		case ISeverity.Unknown:
-			return (
-				<svg
-					version="1.1"
-					id="Layer_1"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlnsXlink="http://www.w3.org/1999/xlink"
-					x="0px"
-					y="0px"
-					viewBox="0 0 12 12"
-					xmlSpace="preserve"
-				>
-					<path
-						fillRule="evenodd"
-						clipRule="evenodd"
-						d="M6.49042 0.845163C6.1747 0.718279 5.82117 0.718279 5.50545 0.845163L1.64455 2.39032C1.49133 2.45144 1.36007 2.55623 1.26753 2.69129C1.175 2.82635 1.12539 2.98555 1.12506 3.14855V4.97241C1.11912 6.36932 1.56938 7.73101 2.40918 8.85595C3.24899 9.98089 4.43373 10.8093 5.78806 11.2186C5.92334 11.2605 6.06838 11.2605 6.20366 11.2186C7.55783 10.8106 8.74303 9.98388 9.58421 8.86059C10.4254 7.7373 10.8779 6.377 10.875 4.9806V3.14855C10.8763 2.98416 10.8275 2.82317 10.7348 2.68649C10.6422 2.54981 10.51 2.44377 10.3555 2.38212L6.49042 0.845163ZM3.9 5C3.67909 5 3.5 5.17909 3.5 5.4C3.5 5.62091 3.67909 5.8 3.9 5.8H8.1C8.32091 5.8 8.5 5.62091 8.5 5.4C8.5 5.17909 8.32091 5 8.1 5H3.9Z"
-						fill="#999DB4"
-					/>
-				</svg>
-			)
+			return <img src={filled ? unknownFilled : unknown} alt="unknown"/>
 		case ISeverity.Low:
-			return (
-				<svg
-					version="1.1"
-					id="Layer_1"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlnsXlink="http://www.w3.org/1999/xlink"
-					x="0px"
-					y="0px"
-					viewBox="0 0 12 12"
-					xmlSpace="preserve"
-				>
-					<style
-						type="text/css"
-						dangerouslySetInnerHTML={{
-							__html: '\n\t.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FCD95C;}\n'
-						}}
-					/>
-					<path
-						className="st1"
-						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
-				  S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
-				  C10.9,3,10.8,2.8,10.7,2.7z M7.7,8.2H4.9V3.4h0.8v4.1h2V8.2z"
-					/>
-				</svg>
-			)
+			return <img src={filled ? lowFilled : low} alt="low"/>
 		case ISeverity.Medium:
-			return (
-				<svg
-					version="1.1"
-					id="Layer_1"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlnsXlink="http://www.w3.org/1999/xlink"
-					x="0px"
-					y="0px"
-					viewBox="0 0 12 12"
-					xmlSpace="preserve"
-				>
-					<style
-						type="text/css"
-						dangerouslySetInnerHTML={{
-							__html: '\n\t.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF9458;}\n'
-						}}
-					/>
-					<path
-						className="st2"
-						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
-	S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
-	C10.9,3,10.8,2.8,10.7,2.7z M8.5,8.3H7.7V5.9c0-0.2,0-0.6,0-0.9c0-0.4,0-0.6,0-0.7h0l-1.4,4H5.6l-1.4-4h0c0,0.6,0.1,1.2,0.1,1.7v2.3
-	H3.5V3.5h1.1L6,7.3h0l1.4-3.8h1.1V8.3z"
-					/>
-				</svg>
-			)
+			return <img src={filled ? mediumFilled : medium} alt="low"/>
 		case ISeverity.High:
-			return (
-				<svg
-					version="1.1"
-					id="Layer_1"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlnsXlink="http://www.w3.org/1999/xlink"
-					x="0px"
-					y="0px"
-					viewBox="0 0 12 12"
-					xmlSpace="preserve"
-				>
-					<style
-						type="text/css"
-						dangerouslySetInnerHTML={{
-							__html: '\n\t.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#EA535E;}\n'
-						}}
-					/>
-					<path
-						className="st3"
-						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
-	S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
-	C10.9,3,10.8,2.8,10.7,2.7z M7.9,8.2H7.1V6H4.9v2.2H4.1V3.4h0.8v2h2.2v-2h0.8V8.2z"
-					/>
-				</svg>
-			)
+			return <img src={filled ? highFilled : high} alt="high"/>
 		case ISeverity.Critical:
-			return (
-				<svg
-					version="1.1"
-					id="Layer_1"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlnsXlink="http://www.w3.org/1999/xlink"
-					x="0px"
-					y="0px"
-					viewBox="0 0 12 12"
-					xmlSpace="preserve"
-				>
-					<style
-						type="text/css"
-						dangerouslySetInnerHTML={{
-							__html: '\n\t.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#B91C1C;}\n'
-						}}
-					/>
-					<path
-						className="st4"
-						d="M10.7,2.7c-0.1-0.1-0.2-0.2-0.4-0.3L6.5,0.8c-0.3-0.1-0.7-0.1-1,0L1.6,2.4C1.5,2.5,1.4,2.6,1.3,2.7
-				S1.1,3,1.1,3.1V5c0,1.4,0.4,2.8,1.3,3.9s2,2,3.4,2.4c0.1,0,0.3,0,0.4,0c1.4-0.4,2.5-1.2,3.4-2.4s1.3-2.5,1.3-3.9V3.1
-				C10.9,3,10.8,2.8,10.7,2.7z M6.3,8.5C6.2,8.6,6.1,8.7,6,8.7c-0.1,0-0.2,0-0.3-0.1C5.7,8.5,5.6,8.4,5.6,8.3c0-0.1,0-0.2,0.1-0.3
-				C5.8,7.9,5.9,7.9,6,7.9c0.1,0,0.2,0,0.3,0.1s0.1,0.2,0.1,0.3S6.4,8.5,6.3,8.5z M6.4,6.6c0,0.1,0,0.1,0,0.2c0,0,0,0.1-0.1,0.1
-				c0,0-0.1,0.1-0.1,0.1S6.1,7,6,7C5.9,7,5.8,7,5.7,6.9S5.6,6.7,5.6,6.6V4.2c0-0.1,0-0.2,0.1-0.3S5.9,3.8,6,3.8c0.1,0,0.1,0,0.2,0
-				c0,0,0.1,0.1,0.1,0.1c0,0,0.1,0.1,0.1,0.1c0,0.1,0,0.1,0,0.2V6.6z"
-					/>
-				</svg>
-			)
+			return <img src={filled ? criticalFilled : critical} alt="critical"/>
 	}
 }
 

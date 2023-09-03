@@ -3,8 +3,28 @@
 	padding: 10px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
+.expandIcon {
+	display: flex;
+	width: 24px;
+	height: 24px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	background: #454545;
+}
+h1 {
+	color: #F0F0F0;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	display: flex;
+	align-items: center;
+	gap: 12px;
 
+}
 .collapseHeader {
 	text-transform: uppercase;
 	font-weight: 600;

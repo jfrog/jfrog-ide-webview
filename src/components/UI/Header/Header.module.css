@@ -1,11 +1,91 @@
 .container {
 	display: flex;
-	column-gap: 8px;
-	align-items: center;
-	font-size: 16px;
-	font-weight: 400;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+	align-self: stretch;
+	padding: 16px;
+	border-radius: 6px;
+	background: #333;
+	max-height: 80px;
+	min-width: 400px;
 }
 
+.labelContainer {
+	display: flex;
+	height: 20px;
+	min-width: 48px;
+	padding: 4px 0px;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+
+}
+.label {
+	display: flex;
+	height: 20px;
+	min-width: 48px;
+	padding: 4px 0px;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	color: #8679E9;
+	text-align: center;
+
+	/* label bold */
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+.titleContainer {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.titleContainer > * {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	color: #F0F0F0;
+}
+.locationLabel {
+	color: #F0F0F0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+}
+.cveInformationContainer {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+.cveLabel{
+	color: #A0A0A0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+}
+.flexCenter {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.cveLabel > .value {
+	color: #F0F0F0;
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+	align-self: stretch;
+}
 .img {
 	height: 18px;
 	width: 18px;

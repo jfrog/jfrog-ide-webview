@@ -1,6 +1,6 @@
 .text {
 	color: rgba(255, 255, 255, 0.8);
-
+	font-family: "Overpass Mono", monospace;
 	line-height: 1.5;
 	padding: 0px;
 	margin: 0px;

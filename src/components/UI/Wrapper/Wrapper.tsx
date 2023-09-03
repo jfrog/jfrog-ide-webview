@@ -3,6 +3,7 @@ import css from './Wrapper.module.css'
 export interface Props {
 	headline?: string
 	children?: React.ReactNode
+	hideLine?: boolean
 }
 
 export default function Wrapper(props: Props): JSX.Element {
@@ -10,7 +11,7 @@ export default function Wrapper(props: Props): JSX.Element {
 		<>
 			{props.headline && <div className={css.headline}>{props.headline}</div>}
 			<div className={css.content}>{props.children}</div>
-			<div className={css.line} />
+			{!props.hideLine && <div className={css.line} />}
 		</>
 	)
 }

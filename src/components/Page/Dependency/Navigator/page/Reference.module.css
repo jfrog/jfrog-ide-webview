@@ -8,11 +8,12 @@
 	flex-direction: column;
 }
 .container a {
-	color: #a0a0a0;
+	color: #F0F0F0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 8px; /* 66.667% */
 	text-decoration-line: underline;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
 }
 
 .line {

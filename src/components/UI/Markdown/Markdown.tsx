@@ -4,7 +4,7 @@ import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark
 import css from './Markdown.module.css'
 
 interface Props {
-	text: string
+	text?: string
 }
 
 export default function Markdown(props: Props): JSX.Element {
@@ -33,7 +33,7 @@ export default function Markdown(props: Props): JSX.Element {
 				}
 			}}
 		>
-			{props.text}
+			{props.text ?? ''}
 		</ReactMarkdown>
 	)
 }

@@ -1,46 +1,27 @@
+import React, { useState } from 'react'
+import { Accordion, accordionClasses, AccordionDetails, AccordionSummary } from "@mui/material"
 import css from './Collapse.module.css'
-import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
-import ExpandButton from '../ExpandButton/ExpandButton'
+import chevronSvg from '../../../assets/icons/chevron_green.svg'
+import { COLORS } from "../../../styles"
 
 export interface Props {
-	id: string
-	header: string
-	text: string
-	markdown?: boolean
+    header?: React.ReactNode;
+    content?: React.ReactNode;
 }
 
 export function Collapse(props: Props): JSX.Element {
-	const close = { height: '0px' }
-	const [collapseStyle, setCollapseStyle] = useState(close)
-	return (
-		<>
-			<div
-				className={css.collapseHeaderWrapper}
-				onClick={(): void => {
-					setCollapseStyle(prev =>
-						prev.height === '0px'
-							? { height: `${document.getElementById(props.id)?.clientHeight}1px` }
-							: close
-					)
-				}}
-			>
-				<span className={css.collapseHeader}>{props.header}</span>
-				<ExpandButton isExpand={collapseStyle.height !== '0px'} />
-			</div>
-			<div style={collapseStyle} className={css.collapseContent}>
-				{props.markdown && (
-					<div id={props.id} className={css.collapseText}>
-						{' '}
-						<ReactMarkdown className={css.markdownText}>{props.text}</ReactMarkdown>{' '}
-					</div>
-				)}
-				{!props.markdown && (
-					<div id={props.id} className={css.collapseText}>
-						{props.text}
-					</div>
-				)}
-			</div>
-		</>
-	)
+    return (
+	<Accordion
+		sx={{
+            background: COLORS.DARK_GRAY,
+            color: COLORS.WHITE_100,
+            boxShadow: 'none',
+            width: '100%'
+        }}>
+		<AccordionSummary
+			expandIcon={<div className={css.expandIcon}><img src={chevronSvg}/></div>}>{props.header}
+		</AccordionSummary>
+		<AccordionDetails sx={{ padding: '0 16px 16px 16px' }}>{props.content}</AccordionDetails>
+	</Accordion>
+    )
 }
