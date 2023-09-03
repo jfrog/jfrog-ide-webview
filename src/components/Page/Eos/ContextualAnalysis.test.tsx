@@ -14,7 +14,7 @@ describe('ContextualAnalysis component', () => {
 			}
 		]
 		const { getByText } = render(<ContextualAnalysis analysisSteps={analysisSteps} />)
-		expect(getByText('DATA FLOW ANALYSIS')).toBeInTheDocument()
+		expect(getByText('Data Flow Analysis Evidence')).toBeInTheDocument()
 		analysisSteps.forEach(step => {
 			const analysisStepElement = getByText(`${step.fileName}${step.startRow}:`)
 			expect(analysisStepElement).toBeInTheDocument()

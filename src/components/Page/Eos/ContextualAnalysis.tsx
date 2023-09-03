@@ -1,5 +1,5 @@
 import AnalysisStepsListElement from '../../UI/List/AnalysisStepsListElement'
-import { IAnalysisStep } from '../../../model/analysisStep'
+import { IAnalysisStep } from '../../../model'
 import { Collapse } from "../../UI/Collapse/Collapse"
 import flowSvg from "../../../assets/icons/flow.svg"
 import React from "react"

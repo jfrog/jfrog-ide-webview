@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 16px;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -10,24 +11,29 @@
     gap: 16px;
     width: 100%;
 }
+
 .alignCenterFlex {
     display: flex;
     align-items: center;
     gap: 4px;
 }
+
 .listContainer {
     display: flex;
     align-items: center;
 }
+
 .keysContainer {
     display: flex;
     flex-direction: row;
     width: 150px;
 }
+
 .valuesContainer {
     display: flex;
     flex-direction: row;
 }
+
 .group {
     display: flex;
     flex-direction: column;
@@ -45,6 +51,7 @@ ul.bulletList li {
     font-family: 'Arial', sans-serif;
     margin-bottom: 10px; /* Spacing between list items */
 }
+
 h6 {
     color: #F0F0F0;
     font-size: 12px;
@@ -52,12 +59,14 @@ h6 {
     font-weight: 700;
     line-height: normal;
 }
+
 span {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 18px;
 }
+
 .label {
     color: #BBB;
     font-size: 12px;
@@ -65,11 +74,20 @@ span {
     font-weight: 400;
     line-height: 18px; /* 150% */
 }
-.text{
-    color:  #A0A0A0;
+
+.text {
+    color: #A0A0A0;
     font-family: Open Sans;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
+    line-height: 18px; /* 150% */
+}
+
+.recommendedLabel {
+    color: #3794FF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
     line-height: 18px; /* 150% */
 }

@@ -1,6 +1,6 @@
-import { IAnalysisStep } from '../../../model/analysisStep'
+import { IAnalysisStep } from '../../../model'
 import css from './AnalysisStepsListElement.module.css'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { eventManagerContext } from '../../../store/eventContext'
 import Timeline from '@mui/lab/Timeline'
 import TimelineItem from '@mui/lab/TimelineItem'
@@ -12,6 +12,7 @@ import { COLORS } from "../../../styles"
 import { ButtonBase } from "@mui/material"
 import expandSvg from '../../../assets/icons/expand.svg'
 import minimizeSvg from '../../../assets/icons/minimize.svg'
+import { SxProps } from "@mui/system"
 export interface Props {
     items: IAnalysisStep[]
 }
@@ -27,7 +28,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
     const [showMore, setShowMore] = React.useState(props.items.length < 5)
     const ctx = useContext(eventManagerContext)
 
-    const onClick = (event: React.MouseEvent<HTMLDivElement>, item: IAnalysisStep): void => {
+    const onClick = (event: React.MouseEvent<HTMLButtonElement>, item: IAnalysisStep): void => {
         event.preventDefault()
         ctx.jumpToCode(item)
     }
@@ -60,7 +61,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
             maxWidth: 0
         }
     }
-    const timelineDotStyle = (i: number): any => ({
+    const timelineDotStyle = (i: number): SxProps => ({
         display: 'flex',
         width: 20,
         height: 20,
@@ -82,12 +83,13 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		{showMore ?
 			<>
 				{props.items.map((item, i) => (
-					<ButtonBase key={i} sx={buttonStyle}>
+					<ButtonBase
+						key={i} sx={buttonStyle} onClick={(event): void => {
+                        onClick(event, item)
+                    }}>
 						<TimelineItem
 							sx={timelineStyle}
-							onClick={(event): void => {
-                            onClick(event, item)
-                        }}>
+							>
 							<TimelineSeparator>
 								{i !== 0 && <Connector/>}
 								<TimelineDot
@@ -130,12 +132,13 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 				</ButtonBase>
 			</> :
 			<>
-				<ButtonBase sx={buttonStyle}>
+				<ButtonBase
+					sx={buttonStyle} onClick={(event): void => {
+                    onClick(event, props.items[0])
+                }}>
 					<TimelineItem
 						sx={timelineStyle}
-						onClick={(event): void => {
-                            onClick(event, props.items[0])
-                        }}>
+						>
 						<TimelineSeparator>
 							<TimelineDot
 								sx={timelineDotStyle(0)}>
@@ -175,12 +178,12 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 						</TimelineContent>
 					</TimelineItem>
 				</ButtonBase>
-				<ButtonBase sx={buttonStyle}>
+				<ButtonBase
+					sx={buttonStyle} onClick={(event): void => {
+                    onClick(event, props.items[props.items.length - 1])
+                }}>
 					<TimelineItem
-						sx={timelineStyle}
-						onClick={(event): void => {
-                        onClick(event, props.items[props.items.length - 1])
-                    }}>
+						sx={timelineStyle}>
 						<TimelineSeparator>
 							<Connector/>
 							<TimelineDot

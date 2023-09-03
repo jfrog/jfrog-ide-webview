@@ -1,6 +1,6 @@
 import css from './Dependency.module.css'
 import Header from '../../UI/Header/Header'
-import { IDependencyPage } from '../../../model/webviewPages'
+import { IDependencyPage } from '../../../model'
 import InformationTabs, { TABS } from "../../UI/InformationTabs/InformationTabs"
 
 export interface Props {

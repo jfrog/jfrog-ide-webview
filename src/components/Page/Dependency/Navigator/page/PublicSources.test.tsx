@@ -4,7 +4,7 @@ import PublicSources, {
 	createCvssBreakdownV2,
 	createCvssBreakdownV2View,
 	createCvssBreakdownV3,
-	createCvssBreakdownV3View
+	createCvssBreakdownV3View, LABELS
 } from './PublicSources'
 import { getByTextAcrossMultipleElements } from '../../../../../utils/testUtils'
 import {
@@ -33,11 +33,11 @@ describe('Public Sources component', () => {
 	test('renders summary, infected versions, and CVSS breakdown', () => {
 		render(<PublicSources {...mockData} />)
 
-		expect(screen.getByText('SUMMARY')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.SUMMARY)).toBeInTheDocument()
 		expect(screen.getByText('This is a summary')).toBeInTheDocument()
-		expect(screen.getByText('VULNERABLE VERSIONS')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.VULNERABLE_VERSIONS)).toBeInTheDocument()
 		expect(screen.getAllByText(/1.0|33.0/)).toHaveLength(2)
-		expect(screen.getByText('CVSS BREAKDOWN')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.CVSS_BREAKDOWN)).toBeInTheDocument()
 	})
 
 	test('renders only summary', () => {
@@ -46,10 +46,10 @@ describe('Public Sources component', () => {
 		}
 		render(<PublicSources {...customMockData} />)
 
-		expect(screen.getByText('SUMMARY')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.SUMMARY)).toBeInTheDocument()
 		expect(screen.getByText('This is a summary')).toBeInTheDocument()
-		expect(screen.queryByText('VULNERABLE VERSIONS')).toBeNull()
-		expect(screen.queryByText('CVSS BREAKDOWN')).toBeNull()
+		expect(screen.queryByText(LABELS.VULNERABLE_VERSIONS)).toBeNull()
+		expect(screen.queryByText(LABELS.CVSS_BREAKDOWN)).toBeNull()
 	})
 
 	test('renders only infected versions', () => {
@@ -58,18 +58,18 @@ describe('Public Sources component', () => {
 		}
 		render(<PublicSources {...customMockData} />)
 
-		expect(screen.queryByText('SUMMARY')).toBeNull()
-		expect(screen.getByText('VULNERABLE VERSIONS')).toBeInTheDocument()
+		expect(screen.queryByText(LABELS.SUMMARY)).toBeNull()
+		expect(screen.getByText(LABELS.VULNERABLE_VERSIONS)).toBeInTheDocument()
 		expect(screen.getAllByText(/1.0|44.0/)).toHaveLength(2)
-		expect(screen.queryByText('CVSS BREAKDOWN')).toBeNull()
+		expect(screen.queryByText(LABELS.CVSS_BREAKDOWN)).toBeNull()
 	})
 
 	test('renders no summary, infected versions, or CVSS breakdown', () => {
 		render(<PublicSources />)
 
-		expect(screen.queryByText('SUMMARY')).toBeNull()
-		expect(screen.queryByText('VULNERABLE VERSIONS')).toBeNull()
-		expect(screen.queryByText('CVSS BREAKDOWN')).toBeNull()
+		expect(screen.queryByText(LABELS.SUMMARY)).toBeNull()
+		expect(screen.queryByText(LABELS.VULNERABLE_VERSIONS)).toBeNull()
+		expect(screen.queryByText(LABELS.CVSS_BREAKDOWN)).toBeNull()
 	})
 
 	test('renders the CVSSv2 breakdown', () => {

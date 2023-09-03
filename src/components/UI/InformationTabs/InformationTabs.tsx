@@ -8,7 +8,7 @@ import documentSvg from '../../../assets/icons/document.svg'
 import jfrogResearchIcon from '../../../assets/icons/jfrog_research_icon.svg'
 import infoIcon from '../../../assets/icons/info.svg'
 import refrenceIcon from '../../../assets/icons/refrence.svg'
-import { IDependencyPage, IEosPage, IIaCPage, IImpactGraph, ISecretsPage } from "../../../model"
+import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage } from "../../../model"
 import PublicSources from "../../Page/Dependency/Navigator/page/PublicSources"
 import Research from "../../Page/Dependency/Navigator/page/Research"
 import Reference from "../../Page/Dependency/Navigator/page/Reference"
@@ -17,6 +17,7 @@ import { TreeNode } from "../../../model/treeNode"
 import { toTreeNode } from "../../../utils/utils"
 import WhatCanIDoTab, { WhatCanIDoTabProps } from "./WhatCanIDoTab"
 import Markdown from "../Markdown/Markdown"
+import { SxProps } from "@mui/system"
 export const TABS = {
     WHAT_CAN_I_DO: {
         label: 'What can I do',
@@ -76,12 +77,13 @@ function InformationTabs(props: Props): JSX.Element {
     const defaultTab = props.tabs[0]
     const [value, setValue] = React.useState(defaultTab)
     const [treeNode, setTreeNode] = useState<TreeNode | undefined>()
+    const impactGraph = (props.data as IDependencyPage).impactGraph
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if ((props.data as IDependencyPage).impactGraph) {
-            setTreeNode(toTreeNode((props.data as IDependencyPage).impactGraph.root))
+        if (impactGraph) {
+            setTreeNode(toTreeNode(impactGraph.root))
         }
-    }, [(props.data as IDependencyPage).impactGraph])
+    }, [impactGraph])
 
     const handleChange = (event: React.SyntheticEvent, newValue: string): void => {
         setValue(newValue)
@@ -123,6 +125,7 @@ function InformationTabs(props: Props): JSX.Element {
 			{showWhatCanIDoTab &&
 			<CustomTabPanel value={value} index={TABS.WHAT_CAN_I_DO.key}>
 				<WhatCanIDoTab
+					pageType={props.data.pageType}
 					component={(props.data as IDependencyPage).component}
 					impactGraph={(props.data as IDependencyPage).impactGraph}
 					fixedVersion={(props.data as IDependencyPage).fixedVersion}

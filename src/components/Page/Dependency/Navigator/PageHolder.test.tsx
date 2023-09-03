@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { ActiveTab } from '../../../../model/tab'
 import withMarkup, { getFakeDependencyPage } from '../../../../setupTests'
 import PageHolder from './PageHolder'
-import { IDependencyPage } from '../../../../model/webviewPages'
+import { IDependencyPage } from '../../../../model'
 describe('PageHolder component', () => {
 	describe('Research page', () => {
 		test('Renders short description', () => {

@@ -5,38 +5,38 @@ import ReactMarkdown from 'react-markdown'
 import Wrapper from '../../../../UI/Wrapper/Wrapper'
 
 export interface Props {
-	data: IApplicableDetails
+    data: IApplicableDetails
 }
 
 export default function ContextualAnalysis(props: Props): JSX.Element {
-	return (
-		<>
-			<Wrapper headline="CONTEXTUAL ANALYSIS BREAKDOWN">
-				<div className={css.container}>
-					<h4 className={css.header}>Why is this CVE applicable?</h4>
-					{props.data.evidence?.map((el, i) => (
-						<div key={i}>
-							{el.filePathEvidence && <Row title="Reason" data={el.reason} key={`reason${i}`} />}
-							{el.filePathEvidence && (
-								<Row title="Evidence file path" data={el.filePathEvidence} key={`file${i}`} />
-							)}
-							{el.codeEvidence && (
-								<Row title="Evidence code" data={el.codeEvidence} key={`code${i}`} />
-							)}
-						</div>
-					))}
-				</div>
-			</Wrapper>
-			{props.data.searchTarget && (
-				<Wrapper>
-					<div className={css.innerContainer}>
-						<h4 className={css.smallHeader}>What does the scanner checks / looking for?</h4>
-						<div className={css.text}>
-							<ReactMarkdown className={css.text}>{props.data.searchTarget}</ReactMarkdown>
-						</div>
+    return (
+	<>
+		<Wrapper headline="CONTEXTUAL ANALYSIS BREAKDOWN">
+			<div className={css.container}>
+				<h4 className={css.header}>Why is this CVE applicable?</h4>
+				{props.data.evidence?.map((el, i) => (
+					<div key={i}>
+						{el.filePathEvidence && <Row title="Reason" data={el.reason} key={`reason${i}`}/>}
+						{el.filePathEvidence && (
+						<Row title="Evidence file path" data={el.filePathEvidence} key={`file${i}`}/>
+                            )}
+						{el.codeEvidence && (
+						<Row title="Evidence code" data={el.codeEvidence} key={`code${i}`}/>
+                            )}
 					</div>
-				</Wrapper>
-			)}
-		</>
-	)
+                    ))}
+			</div>
+		</Wrapper>
+		{props.data.searchTarget && (
+		<Wrapper>
+			<div className={css.innerContainer}>
+				<h4 className={css.smallHeader}>What does the scanner checks / looking for?</h4>
+				<div className={css.text}>
+					<ReactMarkdown className={css.text}>{props.data.searchTarget}</ReactMarkdown>
+				</div>
+			</div>
+		</Wrapper>
+            )}
+	</>
+    )
 }
