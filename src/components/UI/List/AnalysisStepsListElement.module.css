@@ -22,16 +22,16 @@
 }
 
 .snippet {
-	color: #75BEFF;
-	font-family: "Overpass Mono", monospace;
+	color: #75beff;
+	font-family: 'Overpass Mono', monospace;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
 }
 
-.showMoreLabel{
-	color: #D4D4D4;
+.showMoreLabel {
+	color: #d4d4d4;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 600;

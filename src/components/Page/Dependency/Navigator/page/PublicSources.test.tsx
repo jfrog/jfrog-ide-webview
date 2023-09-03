@@ -4,7 +4,8 @@ import PublicSources, {
 	createCvssBreakdownV2,
 	createCvssBreakdownV2View,
 	createCvssBreakdownV3,
-	createCvssBreakdownV3View, LABELS
+	createCvssBreakdownV3View,
+	LABELS
 } from './PublicSources'
 import { getByTextAcrossMultipleElements } from '../../../../../utils/testUtils'
 import {

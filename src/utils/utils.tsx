@@ -16,15 +16,15 @@ import low from '../assets/icons/severity/low.svg'
 export function getSeverityImage(severity: ISeverity, filled = false): JSX.Element {
 	switch (severity) {
 		case ISeverity.Unknown:
-			return <img src={filled ? unknownFilled : unknown} alt="unknown"/>
+			return <img src={filled ? unknownFilled : unknown} alt="unknown" />
 		case ISeverity.Low:
-			return <img src={filled ? lowFilled : low} alt="low"/>
+			return <img src={filled ? lowFilled : low} alt="low" />
 		case ISeverity.Medium:
-			return <img src={filled ? mediumFilled : medium} alt="low"/>
+			return <img src={filled ? mediumFilled : medium} alt="low" />
 		case ISeverity.High:
-			return <img src={filled ? highFilled : high} alt="high"/>
+			return <img src={filled ? highFilled : high} alt="high" />
 		case ISeverity.Critical:
-			return <img src={filled ? criticalFilled : critical} alt="critical"/>
+			return <img src={filled ? criticalFilled : critical} alt="critical" />
 	}
 }
 

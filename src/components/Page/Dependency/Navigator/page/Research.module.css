@@ -45,7 +45,7 @@ ul.bulletList li {
 	margin-bottom: 10px; /* Spacing between list items */
 }
 h6 {
-	color: #F0F0F0;
+	color: #f0f0f0;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 700;
@@ -58,7 +58,7 @@ span {
 	line-height: 18px;
 }
 .label {
-	color: #BBB;
+	color: #bbb;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;

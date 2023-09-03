@@ -1,5 +1,5 @@
 .key {
-	color: #BBB;
+	color: #bbb;
 	display: inline-block;
 	width: 150px;
 	font-size: 12px;
@@ -9,7 +9,7 @@
 }
 
 .value {
-	color: #F0F0F0;
+	color: #f0f0f0;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
