@@ -10,6 +10,12 @@ import { ISeverity } from '../../../../../model'
 export interface Props {
 	data?: IExtendedInformation
 }
+export const LABELS = {
+	SUMMARY: 'Summary',
+	REMEDIATION: 'Remediation',
+	DETAILS: 'Details',
+	JFROG_RESEARCH_SEVERITY_REASONS: 'Jfrog research severity Reasons'
+}
 
 export default function Research(props: Props): JSX.Element {
 	const increasesRisk = props.data?.jfrogResearchSeverityReason?.filter(v => !v.isPositive)
@@ -24,26 +30,26 @@ export default function Research(props: Props): JSX.Element {
 			</span>
 			<Divider />
 			<div className={css.group}>
-				<h6>Summery</h6>
+				<h6>{LABELS.SUMMARY}</h6>
 				{props.data?.shortDescription}
 			</div>
 			{props.data?.remediation && (
 				<>
 					<Divider />
 					<div className={css.group}>
-						<h6>Remediation</h6>
+						<h6>{LABELS.REMEDIATION}</h6>
 						<Markdown text={props.data.remediation} />
 					</div>
 				</>
 			)}
 			<Divider />
 			<div className={css.group}>
-				<h6>Details</h6>
+				<h6>{LABELS.DETAILS}</h6>
 				<Markdown text={props.data?.fullDescription} />
 			</div>
 			<Divider />
 			<div className={css.group}>
-				<h6>Jfrog research severity Reasons</h6>
+				<h6>{LABELS.JFROG_RESEARCH_SEVERITY_REASONS}</h6>
 				{increasesRisk && increasesRisk.length > 0 && (
 					<>
 						<span className={css.alignCenterFlex} style={{ color: '#F14C4C' }}>

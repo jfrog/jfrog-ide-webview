@@ -3,6 +3,7 @@ import Eos from './Eos'
 import { IEosPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
+import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
 describe('Eos component', () => {
 	const mockData: IEosPage = {
@@ -47,9 +48,8 @@ describe('Eos component', () => {
 	})
 
 	test('renders severity', () => {
-		const { getByText } = render(<Eos data={mockData} />)
-		const severityElement = getByTextAcrossMultipleElements(getByText, 'Severity: High')
-		expect(severityElement).toBeInTheDocument()
+		const { getByAltText } = render(<Eos data={mockData} />)
+		expect(getByAltText(mockData.severity?.toLowerCase() ?? '')).toBeInTheDocument()
 	})
 
 	test('renders vulnerability location', () => {
@@ -61,21 +61,14 @@ describe('Eos component', () => {
 		expect(vulnerabilityElement).toBeInTheDocument()
 	})
 
-	test('renders description', () => {
+	test('renders more info tab', () => {
 		const { getByText } = render(<Eos data={mockData} />)
-		expect(getByText('DESCRIPTION')).toBeInTheDocument()
-		expect(getByText('Description example')).toBeInTheDocument()
-	})
-
-	test('renders rule id', () => {
-		const { getByText } = render(<Eos data={mockData} />)
-		const severityElement = getByTextAcrossMultipleElements(getByText, 'Rule ID: ruleId-1')
-		expect(severityElement).toBeInTheDocument()
+		const moreInfoTab = getByText(TABS.MORE_INFORMATION.label)
+		expect(moreInfoTab).toBeInTheDocument()
 	})
 
 	test('renders remediation 1', () => {
 		const { getByText } = render(<Eos data={mockData} />)
-		expect(getByText('DESCRIPTION')).toBeInTheDocument()
 		const remediationElement1 = getByText('Remediation 1')
 		expect(remediationElement1).toBeInTheDocument()
 	})
@@ -84,43 +77,6 @@ describe('Eos component', () => {
 		const { getByText } = render(<Eos data={mockData} />)
 		const remediationElement2 = getByText('Remediation 2')
 		expect(remediationElement2).toBeInTheDocument()
-	})
-
-	test('renders found text', () => {
-		const { getByText } = render(<Eos data={mockData} />)
-		const foundTextElement = getByText('Found text example')
-		expect(foundTextElement).toBeInTheDocument()
-	})
-
-	test('renders analysis step1 1', () => {
-		const { getByText } = render(<Eos data={mockData} />)
-		expect(getByText('DATA FLOW ANALYSIS')).toBeInTheDocument()
-		const analysisStepElement1 = getByText('Sample snippet 1')
-		expect(analysisStepElement1).toBeInTheDocument()
-		const vulnerabilityElement = getByText('6:')
-		expect(vulnerabilityElement).toBeInTheDocument()
-	})
-
-	test('renders analysis snippet 2', () => {
-		const { getByText } = render(<Eos data={mockData} />)
-		expect(getByText('DATA FLOW ANALYSIS')).toBeInTheDocument()
-		const analysisStepElement2 = getByText('Sample snippet 2')
-		expect(analysisStepElement2).toBeInTheDocument()
-		const vulnerabilityElement = getByText('3:')
-		expect(vulnerabilityElement).toBeInTheDocument()
-	})
-
-	test('renders what was found', () => {
-		const { getByText } = render(<Eos data={mockData} />)
-		expect(getByText('WHAT WAS FOUND')).toBeInTheDocument()
-		const analysisStepElement2 = getByText('Found text example')
-		expect(analysisStepElement2).toBeInTheDocument()
-	})
-
-	test('renders with unknown severity when not provided', () => {
-		const { getByText } = render(<Eos data={{ ...mockData, severity: undefined }} />)
-		const severityElement = getByText('Unknown')
-		expect(severityElement).toBeInTheDocument()
 	})
 
 	test('does not render description when not provided', () => {

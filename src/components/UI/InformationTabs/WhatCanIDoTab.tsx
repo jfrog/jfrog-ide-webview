@@ -59,14 +59,14 @@ export default function WhatCanIDoTab(props: WhatCanIDoTabProps): JSX.Element {
 							<p className={css.alignCenterFlex}>
 								{isDirectDependency ? (
 									<span style={{ display: 'flex', gap: 8, flexDirection: 'column' }}>
-										<div>
+										<span>
 											<span className={css.text}>Update the following:</span>{' '}
 											<span>{directDependanciesNames.join(', ')}</span>
-										</div>
-										<div>
+										</span>
+										<span>
 											<span className={css.text}>Fix version:</span>{' '}
 											<span>{props.fixedVersion.join(', ')}</span>
-										</div>
+										</span>
 									</span>
 								) : (
 									<span>
@@ -86,14 +86,14 @@ export default function WhatCanIDoTab(props: WhatCanIDoTabProps): JSX.Element {
 						<div>
 							<p className={css.alignCenterFlex}>
 								<span style={{ display: 'flex', gap: 8, flexDirection: 'column' }}>
-									<div>
+									<span>
 										<span className={css.text}>Update the following:</span>{' '}
 										<span>{props.component}</span>
-									</div>
-									<div>
+									</span>
+									<span>
 										<span className={css.text}>Fix version:</span>{' '}
 										<span>{props.fixedVersion.join(', ')}</span>
-									</div>
+									</span>
 								</span>
 							</p>
 						</div>

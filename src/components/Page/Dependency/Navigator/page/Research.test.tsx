@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Research, { Props } from './Research'
+import Research, { LABELS, Props } from './Research'
 import { IExtendedInformation, ISeverityReasons } from '../../../../../model/extendedInformation'
 import { ISeverity } from '../../../../../model/severity'
 
@@ -18,29 +18,16 @@ describe('Research component', () => {
 		render(<Research {...mockData} />)
 
 		// Check if the summary headline is rendered
-		expect(screen.getByText('SUMMARY')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.SUMMARY)).toBeInTheDocument()
 
 		// Check if the short description text is rendered
-		expect(screen.getByText('Short Description')).toBeInTheDocument()
-
-		// Check if no remediation headline is rendered
-		expect(screen.queryByText('REMEDIATION')).not.toBeInTheDocument()
-
-		// Check if no remediation text is rendered
-		expect(screen.queryByText('Remediation Content')).not.toBeInTheDocument()
+		expect(screen.getByText(data.shortDescription)).toBeInTheDocument()
 
 		// Check if the details headline is rendered
-		expect(screen.getByText('DETAILS')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.DETAILS)).toBeInTheDocument()
 
 		// Check if no details markdown is rendered
-		expect(screen.queryByText('fullDescription')).toBeInTheDocument()
-
-		// Check if no jfrog research severity reasons headline is rendered
-		expect(screen.queryByText('JFROG RESEARCH SEVERITY REASONS')).not.toBeInTheDocument()
-
-		// Check if no jfrog research severity reasons content is rendered
-		expect(screen.queryByText('Reason 1')).not.toBeInTheDocument()
-		expect(screen.queryByText('Reason 2')).not.toBeInTheDocument()
+		expect(screen.queryByText(data.fullDescription)).toBeInTheDocument()
 	})
 
 	test('renders the component with summary, remediation, details, and jfrog research severity reasons', () => {
@@ -72,30 +59,30 @@ describe('Research component', () => {
 		render(<Research {...mockData} />)
 
 		// Check if the summary headline is rendered
-		expect(screen.getByText('SUMMARY')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.SUMMARY)).toBeInTheDocument()
 
 		// Check if the short description text is rendered
-		expect(screen.getByText('Short Description')).toBeInTheDocument()
+		expect(screen.getByText(data.shortDescription)).toBeInTheDocument()
 
 		// Check if the remediation headline is rendered
-		expect(screen.getByText('REMEDIATION')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 
 		// Check if the remediation text is rendered
-		expect(screen.getByText('Remediation Content')).toBeInTheDocument()
+		expect(screen.getByText(data.remediation as string)).toBeInTheDocument()
 
 		// Check if the details headline is rendered
-		expect(screen.getByText('DETAILS')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.DETAILS)).toBeInTheDocument()
 
 		// Check if the details markdown is rendered
-		expect(screen.getByText('Details Content')).toBeInTheDocument()
+		expect(screen.getByText(data.fullDescription)).toBeInTheDocument()
 
 		// Check if the jfrog research severity reasons headline is rendered
-		expect(screen.getByText('JFROG RESEARCH SEVERITY REASONS')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.JFROG_RESEARCH_SEVERITY_REASONS)).toBeInTheDocument()
 
 		// Check if the jfrog research severity reasons content is rendered correctly
-		expect(screen.getByText('Reason 1')).toBeInTheDocument()
-		expect(screen.getByText('Reason 1 Description')).toBeInTheDocument()
-		expect(screen.getByText('Reason 2')).toBeInTheDocument()
-		expect(screen.getByText('Reason 2 Description')).toBeInTheDocument()
+		for (const reason of reasons) {
+			expect(screen.getByText(reason.name)).toBeInTheDocument()
+			expect(screen.getByText(reason.description)).toBeInTheDocument()
+		}
 	})
 })

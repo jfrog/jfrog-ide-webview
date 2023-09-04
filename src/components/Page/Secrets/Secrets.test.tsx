@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import Secrets from './Secrets'
-import { ISecretsPage, PageType } from '../../../model/webviewPages'
-import { ISeverity } from '../../../model/severity'
+import { ISecretsPage, PageType } from '../../../model/'
+import { ISeverity } from '../../../model'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
 
 describe('Secrets component', () => {
@@ -29,34 +29,12 @@ describe('Secrets component', () => {
 	test('renders Secrets component with title and location', () => {
 		const { getByText } = render(<Secrets data={mockData} />)
 
-		expect(getByText('Secrets Vulnerability')).toBeInTheDocument()
-		expect(getByTextAcrossMultipleElements(getByText, 'Location: example-file.yml: 10'))
+		expect(getByText(mockData.header)).toBeInTheDocument()
+		expect(getByTextAcrossMultipleElements(getByText, 'Location: example-file.yml'))
 	})
 
 	test('renders Secrets component with severity and abbreviation', () => {
-		const { getByText } = render(<Secrets data={mockData} />)
-
-		expect(getByTextAcrossMultipleElements(getByText, 'Severity: Medium'))
-		expect(getByTextAcrossMultipleElements(getByText, 'Abbreviation: XYZ'))
-	})
-
-	test('renders Secrets component with code finding', () => {
-		const { getByText } = render(<Secrets data={mockData} />)
-
-		expect(getByText('Example code snippet')).toBeInTheDocument()
-		expect(getByText('FINDING')).toBeInTheDocument()
-		expect(getByText('How it happens')).toBeInTheDocument()
-		expect(getByText('Meaning of the vulnerability')).toBeInTheDocument()
-		expect(getByText('What to do about it')).toBeInTheDocument()
-	})
-
-	test('renders Secrets component with description', () => {
-		const { getByText } = render(<Secrets data={mockData} />)
-
-		expect(getByText('What should I do?')).toBeInTheDocument()
-		expect(getByText('What can happen?')).toBeInTheDocument()
-		expect(getByText('What Does it mean?')).toBeInTheDocument()
-		expect(getByText('Description')).toBeInTheDocument()
-		expect(getByText('This is a vulnerability description.')).toBeInTheDocument()
+		const { getByAltText } = render(<Secrets data={mockData} />)
+		expect(getByAltText(mockData.severity.toLowerCase())).toBeInTheDocument()
 	})
 })

@@ -15,9 +15,9 @@ import Reference from '../../Page/Dependency/Navigator/page/Reference'
 import ImpactGraph from '../../Page/Dependency/Navigator/page/ImpactGraph'
 import { TreeNode } from '../../../model/treeNode'
 import { toTreeNode } from '../../../utils/utils'
-import WhatCanIDoTab, { WhatCanIDoTabProps } from './WhatCanIDoTab'
+import WhatCanIDoTab from './WhatCanIDoTab'
 import Markdown from '../Markdown/Markdown'
-import { SxProps } from '@mui/system'
+
 export const TABS = {
 	WHAT_CAN_I_DO: {
 		label: 'What can I do',
@@ -35,6 +35,9 @@ export const TABS = {
 		label: 'Impact graph',
 		key: 'impact_graph'
 	}
+}
+export const LABELS = {
+	DESCRIPTION: 'Description'
 }
 const defaultTabStyle = {
 	color: COLORS.GRAY_100,
@@ -93,9 +96,9 @@ function InformationTabs(props: Props): JSX.Element {
 		return value === tab ? activeTabStyle : defaultTabStyle
 	}
 
-	const showWhatCanIDoTab = props.tabs.includes(TABS.WHAT_CAN_I_DO.key) // && ((props.data as IEosPage).remediation || (props.data as IDependencyPage).fixedVersion)
+	const showWhatCanIDoTab = props.tabs.includes(TABS.WHAT_CAN_I_DO.key)
 	const showCveInformationTab = props.tabs.includes(TABS.CVE_INFORMATION.key)
-
+	const showImpactGraphTab = props.tabs.includes(TABS.IMPACT_GRAPH.key)
 	return (
 		<div style={{ overflow: 'hidden' }}>
 			<div className={css.tabsContainer}>
@@ -119,7 +122,7 @@ function InformationTabs(props: Props): JSX.Element {
 							label={TABS.CVE_INFORMATION.label}
 						/>
 					)}
-					{props.tabs.includes(TABS.IMPACT_GRAPH.key) && (
+					{showImpactGraphTab && (
 						<Tab
 							style={tabStyle(TABS.IMPACT_GRAPH.key)}
 							value={TABS.IMPACT_GRAPH.key}
@@ -150,7 +153,7 @@ function InformationTabs(props: Props): JSX.Element {
 						<Collapse
 							header={
 								<h1>
-									<img src={documentSvg} /> Description
+									<img src={documentSvg} /> {LABELS.DESCRIPTION}
 								</h1>
 							}
 							content={<Markdown text={(props.data as IEosPage).description} />}

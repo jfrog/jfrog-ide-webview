@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import Navigator from './Navigator'
 import { IDependencyPage, IExtendedInformation, ISeverity, PageType } from '../../../../model'
+import { LABELS } from './page/PublicSources'
 
 describe('Navigator component', () => {
 	const mockData: IDependencyPage = {
@@ -119,7 +120,7 @@ describe('Navigator component', () => {
 	test('renders the PageHolder component with the public sources tab content', () => {
 		render(<Navigator data={mockData} />)
 		fireEvent.click(screen.getByRole('button', { name: 'Public Sources' }))
-		expect(screen.getByText('CVSS BREAKDOWN')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.CVSS_BREAKDOWN)).toBeInTheDocument()
 	})
 
 	test('renders the PageHolder component with the impact graph tab content', () => {

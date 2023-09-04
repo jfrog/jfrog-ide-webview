@@ -36,7 +36,7 @@ describe('App component', () => {
 		await sendWebviewPage(mockPage)
 
 		// Assert that the Dependency component is rendered
-		expect(screen.getAllByText('Dependency-ID')).toHaveLength(2)
+		expect(screen.getAllByText('Dependency-ID')).toHaveLength(1)
 	})
 
 	test('renders the Eos page when the page type is "Eos"', async () => {

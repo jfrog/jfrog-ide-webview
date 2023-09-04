@@ -20,7 +20,7 @@ export function getSeverityImage(severity: ISeverity, filled = false): JSX.Eleme
 		case ISeverity.Low:
 			return <img src={filled ? lowFilled : low} alt="low" />
 		case ISeverity.Medium:
-			return <img src={filled ? mediumFilled : medium} alt="low" />
+			return <img src={filled ? mediumFilled : medium} alt="medium" />
 		case ISeverity.High:
 			return <img src={filled ? highFilled : high} alt="high" />
 		case ISeverity.Critical:
