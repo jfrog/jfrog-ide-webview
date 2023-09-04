@@ -1,6 +1,6 @@
 name: Webview Tests
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 permissions:
   contents: read
@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macOS-latest ]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: '16'
           check-latest: true
 
       - name: Install project

@@ -1,8 +1,8 @@
-name: "Frogbot Scan and Fix"
+name: 'Frogbot Scan and Fix'
 on:
   schedule:
     # The repository will be scanned once a day at 00:00 GMT.
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 permissions:
   contents: write
   pull-requests: write
@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         # The repository scanning will be triggered periodically on the following branches.
-        branch: [ "main" ]
+        branch: ['main']
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,11 +23,11 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: '16.x'
 
       - uses: jfrog/frogbot@v2
         env:
-          JFROG_CLI_LOG_LEVEL: "DEBUG"
+          JFROG_CLI_LOG_LEVEL: 'DEBUG'
           # [Mandatory]
           # JFrog platform URL
           JF_URL: ${{ secrets.FROGBOT_URL }}

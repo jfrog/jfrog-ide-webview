@@ -1,8 +1,8 @@
 {
-  "files": [
-    {
-      "pattern": "ecosys-npm-local/(jfrog-ide-webview/-/jfrog-ide-webview-${version}.tgz)",
-      "target": "ide-webview-npm/{1}"
-    }
-  ]
+	"files": [
+		{
+			"pattern": "ecosys-npm-local/(jfrog-ide-webview/-/jfrog-ide-webview-${version}.tgz)",
+			"target": "ide-webview-npm/{1}"
+		}
+	]
 }
