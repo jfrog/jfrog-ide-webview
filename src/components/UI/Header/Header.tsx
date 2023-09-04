@@ -60,9 +60,13 @@ export default function Header(props: Props): JSX.Element {
 					{props.pageData.severity && getSeverityImage(props.pageData.severity, true)}
 					<h6 className={css.flexCenter}>
 						{props.text}
-						{showJFrogResearchIcon && <JfrogResearchIcon />}
+						{showJFrogResearchIcon && <JfrogResearchIcon id="jfrog_research_icon" />}
 						{applicableData &&
-							(applicableData.isApplicable ? <ApplicableIcon /> : <NotApplicableIcon />)}
+							(applicableData.isApplicable ? (
+								<ApplicableIcon id="applicable_icon" />
+							) : (
+								<NotApplicableIcon id="not_applicable_icon" />
+							))}
 					</h6>
 				</div>
 				{showCVEInfoInPages && <CveInformation data={props.pageData as IDependencyPage} />}

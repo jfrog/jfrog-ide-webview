@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { queryByAttribute, render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import {
 	IDependencyPage,
@@ -62,11 +62,27 @@ describe('Dependency page component', () => {
 		expect(screen.getByText(mockData.component)).toBeInTheDocument()
 	})
 
-	test('should render "Contextual Analysis"', () => {
-		render(<Dependency data={mockData} />)
+	test('should render "jfrog_research_icon" and "applicable_icon"', () => {
+		const el = render(<Dependency data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const applicableIcon = getById(el.container, 'applicable_icon')
 
-		expect(screen.getByAltText('research-icon')).toBeInTheDocument()
-		expect(screen.getByAltText('applicable-icon')).toBeInTheDocument()
+		expect(jfResearchIcon).not.toBeNull()
+		expect(applicableIcon).not.toBeNull()
+	})
+	test('should render "not_applicable_icon"', () => {
+		const el = render(
+			<Dependency
+				data={{ ...mockData, cve: { id: mockData.id, applicableData: { isApplicable: false } } }}
+			/>
+		)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const notApplicableIcon = getById(el.container, 'not_applicable_icon')
+
+		expect(jfResearchIcon).not.toBeNull()
+		expect(notApplicableIcon).not.toBeNull()
 	})
 	test('should render "Fixed version"', () => {
 		render(<Dependency data={mockData} />)
@@ -76,16 +92,18 @@ describe('Dependency page component', () => {
 	})
 
 	test('should render "Severity"', () => {
-		render(<Dependency data={mockData} />)
-
-		expect(screen.getByAltText(/High/i)).toBeInTheDocument()
+		const el = render(<Dependency data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const highIcon = getById(el.container, 'high')
+		expect(highIcon).not.toBeNull()
 	})
 
 	test('should render "JFrog severity"', () => {
-		render(<Dependency data={mockData} />)
-
+		const el = render(<Dependency data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const severityIcon = getById(el.container, 'low')
+		expect(severityIcon).not.toBeNull()
 		expect(screen.getByText(/JFrog severity rank:/i)).toBeInTheDocument()
-		expect(screen.getByAltText(/Low/i)).toBeInTheDocument()
 	})
 
 	test('should render "Version"', () => {

@@ -1,9 +1,10 @@
-import { render } from '@testing-library/react'
+import { queryByAttribute, render } from '@testing-library/react'
 import Eos from './Eos'
 import { IEosPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
 import { TABS } from '../../UI/InformationTabs/InformationTabs'
+import Dependency from '../Dependency/Dependency'
 
 describe('Eos component', () => {
 	const mockData: IEosPage = {
@@ -48,8 +49,10 @@ describe('Eos component', () => {
 	})
 
 	test('renders severity', () => {
-		const { getByAltText } = render(<Eos data={mockData} />)
-		expect(getByAltText(mockData.severity?.toLowerCase() ?? '')).toBeInTheDocument()
+		const el = render(<Eos data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const severityIcon = getById(el.container, mockData.severity?.toLowerCase() ?? '')
+		expect(severityIcon).not.toBeNull()
 	})
 
 	test('renders vulnerability location', () => {

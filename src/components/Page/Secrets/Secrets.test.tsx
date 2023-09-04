@@ -1,8 +1,9 @@
-import { render } from '@testing-library/react'
+import { queryByAttribute, render } from '@testing-library/react'
 import Secrets from './Secrets'
 import { ISecretsPage, PageType } from '../../../model/'
 import { ISeverity } from '../../../model'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
+import Eos from '../Eos/Eos'
 
 describe('Secrets component', () => {
 	const mockData: ISecretsPage = {
@@ -34,7 +35,9 @@ describe('Secrets component', () => {
 	})
 
 	test('renders Secrets component with severity and abbreviation', () => {
-		const { getByAltText } = render(<Secrets data={mockData} />)
-		expect(getByAltText(mockData.severity.toLowerCase())).toBeInTheDocument()
+		const el = render(<Secrets data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const severityIcon = getById(el.container, mockData.severity.toLowerCase())
+		expect(severityIcon).not.toBeNull()
 	})
 })
