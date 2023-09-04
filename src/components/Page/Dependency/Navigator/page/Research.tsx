@@ -1,4 +1,5 @@
 import css from './Research.module.css'
+import TypographyCss from '../../../../../styles/Typography.module.css'
 import { IExtendedInformation } from '../../../../../model/extendedInformation'
 import Markdown from '../../../../UI/Markdown/Markdown'
 import Divider from '../../../../UI/Divider/Divider'
@@ -24,7 +25,7 @@ export default function Research(props: Props): JSX.Element {
 	return (
 		<div className={css.container}>
 			<span className={css.alignCenterFlex}>
-				<span className={css.label}>Severity:</span>{' '}
+				<span className={TypographyCss.label}>Severity:</span>{' '}
 				{getSeverityImage(props.data?.jfrogResearchSeverity ?? ISeverity.Unknown, true)}{' '}
 				{props.data?.jfrogResearchSeverity}
 			</span>

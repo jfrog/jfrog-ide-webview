@@ -12,6 +12,7 @@ import {
 import cveCss from '../Summary/CveVulnerability.module.css'
 import jfrogResearchIcon from '../../../assets/icons/jfrog_research_icon.svg'
 import applicableIcon from '../../../assets/icons/applicable.svg'
+import notApplicableIcon from '../../../assets/icons/not_applicable.svg'
 
 export interface Props {
 	text: string
@@ -50,7 +51,7 @@ export default function Header(props: Props): JSX.Element {
 	const showCVEInfoInPages = PageType.Dependency === props.pageData.pageType
 	const showJFrogResearchIcon =
 		(props.pageData as IDependencyPage).extendedInformation !== undefined
-	const showIsApplicable = (props.pageData as IDependencyPage).cve?.applicableData?.isApplicable
+	const applicableData = (props.pageData as IDependencyPage).cve?.applicableData
 	return (
 		<div className={css.container}>
 			<div className={css.content}>
@@ -59,7 +60,12 @@ export default function Header(props: Props): JSX.Element {
 					<h6 className={css.flexCenter}>
 						{props.text}
 						{showJFrogResearchIcon && <img src={jfrogResearchIcon} alt="research-icon" />}
-						{showIsApplicable && <img src={applicableIcon} alt="applicable-icon" />}
+						{applicableData && (
+							<img
+								src={applicableData.isApplicable ? applicableIcon : notApplicableIcon}
+								alt="applicable-icon"
+							/>
+						)}
 					</h6>
 				</div>
 				{showCVEInfoInPages && <CveInformation data={props.pageData as IDependencyPage} />}

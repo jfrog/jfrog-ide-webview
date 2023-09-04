@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { COLORS } from '../../../styles'
 import { Collapse } from '../Collapse/Collapse'
 import css from './InformationTabs.module.css'
-import documentSvg from '../../../assets/icons/document.svg'
+import { ReactComponent as DocumentSvg } from '../../../assets/icons/document.svg'
 import jfrogResearchIcon from '../../../assets/icons/jfrog_research_icon.svg'
 import infoIcon from '../../../assets/icons/info.svg'
 import refrenceIcon from '../../../assets/icons/refrence.svg'
-import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage } from '../../../model'
+import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from '../../../model'
 import PublicSources from '../../Page/Dependency/Navigator/page/PublicSources'
 import Research from '../../Page/Dependency/Navigator/page/Research'
 import Reference from '../../Page/Dependency/Navigator/page/Reference'
@@ -99,6 +99,32 @@ function InformationTabs(props: Props): JSX.Element {
 	const showWhatCanIDoTab = props.tabs.includes(TABS.WHAT_CAN_I_DO.key)
 	const showCveInformationTab = props.tabs.includes(TABS.CVE_INFORMATION.key)
 	const showImpactGraphTab = props.tabs.includes(TABS.IMPACT_GRAPH.key)
+	let remediation: string[] | undefined
+	const extendedInformation = (props.data as IDependencyPage).extendedInformation
+
+	switch (props.data.pageType) {
+		case PageType.Eos:
+			remediation = (props.data as IEosPage).remediation
+
+			if (!remediation) {
+				const content = (props.data as IEosPage).description
+				const descriptionSplit = content?.split('### Remediation')
+
+				if (descriptionSplit && descriptionSplit.length > 1) {
+					remediation = [descriptionSplit[1] as string]
+				}
+			}
+
+			break
+
+		case PageType.Dependency:
+			if (!!extendedInformation && extendedInformation.remediation) {
+				remediation = [extendedInformation.remediation]
+			}
+
+			break
+	}
+
 	return (
 		<div style={{ overflow: 'hidden' }}>
 			<div className={css.tabsContainer}>
@@ -144,7 +170,7 @@ function InformationTabs(props: Props): JSX.Element {
 							component={(props.data as IDependencyPage).component}
 							impactGraph={(props.data as IDependencyPage).impactGraph}
 							fixedVersion={(props.data as IDependencyPage).fixedVersion}
-							remediation={(props.data as IEosPage).remediation}
+							remediation={remediation}
 						/>
 					</CustomTabPanel>
 				)}
@@ -153,7 +179,7 @@ function InformationTabs(props: Props): JSX.Element {
 						<Collapse
 							header={
 								<h1>
-									<img src={documentSvg} /> {LABELS.DESCRIPTION}
+									<DocumentSvg /> {LABELS.DESCRIPTION}
 								</h1>
 							}
 							content={<Markdown text={(props.data as IEosPage).description} />}

@@ -1,0 +1,10 @@
+.rowList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.defaultContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

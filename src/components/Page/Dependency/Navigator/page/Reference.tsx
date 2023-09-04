@@ -1,4 +1,4 @@
-import { IReference } from '../../../../../model/reference'
+import { IReference } from '../../../../../model'
 import css from './Reference.module.css'
 
 export interface Props {
