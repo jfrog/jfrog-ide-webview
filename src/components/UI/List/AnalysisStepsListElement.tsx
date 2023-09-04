@@ -10,8 +10,8 @@ import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineDot from '@mui/lab/TimelineDot'
 import { COLORS } from '../../../styles'
 import { ButtonBase } from '@mui/material'
-import expandSvg from '../../../assets/icons/expand.svg'
-import minimizeSvg from '../../../assets/icons/minimize.svg'
+import { ReactComponent as ExpandSvg } from '../../../assets/icons/expand.svg'
+import { ReactComponent as MinimizeSvg } from '../../../assets/icons/minimize.svg'
 import { SxProps } from '@mui/system'
 export interface Props {
 	items: IAnalysisStep[]
@@ -128,7 +128,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 										backgroundColor: COLORS.GRAY_100
 									}}
 								>
-									<img width={12} src={minimizeSvg} />
+									<MinimizeSvg />
 								</TimelineDot>
 							</TimelineSeparator>
 							<TimelineContent style={timelineContentStyle}>
@@ -185,7 +185,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 										backgroundColor: COLORS.GRAY_100
 									}}
 								>
-									<img width={12} src={expandSvg} />
+									<ExpandSvg />
 								</TimelineDot>
 								<Connector />
 							</TimelineSeparator>

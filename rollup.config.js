@@ -1,7 +1,10 @@
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
-
+import image from '@rollup/plugin-image'
+import svgr from '@svgr/rollup'
 const plugins = [
+	svgr(),
+	image({ dom: true }),
 	typescript({
 		tsconfig: './tsconfig.json',
 		exclude: ['setupTests.ts']
@@ -24,7 +27,7 @@ const config = [
 	{
 		input: 'types/types/index.d.ts',
 		output: [{ file: 'types/index.d.ts', format: 'esm' }],
-		plugins: [dts()]
+		plugins: [svgr(), image({ dom: true }), dts()]
 	}
 ]
 

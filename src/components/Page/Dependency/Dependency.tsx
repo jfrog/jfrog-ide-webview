@@ -9,10 +9,12 @@ export interface Props {
 }
 
 export default function Dependency(props: Props): JSX.Element {
+	const showApplicabilityEvidence =
+		props.data.cve?.applicableData?.evidence ?? props.data.cve?.applicableData?.searchTarget
 	return (
 		<div className={css.PageContainer}>
 			<Header pageData={props.data} text={props.data.cve?.id ? props.data.cve.id : props.data.id} />
-			{props.data.cve?.applicableData && (
+			{props.data.cve?.applicableData && showApplicabilityEvidence && (
 				<ApplicabilityEvidence data={props.data.cve.applicableData} />
 			)}
 			<InformationTabs

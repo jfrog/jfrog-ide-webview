@@ -5,9 +5,9 @@ import { COLORS } from '../../../styles'
 import { Collapse } from '../Collapse/Collapse'
 import css from './InformationTabs.module.css'
 import { ReactComponent as DocumentSvg } from '../../../assets/icons/document.svg'
-import jfrogResearchIcon from '../../../assets/icons/jfrog_research_icon.svg'
-import infoIcon from '../../../assets/icons/info.svg'
-import refrenceIcon from '../../../assets/icons/refrence.svg'
+import { ReactComponent as JfrogResearchIcon } from '../../../assets/icons/jfrog_research_icon.svg'
+import { ReactComponent as InfoIcon } from '../../../assets/icons/info.svg'
+import { ReactComponent as ReferenceIcon } from '../../../assets/icons/refrence.svg'
 import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from '../../../model'
 import PublicSources from '../../Page/Dependency/Navigator/page/PublicSources'
 import Research from '../../Page/Dependency/Navigator/page/Research'
@@ -201,7 +201,7 @@ function InformationTabs(props: Props): JSX.Element {
 							<Collapse
 								header={
 									<h1>
-										<img src={jfrogResearchIcon} /> JFrog Research
+										<JfrogResearchIcon /> JFrog Research
 									</h1>
 								}
 								content={<Research data={(props.data as IDependencyPage).extendedInformation} />}
@@ -211,7 +211,7 @@ function InformationTabs(props: Props): JSX.Element {
 						<Collapse
 							header={
 								<h1>
-									<img src={infoIcon} /> Public Sources
+									<InfoIcon /> Public Sources
 								</h1>
 							}
 							content={
@@ -227,7 +227,7 @@ function InformationTabs(props: Props): JSX.Element {
 							<Collapse
 								header={
 									<h1>
-										<img src={refrenceIcon} /> References
+										<ReferenceIcon /> References
 									</h1>
 								}
 								content={<Reference data={(props.data as IDependencyPage).references} />}

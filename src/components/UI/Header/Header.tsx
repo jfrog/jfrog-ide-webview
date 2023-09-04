@@ -10,14 +10,15 @@ import {
 	PageType
 } from '../../../model'
 import cveCss from '../Summary/CveVulnerability.module.css'
-import jfrogResearchIcon from '../../../assets/icons/jfrog_research_icon.svg'
-import applicableIcon from '../../../assets/icons/applicable.svg'
-import notApplicableIcon from '../../../assets/icons/not_applicable.svg'
+import { ReactComponent as JfrogResearchIcon } from '../../../assets/icons/jfrog_research_icon.svg'
+import { ReactComponent as ApplicableIcon } from '../../../assets/icons/applicable.svg'
+import { ReactComponent as NotApplicableIcon } from '../../../assets/icons/not_applicable.svg'
 
 export interface Props {
 	text: string
 	pageData: Partial<IDependencyPage | ISecretsPage | IIaCPage | IEosPage>
 }
+
 const LocationSpan = (props: { location: IAnalysisStep }): JSX.Element => (
 	<span className={css.locationLabel}>
 		<b>Location:</b> {props.location.file}
@@ -59,13 +60,9 @@ export default function Header(props: Props): JSX.Element {
 					{props.pageData.severity && getSeverityImage(props.pageData.severity, true)}
 					<h6 className={css.flexCenter}>
 						{props.text}
-						{showJFrogResearchIcon && <img src={jfrogResearchIcon} alt="research-icon" />}
-						{applicableData && (
-							<img
-								src={applicableData.isApplicable ? applicableIcon : notApplicableIcon}
-								alt="applicable-icon"
-							/>
-						)}
+						{showJFrogResearchIcon && <JfrogResearchIcon />}
+						{applicableData &&
+							(applicableData.isApplicable ? <ApplicableIcon /> : <NotApplicableIcon />)}
 					</h6>
 				</div>
 				{showCVEInfoInPages && <CveInformation data={props.pageData as IDependencyPage} />}

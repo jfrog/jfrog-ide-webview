@@ -3,6 +3,8 @@ import { Collapse } from '../Collapse/Collapse'
 import Markdown from '../Markdown/Markdown'
 import { IImpactGraph, PageType } from '../../../model'
 import Row from '../Row/Row'
+import { ReactComponent as SadFace } from '../../../assets/icons/sad_face.svg'
+import TypographyCss from '../../../styles/Typography.module.css'
 
 export interface WhatCanIDoTabProps {
 	pageType: PageType
@@ -33,16 +35,30 @@ export: (req, res) => {
 	const suppressIssueMarkdownExample =
 		props.pageType === PageType.Eos ? eosSuppressExample : secretsSuppressExample
 
+	const hasFixedVersion = props.fixedVersion && props.fixedVersion.length > 0
+	const showSuppressFinding = [PageType.Eos, PageType.Secrets].includes(props.pageType)
+
+	const hasAction = hasFixedVersion ?? props.remediation ?? showSuppressFinding
 	return (
 		<div className={css.container}>
-			{(props.remediation || props.fixedVersion) && (
+			{hasAction ? (
 				<span className={css.text}>Follow one of the following actions:</span>
+			) : (
+				<div className={css.emptyStateContainer}>
+					<p>Seems like there is no action you can take at this time</p>
+					<SadFace />
+					<p className={TypographyCss.label}>
+						Consider moving to another package or contact the maintainers to know when a fix will be
+						available
+					</p>
+				</div>
 			)}
-			{props.fixedVersion && props.fixedVersion.length > 0 && (
+			{hasFixedVersion && (
 				<Collapse
 					header={
 						<h1>
-							Update direct dependency <span className={css.recommendedLabel}>Recommended</span>
+							Update direct dependency
+							<span className={css.recommendedLabel}>Recommended</span>
 						</h1>
 					}
 					content={
@@ -50,7 +66,7 @@ export: (req, res) => {
 							{isDirectDependency ? (
 								<span style={{ display: 'flex', gap: 8, flexDirection: 'column' }}>
 									<Row title="Update the following" data={directDependanciesNames.join(', ')} />
-									<Row title="Fix version" data={props.fixedVersion.join(', ')} />
+									<Row title="Fix version" data={props.fixedVersion?.join(', ') as string} />
 								</span>
 							) : (
 								<Row title="Update the following" data={directDependanciesNames.join(', ')} />

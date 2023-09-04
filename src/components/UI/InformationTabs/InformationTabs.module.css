@@ -91,3 +91,17 @@ span {
 	font-weight: 600;
 	line-height: 18px; /* 150% */
 }
+
+.emptyStateContainer {
+	display: flex;
+	padding: 24px 16px;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	border-radius: 6px;
+	background: #333;
+	width: 100%;
+}
+.emptyStateContainer > * {
+	text-align: center!important;
+}

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Accordion, accordionClasses, AccordionDetails, AccordionSummary } from '@mui/material'
+import React from 'react'
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import css from './Collapse.module.css'
-import chevronSvg from '../../../assets/icons/chevron_green.svg'
+import { ReactComponent as ChevronSvg } from '../../../assets/icons/chevron_green.svg'
 import { COLORS } from '../../../styles'
 
 export interface Props {
@@ -22,7 +22,7 @@ export function Collapse(props: Props): JSX.Element {
 			<AccordionSummary
 				expandIcon={
 					<div className={css.expandIcon}>
-						<img src={chevronSvg} />
+						<ChevronSvg />
 					</div>
 				}
 			>

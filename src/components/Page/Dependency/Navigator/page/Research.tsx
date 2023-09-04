@@ -4,8 +4,8 @@ import { IExtendedInformation } from '../../../../../model/extendedInformation'
 import Markdown from '../../../../UI/Markdown/Markdown'
 import Divider from '../../../../UI/Divider/Divider'
 import { getSeverityImage } from '../../../../../utils/utils'
-import lessRiskIcon from '../../../../../assets/icons/less_risk.svg'
-import moreRiskIcon from '../../../../../assets/icons/more_risk.svg'
+import { ReactComponent as LessRiskIcon } from '../../../../../assets/icons/less_risk.svg'
+import { ReactComponent as MoreRiskIcon } from '../../../../../assets/icons/more_risk.svg'
 import { ISeverity } from '../../../../../model'
 
 export interface Props {
@@ -54,7 +54,7 @@ export default function Research(props: Props): JSX.Element {
 				{increasesRisk && increasesRisk.length > 0 && (
 					<>
 						<span className={css.alignCenterFlex} style={{ color: '#F14C4C' }}>
-							<img src={moreRiskIcon} /> Increases the risk level:
+							<MoreRiskIcon /> Increases the risk level:
 						</span>
 						<ul className={css.bulletList}>
 							{increasesRisk.map((reason, index) => (
@@ -71,7 +71,7 @@ export default function Research(props: Props): JSX.Element {
 				{decreasesRisk && decreasesRisk.length > 0 && (
 					<>
 						<span className={css.alignCenterFlex} style={{ color: '#3EB065' }}>
-							<img src={lessRiskIcon} /> Decreases the risk level:
+							<LessRiskIcon /> Decreases the risk level:
 						</span>
 						<ul className={css.bulletList}>
 							{decreasesRisk.map((reason, index) => (

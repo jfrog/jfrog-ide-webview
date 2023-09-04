@@ -2,29 +2,29 @@ import { IImpactGraphNode, ISeverity } from '../model'
 import { TreeNode } from '../model/treeNode'
 import css from '../components/UI/TreeViewer/TreeViewer.module.css'
 
-import unknownFilled from '../assets/icons/severity/unknown_filled.svg'
-import unknown from '../assets/icons/severity/unknown.svg'
-import criticalFilled from '../assets/icons/severity/critical_filled.svg'
-import critical from '../assets/icons/severity/critical.svg'
-import highFilled from '../assets/icons/severity/high_filled.svg'
-import high from '../assets/icons/severity/high.svg'
-import mediumFilled from '../assets/icons/severity/medium_filled.svg'
-import medium from '../assets/icons/severity/medium.svg'
-import lowFilled from '../assets/icons/severity/low_filled.svg'
-import low from '../assets/icons/severity/low.svg'
+import { ReactComponent as UnknownFilled } from '../assets/icons/severity/unknown_filled.svg'
+import { ReactComponent as Unknown } from '../assets/icons/severity/unknown.svg'
+import { ReactComponent as CriticalFilled } from '../assets/icons/severity/critical_filled.svg'
+import { ReactComponent as Critical } from '../assets/icons/severity/critical.svg'
+import { ReactComponent as HighFilled } from '../assets/icons/severity/high_filled.svg'
+import { ReactComponent as High } from '../assets/icons/severity/high.svg'
+import { ReactComponent as MediumFilled } from '../assets/icons/severity/medium_filled.svg'
+import { ReactComponent as Medium } from '../assets/icons/severity/medium.svg'
+import { ReactComponent as LowFilled } from '../assets/icons/severity/low_filled.svg'
+import { ReactComponent as Low } from '../assets/icons/severity/low.svg'
 
 export function getSeverityImage(severity: ISeverity, filled = false): JSX.Element {
 	switch (severity) {
 		case ISeverity.Unknown:
-			return <img src={filled ? unknownFilled : unknown} alt="unknown" />
+			return filled ? <UnknownFilled /> : <Unknown />
 		case ISeverity.Low:
-			return <img src={filled ? lowFilled : low} alt="low" />
+			return filled ? <LowFilled /> : <Low />
 		case ISeverity.Medium:
-			return <img src={filled ? mediumFilled : medium} alt="medium" />
+			return filled ? <MediumFilled /> : <Medium />
 		case ISeverity.High:
-			return <img src={filled ? highFilled : high} alt="high" />
+			return filled ? <HighFilled /> : <High />
 		case ISeverity.Critical:
-			return <img src={filled ? criticalFilled : critical} alt="critical" />
+			return filled ? <CriticalFilled /> : <Critical />
 	}
 }
 
