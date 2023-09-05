@@ -28,6 +28,43 @@ describe('AnalysisStepsListElement component', () => {
 			}
 		]
 	}
+	const longListProps: Props = {
+		items: [
+			{
+				file: 'example.js',
+				fileName: 'Example File',
+				startRow: 1,
+				startColumn: 2,
+				endRow: 5,
+				endColumn: 8,
+				snippet: 'console.log("Hello, world!");'
+			},
+			{
+				file: 'test.js',
+				fileName: 'Test File',
+				startRow: 10,
+				startColumn: 3,
+				endRow: 12,
+				endColumn: 6
+			},
+			{
+				file: 'test.js',
+				fileName: 'Test File',
+				startRow: 10,
+				startColumn: 3,
+				endRow: 12,
+				endColumn: 6
+			},
+			{
+				file: 'test.js',
+				fileName: 'Test File',
+				startRow: 10,
+				startColumn: 3,
+				endRow: 12,
+				endColumn: 6
+			}
+		]
+	}
 
 	test('renders analysis steps list element with buttons', () => {
 		const { getAllByRole, getByText } = render(
@@ -39,11 +76,26 @@ describe('AnalysisStepsListElement component', () => {
 		const buttons = getAllByRole('button')
 
 		// Assert that the correct number of buttons is rendered
-		expect(buttons).toHaveLength(defaultProps.items.length + 1) // the show more btn
+		expect(buttons).toHaveLength(defaultProps.items.length) // no show more btn
 
 		// Assert that the button content is rendered correctly
-		expect(getByText('Example File1:')).toBeInTheDocument()
-		expect(getByText('Test File10:')).toBeInTheDocument()
+		expect(getByText('Example File (1):')).toBeInTheDocument()
+		expect(getByText('Test File (10):')).toBeInTheDocument()
+	})
+	test('renders analysis steps list element with buttons in long list', () => {
+		const { getAllByRole, getByText } = render(
+			<eventManagerContext.Provider value={mockEventManager}>
+				<AnalysisStepsListElement {...longListProps} />
+			</eventManagerContext.Provider>
+		)
+
+		const buttons = getAllByRole('button')
+
+		// Assert that the correct number of buttons is rendered
+		expect(buttons).toHaveLength(longListProps.items.length + 1) // the show more btn
+
+		// Assert that the button content is rendered correctly
+		expect(getByText('Example File (1):')).toBeInTheDocument()
 	})
 
 	test('renders only 3 steps when more than 4 items', () => {
@@ -107,8 +159,8 @@ describe('AnalysisStepsListElement component', () => {
 		expect(buttons).toHaveLength(defaultProps.items.length + 1) // the show more btn
 
 		// Assert that the button content is rendered correctly
-		expect(getByText('Example File1:')).toBeInTheDocument()
-		expect(getByText('Test File10:')).toBeInTheDocument()
+		expect(getByText('Example File (1):')).toBeInTheDocument()
+		expect(getByText('Test File (10):')).toBeInTheDocument()
 	})
 
 	test('calls jumpToCode when button is clicked', () => {

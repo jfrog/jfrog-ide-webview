@@ -31,7 +31,7 @@ export const LABELS = {
 }
 const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
 const SNIPPET_TRIM_LENGTH = 40
-const FILE_NAME_TRIM_LENGTH = 10
+const FILE_NAME_TRIM_LENGTH = 16
 
 interface TimelineContentLogicProps {
 	item: IAnalysisStep
@@ -76,7 +76,7 @@ const TimelineContentLogic = ({
 }
 
 export default function AnalysisStepsListElement(props: Props): JSX.Element {
-	const [showMore, setShowMore] = React.useState(props.items.length < 5)
+	const [minimized, setMinimized] = React.useState(props.items.length < 5)
 	const ctx = useContext(eventManagerContext)
 
 	const onClick = (event: React.MouseEvent<HTMLButtonElement>, item: IAnalysisStep): void => {
@@ -122,7 +122,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 
 	return (
 		<Timeline style={{ display: 'flex', justifyContent: 'left', padding: 0 }}>
-			{showMore ? (
+			{minimized ? (
 				<>
 					{props.items.map((item, i) => (
 						<ButtonBase
@@ -138,7 +138,8 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 									<TimelineDot sx={timelineDotStyle(i)}>
 										<span>{i + 1}</span>
 									</TimelineDot>
-									<Connector />
+									{/* when there are 2 items dont add the bottom connector*/}
+									{(props.items.length > 2 || i != 1) && <Connector />}
 								</TimelineSeparator>
 								<TimelineContentLogic
 									item={item}
@@ -149,32 +150,34 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 							</TimelineItem>
 						</ButtonBase>
 					))}
-					<ButtonBase sx={buttonStyle}>
-						<TimelineItem
-							sx={timelineStyle}
-							onClick={(): void => {
-								setShowMore(false)
-							}}
-						>
-							<TimelineSeparator>
-								<Connector />
-								<TimelineDot
-									sx={{
-										...timelineDotStyle(1),
-										color: COLORS.WHITE_100,
-										backgroundColor: COLORS.GRAY_100
-									}}
-								>
-									<MinimizeSvg />
-								</TimelineDot>
-							</TimelineSeparator>
-							<TimelineContent style={timelineContentStyle}>
-								<div className={css.flexCenter}>
-									<span className={css.showMoreLabel}>Show less</span>
-								</div>
-							</TimelineContent>
-						</TimelineItem>
-					</ButtonBase>
+					{props.items.length > 2 && (
+						<ButtonBase sx={buttonStyle}>
+							<TimelineItem
+								sx={timelineStyle}
+								onClick={(): void => {
+									setMinimized(false)
+								}}
+							>
+								<TimelineSeparator>
+									<Connector />
+									<TimelineDot
+										sx={{
+											...timelineDotStyle(1),
+											color: COLORS.WHITE_100,
+											backgroundColor: COLORS.GRAY_100
+										}}
+									>
+										<MinimizeSvg />
+									</TimelineDot>
+								</TimelineSeparator>
+								<TimelineContent style={timelineContentStyle}>
+									<div className={css.flexCenter}>
+										<span className={css.showMoreLabel}>Show less</span>
+									</div>
+								</TimelineContent>
+							</TimelineItem>
+						</ButtonBase>
+					)}
 				</>
 			) : (
 				<>
@@ -203,7 +206,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 						<TimelineItem
 							sx={timelineStyle}
 							onClick={(): void => {
-								setShowMore(true)
+								setMinimized(true)
 							}}
 						>
 							<TimelineSeparator>
