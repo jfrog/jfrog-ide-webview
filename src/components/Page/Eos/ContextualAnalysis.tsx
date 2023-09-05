@@ -12,6 +12,7 @@ export default function ContextualAnalysis(props: Props): JSX.Element {
 		<>
 			{props.analysisSteps && props.analysisSteps.length > 0 && (
 				<Collapse
+					expanded
 					header={
 						<h1>
 							<FlowSvg /> Data Flow Analysis Evidence

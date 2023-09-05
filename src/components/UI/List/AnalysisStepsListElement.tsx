@@ -82,6 +82,8 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		boxShadow: 'none'
 	})
 	const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
+	const SNIPPET_TRIM_LENGTH = 40
+	const FILE_NAME_TRIM_LENGTH = 10
 	return (
 		<Timeline style={{ display: 'flex', justifyContent: 'left', padding: 0 }}>
 			{showMore ? (
@@ -105,11 +107,13 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 								<TimelineContent style={timelineContentStyle}>
 									<div className={css.flexCenter}>
 										<span className={css.row}>
-											{item.fileName && hideOverflowText(item.fileName, 30)}
+											{item.fileName && hideOverflowText(item.fileName, FILE_NAME_TRIM_LENGTH)}
 											&nbsp;({item.startRow}):
 										</span>
 										<span className={css.snippet}>
-											{item.snippet && <div>{hideOverflowText(item.snippet, 100)}</div>}
+											{item.snippet && (
+												<div>{hideOverflowText(item.snippet, SNIPPET_TRIM_LENGTH)}</div>
+											)}
 										</span>
 										{i === 0 && (
 											<Chip
@@ -175,12 +179,13 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 							<TimelineContent style={timelineContentStyle}>
 								<div className={css.flexCenter}>
 									<span className={css.row}>
-										{props.items[0].fileName && hideOverflowText(props.items[0].fileName, 30)} (
-										{props.items[0].startRow}):
+										{props.items[0].fileName &&
+											hideOverflowText(props.items[0].fileName, FILE_NAME_TRIM_LENGTH)}{' '}
+										({props.items[0].startRow}):
 									</span>
 									<span className={css.snippet}>
 										{props.items[0].snippet && (
-											<div>{hideOverflowText(props.items[0].snippet, 100)}</div>
+											<div>{hideOverflowText(props.items[0].snippet, SNIPPET_TRIM_LENGTH)}</div>
 										)}
 									</span>
 									<Chip
@@ -238,14 +243,17 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 										{props.items[props.items.length - 1]?.fileName &&
 											hideOverflowText(
 												props.items[props.items.length - 1]?.fileName ?? '',
-												30
+												FILE_NAME_TRIM_LENGTH
 											)}{' '}
 										({props.items[props.items.length - 1]?.startRow}):
 									</span>
 									<span className={css.snippet}>
 										{props.items[props.items.length - 1]?.snippet && (
 											<div>
-												{hideOverflowText(props.items[props.items.length - 1].snippet ?? '', 100)}
+												{hideOverflowText(
+													props.items[props.items.length - 1].snippet ?? '',
+													SNIPPET_TRIM_LENGTH
+												)}
 											</div>
 										)}
 									</span>
