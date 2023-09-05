@@ -125,6 +125,23 @@ function InformationTabs(props: Props): JSX.Element {
 			break
 	}
 
+	// set default patch the code text in no remediation
+	if (!remediation) {
+		switch (props.data.pageType) {
+			case PageType.Eos:
+			case PageType.IaC:
+				remediation = [
+					"Read about the vulnerability in the 'More information' tab and change the code accordingly"
+				]
+				break
+			case PageType.Secrets:
+				remediation = [
+					"Consider using best practice approach to remove the secret from the code. Please reference the 'More Information' Section for further details"
+				]
+				break
+		}
+	}
+
 	return (
 		<div style={{ overflow: 'hidden' }}>
 			<div className={css.tabsContainer}>

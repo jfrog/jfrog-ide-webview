@@ -9,7 +9,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineDot from '@mui/lab/TimelineDot'
 import { COLORS } from '../../../styles'
-import { ButtonBase } from '@mui/material'
+import { ButtonBase, Chip } from '@mui/material'
 import { ReactComponent as ExpandSvg } from '../../../assets/icons/expand.svg'
 import { ReactComponent as MinimizeSvg } from '../../../assets/icons/minimize.svg'
 import { SxProps } from '@mui/system'
@@ -24,6 +24,10 @@ const Connector = (): JSX.Element => (
 		}}
 	/>
 )
+export const LABELS = {
+	EXPLOIT_EXECUTOIN: 'Exploit execution',
+	ATTACKER_ENTRY: 'Attackers entry'
+}
 
 export default function AnalysisStepsListElement(props: Props): JSX.Element {
 	const [showMore, setShowMore] = React.useState(props.items.length < 5)
@@ -102,11 +106,25 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 									<div className={css.flexCenter}>
 										<span className={css.row}>
 											{item.fileName && hideOverflowText(item.fileName, 30)}
-											{item.startRow}:
+											&nbsp;({item.startRow}):
 										</span>
 										<span className={css.snippet}>
 											{item.snippet && <div>{hideOverflowText(item.snippet, 100)}</div>}
 										</span>
+										{i === 0 && (
+											<Chip
+												style={{ marginLeft: 'auto' }}
+												color="error"
+												label={LABELS.ATTACKER_ENTRY}
+											/>
+										)}
+										{i === props.items.length - 1 && (
+											<Chip
+												style={{ marginLeft: 'auto' }}
+												color="error"
+												label={LABELS.EXPLOIT_EXECUTOIN}
+											/>
+										)}
 									</div>
 								</TimelineContent>
 							</TimelineItem>
@@ -157,14 +175,19 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 							<TimelineContent style={timelineContentStyle}>
 								<div className={css.flexCenter}>
 									<span className={css.row}>
-										{props.items[0].fileName && hideOverflowText(props.items[0].fileName, 30)}
-										{props.items[0].startRow}:
+										{props.items[0].fileName && hideOverflowText(props.items[0].fileName, 30)} (
+										{props.items[0].startRow}):
 									</span>
 									<span className={css.snippet}>
 										{props.items[0].snippet && (
 											<div>{hideOverflowText(props.items[0].snippet, 100)}</div>
 										)}
 									</span>
+									<Chip
+										style={{ marginLeft: 'auto' }}
+										color="error"
+										label={LABELS.ATTACKER_ENTRY}
+									/>
 								</div>
 							</TimelineContent>
 						</TimelineItem>
@@ -213,14 +236,24 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 								<div className={css.flexCenter}>
 									<span className={css.row}>
 										{props.items[props.items.length - 1]?.fileName &&
-											hideOverflowText(props.items[props.items.length - 1]?.fileName ?? '', 30)}
-										{props.items[props.items.length - 1]?.startRow}:
+											hideOverflowText(
+												props.items[props.items.length - 1]?.fileName ?? '',
+												30
+											)}{' '}
+										({props.items[props.items.length - 1]?.startRow}):
 									</span>
 									<span className={css.snippet}>
-										{props.items[0].snippet && (
-											<div>{hideOverflowText(props.items[0].snippet, 100)}</div>
+										{props.items[props.items.length - 1]?.snippet && (
+											<div>
+												{hideOverflowText(props.items[props.items.length - 1].snippet ?? '', 100)}
+											</div>
 										)}
 									</span>
+									<Chip
+										style={{ marginLeft: 'auto' }}
+										color="error"
+										label={LABELS.EXPLOIT_EXECUTOIN}
+									/>
 								</div>
 							</TimelineContent>
 						</TimelineItem>

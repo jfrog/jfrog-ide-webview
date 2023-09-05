@@ -31,17 +31,18 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 		{props.data.version && <span className={css.cveLabel}>Version: {props.data.version}</span>}
 		<span className={css.cveLabel}>
 			CVSS: &nbsp;
-			{props.data.cve?.cvssV2Score && (
-				<div className={cveCss.redBox}>{props.data.cve.cvssV2Score} (v2)</div>
+			{props.data.cve?.cvssV3Score ? (
+				<div className={cveCss.redBox}>{props.data.cve.cvssV3Score} (v3)</div>
+			) : (
+				<div className={cveCss.redBox}>{props.data.cve?.cvssV2Score} (v2)</div>
 			)}
 		</span>
-		<span className={css.cveLabel}>
-			JFrog severity rank:{' '}
-			{getSeverityImage(
-				props.data.extendedInformation?.jfrogResearchSeverity ?? ISeverity.Unknown,
-				true
-			)}
-		</span>
+		{props.data.extendedInformation?.jfrogResearchSeverity && (
+			<span className={css.cveLabel}>
+				JFrog severity rank:{' '}
+				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, true)}
+			</span>
+		)}
 	</div>
 )
 

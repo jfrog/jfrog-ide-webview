@@ -15,6 +15,7 @@ export interface Props {
 export default function ApplicabilityEvidence(props: Props): JSX.Element {
 	return (
 		<Collapse
+			expanded
 			header={
 				<h1>
 					<EvidenceSvg /> Applicability Evidence
