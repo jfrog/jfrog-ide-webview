@@ -13,6 +13,7 @@ import { ButtonBase, Chip } from '@mui/material'
 import { ReactComponent as ExpandSvg } from '../../../assets/icons/expand.svg'
 import { ReactComponent as MinimizeSvg } from '../../../assets/icons/minimize.svg'
 import { SxProps } from '@mui/system'
+
 export interface Props {
 	items: IAnalysisStep[]
 }
@@ -28,6 +29,51 @@ export const LABELS = {
 	EXPLOIT_EXECUTOIN: 'Exploit execution',
 	ATTACKER_ENTRY: 'Attackers entry'
 }
+const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
+const SNIPPET_TRIM_LENGTH = 40
+const FILE_NAME_TRIM_LENGTH = 10
+
+interface TimelineContentLogicProps {
+	item: IAnalysisStep
+	totalItems: number
+	index: number
+	minimized?: boolean
+}
+
+const chipStyle = { marginLeft: 'auto', backgroundColor: '#E93838' }
+
+const TimelineContentLogic = ({
+	item,
+	totalItems,
+	index,
+	minimized = false
+}: TimelineContentLogicProps): JSX.Element => {
+	const hideOverflowText = (text: string, max: number): string => {
+		if (text.length > max) {
+			return `${text.substring(0, max)}...`
+		}
+
+		return text
+	}
+
+	return (
+		<TimelineContent style={timelineContentStyle}>
+			<div className={css.flexCenter}>
+				<span className={css.row}>
+					{item.fileName && hideOverflowText(item.fileName, FILE_NAME_TRIM_LENGTH)} ({item.startRow}
+					):
+				</span>
+				<span className={css.snippet}>
+					{item.snippet && <div>{hideOverflowText(item.snippet, SNIPPET_TRIM_LENGTH)}</div>}
+				</span>
+				{index === 0 && <Chip style={chipStyle} color="error" label={LABELS.ATTACKER_ENTRY} />}
+				{index === totalItems - 1 && (
+					<Chip style={chipStyle} color="error" label={LABELS.EXPLOIT_EXECUTOIN} />
+				)}
+			</div>
+		</TimelineContent>
+	)
+}
 
 export default function AnalysisStepsListElement(props: Props): JSX.Element {
 	const [showMore, setShowMore] = React.useState(props.items.length < 5)
@@ -36,14 +82,6 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 	const onClick = (event: React.MouseEvent<HTMLButtonElement>, item: IAnalysisStep): void => {
 		event.preventDefault()
 		ctx.jumpToCode(item)
-	}
-
-	const hideOverflowText = (text: string, max: number): string => {
-		if (text.length > max) {
-			return `${text.substring(0, max)}...`
-		}
-
-		return text
 	}
 
 	const buttonStyle = {
@@ -81,9 +119,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		cursor: 'pointer',
 		boxShadow: 'none'
 	})
-	const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
-	const SNIPPET_TRIM_LENGTH = 40
-	const FILE_NAME_TRIM_LENGTH = 10
+
 	return (
 		<Timeline style={{ display: 'flex', justifyContent: 'left', padding: 0 }}>
 			{showMore ? (
@@ -104,33 +140,12 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 									</TimelineDot>
 									<Connector />
 								</TimelineSeparator>
-								<TimelineContent style={timelineContentStyle}>
-									<div className={css.flexCenter}>
-										<span className={css.row}>
-											{item.fileName && hideOverflowText(item.fileName, FILE_NAME_TRIM_LENGTH)}
-											&nbsp;({item.startRow}):
-										</span>
-										<span className={css.snippet}>
-											{item.snippet && (
-												<div>{hideOverflowText(item.snippet, SNIPPET_TRIM_LENGTH)}</div>
-											)}
-										</span>
-										{i === 0 && (
-											<Chip
-												style={{ marginLeft: 'auto' }}
-												color="error"
-												label={LABELS.ATTACKER_ENTRY}
-											/>
-										)}
-										{i === props.items.length - 1 && (
-											<Chip
-												style={{ marginLeft: 'auto' }}
-												color="error"
-												label={LABELS.EXPLOIT_EXECUTOIN}
-											/>
-										)}
-									</div>
-								</TimelineContent>
+								<TimelineContentLogic
+									item={item}
+									totalItems={props.items.length}
+									index={i}
+									minimized
+								/>
 							</TimelineItem>
 						</ButtonBase>
 					))}
@@ -176,25 +191,12 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 								</TimelineDot>
 								<Connector />
 							</TimelineSeparator>
-							<TimelineContent style={timelineContentStyle}>
-								<div className={css.flexCenter}>
-									<span className={css.row}>
-										{props.items[0].fileName &&
-											hideOverflowText(props.items[0].fileName, FILE_NAME_TRIM_LENGTH)}{' '}
-										({props.items[0].startRow}):
-									</span>
-									<span className={css.snippet}>
-										{props.items[0].snippet && (
-											<div>{hideOverflowText(props.items[0].snippet, SNIPPET_TRIM_LENGTH)}</div>
-										)}
-									</span>
-									<Chip
-										style={{ marginLeft: 'auto' }}
-										color="error"
-										label={LABELS.ATTACKER_ENTRY}
-									/>
-								</div>
-							</TimelineContent>
+							<TimelineContentLogic
+								item={props.items[0]}
+								totalItems={props.items.length}
+								index={0}
+								minimized={false}
+							/>
 						</TimelineItem>
 					</ButtonBase>
 					<ButtonBase sx={buttonStyle}>
@@ -237,33 +239,12 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 									<span>{props.items.length}</span>
 								</TimelineDot>
 							</TimelineSeparator>
-							<TimelineContent style={timelineContentStyle}>
-								<div className={css.flexCenter}>
-									<span className={css.row}>
-										{props.items[props.items.length - 1]?.fileName &&
-											hideOverflowText(
-												props.items[props.items.length - 1]?.fileName ?? '',
-												FILE_NAME_TRIM_LENGTH
-											)}{' '}
-										({props.items[props.items.length - 1]?.startRow}):
-									</span>
-									<span className={css.snippet}>
-										{props.items[props.items.length - 1]?.snippet && (
-											<div>
-												{hideOverflowText(
-													props.items[props.items.length - 1].snippet ?? '',
-													SNIPPET_TRIM_LENGTH
-												)}
-											</div>
-										)}
-									</span>
-									<Chip
-										style={{ marginLeft: 'auto' }}
-										color="error"
-										label={LABELS.EXPLOIT_EXECUTOIN}
-									/>
-								</div>
-							</TimelineContent>
+							<TimelineContentLogic
+								item={props.items[props.items.length - 1]}
+								totalItems={props.items.length}
+								index={props.items.length - 1}
+								minimized={false}
+							/>
 						</TimelineItem>
 					</ButtonBase>
 				</>
