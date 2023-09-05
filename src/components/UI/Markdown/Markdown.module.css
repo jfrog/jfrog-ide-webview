@@ -19,3 +19,10 @@ code {
 	border-radius: 6px;
 	width: 100%;
 }
+
+.inlineCode {
+	padding: 0.2em 0.4em;
+}
+p {
+	font-family: 'Open Sans';
+}
