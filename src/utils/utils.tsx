@@ -12,20 +12,54 @@ import { ReactComponent as MediumFilled } from '../assets/icons/severity/medium_
 import { ReactComponent as Medium } from '../assets/icons/severity/medium.svg'
 import { ReactComponent as LowFilled } from '../assets/icons/severity/low_filled.svg'
 import { ReactComponent as Low } from '../assets/icons/severity/low.svg'
+import { Tooltip } from '@mui/material'
 
-export function getSeverityImage(severity: ISeverity, filled = false): JSX.Element {
+export function getSeverityImage(severity: ISeverity, filled = false, width = 24): JSX.Element {
+	let icon: JSX.Element
+
 	switch (severity) {
 		case ISeverity.Unknown:
-			return filled ? <UnknownFilled id="unkown" /> : <Unknown id="unkown" />
+			icon = filled ? (
+				<UnknownFilled style={{ width: width }} id="unkown" />
+			) : (
+				<Unknown style={{ width: width }} id="unkown" />
+			)
+			break
 		case ISeverity.Low:
-			return filled ? <LowFilled id="low" /> : <Low id="low" />
+			icon = filled ? (
+				<LowFilled style={{ width: width }} id="low" />
+			) : (
+				<Low style={{ width: width }} id="low" />
+			)
+			break
 		case ISeverity.Medium:
-			return filled ? <MediumFilled id="medium" /> : <Medium id="medium" />
+			icon = filled ? (
+				<MediumFilled style={{ width: width }} id="medium" />
+			) : (
+				<Medium style={{ width: width }} id="medium" />
+			)
+			break
 		case ISeverity.High:
-			return filled ? <HighFilled id="high" /> : <High id="high" />
+			icon = filled ? (
+				<HighFilled style={{ width: width }} id="high" />
+			) : (
+				<High style={{ width: width }} id="high" />
+			)
+			break
 		case ISeverity.Critical:
-			return filled ? <CriticalFilled id="critical" /> : <Critical id="critical" />
+			icon = filled ? (
+				<CriticalFilled style={{ width: width }} id="critical" />
+			) : (
+				<Critical style={{ width: width }} id="critical" />
+			)
+			break
 	}
+
+	return (
+		<Tooltip title={severity} placement="bottom" arrow>
+			{icon}
+		</Tooltip>
+	)
 }
 
 export function getApplicabilityImg(isApplicable: boolean): JSX.Element {

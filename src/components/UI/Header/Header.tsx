@@ -29,18 +29,20 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 	<div className={css.cveInformationContainer}>
 		<span className={css.cveLabel}>Component: {props.data.component}</span>
 		{props.data.version && <span className={css.cveLabel}>Version: {props.data.version}</span>}
-		<span className={css.cveLabel}>
-			CVSS: &nbsp;
-			{props.data.cve?.cvssV3Score ? (
-				<div className={cveCss.redBox}>{props.data.cve.cvssV3Score} (v3)</div>
-			) : (
-				<div className={cveCss.redBox}>{props.data.cve?.cvssV2Score} (v2)</div>
-			)}
-		</span>
+		{(props.data.cve?.cvssV3Score || props.data.cve?.cvssV3Score) && (
+			<span className={css.cveLabel}>
+				CVSS: &nbsp;
+				{props.data.cve.cvssV3Score ? (
+					<div className={cveCss.redBox}>{props.data.cve.cvssV3Score} (v3)</div>
+				) : (
+					<div className={cveCss.redBox}>{props.data.cve.cvssV2Score} (v2)</div>
+				)}
+			</span>
+		)}
 		{props.data.extendedInformation?.jfrogResearchSeverity && (
 			<span className={css.cveLabel}>
 				JFrog severity rank:{' '}
-				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, true)}
+				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, true, 16)}
 			</span>
 		)}
 	</div>
