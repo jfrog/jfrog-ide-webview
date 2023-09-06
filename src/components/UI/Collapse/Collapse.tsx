@@ -6,7 +6,7 @@ import { COLORS } from '../../../styles'
 
 export interface Props {
 	header: React.ReactNode
-	content: React.ReactNode
+	children: React.ReactNode
 	expanded?: boolean
 }
 
@@ -35,7 +35,7 @@ export function Collapse(props: Props): JSX.Element {
 			>
 				{props.header}
 			</AccordionSummary>
-			<AccordionDetails sx={{ padding: '0 16px 16px 16px' }}>{props.content}</AccordionDetails>
+			<AccordionDetails sx={{ padding: '0 16px 16px 16px' }}>{props.children}</AccordionDetails>
 		</Accordion>
 	)
 }

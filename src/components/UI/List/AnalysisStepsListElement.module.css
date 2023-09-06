@@ -85,3 +85,7 @@
 	align-items: center;
 	width: 100%;
 }
+
+.connector {
+	max-height: 20px;
+}

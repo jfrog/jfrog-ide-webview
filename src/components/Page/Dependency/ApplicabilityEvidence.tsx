@@ -20,31 +20,34 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 					<EvidenceSvg /> Applicability Evidence
 				</h1>
 			}
-			content={
-				<div className={LayoutCss.defaultContainer}>
-					{props.data.isApplicable && (
-						<>
-							<div>
-								<h6 className={TypographyCss.subtitle} style={{ marginBottom: '20px' }}>
-									Why is this CVE applicable?
-								</h6>
-								<div className={LayoutCss.rowList}>
-									{props.data.evidence?.map((evidence, i) => (
-										<div key={i}>
-											<Row title="Reason" data={evidence.reason} />
-											<Row title="Evidence file path" data={evidence.filePathEvidence} />
-											<Row title="Evidence code" data={evidence.codeEvidence} />
-										</div>
-									))}
-								</div>
+		>
+			<div className={LayoutCss.defaultContainer}>
+				{props.data.isApplicable && (
+					<>
+						<div>
+							<h6 className={TypographyCss.subtitle} style={{ marginBottom: '20px' }}>
+								Why is this CVE applicable?
+							</h6>
+							<div className={LayoutCss.rowList}>
+								{props.data.evidence?.map((evidence, i) => (
+									<div key={i}>
+										<Row title="Reason" data={evidence.reason} />
+										<Row title="Evidence file path" data={evidence.filePathEvidence} />
+										<Row title="Evidence code" data={evidence.codeEvidence} />
+									</div>
+								))}
 							</div>
-							<Divider />
-						</>
-					)}
-					<h6 className={TypographyCss.subtitle}>What does the scanner checks/look for?</h6>
-					<Markdown text={props.data.searchTarget} />
-				</div>
-			}
-		/>
+						</div>
+						<Divider />
+					</>
+				)}
+				{props.data.searchTarget && (
+					<>
+						<h6 className={TypographyCss.subtitle}>What does the scanner checks/look for?</h6>
+						<Markdown text={props.data.searchTarget} />
+					</>
+				)}
+			</div>
+		</Collapse>
 	)
 }

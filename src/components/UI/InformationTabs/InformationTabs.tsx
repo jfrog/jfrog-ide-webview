@@ -146,6 +146,9 @@ function InformationTabs(props: Props): JSX.Element {
 		}
 	}
 
+	const showMoreInformationTab =
+		props.tabs.includes(TABS.MORE_INFORMATION.key) && (props.data as IEosPage).description
+
 	return (
 		<div style={{ overflow: 'hidden' }}>
 			<div className={css.tabsContainer}>
@@ -176,7 +179,7 @@ function InformationTabs(props: Props): JSX.Element {
 							label={TABS.IMPACT_GRAPH.label}
 						/>
 					)}
-					{props.tabs.includes(TABS.MORE_INFORMATION.key) && (
+					{showMoreInformationTab && (
 						<Tab
 							style={tabStyle(TABS.MORE_INFORMATION.key)}
 							value={TABS.MORE_INFORMATION.key}
@@ -195,7 +198,7 @@ function InformationTabs(props: Props): JSX.Element {
 						/>
 					</CustomTabPanel>
 				)}
-				{props.tabs.includes(TABS.MORE_INFORMATION.key) && (
+				{showMoreInformationTab && (
 					<CustomTabPanel value={value} index={TABS.MORE_INFORMATION.key}>
 						<Collapse
 							header={
@@ -203,8 +206,10 @@ function InformationTabs(props: Props): JSX.Element {
 									<DocumentSvg /> {LABELS.DESCRIPTION}
 								</h1>
 							}
-							content={<Markdown text={(props.data as IEosPage).description} />}
-						/>
+						>
+							{/* @ts-ignore*/}
+							<Markdown text={(props.data as IEosPage).description} />
+						</Collapse>
 					</CustomTabPanel>
 				)}
 				{props.tabs.includes(TABS.IMPACT_GRAPH.key) && treeNode && (
@@ -225,8 +230,9 @@ function InformationTabs(props: Props): JSX.Element {
 										<JfrogResearchIcon /> JFrog Research
 									</h1>
 								}
-								content={<Research data={(props.data as IDependencyPage).extendedInformation} />}
-							/>
+							>
+								<Research data={(props.data as IDependencyPage).extendedInformation} />
+							</Collapse>
 						)}
 						<br />
 						<Collapse
@@ -235,14 +241,13 @@ function InformationTabs(props: Props): JSX.Element {
 									<InfoIcon /> Public Sources
 								</h1>
 							}
-							content={
-								<PublicSources
-									summary={(props.data as IDependencyPage).summary}
-									cve={(props.data as IDependencyPage).cve}
-									infectedVersions={(props.data as IDependencyPage).infectedVersion}
-								/>
-							}
-						/>
+						>
+							<PublicSources
+								summary={(props.data as IDependencyPage).summary}
+								cve={(props.data as IDependencyPage).cve}
+								infectedVersions={(props.data as IDependencyPage).infectedVersion}
+							/>
+						</Collapse>
 						<br />
 						{(props.data as IDependencyPage).references && (
 							<Collapse
@@ -251,10 +256,9 @@ function InformationTabs(props: Props): JSX.Element {
 										<ReferenceIcon /> References
 									</h1>
 								}
-								content={
-									<Reference data={(props.data as IDependencyPage).references as IReference[]} />
-								}
-							/>
+							>
+								<Reference data={(props.data as IDependencyPage).references as IReference[]} />
+							</Collapse>
 						)}
 					</CustomTabPanel>
 				)}

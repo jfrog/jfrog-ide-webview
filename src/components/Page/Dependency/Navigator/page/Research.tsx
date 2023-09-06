@@ -42,11 +42,15 @@ export default function Research(props: Props): JSX.Element {
 					</div>
 				</>
 			)}
-			<Divider />
-			<div className={css.group}>
-				<h6>{LABELS.DETAILS}</h6>
-				<Markdown text={props.data?.fullDescription} />
-			</div>
+			{props.data?.fullDescription && (
+				<>
+					<Divider />
+					<div className={css.group}>
+						<h6>{LABELS.DETAILS}</h6>
+						<Markdown text={props.data.fullDescription} />
+					</div>
+				</>
+			)}
 			<Divider />
 			<div className={css.group}>
 				<h6>{LABELS.JFROG_RESEARCH_SEVERITY_REASONS}</h6>

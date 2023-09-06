@@ -4,7 +4,7 @@ import { Collapse, Props } from './Collapse'
 describe('Collapse component', () => {
 	const mockData: Props = {
 		header: 'Test Header',
-		content: 'Test Content'
+		children: 'Test Content'
 	}
 
 	test('renders collapse header and content', () => {

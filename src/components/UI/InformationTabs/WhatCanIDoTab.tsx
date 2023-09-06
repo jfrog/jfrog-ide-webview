@@ -41,19 +41,18 @@ function UpdateDirectDependency(props: {
 					<span className={css.recommendedLabel}>Recommended</span>
 				</h1>
 			}
-			content={
-				<div>
-					{props.isDirectDependency ? (
-						<span style={{ display: 'flex', gap: 8, flexDirection: 'column' }}>
-							<Row title="Update the following" data={props.directDependenciesNames.join(', ')} />
-							<Row title="Fix version" data={props.fixedVersion?.join(', ') as string} />
-						</span>
-					) : (
+		>
+			<div>
+				{props.isDirectDependency ? (
+					<span className={css.columns}>
 						<Row title="Update the following" data={props.directDependenciesNames.join(', ')} />
-					)}
-				</div>
-			}
-		/>
+						<Row title="Fix version" data={props.fixedVersion?.join(', ') ?? ''} />
+					</span>
+				) : (
+					<Row title="Update the following" data={props.directDependenciesNames.join(', ')} />
+				)}
+			</div>
+		</Collapse>
 	)
 }
 
@@ -62,17 +61,14 @@ function UpdateIndirectDependency(props: {
 	fixedVersion?: string[]
 }): JSX.Element {
 	return (
-		<Collapse
-			header={<h1>{LABELS.UPDATE_THE_INDIRECT_DEPENDENCY}</h1>}
-			content={
-				<div>
-					<span style={{ display: 'flex', gap: 8, flexDirection: 'column' }}>
-						<Row title="Update the following" data={props.component} />
-						<Row title="Fix version" data={props.fixedVersion?.join(', ') ?? ''} />
-					</span>
-				</div>
-			}
-		/>
+		<Collapse header={<h1>{LABELS.UPDATE_THE_INDIRECT_DEPENDENCY}</h1>}>
+			<div>
+				<span className={css.columns}>
+					<Row title="Update the following" data={props.component} />
+					<Row title="Fix version" data={props.fixedVersion?.join(', ') ?? ''} />
+				</span>
+			</div>
+		</Collapse>
 	)
 }
 
@@ -87,17 +83,16 @@ function PatchTheCode(props: { pageType: PageType; remediation: string[] }): JSX
 					)}
 				</h1>
 			}
-			content={
-				<div>
-					<p>
-						<b>{LABELS.REMEDIATION}</b>
-					</p>
-					{props.remediation.map((remediation, index) => (
-						<Markdown text={remediation} key={index} />
-					))}
-				</div>
-			}
-		/>
+		>
+			<div>
+				<p>
+					<b>{LABELS.REMEDIATION}</b>
+				</p>
+				{props.remediation.map((remediation, index) => (
+					<Markdown text={remediation} key={index} />
+				))}
+			</div>
+		</Collapse>
 	)
 }
 
@@ -105,18 +100,15 @@ function SuppressTheFinding(props: { pageType: PageType }): JSX.Element {
 	const suppressIssueMarkdownExample =
 		props.pageType === PageType.Eos ? eosSuppressExample : secretsSuppressExample
 	return (
-		<Collapse
-			header={<h1>{LABELS.SUPPRESS_THE_FINDING}</h1>}
-			content={
-				<div>
-					{/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-					<p>
-						Add <code>jfrog-ignore</code> comment above the vulnerable line to suppress it
-					</p>
-					<Markdown text={suppressIssueMarkdownExample} />
-				</div>
-			}
-		/>
+		<Collapse header={<h1>{LABELS.SUPPRESS_THE_FINDING}</h1>}>
+			<div>
+				{/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
+				<p>
+					Add <code>jfrog-ignore</code> comment above the vulnerable line to suppress it
+				</p>
+				<Markdown text={suppressIssueMarkdownExample} />
+			</div>
+		</Collapse>
 	)
 }
 
@@ -158,7 +150,7 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 			{props.fixedVersion && props.fixedVersion.length > 0 && !isDirectDependency && (
 				<UpdateIndirectDependency
 					fixedVersion={props.fixedVersion}
-					component={props.component as string}
+					component={props.component ?? ''}
 				/>
 			)}
 			{props.remediation && props.remediation.length > 0 && (
