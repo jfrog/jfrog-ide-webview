@@ -8,7 +8,14 @@ import { ReactComponent as DocumentSvg } from '../../../assets/icons/document.sv
 import { ReactComponent as JfrogResearchIcon } from '../../../assets/icons/jfrog_research_icon.svg'
 import { ReactComponent as InfoIcon } from '../../../assets/icons/info.svg'
 import { ReactComponent as ReferenceIcon } from '../../../assets/icons/refrence.svg'
-import { IDependencyPage, IEosPage, IIaCPage, ISecretsPage, PageType } from '../../../model'
+import {
+	IDependencyPage,
+	IEosPage,
+	IIaCPage,
+	IReference,
+	ISecretsPage,
+	PageType
+} from '../../../model'
 import PublicSources from '../../Page/Dependency/Navigator/page/PublicSources'
 import Research from '../../Page/Dependency/Navigator/page/Research'
 import Reference from '../../Page/Dependency/Navigator/page/Reference'
@@ -247,7 +254,9 @@ function InformationTabs(props: Props): JSX.Element {
 										<ReferenceIcon /> References
 									</h1>
 								}
-								content={<Reference data={(props.data as IDependencyPage).references} />}
+								content={
+									<Reference data={(props.data as IDependencyPage).references as IReference[]} />
+								}
 							/>
 						)}
 					</CustomTabPanel>

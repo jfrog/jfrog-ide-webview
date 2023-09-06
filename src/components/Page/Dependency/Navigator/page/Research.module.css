@@ -35,14 +35,14 @@
 }
 
 ul.bulletList {
-	list-style-type: disc; /* Options: disc, circle, square, none */
-	padding-left: 20px; /* Adjusts the space from the left of the list */
+	list-style-type: disc;
+	padding-left: 20px;
 }
 
 ul.bulletList li {
 	color: white;
 	font-family: 'Arial', sans-serif;
-	margin-bottom: 10px; /* Spacing between list items */
+	margin-bottom: 10px;
 }
 h6 {
 	color: #f0f0f0;
@@ -62,5 +62,5 @@ span {
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 18px; /* 150% */
+	line-height: 18px;
 }
