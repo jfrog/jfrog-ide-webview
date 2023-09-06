@@ -1,7 +1,7 @@
 import { IApplicableDetails } from '../../../model'
 import { Collapse } from '../../UI/Collapse/Collapse'
 import TypographyCss from '../../../styles/Typography.module.css'
-import LayoutCss from '../../../styles/Layout.module.css'
+import css from './ApplicabilityEvidence.module.css'
 import { ReactComponent as EvidenceSvg } from '../../../assets/icons/evidence.svg'
 import Row from '../../UI/Row/Row'
 import Divider from '../../UI/Divider/Divider'
@@ -21,14 +21,14 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 				</h1>
 			}
 		>
-			<div className={LayoutCss.defaultContainer}>
+			<div className={css.defaultContainer}>
 				{props.data.isApplicable && (
 					<>
 						<div>
 							<h6 className={TypographyCss.subtitle} style={{ marginBottom: '20px' }}>
 								Why is this CVE applicable?
 							</h6>
-							<div className={LayoutCss.rowList}>
+							<div className={css.rowList}>
 								{props.data.evidence?.map((evidence, i) => (
 									<div key={i}>
 										<Row title="Reason" data={evidence.reason} />

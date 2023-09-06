@@ -22,6 +22,10 @@
 .appBody {
 	color: white;
 	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	height: 100%;
 }
 
 .loading {
@@ -39,11 +43,4 @@ body {
 	background-color: #252526;
 	margin: 0;
 	padding: 0;
-}
-
-.PageContainer {
-	display: flex;
-	flex-direction: column;
-	row-gap: 20px;
-	height: 100%;
 }
