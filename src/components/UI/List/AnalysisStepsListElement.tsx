@@ -22,7 +22,7 @@ export interface Props {
 const Connector = (): JSX.Element => <TimelineConnector className={css.connector} />
 export const LABELS = {
 	EXPLOIT_EXECUTION: 'Exploit execution',
-	ATTACKER_ENTRY: 'Attackers entry'
+	ATTACKER_ENTRY: 'Attacker Entry'
 }
 
 export default function AnalysisStepsListElement(props: Props): JSX.Element {

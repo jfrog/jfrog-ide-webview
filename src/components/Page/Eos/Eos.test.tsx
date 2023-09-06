@@ -3,7 +3,8 @@ import Eos from './Eos'
 import { IEosPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
-import { TABS } from '../../UI/InformationTabs/InformationTabs'
+import { LABELS as INFORMATION_TABS_LABELS, TABS } from '../../UI/InformationTabs/InformationTabs'
+import { LABELS as WHAT_CAN_I_DO_LABELS } from '../../UI/InformationTabs/WhatCanIDoTab'
 
 describe('Eos component', () => {
 	const mockData: IEosPage = {
@@ -69,15 +70,17 @@ describe('Eos component', () => {
 		expect(moreInfoTab).toBeInTheDocument()
 	})
 
-	test('renders remediation 1', () => {
-		const { getByText } = render(<Eos data={mockData} />)
+	test('renders "patch code", "remediation" "suppress finding"', () => {
+		const { getByText, queryByText } = render(<Eos data={mockData} />)
+		const patchTheCodeCollapsibleElement = queryByText(WHAT_CAN_I_DO_LABELS.PATCH_THE_CODE)
+		const suppressCollapsibleElement = queryByText(WHAT_CAN_I_DO_LABELS.SUPPRESS_THE_FINDING)
+		const moreInfoElement = queryByText(TABS.MORE_INFORMATION.label)
 		const remediationElement1 = getByText('Remediation 1')
-		expect(remediationElement1).toBeInTheDocument()
-	})
-
-	test('renders remediation 2', () => {
-		const { getByText } = render(<Eos data={mockData} />)
 		const remediationElement2 = getByText('Remediation 2')
+		expect(patchTheCodeCollapsibleElement).toBeInTheDocument()
+		expect(suppressCollapsibleElement).toBeInTheDocument()
+		expect(moreInfoElement).toBeInTheDocument()
+		expect(remediationElement1).toBeInTheDocument()
 		expect(remediationElement2).toBeInTheDocument()
 	})
 

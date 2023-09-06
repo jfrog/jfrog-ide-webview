@@ -13,7 +13,12 @@ interface TimelineContentLogicProps {
 	index: number
 }
 
-const chipStyle = { marginLeft: 'auto', backgroundColor: '#E93838' }
+const chipStyle = {
+	marginLeft: 'auto',
+	backgroundColor: ' rgba(233,56,56,0.2)',
+	border: '1px solid rgb(233, 56, 56)',
+	fontFamily: 'Overpass Mono'
+}
 
 export const TimelineContentLogic = ({
 	item,
