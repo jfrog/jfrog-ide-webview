@@ -1,15 +1,24 @@
 .label {
-	color: #bbb;
-	font-size: 12px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 18px;
-	min-width: 120px;
+    color: #bbb;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    min-width: 120px;
 }
+
 .subtitle {
-	color: #f0f0f0;
-	font-size: 12px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: normal;
+    color: #f0f0f0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.redText {
+    color: #F14C4C;
+}
+
+.greenText {
+    color: #3EB065;
 }

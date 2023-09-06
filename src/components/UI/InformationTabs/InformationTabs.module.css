@@ -105,3 +105,7 @@ span {
 .emptyStateContainer > * {
 	text-align: center !important;
 }
+
+.borderBottom {
+	border-bottom: 1px solid #454545
+}

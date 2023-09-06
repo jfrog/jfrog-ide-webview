@@ -5,25 +5,26 @@ import { ReactComponent as ChevronSvg } from '../../../assets/icons/chevron_gree
 import { COLORS } from '../../../styles'
 
 export interface Props {
-	header?: React.ReactNode
-	content?: React.ReactNode
+	header: React.ReactNode
+	content: React.ReactNode
 	expanded?: boolean
 }
 
 export function Collapse(props: Props): JSX.Element {
 	const [opened, setOpened] = useState(props.expanded ?? false)
+	const accordionStyle: React.CSSProperties = {
+		background: COLORS.DARK_GRAY,
+		color: COLORS.WHITE_100,
+		boxShadow: 'none',
+		width: '100%'
+	}
 	return (
 		<Accordion
 			onChange={(): void => {
 				setOpened(!opened)
 			}}
 			expanded={opened}
-			sx={{
-				background: COLORS.DARK_GRAY,
-				color: COLORS.WHITE_100,
-				boxShadow: 'none',
-				width: '100%'
-			}}
+			sx={accordionStyle}
 		>
 			<AccordionSummary
 				expandIcon={

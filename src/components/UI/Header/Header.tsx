@@ -1,5 +1,5 @@
 import css from './Header.module.css'
-import { getSeverityImage } from './../../../utils/utils'
+import { getSeverityImage } from '../../../utils/utils'
 import {
 	IAnalysisStep,
 	IDependencyPage,

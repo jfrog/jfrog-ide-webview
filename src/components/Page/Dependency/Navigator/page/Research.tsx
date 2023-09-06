@@ -1,12 +1,11 @@
 import css from './Research.module.css'
 import TypographyCss from '../../../../../styles/Typography.module.css'
-import { IExtendedInformation } from '../../../../../model/extendedInformation'
+import { IExtendedInformation, ISeverity } from '../../../../../model'
 import Markdown from '../../../../UI/Markdown/Markdown'
 import Divider from '../../../../UI/Divider/Divider'
 import { getSeverityImage } from '../../../../../utils/utils'
 import { ReactComponent as LessRiskIcon } from '../../../../../assets/icons/less_risk.svg'
 import { ReactComponent as MoreRiskIcon } from '../../../../../assets/icons/more_risk.svg'
-import { ISeverity } from '../../../../../model'
 
 export interface Props {
 	data?: IExtendedInformation
@@ -53,7 +52,7 @@ export default function Research(props: Props): JSX.Element {
 				<h6>{LABELS.JFROG_RESEARCH_SEVERITY_REASONS}</h6>
 				{increasesRisk && increasesRisk.length > 0 && (
 					<>
-						<span className={css.alignCenterFlex} style={{ color: '#F14C4C' }}>
+						<span className={`${css.alignCenterFlex} ${TypographyCss.redText}`}>
 							<MoreRiskIcon /> Increases the risk level:
 						</span>
 						<ul className={css.bulletList}>
@@ -70,7 +69,7 @@ export default function Research(props: Props): JSX.Element {
 				)}
 				{decreasesRisk && decreasesRisk.length > 0 && (
 					<>
-						<span className={css.alignCenterFlex} style={{ color: '#3EB065' }}>
+						<span className={`${css.alignCenterFlex} ${TypographyCss.greenText}`}>
 							<LessRiskIcon /> Decreases the risk level:
 						</span>
 						<ul className={css.bulletList}>

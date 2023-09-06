@@ -68,17 +68,14 @@ interface TabPanelProps {
 }
 
 function CustomTabPanel(props: TabPanelProps): JSX.Element {
-	const { children, value, index, ...other } = props
-
 	return (
 		<div
 			role="tabpanel"
-			hidden={value !== index}
-			id={`simple-tabpanel-${index}`}
-			aria-labelledby={`simple-tab-${index}`}
-			{...other}
+			hidden={props.value !== props.index}
+			id={`simple-tabpanel-${props.index}`}
+			aria-labelledby={`simple-tab-${props.index}`}
 		>
-			{value === index && children}
+			{props.value === props.index && props.children}
 		</div>
 	)
 }
@@ -153,7 +150,7 @@ function InformationTabs(props: Props): JSX.Element {
 		<div style={{ overflow: 'hidden' }}>
 			<div className={css.tabsContainer}>
 				<Tabs
-					style={{ borderBottom: '1px solid #454545' }}
+					className={css.borderBottom}
 					TabIndicatorProps={{ style: { backgroundColor: COLORS.PRIMARY } }}
 					value={value}
 					onChange={handleChange}
