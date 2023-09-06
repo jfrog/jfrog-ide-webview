@@ -2,7 +2,6 @@ import { render } from '@testing-library/react'
 import IaC from './IaC'
 import { IIaCPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
-import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
 
 describe('IaC component', () => {
 	const mockData: IIaCPage = {

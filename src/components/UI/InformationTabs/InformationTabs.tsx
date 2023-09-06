@@ -39,12 +39,12 @@ export const TABS = {
 export const LABELS = {
 	DESCRIPTION: 'Description'
 }
-const defaultTabStyle = {
+const defaultTabStyle: React.CSSProperties = {
 	color: COLORS.GRAY_100,
 	fontWeight: 400,
 	textTransform: 'none'
 }
-const activeTabStyle = {
+const activeTabStyle: React.CSSProperties = {
 	color: COLORS.PRIMARY,
 	textTransform: 'none'
 }
@@ -92,7 +92,7 @@ function InformationTabs(props: Props): JSX.Element {
 		setValue(newValue)
 	}
 
-	function tabStyle(tab: string): any {
+	function tabStyle(tab: string): React.CSSProperties {
 		return value === tab ? activeTabStyle : defaultTabStyle
 	}
 

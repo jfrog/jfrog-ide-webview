@@ -11,12 +11,14 @@
 	font-weight: 400;
 	src: local(''), url('./assets/fonts/overpass_mono/OverpassMono-Regular.ttf') format('truetype');
 }
+
 .app {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
 		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	font-size: 13px;
 	height: calc(100vh);
 }
+
 .appBody {
 	color: white;
 	padding: 15px;

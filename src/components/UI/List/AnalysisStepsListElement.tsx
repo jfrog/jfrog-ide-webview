@@ -37,7 +37,6 @@ interface TimelineContentLogicProps {
 	item: IAnalysisStep
 	totalItems: number
 	index: number
-	minimized?: boolean
 }
 
 const chipStyle = { marginLeft: 'auto', backgroundColor: '#E93838' }
@@ -45,8 +44,7 @@ const chipStyle = { marginLeft: 'auto', backgroundColor: '#E93838' }
 const TimelineContentLogic = ({
 	item,
 	totalItems,
-	index,
-	minimized = false
+	index
 }: TimelineContentLogicProps): JSX.Element => {
 	const hideOverflowText = (text: string, max: number): string => {
 		if (text.length > max) {
@@ -141,12 +139,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 									{/* when there are 2 items dont add the bottom connector*/}
 									{(props.items.length > 2 || i != 1) && <Connector />}
 								</TimelineSeparator>
-								<TimelineContentLogic
-									item={item}
-									totalItems={props.items.length}
-									index={i}
-									minimized
-								/>
+								<TimelineContentLogic item={item} totalItems={props.items.length} index={i} />
 							</TimelineItem>
 						</ButtonBase>
 					))}
@@ -198,7 +191,6 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 								item={props.items[0]}
 								totalItems={props.items.length}
 								index={0}
-								minimized={false}
 							/>
 						</TimelineItem>
 					</ButtonBase>
@@ -246,7 +238,6 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 								item={props.items[props.items.length - 1]}
 								totalItems={props.items.length}
 								index={props.items.length - 1}
-								minimized={false}
 							/>
 						</TimelineItem>
 					</ButtonBase>

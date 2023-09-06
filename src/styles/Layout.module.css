@@ -8,3 +8,9 @@
 	flex-direction: column;
 	gap: 16px;
 }
+.PageContainer {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	height: 100%;
+}

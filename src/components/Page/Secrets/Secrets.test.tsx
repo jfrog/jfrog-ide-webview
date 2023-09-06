@@ -3,7 +3,6 @@ import Secrets from './Secrets'
 import { ISecretsPage, PageType } from '../../../model/'
 import { ISeverity } from '../../../model'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
-import Eos from '../Eos/Eos'
 
 describe('Secrets component', () => {
 	const mockData: ISecretsPage = {

@@ -1,4 +1,4 @@
-import css from './Eos.module.css'
+import LayoutCss from '../../../styles/Layout.module.css'
 import Header from '../../UI/Header/Header'
 import ContextualAnalysis from './ContextualAnalysis'
 import { IEosPage } from '../../../model/webviewPages'
@@ -10,7 +10,7 @@ export interface Props {
 
 export default function Eos(props: Props): JSX.Element {
 	return (
-		<div className={css.PageContainer}>
+		<div className={LayoutCss.PageContainer}>
 			<Header pageData={props.data} text={props.data.header} />
 			<ContextualAnalysis analysisSteps={props.data.analysisStep} />
 			<InformationTabs

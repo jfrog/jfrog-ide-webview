@@ -15,7 +15,7 @@ export const LABELS = {
 	SUMMARY: 'Summary',
 	REMEDIATION: 'Remediation',
 	DETAILS: 'Details',
-	JFROG_RESEARCH_SEVERITY_REASONS: 'Jfrog research severity Reasons'
+	JFROG_RESEARCH_SEVERITY_REASONS: 'Jfrog research severity reasons'
 }
 
 export default function Research(props: Props): JSX.Element {

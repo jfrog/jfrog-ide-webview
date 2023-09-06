@@ -2,7 +2,6 @@ import AnalysisStepsListElement from '../../UI/List/AnalysisStepsListElement'
 import { IAnalysisStep } from '../../../model'
 import { Collapse } from '../../UI/Collapse/Collapse'
 import { ReactComponent as FlowSvg } from '../../../assets/icons/flow.svg'
-import React from 'react'
 export interface Props {
 	analysisSteps?: IAnalysisStep[]
 }

@@ -1,5 +1,4 @@
 import css from './Header.module.css'
-import { ISeverity } from './../../../model/severity'
 import { getSeverityImage } from './../../../utils/utils'
 import {
 	IAnalysisStep,

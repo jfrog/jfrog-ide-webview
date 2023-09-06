@@ -4,7 +4,6 @@ import { IEosPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
 import { TABS } from '../../UI/InformationTabs/InformationTabs'
-import Dependency from '../Dependency/Dependency'
 
 describe('Eos component', () => {
 	const mockData: IEosPage = {

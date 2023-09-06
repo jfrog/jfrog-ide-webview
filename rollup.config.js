@@ -1,7 +1,6 @@
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import image from '@rollup/plugin-image'
-import svgr from '@svgr/rollup'
 const plugins = [
 	image({ dom: true }),
 	typescript({

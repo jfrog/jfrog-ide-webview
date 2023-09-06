@@ -13,6 +13,13 @@ export interface WhatCanIDoTabProps {
 	fixedVersion?: string[]
 	impactGraph?: IImpactGraph
 }
+export const LABELS = {
+	SUPPRESS_THE_FINDING: 'Suppress the finding',
+	PATCH_THE_CODE: 'Patch the code',
+	REMEDIATION: 'Remediation',
+	UPDATE_THE_INDIRECT_DEPENDENCY: 'Update the indirect dependency',
+	UPDATE_THE_DIRECT_DEPENDENCY: 'Update the direct dependency'
+}
 
 export default function WhatCanIDoTab(props: WhatCanIDoTabProps): JSX.Element {
 	const isDirectDependency =
@@ -57,7 +64,7 @@ export: (req, res) => {
 				<Collapse
 					header={
 						<h1>
-							Update direct dependency
+							{LABELS.UPDATE_THE_DIRECT_DEPENDENCY}
 							<span className={css.recommendedLabel}>Recommended</span>
 						</h1>
 					}
@@ -77,7 +84,7 @@ export: (req, res) => {
 			)}
 			{props.fixedVersion && props.fixedVersion.length > 0 && !isDirectDependency && (
 				<Collapse
-					header={<h1>Update the indirect dependency</h1>}
+					header={<h1>{LABELS.UPDATE_THE_INDIRECT_DEPENDENCY}</h1>}
 					content={
 						<div>
 							<span style={{ display: 'flex', gap: 8, flexDirection: 'column' }}>
@@ -92,7 +99,7 @@ export: (req, res) => {
 				<Collapse
 					header={
 						<h1>
-							Patch the code
+							{LABELS.PATCH_THE_CODE}
 							{[PageType.Eos].includes(props.pageType) && (
 								<span className={css.recommendedLabel}>Recommended</span>
 							)}
@@ -101,7 +108,7 @@ export: (req, res) => {
 					content={
 						<div>
 							<p>
-								<b>Remediation</b>
+								<b>{LABELS.REMEDIATION}</b>
 							</p>
 							{props.remediation.map((remediation, index) => (
 								<Markdown text={remediation} key={index} />
@@ -112,7 +119,7 @@ export: (req, res) => {
 			)}
 			{[PageType.Eos, PageType.Secrets].includes(props.pageType) && (
 				<Collapse
-					header={<h1>Suppress the finding</h1>}
+					header={<h1>{LABELS.SUPPRESS_THE_FINDING}</h1>}
 					content={
 						<div>
 							{/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
