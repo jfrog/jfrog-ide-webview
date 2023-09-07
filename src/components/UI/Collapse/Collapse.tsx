@@ -17,7 +17,8 @@ export function Collapse(props: Props): JSX.Element {
 		color: COLORS.WHITE_100,
 		boxShadow: 'none',
 		borderRadius: '6px',
-		width: '100%'
+		width: '100%',
+		minWidth: '420px'
 	}
 	return (
 		<Accordion
