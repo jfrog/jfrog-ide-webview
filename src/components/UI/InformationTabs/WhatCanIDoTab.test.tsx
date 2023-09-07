@@ -7,6 +7,7 @@ import {
 	IEvidence,
 	IExtendedInformation,
 	IIaCPage,
+	IImpactGraph,
 	ISecretsPage,
 	ISeverity,
 	PageType
@@ -151,6 +152,40 @@ describe('WhatCanIDoTab component', () => {
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.UPDATE_THE_INDIRECT_DEPENDENCY)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.UPDATE_THE_DIRECT_DEPENDENCY)).toBeInTheDocument()
+	})
+	test('renders the WhatCanIDoTab for indirect dependency page', () => {
+		const indirectImpactGraph: IImpactGraph = {
+			root: {
+				name: 'gallery_server:1.0.0',
+				children: [
+					{
+						name: 'parse-url:6.0.5',
+						children: [
+							{
+								name: 'parse-path:4.0.4'
+							}
+						]
+					}
+				]
+			},
+			pathsCount: 1,
+			pathsLimit: 50
+		}
+		render(
+			<WhatCanIDoTab
+				pageType={dependencyPageData.pageType}
+				component={dependencyPageData.component}
+				impactGraph={indirectImpactGraph}
+				fixedVersion={dependencyPageData.fixedVersion}
+				remediation={['Remediation 1']}
+			/>
+		)
+		expect(screen.getByText('Do one of the following actions:')).toBeInTheDocument()
+		expect(screen.getByText('Remediation 1')).toBeInTheDocument()
+		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
+		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
+		expect(screen.getByText(LABELS.UPDATE_THE_DIRECT_DEPENDENCY)).toBeInTheDocument()
+		expect(screen.getByText(LABELS.UPDATE_THE_INDIRECT_DEPENDENCY)).toBeInTheDocument()
 	})
 	test('renders the WhatCanIDoTab for iac page', () => {
 		render(<WhatCanIDoTab pageType={iacPageData.pageType} remediation={['Remediation 1']} />)
