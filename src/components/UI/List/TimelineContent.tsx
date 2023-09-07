@@ -1,9 +1,8 @@
 import TimelineContent from '@mui/lab/TimelineContent'
 import { IAnalysisStep } from '../../../model'
-import { LABELS } from './AnalysisStepsListElement'
-import { Chip } from '@mui/material'
 import css from './AnalysisStepsListElement.module.css'
-
+import { ReactComponent as AttackerEntry } from '../../../assets/icons/attacker_entry.svg'
+import { ReactComponent as ExploitExecution } from '../../../assets/icons/exploit_execution.svg'
 const SNIPPET_TRIM_LENGTH = 40
 const FILE_NAME_TRIM_LENGTH = 16
 export const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
@@ -11,13 +10,6 @@ interface TimelineContentLogicProps {
 	item: IAnalysisStep
 	totalItems: number
 	index: number
-}
-
-const chipStyle = {
-	marginLeft: 'auto',
-	backgroundColor: ' rgba(233,56,56,0.2)',
-	border: '1px solid rgb(233, 56, 56)',
-	fontFamily: 'Overpass Mono'
 }
 
 export const TimelineContentLogic = ({
@@ -46,8 +38,10 @@ export const TimelineContentLogic = ({
 				<span className={css.snippet}>
 					{item.snippet && <div>{hideOverflowText(item.snippet, SNIPPET_TRIM_LENGTH)}</div>}
 				</span>
-				{isFirstStep && <Chip style={chipStyle} color="error" label={LABELS.ATTACKER_ENTRY} />}
-				{isLastStep && <Chip style={chipStyle} color="error" label={LABELS.EXPLOIT_EXECUTION} />}
+				<span className={css.badge}>
+					{isFirstStep && <AttackerEntry />}
+					{isLastStep && <ExploitExecution />}
+				</span>
 			</div>
 		</TimelineContent>
 	)

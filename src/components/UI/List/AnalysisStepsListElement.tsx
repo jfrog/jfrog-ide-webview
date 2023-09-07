@@ -20,10 +20,6 @@ export interface Props {
 }
 
 const Connector = (): JSX.Element => <TimelineConnector className={css.connector} />
-export const LABELS = {
-	EXPLOIT_EXECUTION: 'Exploit Execution',
-	ATTACKER_ENTRY: 'Attacker Entry'
-}
 
 export default function AnalysisStepsListElement(props: Props): JSX.Element {
 	const [minimized, setMinimized] = React.useState(props.items.length < 5)

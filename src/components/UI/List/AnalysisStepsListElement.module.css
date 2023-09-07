@@ -58,6 +58,10 @@
 	margin-right: 3px;
 }
 
+.badge {
+	margin-left: auto;
+}
+
 .container:hover .number {
 	background: #6c6cc4;
 }
