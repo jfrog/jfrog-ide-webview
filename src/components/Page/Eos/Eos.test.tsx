@@ -3,7 +3,7 @@ import Eos from './Eos'
 import { IEosPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
-import { LABELS as INFORMATION_TABS_LABELS, TABS } from '../../UI/InformationTabs/InformationTabs'
+import { TABS } from '../../UI/InformationTabs/InformationTabs'
 import { LABELS as WHAT_CAN_I_DO_LABELS } from '../../UI/InformationTabs/WhatCanIDoTab'
 
 describe('Eos component', () => {

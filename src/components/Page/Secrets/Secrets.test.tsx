@@ -28,7 +28,7 @@ describe('Secrets component', () => {
 		}
 	}
 
-	test('renders Secrets component with title and location', () => {
+	test('renders Secrets component correctly all components', () => {
 		const { getByText } = render(<Secrets data={mockData} />)
 
 		expect(getByText(mockData.header)).toBeInTheDocument()
