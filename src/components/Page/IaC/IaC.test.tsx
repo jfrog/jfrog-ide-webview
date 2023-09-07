@@ -2,6 +2,8 @@ import { render } from '@testing-library/react'
 import IaC from './IaC'
 import { IIaCPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
+import { LABELS } from '../../UI/InformationTabs/WhatCanIDoTab'
+import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
 describe('IaC component', () => {
 	const mockData: IIaCPage = {
@@ -24,11 +26,16 @@ describe('IaC component', () => {
 			do: 'What to do about it'
 		}
 	}
-
-	test('renders IaC component with title at the end', () => {
+	test('renders IaC component with patch the code and right header', () => {
 		const { getByText } = render(<IaC data={mockData} />)
 
 		expect(getByText('IaC Vulnerability')).toBeInTheDocument()
+		expect(getByText(`Location:`)).toBeInTheDocument()
+		expect(getByText(mockData.location.file)).toBeInTheDocument()
+		expect(getByText(TABS.WHAT_CAN_I_DO.label)).toBeInTheDocument()
+		expect(getByText(TABS.MORE_INFORMATION.label)).toBeInTheDocument()
+		expect(getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
+		expect(getByText('Remediation')).toBeInTheDocument()
 	})
 
 	test('renders IaC component without abbreviation', () => {
