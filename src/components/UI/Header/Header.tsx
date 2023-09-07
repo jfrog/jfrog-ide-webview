@@ -24,8 +24,20 @@ const LocationSpan = (props: { location: IAnalysisStep }): JSX.Element => (
 	</span>
 )
 
+const RuleIdSpan = (props: { ruleId: string }): JSX.Element => (
+	<span className={css.locationLabel}>
+		<b>Rule ID:</b> {props.ruleId}
+	</span>
+)
+
+const LineOfVulnSpan = (props: { lineOfVulnerability: number }): JSX.Element => (
+	<span className={css.locationLabel}>
+		<b>Line of vulnerability:</b> {props.lineOfVulnerability}
+	</span>
+)
+
 const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
-	<div className={css.cveInformationContainer}>
+	<>
 		<span className={css.cveLabel}>Component: {props.data.component}</span>
 		{props.data.version && <span className={css.cveLabel}>Version: {props.data.version}</span>}
 		{(props.data.cve?.cvssV3Score || props.data.cve?.cvssV3Score) && (
@@ -44,7 +56,7 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, true, 16)}
 			</span>
 		)}
-	</div>
+	</>
 )
 
 export default function Header(props: Props): JSX.Element {
@@ -55,6 +67,13 @@ export default function Header(props: Props): JSX.Element {
 	const showJFrogResearchIcon =
 		(props.pageData as IDependencyPage).extendedInformation !== undefined
 	const applicableData = (props.pageData as IDependencyPage).cve?.applicableData
+
+	const ruleId = (props.pageData as IEosPage).ruleId
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	const lineOfVuln = (props.pageData as IEosPage).location
+		? (props.pageData as IEosPage).location.startRow
+		: undefined
+
 	return (
 		<div className={css.container}>
 			<div className={css.content}>
@@ -71,10 +90,14 @@ export default function Header(props: Props): JSX.Element {
 							))}
 					</h6>
 				</div>
-				{showCVEInfoInPages && <CveInformation data={props.pageData as IDependencyPage} />}
-				{showLocationInPages && (
-					<LocationSpan location={(props.pageData as ISecretsPage).location} />
-				)}
+				<div className={css.cveInformationContainer}>
+					{showCVEInfoInPages && <CveInformation data={props.pageData as IDependencyPage} />}
+					{showLocationInPages && (
+						<LocationSpan location={(props.pageData as ISecretsPage).location} />
+					)}
+					{ruleId && <RuleIdSpan ruleId={ruleId} />}
+					{lineOfVuln && <LineOfVulnSpan lineOfVulnerability={lineOfVuln} />}
+				</div>
 			</div>
 		</div>
 	)

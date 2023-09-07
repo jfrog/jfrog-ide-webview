@@ -107,4 +107,12 @@ describe('Eos component', () => {
 		const analysisStepElement = queryByText('DATA FLOW ANALYSIS')
 		expect(analysisStepElement).toBeNull()
 	})
+
+	test('does render line number and Rule ID', () => {
+		const { queryByText } = render(<Eos data={{ ...mockData, analysisStep: undefined }} />)
+		const analysisStepElement = queryByText('Rule ID:')
+		const ruleIdElement = queryByText(mockData.ruleId as string)
+		expect(analysisStepElement).toBeInTheDocument()
+		expect(ruleIdElement).toBeInTheDocument()
+	})
 })
