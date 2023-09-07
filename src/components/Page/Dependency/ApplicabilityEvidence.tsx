@@ -1,6 +1,5 @@
 import { IApplicableDetails } from '../../../model'
 import { Collapse } from '../../UI/Collapse/Collapse'
-import TypographyCss from '../../../styles/Typography.module.css'
 import css from './ApplicabilityEvidence.module.css'
 import { ReactComponent as EvidenceSvg } from '../../../assets/icons/evidence.svg'
 import Row from '../../UI/Row/Row'
@@ -25,7 +24,7 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 				{props.data.isApplicable && (
 					<>
 						<div>
-							<h6 className={TypographyCss.subtitle} style={{ marginBottom: '20px' }}>
+							<h6 className={css.subtitle} style={{ marginBottom: '20px' }}>
 								Why is this CVE applicable?
 							</h6>
 							<div className={css.rowList}>
@@ -43,7 +42,7 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 				)}
 				{props.data.searchTarget && (
 					<>
-						<h6 className={TypographyCss.subtitle}>What does the scanner checks/look for?</h6>
+						<h6 className={css.subtitle}>What does the scanner checks/look for?</h6>
 						<Markdown text={props.data.searchTarget} />
 					</>
 				)}

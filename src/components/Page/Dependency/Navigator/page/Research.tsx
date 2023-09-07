@@ -24,7 +24,7 @@ export default function Research(props: Props): JSX.Element {
 	return (
 		<div className={css.container}>
 			<span className={css.alignCenterFlex}>
-				<span className={TypographyCss.label}>Severity:</span>{' '}
+				<span className={css.label}>Severity:</span>{' '}
 				{getSeverityImage(props.data?.jfrogResearchSeverity ?? ISeverity.Unknown, true)}{' '}
 				{props.data?.jfrogResearchSeverity}
 			</span>
@@ -56,7 +56,7 @@ export default function Research(props: Props): JSX.Element {
 				<h6>{LABELS.JFROG_RESEARCH_SEVERITY_REASONS}</h6>
 				{increasesRisk && increasesRisk.length > 0 && (
 					<>
-						<span className={`${css.alignCenterFlex} ${TypographyCss.redText}`}>
+						<span className={`${css.alignCenterFlex} ${css.redText}`}>
 							<MoreRiskIcon /> Increases the risk level:
 						</span>
 						<ul className={css.bulletList}>
@@ -73,7 +73,7 @@ export default function Research(props: Props): JSX.Element {
 				)}
 				{decreasesRisk && decreasesRisk.length > 0 && (
 					<>
-						<span className={`${css.alignCenterFlex} ${TypographyCss.greenText}`}>
+						<span className={`${css.alignCenterFlex} ${css.greenText}`}>
 							<LessRiskIcon /> Decreases the risk level:
 						</span>
 						<ul className={css.bulletList}>

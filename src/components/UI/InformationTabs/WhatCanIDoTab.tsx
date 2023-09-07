@@ -4,7 +4,6 @@ import Markdown from '../Markdown/Markdown'
 import { IImpactGraph, PageType } from '../../../model'
 import Row from '../Row/Row'
 import { ReactComponent as SadFace } from '../../../assets/icons/sad_face.svg'
-import TypographyCss from '../../../styles/Typography.module.css'
 import { eosSuppressExample, secretsSuppressExample } from './texts'
 
 interface Props {
@@ -20,7 +19,7 @@ function EmptyStateContainer(): JSX.Element {
 		<div className={css.emptyStateContainer}>
 			<p>Seems like there is no action you can take at this time</p>
 			<SadFace />
-			<p className={TypographyCss.label}>
+			<p className={css.label}>
 				Consider moving to another package or contact the maintainers to know when a fix will be
 				available
 			</p>

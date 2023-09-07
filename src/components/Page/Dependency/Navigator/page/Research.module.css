@@ -63,4 +63,13 @@ span {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 18px;
+	min-width: 120px;
+
+}
+.redText {
+	color: #F14C4C;
+}
+
+.greenText {
+	color: #3EB065;
 }
