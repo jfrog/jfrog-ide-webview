@@ -231,6 +231,7 @@ function InformationTabs(props: Props): JSX.Element {
 									</h1>
 								}
 							>
+								{/* @ts-ignore*/}
 								<Research data={(props.data as IDependencyPage).extendedInformation} />
 							</Collapse>
 						)}

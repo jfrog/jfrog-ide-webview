@@ -1,5 +1,5 @@
 import css from './Research.module.css'
-import { IExtendedInformation, ISeverity } from '../../../../../model'
+import { IExtendedInformation } from '../../../../../model'
 import Markdown from '../../../../UI/Markdown/Markdown'
 import Divider from '../../../../UI/Divider/Divider'
 import { getSeverityImage } from '../../../../../utils/utils'
@@ -7,33 +7,33 @@ import { ReactComponent as LessRiskIcon } from '../../../../../assets/icons/less
 import { ReactComponent as MoreRiskIcon } from '../../../../../assets/icons/more_risk.svg'
 
 export interface Props {
-	data?: IExtendedInformation
+	data: IExtendedInformation
 }
 export const LABELS = {
 	SUMMARY: 'Summary',
 	REMEDIATION: 'Remediation',
 	DETAILS: 'Details',
-	JFROG_RESEARCH_SEVERITY_REASONS: 'Jfrog Research Severity Reasons'
+	JFROG_RESEARCH_SEVERITY_REASONS: 'JFrog Research Severity Reasons'
 }
 
 export default function Research(props: Props): JSX.Element {
-	const increasesRisk = props.data?.jfrogResearchSeverityReason?.filter(v => !v.isPositive)
-	const decreasesRisk = props.data?.jfrogResearchSeverityReason?.filter(v => v.isPositive)
+	const increasesRisk = props.data.jfrogResearchSeverityReason?.filter(v => !v.isPositive)
+	const decreasesRisk = props.data.jfrogResearchSeverityReason?.filter(v => v.isPositive)
 	const hasJfrogResearchSeverityReasons =
-		props.data?.jfrogResearchSeverityReason && props.data.jfrogResearchSeverityReason.length > 0
+		props.data.jfrogResearchSeverityReason && props.data.jfrogResearchSeverityReason.length > 0
 	return (
 		<div className={css.container}>
 			<span className={css.alignCenterFlex}>
 				<span className={css.label}>Severity:</span>{' '}
-				{getSeverityImage(props.data?.jfrogResearchSeverity ?? ISeverity.Unknown, true)}{' '}
-				{props.data?.jfrogResearchSeverity}
+				{getSeverityImage(props.data.jfrogResearchSeverity, true)}{' '}
+				{props.data.jfrogResearchSeverity}
 			</span>
 			<Divider />
 			<div className={css.group}>
 				<h6>{LABELS.SUMMARY}</h6>
-				{props.data?.shortDescription}
+				{props.data.shortDescription}
 			</div>
-			{props.data?.remediation && (
+			{props.data.remediation && (
 				<>
 					<Divider />
 					<div className={css.group}>
@@ -42,7 +42,7 @@ export default function Research(props: Props): JSX.Element {
 					</div>
 				</>
 			)}
-			{props.data?.fullDescription && (
+			{props.data.fullDescription && (
 				<>
 					<Divider />
 					<div className={css.group}>
