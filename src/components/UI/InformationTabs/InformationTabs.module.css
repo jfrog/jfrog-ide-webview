@@ -116,3 +116,6 @@ span {
     gap: 8px;
     flex-direction: column;
 }
+code {
+    padding: 0.2em 0.4em;
+}

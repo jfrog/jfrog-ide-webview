@@ -23,9 +23,15 @@ code {
 .inlineCode {
 	padding: 0.2em 0.4em;
 }
-p {
-	font-family: 'Open Sans';
-}
 pre {
 	overflow: hidden;
+}
+.text > p, h2, h3, a, li  {
+	font-family: "Open Sans";
+	margin-bottom: 4px;
+}
+.text > h1, h2, h3, h4, h5, h6 {
+	font-family: "Open Sans";
+	margin-top: 20px;
+	margin-bottom: 10px;
 }

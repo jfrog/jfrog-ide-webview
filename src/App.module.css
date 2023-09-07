@@ -4,12 +4,38 @@
 	font-weight: 400;
 	src: local(''), url('./assets/fonts/opensans/OpenSans-Regular.ttf') format('truetype');
 }
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 500;
+	src: local(''), url('./assets/fonts/opensans/OpenSans-SemiBold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: local(''), url('./assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
+}
 
 @font-face {
 	font-family: 'Overpass Mono';
 	font-style: normal;
 	font-weight: 400;
 	src: local(''), url('./assets/fonts/overpass_mono/OverpassMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Overpass Mono';
+	font-style: normal;
+	font-weight: 500;
+	src: local(''), url('./assets/fonts/overpass_mono/OverpassMono-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Overpass Mono';
+	font-style: normal;
+	font-weight: 600;
+	src: local(''), url('./assets/fonts/overpass_mono/OverpassMono-Bold.ttf') format('truetype');
 }
 
 .app {
