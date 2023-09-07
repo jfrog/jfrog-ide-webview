@@ -91,5 +91,8 @@
 }
 
 .connector {
+	width: 1px !important;
+	background-color: #7F7F7F;
 	max-height: 20px;
+	flex:1;
 }

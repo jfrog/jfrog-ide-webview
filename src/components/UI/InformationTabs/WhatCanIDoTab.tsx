@@ -17,7 +17,8 @@ interface Props {
 function EmptyStateContainer(): JSX.Element {
 	return (
 		<div className={css.emptyStateContainer}>
-			<p>Seems like there is no action you can take at this time</p>
+			{/* eslint-disable-next-line react/no-unescaped-entities */}
+			<p>It seems that we don't have any recommendations for how to fix this issue</p>
 			<SadFace />
 			<p className={css.label}>
 				Consider moving to another package or contact the maintainers to know when a fix will be
