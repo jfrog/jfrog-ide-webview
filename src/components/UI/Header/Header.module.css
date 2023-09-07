@@ -61,6 +61,7 @@
 	display: flex;
 	align-items: center;
 	gap: 16px;
+	flex-wrap: wrap;
 }
 .cveLabel {
 	color: #a0a0a0;
