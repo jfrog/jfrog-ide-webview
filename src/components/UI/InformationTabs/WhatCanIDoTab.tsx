@@ -112,11 +112,11 @@ function SuppressTheFinding(props: { pageType: PageType }): JSX.Element {
 }
 
 export const LABELS = {
-	SUPPRESS_THE_FINDING: 'Suppress the finding',
-	PATCH_THE_CODE: 'Patch the code',
+	SUPPRESS_THE_FINDING: 'Suppress the Finding',
+	PATCH_THE_CODE: 'Patch the Code',
 	REMEDIATION: 'Remediation',
-	UPDATE_THE_INDIRECT_DEPENDENCY: 'Update the indirect dependency',
-	UPDATE_THE_DIRECT_DEPENDENCY: 'Update the direct dependency'
+	UPDATE_THE_INDIRECT_DEPENDENCY: 'Update the Indirect Dependency',
+	UPDATE_THE_DIRECT_DEPENDENCY: 'Update the Direct Dependency'
 }
 
 export default function WhatCanIDoTab(props: Props): JSX.Element {
@@ -135,7 +135,7 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 	return (
 		<div className={css.container}>
 			{hasAction ? (
-				<span className={css.text}>Follow one of the following actions:</span>
+				<span className={css.text}>Do one of the following actions:</span>
 			) : (
 				<EmptyStateContainer />
 			)}

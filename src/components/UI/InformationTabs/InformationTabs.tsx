@@ -27,19 +27,19 @@ import Markdown from '../Markdown/Markdown'
 
 export const TABS = {
 	WHAT_CAN_I_DO: {
-		label: 'What can I do',
+		label: 'What Can I Do',
 		key: 'what_can_i_do'
 	},
 	MORE_INFORMATION: {
-		label: 'More information',
+		label: 'More Information',
 		key: 'more_information'
 	},
 	CVE_INFORMATION: {
-		label: 'CVE information',
+		label: 'CVE Information',
 		key: 'cve_information'
 	},
 	IMPACT_GRAPH: {
-		label: 'Impact graph',
+		label: 'Impact Graph',
 		key: 'impact_graph'
 	}
 }

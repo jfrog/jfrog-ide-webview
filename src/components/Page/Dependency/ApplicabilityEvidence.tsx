@@ -42,7 +42,7 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 				)}
 				{props.data.searchTarget && (
 					<>
-						<h6 className={css.subtitle}>What does the scanner checks/look for?</h6>
+						<h6 className={css.subtitle}>What does the scanner check/look for?</h6>
 						<Markdown text={props.data.searchTarget} />
 					</>
 				)}
