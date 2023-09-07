@@ -1,5 +1,4 @@
 import css from './Research.module.css'
-import TypographyCss from '../../../../../styles/Typography.module.css'
 import { IExtendedInformation, ISeverity } from '../../../../../model'
 import Markdown from '../../../../UI/Markdown/Markdown'
 import Divider from '../../../../UI/Divider/Divider'

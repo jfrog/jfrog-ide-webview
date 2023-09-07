@@ -1,4 +1,4 @@
-import css from './Iac.module.css'
+import css from './IaC.module.css'
 import Header from '../../UI/Header/Header'
 import { IIaCPage } from '../../../model'
 import InformationTabs, { TABS } from '../../UI/InformationTabs/InformationTabs'
