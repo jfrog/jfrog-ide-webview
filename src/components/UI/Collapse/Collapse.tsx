@@ -16,6 +16,7 @@ export function Collapse(props: Props): JSX.Element {
 		background: COLORS.DARK_GRAY,
 		color: COLORS.WHITE_100,
 		boxShadow: 'none',
+		borderRadius: '6px',
 		width: '100%'
 	}
 	return (
