@@ -22,7 +22,7 @@ export interface Props {
 const Connector = (): JSX.Element => <TimelineConnector className={css.connector} />
 
 export default function AnalysisStepsListElement(props: Props): JSX.Element {
-	const [minimized, setMinimized] = React.useState(props.items.length < 5)
+	const [expanded, setExpanded] = React.useState(props.items.length < 5)
 	const ctx = useContext(eventManagerContext)
 
 	const onClick = (event: React.MouseEvent<HTMLButtonElement>, item: IAnalysisStep): void => {
@@ -65,7 +65,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		cursor: 'pointer',
 		boxShadow: 'none'
 	})
-	const MinimizedTimeline = (): JSX.Element => (
+	const ExpandedTimeline = (): JSX.Element => (
 		<>
 			{props.items.map((item, i) => (
 				<ButtonBase
@@ -93,7 +93,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<TimelineItem
 						sx={timelineStyle}
 						onClick={(): void => {
-							setMinimized(false)
+							setExpanded(false)
 						}}
 					>
 						<TimelineSeparator>
@@ -119,7 +119,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		</>
 	)
 
-	const ExpandedTimeline = (): JSX.Element => (
+	const MinimizedTimeline = (): JSX.Element => (
 		<>
 			<ButtonBase
 				sx={buttonStyle}
@@ -141,7 +141,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 				<TimelineItem
 					sx={timelineStyle}
 					onClick={(): void => {
-						setMinimized(true)
+						setExpanded(true)
 					}}
 				>
 					<TimelineSeparator>
@@ -188,7 +188,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 	)
 	return (
 		<Timeline style={{ display: 'flex', justifyContent: 'left', padding: 0 }}>
-			{minimized ? <MinimizedTimeline /> : <ExpandedTimeline />}
+			{expanded ? <ExpandedTimeline /> : <MinimizedTimeline />}
 		</Timeline>
 	)
 }
