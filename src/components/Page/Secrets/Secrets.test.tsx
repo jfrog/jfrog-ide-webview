@@ -3,6 +3,8 @@ import Secrets from './Secrets'
 import { ISecretsPage, PageType } from '../../../model/'
 import { ISeverity } from '../../../model'
 import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
+import { TABS } from '../../UI/InformationTabs/InformationTabs'
+import { LABELS } from '../../UI/InformationTabs/WhatCanIDoTab'
 
 describe('Secrets component', () => {
 	const mockData: ISecretsPage = {
@@ -31,6 +33,10 @@ describe('Secrets component', () => {
 
 		expect(getByText(mockData.header)).toBeInTheDocument()
 		expect(getByTextAcrossMultipleElements(getByText, 'Location: example-file.yml'))
+		expect(getByText(TABS.WHAT_CAN_I_DO.label)).toBeInTheDocument()
+		expect(getByText(TABS.MORE_INFORMATION.label)).toBeInTheDocument()
+		expect(getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
+		expect(getByText('Remediation')).toBeInTheDocument()
 	})
 
 	test('renders Secrets component with severity and abbreviation', () => {
