@@ -8,7 +8,6 @@ import {
 	ISecretsPage,
 	PageType
 } from '../../../model'
-import cveCss from '../Summary/CveVulnerability.module.css'
 import { ReactComponent as JfrogResearchIcon } from '../../../assets/icons/jfrog_research_icon.svg'
 import { ReactComponent as ApplicableIcon } from '../../../assets/icons/applicable.svg'
 import { ReactComponent as NotApplicableIcon } from '../../../assets/icons/not_applicable.svg'
@@ -44,9 +43,9 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 			<span className={css.cveLabel}>
 				CVSS: &nbsp;
 				{props.data.cve.cvssV3Score ? (
-					<div className={cveCss.redBox}>{props.data.cve.cvssV3Score} (v3)</div>
+					<div className={css.redBox}>{props.data.cve.cvssV3Score} (v3)</div>
 				) : (
-					<div className={cveCss.redBox}>{props.data.cve.cvssV2Score} (v2)</div>
+					<div className={css.yellowBox}>{props.data.cve.cvssV2Score} (v2)</div>
 				)}
 			</span>
 		)}
