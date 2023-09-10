@@ -146,7 +146,6 @@ describe('WhatCanIDoTab component', () => {
 				remediation={['Remediation 1']}
 			/>
 		)
-		expect(screen.getByText('Do one of the following actions:')).toBeInTheDocument()
 		expect(screen.getByText('Remediation 1')).toBeInTheDocument()
 		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
@@ -180,7 +179,6 @@ describe('WhatCanIDoTab component', () => {
 				remediation={['Remediation 1']}
 			/>
 		)
-		expect(screen.getByText('Do one of the following actions:')).toBeInTheDocument()
 		expect(screen.getByText('Remediation 1')).toBeInTheDocument()
 		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
@@ -189,20 +187,17 @@ describe('WhatCanIDoTab component', () => {
 	})
 	test('renders the WhatCanIDoTab for iac page', () => {
 		render(<WhatCanIDoTab pageType={iacPageData.pageType} remediation={['Remediation 1']} />)
-		expect(screen.getByText('Do one of the following actions:')).toBeInTheDocument()
 		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 	})
 	test('renders the WhatCanIDoTab for secrets page', () => {
 		render(<WhatCanIDoTab pageType={secretsPageData.pageType} remediation={['Remediation 1']} />)
-		expect(screen.getByText('Do one of the following actions:')).toBeInTheDocument()
 		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.SUPPRESS_THE_FINDING)).toBeInTheDocument()
 	})
 	test('renders the WhatCanIDoTab for EOS page', () => {
 		render(<WhatCanIDoTab pageType={eosPageData.pageType} remediation={['Remediation 1']} />)
-		expect(screen.getByText('Do one of the following actions:')).toBeInTheDocument()
 		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.SUPPRESS_THE_FINDING)).toBeInTheDocument()

@@ -14,7 +14,7 @@ export default function ContextualAnalysis(props: Props): JSX.Element {
 					expanded
 					header={
 						<h1>
-							<FlowSvg /> Data Flow Analysis Evidence
+							<FlowSvg /> Data Trace Evidence
 						</h1>
 					}
 				>
