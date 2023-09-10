@@ -28,8 +28,8 @@ pre {
 }
 .text p,
 .text a,
-.text li  {
-	font-family: "Open Sans";
+.text li {
+	font-family: 'Open Sans';
 	margin-bottom: 4px;
 }
 .text h1,
@@ -38,7 +38,7 @@ pre {
 .text h4,
 .text h5,
 .text h6 {
-	font-family: "Open Sans";
+	font-family: 'Open Sans';
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
