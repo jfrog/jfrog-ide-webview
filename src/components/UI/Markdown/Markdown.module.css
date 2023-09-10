@@ -42,3 +42,6 @@ pre {
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
+.text > code {
+	padding: 0;
+}
