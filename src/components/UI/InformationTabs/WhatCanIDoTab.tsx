@@ -135,7 +135,7 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 	const hasAction = hasFixedVersion ?? props.remediation ?? showSuppressFinding
 	return (
 		<div className={css.container}>
-			{hasAction && <EmptyStateContainer />}
+			{!hasAction && <EmptyStateContainer />}
 			{hasFixedVersion && (
 				<UpdateDirectDependency
 					directDependenciesNames={directDependenciesNames}
