@@ -1,9 +1,6 @@
 import { Divider as MuiDivider } from '@mui/material'
+import css from './Divider.module.css'
 
 export default function Divider(): JSX.Element {
-	const dividerStyle = {
-		width: '100%',
-		backgroundColor: '#454545'
-	}
-	return <MuiDivider sx={dividerStyle} />
+	return <MuiDivider className={css.divider} />
 }
