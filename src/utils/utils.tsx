@@ -14,7 +14,7 @@ export function getSeverityImage(severity: ISeverity, width = 24): JSX.Element {
 
 	switch (severity) {
 		case ISeverity.Unknown:
-			icon = <Unknown style={{ width: width }} id="unkown" />
+			icon = <Unknown style={{ width: width }} id="unknown" />
 			break
 		case ISeverity.Low:
 			icon = <Low style={{ width: width }} id="low" />

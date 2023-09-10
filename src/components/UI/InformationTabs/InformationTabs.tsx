@@ -82,7 +82,7 @@ function CustomTabPanel(props: TabPanelProps): JSX.Element {
 
 function InformationTabs(props: Props): JSX.Element {
 	const defaultTab = props.tabs[0]
-	const [value, setValue] = React.useState(defaultTab)
+	const [selectedTabIndex, setSelectedTabIndex] = React.useState(defaultTab)
 	const [treeNode, setTreeNode] = useState<TreeNode | undefined>()
 	const impactGraph = (props.data as IDependencyPage).impactGraph
 	useEffect(() => {
@@ -93,11 +93,11 @@ function InformationTabs(props: Props): JSX.Element {
 	}, [impactGraph])
 
 	const handleChange = (event: React.SyntheticEvent, newValue: string): void => {
-		setValue(newValue)
+		setSelectedTabIndex(newValue)
 	}
 
 	function tabStyle(tab: string): React.CSSProperties {
-		return value === tab ? activeTabStyle : defaultTabStyle
+		return selectedTabIndex === tab ? activeTabStyle : defaultTabStyle
 	}
 
 	const showWhatCanIDoTab = props.tabs.includes(TABS.WHAT_CAN_I_DO.key)
@@ -155,7 +155,7 @@ function InformationTabs(props: Props): JSX.Element {
 				<Tabs
 					className={css.borderBottom}
 					TabIndicatorProps={{ style: { backgroundColor: COLORS.PRIMARY } }}
-					value={value}
+					value={selectedTabIndex}
 					onChange={handleChange}
 				>
 					{showWhatCanIDoTab && (
@@ -188,7 +188,7 @@ function InformationTabs(props: Props): JSX.Element {
 					)}
 				</Tabs>
 				{showWhatCanIDoTab && (
-					<CustomTabPanel value={value} index={TABS.WHAT_CAN_I_DO.key}>
+					<CustomTabPanel value={selectedTabIndex} index={TABS.WHAT_CAN_I_DO.key}>
 						<WhatCanIDoTab
 							pageType={props.data.pageType}
 							component={(props.data as IDependencyPage).component}
@@ -199,7 +199,7 @@ function InformationTabs(props: Props): JSX.Element {
 					</CustomTabPanel>
 				)}
 				{showMoreInformationTab && (
-					<CustomTabPanel value={value} index={TABS.MORE_INFORMATION.key}>
+					<CustomTabPanel value={selectedTabIndex} index={TABS.MORE_INFORMATION.key}>
 						<Collapse
 							header={
 								<h1>
@@ -213,7 +213,7 @@ function InformationTabs(props: Props): JSX.Element {
 					</CustomTabPanel>
 				)}
 				{props.tabs.includes(TABS.IMPACT_GRAPH.key) && treeNode && (
-					<CustomTabPanel value={value} index={TABS.IMPACT_GRAPH.key}>
+					<CustomTabPanel value={selectedTabIndex} index={TABS.IMPACT_GRAPH.key}>
 						<ImpactGraph
 							treeNode={treeNode}
 							pathsLimit={(props.data as IDependencyPage).impactGraph.pathsLimit}
@@ -222,7 +222,7 @@ function InformationTabs(props: Props): JSX.Element {
 					</CustomTabPanel>
 				)}
 				{showCveInformationTab && (
-					<CustomTabPanel value={value} index={TABS.CVE_INFORMATION.key}>
+					<CustomTabPanel value={selectedTabIndex} index={TABS.CVE_INFORMATION.key}>
 						{(props.data as IDependencyPage).extendedInformation && (
 							<Collapse
 								header={
