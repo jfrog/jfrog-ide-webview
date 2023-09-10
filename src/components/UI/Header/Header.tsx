@@ -73,6 +73,9 @@ export default function Header(props: Props): JSX.Element {
 		? (props.pageData as IEosPage).location.startRow
 		: undefined
 
+	const metadataClassName = showCVEInfoInPages
+		? css.cveInformationContainerRow
+		: css.cveInformationContainerCol
 	return (
 		<div className={css.container}>
 			<div className={css.content}>
@@ -89,7 +92,7 @@ export default function Header(props: Props): JSX.Element {
 							))}
 					</h6>
 				</div>
-				<div className={css.cveInformationContainer}>
+				<div className={metadataClassName}>
 					{showCVEInfoInPages && <CveInformation data={props.pageData as IDependencyPage} />}
 					{showLocationInPages && (
 						<LocationSpan location={(props.pageData as ISecretsPage).location} />
