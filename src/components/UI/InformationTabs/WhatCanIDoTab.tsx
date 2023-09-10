@@ -18,7 +18,7 @@ function EmptyStateContainer(): JSX.Element {
 	return (
 		<div className={css.emptyStateContainer}>
 			{/* eslint-disable-next-line react/no-unescaped-entities */}
-			<p>It seems that we don't have any recommendations for how to fix this issue</p>
+			<p>It seems that we have no suggestions for fixing this issue</p>
 			<SadFace />
 			<p className={css.label}>
 				Consider moving to another package or contact the maintainers to know when a fix will be
