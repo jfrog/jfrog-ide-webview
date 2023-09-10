@@ -46,15 +46,6 @@ export const TABS = {
 export const LABELS = {
 	DESCRIPTION: 'Description'
 }
-const defaultTabStyle: React.CSSProperties = {
-	color: COLORS.GRAY_100,
-	fontWeight: 400,
-	textTransform: 'none'
-}
-const activeTabStyle: React.CSSProperties = {
-	color: COLORS.PRIMARY,
-	textTransform: 'none'
-}
 
 export interface Props {
 	data: ISecretsPage | IDependencyPage | IEosPage | IIaCPage
@@ -96,8 +87,8 @@ function InformationTabs(props: Props): JSX.Element {
 		setSelectedTabIndex(newValue)
 	}
 
-	function tabStyle(tab: string): React.CSSProperties {
-		return selectedTabIndex === tab ? activeTabStyle : defaultTabStyle
+	function tabClass(tab: string): string {
+		return selectedTabIndex === tab ? css.activeTab : css.defaultTab
 	}
 
 	const showWhatCanIDoTab = props.tabs.includes(TABS.WHAT_CAN_I_DO.key)
@@ -160,28 +151,28 @@ function InformationTabs(props: Props): JSX.Element {
 				>
 					{showWhatCanIDoTab && (
 						<Tab
-							style={tabStyle(TABS.WHAT_CAN_I_DO.key)}
+							className={tabClass(TABS.WHAT_CAN_I_DO.key)}
 							value={TABS.WHAT_CAN_I_DO.key}
 							label={TABS.WHAT_CAN_I_DO.label}
 						/>
 					)}
 					{showCveInformationTab && (
 						<Tab
-							style={tabStyle(TABS.CVE_INFORMATION.key)}
+							className={tabClass(TABS.CVE_INFORMATION.key)}
 							value={TABS.CVE_INFORMATION.key}
 							label={TABS.CVE_INFORMATION.label}
 						/>
 					)}
 					{showImpactGraphTab && (
 						<Tab
-							style={tabStyle(TABS.IMPACT_GRAPH.key)}
+							className={tabClass(TABS.IMPACT_GRAPH.key)}
 							value={TABS.IMPACT_GRAPH.key}
 							label={TABS.IMPACT_GRAPH.label}
 						/>
 					)}
 					{showMoreInformationTab && (
 						<Tab
-							style={tabStyle(TABS.MORE_INFORMATION.key)}
+							className={tabClass(TABS.MORE_INFORMATION.key)}
 							value={TABS.MORE_INFORMATION.key}
 							label={TABS.MORE_INFORMATION.label}
 						/>

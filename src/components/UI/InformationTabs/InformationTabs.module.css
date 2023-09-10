@@ -119,3 +119,14 @@ span {
 code {
     padding: 0.2em 0.4em;
 }
+
+.defaultTab {
+    color: #BBB !important;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.activeTab {
+    color: #3EB065 !important;
+    text-transform: none;
+}
