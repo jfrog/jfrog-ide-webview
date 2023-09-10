@@ -1,5 +1,5 @@
-import { ICve } from '../../../../../model/cve'
-import css from './PublicResources.module.css'
+import { ICve } from '../../../../../model'
+import css from './PublicSources.module.css'
 import {
 	AccessComplexityValueTranslator,
 	AccessVectorTranslator,
