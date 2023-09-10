@@ -25,8 +25,7 @@ export default function Research(props: Props): JSX.Element {
 		<div className={css.container}>
 			<span className={css.alignCenterFlex}>
 				<span className={css.label}>Severity:</span>{' '}
-				{getSeverityImage(props.data.jfrogResearchSeverity, true)}{' '}
-				{props.data.jfrogResearchSeverity}
+				{getSeverityImage(props.data.jfrogResearchSeverity)} {props.data.jfrogResearchSeverity}
 			</span>
 			<Divider />
 			<div className={css.group}>

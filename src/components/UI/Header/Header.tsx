@@ -52,7 +52,7 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 		{props.data.extendedInformation?.jfrogResearchSeverity && (
 			<span className={css.cveLabel}>
 				JFrog severity rank:{' '}
-				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, true, 16)}
+				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, 16)}
 			</span>
 		)}
 	</>
@@ -77,7 +77,7 @@ export default function Header(props: Props): JSX.Element {
 		<div className={css.container}>
 			<div className={css.content}>
 				<div className={css.titleContainer}>
-					{props.pageData.severity && getSeverityImage(props.pageData.severity, true)}
+					{props.pageData.severity && getSeverityImage(props.pageData.severity)}
 					<h6 className={css.flexCenter}>
 						{props.text}
 						{showJFrogResearchIcon && <JfrogResearchIcon id="jfrog_research_icon" />}
