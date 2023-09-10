@@ -9,6 +9,7 @@ import { EventManager } from './api/eventManager'
 import { eventManagerContext } from './store/eventContext'
 import { Spinner, State } from './components/UI/Spinner/Spinner'
 import { Login } from './components/Page/Login/Login'
+import { StyledEngineProvider } from '@mui/material/styles'
 
 /**
  * The main page on which the Webview will be drawn based on the incoming request page type.
@@ -45,9 +46,11 @@ function App(): JSX.Element {
 
 	return (
 		<div className={css.app}>
-			<eventManagerContext.Provider value={eventManager}>
-				<div className={css.appBody}>{page}</div>
-			</eventManagerContext.Provider>
+			<StyledEngineProvider injectFirst>
+				<eventManagerContext.Provider value={eventManager}>
+					<div className={css.appBody}>{page}</div>
+				</eventManagerContext.Provider>
+			</StyledEngineProvider>
 		</div>
 	)
 }

@@ -61,3 +61,15 @@ h1 {
 	margin: 0px;
 	width: 100%;
 }
+
+.accordion {
+	background: #333;
+	color: #F0F0F0;
+	box-shadow: none;
+	border-radius: 6px;
+	width: 100%;
+	min-width: 420px
+}
+.accordionDetails {
+	padding: 0 16px 16px 16px;
+}

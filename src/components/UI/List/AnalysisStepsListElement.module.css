@@ -96,3 +96,25 @@
 	max-height: 20px;
 	flex:1;
 }
+
+.button {
+	display: flex;
+	cursor: pointer;
+}
+.button:hover {
+	background-color: #3b3b3b;
+}
+.button:before {
+	max-width: 0
+}
+
+.timeline {
+	flex: 1;
+	cursor: pointer;
+}
+.timeline:hover{
+	background: #3b3b3b;
+}
+.timeline:before {
+	max-width: 0
+}

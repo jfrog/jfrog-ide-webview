@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
-import css from './Collapse.module.css'
 import { ReactComponent as ChevronSvg } from '../../../assets/icons/chevron_green.svg'
-import { COLORS } from '../../../styles'
+import css from './Collapse.module.css'
 
 export interface Props {
 	header: React.ReactNode
@@ -12,21 +11,13 @@ export interface Props {
 
 export function Collapse(props: Props): JSX.Element {
 	const [opened, setOpened] = useState(props.expanded ?? false)
-	const accordionStyle: React.CSSProperties = {
-		background: COLORS.DARK_GRAY,
-		color: COLORS.WHITE_100,
-		boxShadow: 'none',
-		borderRadius: '6px',
-		width: '100%',
-		minWidth: '420px'
-	}
 	return (
 		<Accordion
 			onChange={(): void => {
 				setOpened(!opened)
 			}}
 			expanded={opened}
-			sx={accordionStyle}
+			className={css.accordion}
 		>
 			<AccordionSummary
 				expandIcon={
@@ -37,7 +28,7 @@ export function Collapse(props: Props): JSX.Element {
 			>
 				{props.header}
 			</AccordionSummary>
-			<AccordionDetails sx={{ padding: '0 16px 16px 16px' }}>{props.children}</AccordionDetails>
+			<AccordionDetails className={css.accordionDetails}>{props.children}</AccordionDetails>
 		</Accordion>
 	)
 }
