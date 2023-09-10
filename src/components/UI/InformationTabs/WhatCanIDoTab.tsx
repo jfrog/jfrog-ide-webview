@@ -21,8 +21,7 @@ function EmptyStateContainer(): JSX.Element {
 			<p>It seems that we have no suggestions for fixing this issue</p>
 			<SadFace />
 			<p className={css.label}>
-				Consider moving to another package or contact the maintainers to know when a fix will be
-				available
+				Consider using another package or contact the maintainers for a possible fix
 			</p>
 		</div>
 	)
