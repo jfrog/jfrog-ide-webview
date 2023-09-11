@@ -55,6 +55,7 @@
 }
 
 .row {
+	line-break: anywhere;
 	margin-right: 3px;
 }
 
