@@ -2,7 +2,8 @@ import { render } from '@testing-library/react'
 import IaC from './IaC'
 import { IIaCPage, PageType } from '../../../model/webviewPages'
 import { ISeverity } from '../../../model/severity'
-import { getByTextAcrossMultipleElements } from '../../../utils/testUtils'
+import { LABELS } from '../../UI/InformationTabs/WhatCanIDoTab'
+import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
 describe('IaC component', () => {
 	const mockData: IIaCPage = {
@@ -25,51 +26,16 @@ describe('IaC component', () => {
 			do: 'What to do about it'
 		}
 	}
-
-	test('renders IaC component with title and severity', () => {
+	test('renders IaC component with patch the code and right header', () => {
 		const { getByText } = render(<IaC data={mockData} />)
 
 		expect(getByText('IaC Vulnerability')).toBeInTheDocument()
-		expect(getByTextAcrossMultipleElements(getByText, 'Severity: High'))
-	})
-
-	test('renders IaC component with location and abbreviation', () => {
-		const { getByText } = render(<IaC data={mockData} />)
-
-		expect(getByTextAcrossMultipleElements(getByText, 'Location: example-file.tf: 10'))
-		expect(getByTextAcrossMultipleElements(getByText, 'Abbreviation: ABC'))
-	})
-
-	test('renders IaC component with description and code snippet', () => {
-		const { getByText } = render(<IaC data={mockData} />)
-
-		expect(getByText('Description')).toBeInTheDocument()
-		expect(getByText('This is a vulnerability description.')).toBeInTheDocument()
-		expect(getByText('Example code snippet')).toBeInTheDocument()
-	})
-
-	test('renders IaC component with finding, guidance, and meaning', () => {
-		const { getByText } = render(<IaC data={mockData} />)
-
-		expect(getByText('FINDING')).toBeInTheDocument()
-		expect(getByText('What should I do?')).toBeInTheDocument()
-		expect(getByText('What can happen?')).toBeInTheDocument()
-		expect(getByText('What Does it mean?')).toBeInTheDocument()
-	})
-
-	test('renders IaC component with code snippet, how it happens, and what to do', () => {
-		const { getByText } = render(<IaC data={mockData} />)
-
-		expect(getByText('Example code snippet')).toBeInTheDocument()
-		expect(getByText('How it happens')).toBeInTheDocument()
-		expect(getByText('Meaning of the vulnerability')).toBeInTheDocument()
-		expect(getByText('What to do about it')).toBeInTheDocument()
-	})
-
-	test('renders IaC component with title at the end', () => {
-		const { getByText } = render(<IaC data={mockData} />)
-
-		expect(getByText('IaC Vulnerability')).toBeInTheDocument()
+		expect(getByText(`Location:`)).toBeInTheDocument()
+		expect(getByText(mockData.location.file)).toBeInTheDocument()
+		expect(getByText(TABS.WHAT_CAN_I_DO.label)).toBeInTheDocument()
+		expect(getByText(TABS.MORE_INFORMATION.label)).toBeInTheDocument()
+		expect(getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
+		expect(getByText('Remediation')).toBeInTheDocument()
 	})
 
 	test('renders IaC component without abbreviation', () => {

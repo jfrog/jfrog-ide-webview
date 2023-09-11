@@ -1,12 +1,123 @@
 .container {
 	display: flex;
-	column-gap: 8px;
-	align-items: center;
-	font-size: 16px;
-	font-weight: 400;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+	align-self: stretch;
+	padding: 16px;
+	border-radius: 6px;
+	background: #333;
+	max-height: 100px;
+	min-width: 390px;
 }
 
+.labelContainer {
+	display: flex;
+	height: 20px;
+	min-width: 48px;
+	padding: 4px 0px;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+}
+.label {
+	display: flex;
+	height: 20px;
+	min-width: 48px;
+	padding: 4px 0px;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	color: #8679e9;
+	text-align: center;
+
+	/* label bold */
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+.titleContainer {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	text-transform: capitalize;
+}
+.titleContainer > * {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	color: #f0f0f0;
+}
+.locationLabel {
+	color: #f0f0f0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+}
+.cveInformationContainerCol {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.cveInformationContainerRow {
+	align-items: center;
+	flex-direction: row;
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+.cveLabel {
+	color: #a0a0a0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+}
+.flexCenter {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.cveLabel > .value {
+	color: #f0f0f0;
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+	align-self: stretch;
+}
 .img {
 	height: 18px;
 	width: 18px;
+}
+.box {
+	display: inline;
+	padding-right: 10px;
+	padding-left: 7px;
+}
+
+.yellowBox {
+	composes: box;
+	background: rgba(235, 184, 85, 0.7);
+	border: 1px solid #ebb855;
+	border-radius: 2px;
+	color: #f0f0f0;
+}
+
+.redBox {
+	composes: box;
+	background: rgba(251, 81, 91, 0.7);
+	border: 1px solid #fb515b;
+	border-radius: 2px;
+	margin-right: 7px;
+	color: #f0f0f0;
 }

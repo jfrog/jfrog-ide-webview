@@ -22,7 +22,21 @@
 }
 
 .snippet {
-	color: rgba(255, 255, 255, 0.8);
+	color: #75beff;
+	font-family: 'Overpass Mono', monospace;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.showMoreLabel {
+	color: #d4d4d4;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	text-decoration-line: underline;
 }
 
 .number {
@@ -42,6 +56,10 @@
 
 .row {
 	margin-right: 3px;
+}
+
+.badge {
+	margin-left: auto;
 }
 
 .container:hover .number {
@@ -65,4 +83,38 @@
 .btn:hover:enabled {
 	background: #252526;
 	color: #ffffff;
+}
+.flexCenter {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.connector {
+	width: 1px !important;
+	background-color: #7f7f7f;
+	max-height: 20px;
+	flex: 1;
+}
+
+.button {
+	display: flex;
+	cursor: pointer;
+}
+.button:hover {
+	background-color: #3b3b3b;
+}
+.button:before {
+	max-width: 0;
+}
+
+.timeline {
+	flex: 1;
+	cursor: pointer;
+}
+.timeline:hover {
+	background: #3b3b3b;
+}
+.timeline:before {
+	max-width: 0;
 }

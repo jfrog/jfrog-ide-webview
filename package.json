@@ -1,73 +1,77 @@
 {
-  "name": "jfrog-ide-webview",
-  "version": "0.2.7",
-  "main": "types/index.js",
-  "homepage": ".",
-  "files": [
-    "build",
-    "types"
-  ],
-  "types": "types/index.d.ts",
-  "dependencies": {
-    "clone": "^2.1.2",
-    "node-polyfill-webpack-plugin": "^2.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.3",
-    "react-syntax-highlighter": "^15.5.0",
-    "react-tree-graph": "8.0.1"
-  },
-  "scripts": {
-    "build:types": "rm -rf types && rollup -c",
-    "start": "react-scripts start",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/jfrog-ide-webview/\"",
-    "eject": "react-scripts eject",
-    "build": "react-scripts build && npm run build:types",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --check --no-error-on-unmatched-pattern \"src/**/*.{js,jsx,ts,tsx,json,css}\" --config ./.prettierrc",
-    "format:fix": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{js,jsx,ts,tsx,json,css}\" --config ./.prettierrc"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^9.0.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/clone": "^2.1.1",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.2",
-    "@types/react": "^18.0.24",
-    "@types/react-dom": "^18.0.8",
-    "@types/react-syntax-highlighter": "^15.5.5",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.37.0",
-    "eslint-import-resolver-typescript": "^3.5.2",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "2.8.7",
-    "react-scripts": "5.0.1",
-    "rollup": "^2.3.0",
-    "rollup-plugin-dts": "^4.0.0",
-    "typescript": "^4.8.4"
-  }
+	"name": "jfrog-ide-webview",
+	"version": "0.2.7",
+	"main": "types/index.js",
+	"homepage": ".",
+	"files": [
+		"build",
+		"types"
+	],
+	"types": "types/index.d.ts",
+	"dependencies": {
+		"@mui/lab": "^5.0.0-alpha.142",
+		"@mui/material": "^5.14.7",
+		"clone": "^2.1.2",
+		"node-polyfill-webpack-plugin": "^2.0.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-markdown": "^8.0.3",
+		"react-syntax-highlighter": "^15.5.0",
+		"react-tree-graph": "8.0.1"
+	},
+	"scripts": {
+		"build:types": "rm -rf types && rollup -c",
+		"start": "react-scripts start",
+		"test": "react-scripts test --transformIgnorePatterns \"node_modules/jfrog-ide-webview/\"",
+		"eject": "react-scripts eject",
+		"build": "react-scripts build && npm run build:types",
+		"lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
+		"lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
+		"format": "prettier --check --no-error-on-unmatched-pattern \"src/**/*.{js,jsx,ts,tsx,json,css}\" --config ./.prettierrc",
+		"format:fix": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{js,jsx,ts,tsx,json,css}\" --config ./.prettierrc"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@rollup/plugin-image": "^3.0.2",
+		"@rollup/plugin-typescript": "^9.0.2",
+		"@svgr/rollup": "^8.1.0",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/clone": "^2.1.1",
+		"@types/jest": "^27.5.2",
+		"@types/node": "^16.18.2",
+		"@types/react": "^18.0.24",
+		"@types/react-dom": "^18.0.8",
+		"@types/react-syntax-highlighter": "^15.5.5",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"eslint": "^8.37.0",
+		"eslint-import-resolver-typescript": "^3.5.2",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"prettier": "2.8.7",
+		"react-scripts": "5.0.1",
+		"rollup": "^2.3.0",
+		"rollup-plugin-dts": "^4.0.0",
+		"typescript": "^4.8.4"
+	}
 }

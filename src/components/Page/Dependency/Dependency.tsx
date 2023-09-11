@@ -1,28 +1,25 @@
 import css from './Dependency.module.css'
-import Summary from '../../UI/Summary/Summary'
-import Edited from '../../UI/Edited/Edited'
 import Header from '../../UI/Header/Header'
-import Navigator from './Navigator/Navigator'
-import CveVulnerability from '../../UI/Summary/CveVulnerability'
-import { IDependencyPage } from '../../../model/webviewPages'
-
+import { IDependencyPage } from '../../../model'
+import InformationTabs, { TABS } from '../../UI/InformationTabs/InformationTabs'
+import ApplicabilityEvidence from './ApplicabilityEvidence'
 export interface Props {
 	data: IDependencyPage
 }
 
 export default function Dependency(props: Props): JSX.Element {
+	const showApplicabilityEvidence =
+		props.data.cve?.applicableData?.evidence ?? props.data.cve?.applicableData?.searchTarget
 	return (
-		<div className={css.Container}>
-			<Header
-				Severity={props.data.severity}
-				text={props.data.cve?.id ? props.data.cve.id : props.data.id}
-				isResearch={props.data.extendedInformation !== undefined}
+		<div className={css.PageContainer}>
+			<Header pageData={props.data} text={props.data.cve?.id ? props.data.cve.id : props.data.id} />
+			{props.data.cve?.applicableData && showApplicabilityEvidence && (
+				<ApplicabilityEvidence data={props.data.cve.applicableData} />
+			)}
+			<InformationTabs
+				data={props.data}
+				tabs={[TABS.WHAT_CAN_I_DO.key, TABS.CVE_INFORMATION.key, TABS.IMPACT_GRAPH.key]}
 			/>
-			{props.data.extendedInformation && <Edited date={props.data.edited} />}
-			<Summary expandButton>
-				<CveVulnerability data={props.data} />
-			</Summary>
-			<Navigator data={props.data} />
 		</div>
 	)
 }

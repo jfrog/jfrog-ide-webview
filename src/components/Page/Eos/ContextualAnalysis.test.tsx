@@ -2,12 +2,6 @@ import { render } from '@testing-library/react'
 import ContextualAnalysis from './ContextualAnalysis'
 
 describe('ContextualAnalysis component', () => {
-	test('renders found text when provided', () => {
-		const foundText = 'Found text example'
-		const { getByText } = render(<ContextualAnalysis foundText={foundText} />)
-		expect(getByText(foundText)).toBeInTheDocument()
-	})
-
 	test('renders analysis steps when provided', () => {
 		const analysisSteps = [
 			{
@@ -20,9 +14,9 @@ describe('ContextualAnalysis component', () => {
 			}
 		]
 		const { getByText } = render(<ContextualAnalysis analysisSteps={analysisSteps} />)
-		expect(getByText('DATA FLOW ANALYSIS')).toBeInTheDocument()
+		expect(getByText('Data Trace Evidence')).toBeInTheDocument()
 		analysisSteps.forEach(step => {
-			const analysisStepElement = getByText(`${step.fileName}${step.startRow}:`)
+			const analysisStepElement = getByText(`${step.fileName} (${step.startRow}):`)
 			expect(analysisStepElement).toBeInTheDocument()
 		})
 	})

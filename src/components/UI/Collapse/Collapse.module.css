@@ -3,8 +3,27 @@
 	padding: 10px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
-
+.expandIcon {
+	display: flex;
+	width: 24px;
+	height: 24px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	background: #454545;
+}
+h1 {
+	color: #f0f0f0;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
 .collapseHeader {
 	text-transform: uppercase;
 	font-weight: 600;
@@ -41,4 +60,16 @@
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
+}
+
+.accordion {
+	background: #333;
+	color: #f0f0f0;
+	box-shadow: none;
+	border-radius: 6px;
+	width: 100%;
+	min-width: 420px;
+}
+.accordionDetails {
+	padding: 0 16px 16px 16px;
 }

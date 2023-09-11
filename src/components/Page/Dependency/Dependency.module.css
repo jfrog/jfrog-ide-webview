@@ -1,5 +1,6 @@
-.Container {
+.PageContainer {
 	display: flex;
 	flex-direction: column;
-	row-gap: 8px;
+	row-gap: 20px;
+	height: 100%;
 }

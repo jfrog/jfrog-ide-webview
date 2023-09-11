@@ -4,7 +4,7 @@ import Header from './Header'
 describe('Header component', () => {
 	test('Renders vulnerability header', () => {
 		// Arrange
-		render(<Header text="Header" isResearch Severity={ISeverity.Critical} />)
+		render(<Header text="Header" pageData={{ severity: ISeverity.Critical }} />)
 		// Assert
 		const headerElement = screen.getByText('Header')
 		expect(headerElement).toBeInTheDocument()
@@ -12,7 +12,7 @@ describe('Header component', () => {
 
 	test('Renders vulnerability header with no isResearch', () => {
 		// Arrange
-		render(<Header text="Header" isResearch={false} Severity={ISeverity.Low} />)
+		render(<Header text="Header" pageData={{ severity: ISeverity.Low }} />)
 		// Assert
 		const headerElement = screen.getByText('Header')
 		expect(headerElement).toBeInTheDocument()

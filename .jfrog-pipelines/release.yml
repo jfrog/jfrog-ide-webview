@@ -7,7 +7,7 @@ pipelines:
           auto:
             language: node
             versions:
-              - "16"
+              - '16'
       environmentVariables:
         readOnly:
           NEXT_VERSION: 0.0.0
@@ -53,7 +53,7 @@ pipelines:
             # Set version
             - npm config set tag-version-prefix ''
             - npm version $NEXT_VERSION --allow-same-version
-            
+
             # Build and publish
             - npm run build
             - jf npm p

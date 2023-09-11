@@ -1,27 +1,19 @@
 {
-  "compilerOptions": {
-    "module": "ESNext",
-    "target": "es2018",
-    "sourceMap": true,
-    "declaration": true,
-    "outDir": "dist",
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "rootDirs": [
-      "src/**/*"
-    ],
-    "jsx": "react-jsx",
-    "declarationDir": "types",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "test",
-    "types",
-    "setupTests.ts"
-  ]
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "es2018",
+		"sourceMap": true,
+		"declaration": true,
+		"outDir": "dist",
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"rootDirs": ["src/**/*"],
+		"jsx": "react-jsx",
+		"declarationDir": "types",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"emitDeclarationOnly": true
+	},
+	"exclude": ["node_modules", "dist", "test", "types", "setupTests.ts"]
 }

@@ -1,6 +1,6 @@
 .text {
 	color: rgba(255, 255, 255, 0.8);
-
+	font-family: 'Overpass Mono', monospace;
 	line-height: 1.5;
 	padding: 0px;
 	margin: 0px;
@@ -12,11 +12,36 @@ a {
 }
 
 code {
-	padding: 0.2em 0.4em;
 	margin: 0;
 	font-size: 85%;
 	color: #e8912d;
 	background-color: rgb(30, 30, 30);
 	border-radius: 6px;
 	width: 100%;
+}
+
+.inlineCode {
+	padding: 0.2em 0.4em;
+}
+pre {
+	overflow: hidden;
+}
+.text p,
+.text a,
+.text li {
+	font-family: 'Open Sans';
+	margin-bottom: 4px;
+}
+.text h1,
+.text h2,
+.text h3,
+.text h4,
+.text h5,
+.text h6 {
+	font-family: 'Open Sans';
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.text > code {
+	padding: 0;
 }

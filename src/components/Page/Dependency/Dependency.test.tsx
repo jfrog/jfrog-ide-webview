@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { queryByAttribute, render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import {
 	IDependencyPage,
@@ -9,6 +9,7 @@ import {
 	IEvidence,
 	IExtendedInformation
 } from '../../../model'
+import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
 describe('Dependency page component', () => {
 	const mockData: IDependencyPage = {
@@ -18,6 +19,7 @@ describe('Dependency page component', () => {
 		component: 'example-component',
 		version: '1.0.0',
 		severity: ISeverity.High,
+		fixedVersion: ['5.0.0'],
 		cve: {
 			id: 'CVE-2021-1234',
 			cvssV2Score: '4.0',
@@ -53,51 +55,55 @@ describe('Dependency page component', () => {
 		},
 		references: [{ url: 'url' }]
 	}
-	test('should render "JFrog Research last update"', () => {
-		render(<Dependency data={mockData} />)
-
-		expect(
-			screen.getByText(/JFrog Research last updated on Sat, 01 Jan 2022 00:00:00 GMT/i)
-		).toBeInTheDocument()
-	})
-
 	test('should render "Component: example-component"', () => {
 		render(<Dependency data={mockData} />)
 
 		expect(screen.getByText(/Component:/i)).toBeInTheDocument()
-		expect(screen.getByText(/example-component/i)).toBeInTheDocument()
+		expect(screen.getByText(mockData.component)).toBeInTheDocument()
 	})
 
-	test('should render "Contextual Analysis"', () => {
-		render(<Dependency data={mockData} />)
+	test('should render "jfrog_research_icon" and "applicable_icon"', () => {
+		const el = render(<Dependency data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const applicableIcon = getById(el.container, 'applicable_icon')
 
-		expect(screen.getByText(/Contextual Analysis:/i)).toBeInTheDocument()
-		expect(screen.getByText(/The CVE is Applicable/i)).toBeInTheDocument()
+		expect(jfResearchIcon).not.toBeNull()
+		expect(applicableIcon).not.toBeNull()
+	})
+	test('should render "not_applicable_icon"', () => {
+		const el = render(
+			<Dependency
+				data={{ ...mockData, cve: { id: mockData.id, applicableData: { isApplicable: false } } }}
+			/>
+		)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const notApplicableIcon = getById(el.container, 'not_applicable_icon')
+
+		expect(jfResearchIcon).not.toBeNull()
+		expect(notApplicableIcon).not.toBeNull()
 	})
 	test('should render "Fixed version"', () => {
 		render(<Dependency data={mockData} />)
 
-		expect(screen.getByText(/Fixed version:/i)).toBeInTheDocument()
-		expect(screen.getByText(/None/i)).toBeInTheDocument()
+		expect(screen.getByText(/Fix version:/i)).toBeInTheDocument()
+		expect(screen.getByText(/5.0.0/i)).toBeInTheDocument()
 	})
 
 	test('should render "Severity"', () => {
-		render(<Dependency data={mockData} />)
-
-		expect(screen.getByText(/High/i)).toBeInTheDocument()
+		const el = render(<Dependency data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const highIcon = getById(el.container, 'high')
+		expect(highIcon).not.toBeNull()
 	})
 
 	test('should render "JFrog severity"', () => {
-		render(<Dependency data={mockData} />)
-
-		expect(screen.getByText(/JFrog severity:/i)).toBeInTheDocument()
-		expect(screen.getByText(/Low/i)).toBeInTheDocument()
-	})
-
-	test('should render "Type"', () => {
-		render(<Dependency data={mockData} />)
-
-		expect(screen.getByText(/componentType-example/i)).toBeInTheDocument()
+		const el = render(<Dependency data={mockData} />)
+		const getById = queryByAttribute.bind(null, 'id')
+		const severityIcon = getById(el.container, 'low')
+		expect(severityIcon).not.toBeNull()
+		expect(screen.getByText(/JFrog severity rank:/i)).toBeInTheDocument()
 	})
 
 	test('should render "Version"', () => {
@@ -106,71 +112,19 @@ describe('Dependency page component', () => {
 		expect(screen.getByText(/1.0.0/i)).toBeInTheDocument()
 	})
 
-	test('should render "ID"', () => {
-		render(<Dependency data={mockData} />)
-
-		expect(screen.getByText(/ID:/i)).toBeInTheDocument()
-		expect(screen.getByText(/example-id/i)).toBeInTheDocument()
-	})
-
-	test('should render "JFrog Research", "Impact Graph" & "References" tabs', () => {
+	test('should render "What Can I Do", "Impact Graph" & "CVE Information" tabs', () => {
 		render(<Dependency data={mockData} />)
 
 		const expectedTexts = [
-			'JFrog Research',
-			'Contextual Analysis',
-			'Public Sources',
-			'Impact Graph',
-			'References'
+			TABS.WHAT_CAN_I_DO.label,
+			TABS.CVE_INFORMATION.label,
+			TABS.IMPACT_GRAPH.label
 		]
-		const buttons = screen.getAllByRole('button')
+		const tabs = screen.getAllByRole('tab')
 
-		expect(buttons.length).toBe(expectedTexts.length)
-		buttons.forEach((button, index) => {
-			expect(button).toHaveTextContent(expectedTexts[index])
-		})
-	})
-
-	describe('Without extended information', () => {
-		test('should render "Public Sources", "Impact Graph", "Contextual Analysis" & "References" tabs', () => {
-			render(<Dependency data={{ ...mockData, extendedInformation: undefined }} />)
-			const expectedTexts = ['Contextual Analysis', 'Public Sources', 'Impact Graph', 'References']
-			const buttons = screen.getAllByRole('button')
-
-			// Assert that the expected number of buttons are present
-			expect(buttons.length).toBe(expectedTexts.length)
-			buttons.forEach((button, index) => {
-				expect(button).toHaveTextContent(expectedTexts[index])
-			})
-		})
-	})
-	describe('Without Contextual Analysis and Public Sources', () => {
-		test('should render "Public Sources", "Impact Graph", "Contextual Analysis" & "References" tabs', () => {
-			render(<Dependency data={{ ...mockData, cve: { id: '1' } }} />)
-			const expectedTexts = ['JFrog Research', 'Impact Graph', 'References']
-			const buttons = screen.getAllByRole('button')
-
-			// Assert that the expected number of buttons are present
-			expect(buttons.length).toBe(expectedTexts.length)
-			buttons.forEach((button, index) => {
-				expect(button).toHaveTextContent(expectedTexts[index])
-			})
-		})
-	})
-
-	describe('Without JFrog Research and References', () => {
-		test('should render "Public Sources", "Impact Graph", "Contextual Analysis" tabs', () => {
-			render(
-				<Dependency data={{ ...mockData, extendedInformation: undefined, references: undefined }} />
-			)
-			const expectedTexts = ['Contextual Analysis', 'Public Sources', 'Impact Graph']
-			const buttons = screen.getAllByRole('button')
-
-			// Assert that the expected number of buttons are present
-			expect(buttons.length).toBe(expectedTexts.length)
-			buttons.forEach((button, index) => {
-				expect(button).toHaveTextContent(expectedTexts[index])
-			})
+		expect(tabs.length).toBe(expectedTexts.length)
+		tabs.forEach((tab, index) => {
+			expect(tab).toHaveTextContent(expectedTexts[index])
 		})
 	})
 })

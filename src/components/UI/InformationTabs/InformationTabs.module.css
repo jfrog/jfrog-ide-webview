@@ -1,0 +1,132 @@
+.tabsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+	width: 100%;
+}
+
+.alignCenterFlex {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.listContainer {
+	display: flex;
+	align-items: center;
+}
+
+.keysContainer {
+	display: flex;
+	flex-direction: row;
+	width: 150px;
+}
+
+.valuesContainer {
+	display: flex;
+	flex-direction: row;
+}
+
+.group {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+ul.bulletList {
+	list-style-type: disc;
+	padding-left: 20px;
+}
+
+ul.bulletList li {
+	color: white;
+	font-family: 'Arial', sans-serif;
+	margin-bottom: 10px;
+}
+
+h6 {
+	color: #f0f0f0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+span {
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+.label {
+	color: #bbb;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+.text {
+	color: #a0a0a0;
+	font-family: Open Sans;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+.recommendedLabel {
+	color: #3794ff;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px;
+}
+
+.emptyStateContainer {
+	display: flex;
+	padding: 24px 16px;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	border-radius: 6px;
+	background: #333;
+	width: 100%;
+}
+
+.emptyStateContainer > * {
+	text-align: center !important;
+}
+
+.borderBottom {
+	border-bottom: 1px solid #454545;
+}
+
+.columns {
+	display: flex;
+	gap: 8px;
+	flex-direction: column;
+}
+code {
+	padding: 0.2em 0.4em;
+}
+
+.defaultTab {
+	color: #bbb !important;
+	font-weight: 400;
+	text-transform: none;
+}
+
+.activeTab {
+	color: #3eb065 !important;
+	text-transform: none;
+}

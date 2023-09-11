@@ -1,5 +1,5 @@
-import { ICve } from '../../../../../model/cve'
-import css from './PublicResources.module.css'
+import { ICve } from '../../../../../model'
+import css from './PublicSources.module.css'
 import {
 	AccessComplexityValueTranslator,
 	AccessVectorTranslator,
@@ -21,16 +21,22 @@ export interface Props {
 	infectedVersions?: string[]
 }
 
+export const LABELS = {
+	SUMMARY: 'Summary',
+	VULNERABLE_VERSIONS: 'Vulnerable Versions',
+	CVSS_BREAKDOWN: 'CVSS Breakdown'
+}
+
 export default function PublicSources(props: Props): JSX.Element {
 	return (
 		<>
 			{props.summary && (
-				<Wrapper headline="SUMMARY">
+				<Wrapper headline={LABELS.SUMMARY}>
 					<span className={css.text}>{props.summary}</span>
 				</Wrapper>
 			)}
 			{props.infectedVersions && (
-				<Wrapper headline="VULNERABLE VERSIONS ">
+				<Wrapper headline={LABELS.VULNERABLE_VERSIONS}>
 					{props.infectedVersions.map((element, i) => (
 						<div key={i} className={css.text}>
 							<span>{element}</span>
@@ -39,8 +45,8 @@ export default function PublicSources(props: Props): JSX.Element {
 				</Wrapper>
 			)}
 			{(!!props.cve?.cvssV2Vector || !!props.cve?.cvssV3Vector) && (
-				<Wrapper headline="CVSS BREAKDOWN">
-					<div className={css.container}>
+				<Wrapper hideLine headline={LABELS.CVSS_BREAKDOWN}>
+					<div className={css.cvssBreakdownContainer}>
 						{props.cve.cvssV3Vector &&
 							props.cve.cvssV3Score &&
 							createCvssBreakdownV3View(props.cve.cvssV3Vector, props.cve.cvssV3Score)}
@@ -143,11 +149,11 @@ export function createCvssBreakdownV3View(csvv: string, score: string): JSX.Elem
 	}
 
 	return (
-		<div className={css.container}>
+		<div className={css.cvssBreakdownView}>
 			<div className={css.header}>
 				{csvvArray[0]} Base Score {score}
 			</div>
-			<div>
+			<div className={css.cvssBreakdownView}>
 				{csvv3Breakdown
 					.getBaseMatrix()
 					.map((data, i) =>
@@ -173,11 +179,11 @@ export function createCvssBreakdownV2View(csvv: string, score: string): JSX.Elem
 	}
 
 	return (
-		<div className={css.container}>
+		<div className={css.cvssBreakdownView}>
 			<div className={css.header}>
 				{csvvArray[0]} Base Score {score}
 			</div>
-			<div>
+			<div className={css.cvssBreakdownView}>
 				{csvv2Breakdown
 					.getBaseMatrix()
 					.map((data, i) =>

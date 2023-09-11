@@ -13,7 +13,7 @@ export const sendWebviewPage = async (data: IData): Promise<MessageEvent> => {
 	const messageEvent = new MessageEvent('message', {
 		data: data
 	})
-	await act(() => {
+	act(() => {
 		window.dispatchEvent(messageEvent)
 	})
 	return messageEvent

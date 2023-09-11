@@ -26,7 +26,7 @@ export default function Markdown(props: Props): JSX.Element {
 							{String(children).replace(/\n\r$/, '')}
 						</SyntaxHighlighter>
 					) : (
-						<code className={className} {...props}>
+						<code className={css.inlineCode} {...props}>
 							{children}
 						</code>
 					)

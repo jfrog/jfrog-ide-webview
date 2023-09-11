@@ -1,0 +1,41 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.text {
+	color: rgba(255, 255, 255, 0.8);
+	line-height: 1.5;
+}
+
+.header {
+	color: #e7e7e7;
+}
+
+.key {
+	color: #7f7f7f;
+	line-height: 1.5;
+}
+
+.value {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.cvssBreakdownContainer {
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
+}
+.cvssBreakdownView {
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+}
+.cvssBreakdownView > .header {
+	color: #f0f0f0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}

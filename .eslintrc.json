@@ -19,16 +19,10 @@
 			"jsx": true
 		},
 		"tsconfigRootDir": ".",
-		"project": [
-			"./tsconfig.json"
-		],
+		"project": ["./tsconfig.json"],
 		"sourceType": "module"
 	},
-	"plugins": [
-		"react",
-		"react-hooks",
-		"@typescript-eslint"
-	],
+	"plugins": ["react", "react-hooks", "@typescript-eslint"],
 	"settings": {
 		"import/resolver": {
 			"typescript": {}
@@ -37,39 +31,21 @@
 			"version": "18"
 		}
 	},
-	"ignorePatterns": [
-		"docs/**",
-		"node_modules/**",
-		"rollup.config.js"
-	],
+	"ignorePatterns": ["docs/**", "node_modules/**", "rollup.config.js"],
 	"rules": {
 		"camelcase": "error",
 		"spaced-comment": [
 			"error",
 			"always",
 			{
-				"markers": [
-					"/"
-				]
+				"markers": ["/"]
 			}
 		],
-		"array-bracket-spacing": [
-			"error",
-			"never"
-		],
-		"arrow-body-style": [
-			"error",
-			"as-needed"
-		],
-		"arrow-parens": [
-			"error",
-			"as-needed"
-		],
+		"array-bracket-spacing": ["error", "never"],
+		"arrow-body-style": ["error", "as-needed"],
+		"arrow-parens": ["error", "as-needed"],
 		"arrow-spacing": "error",
-		"block-spacing": [
-			"error",
-			"always"
-		],
+		"block-spacing": ["error", "always"],
 		"brace-style": [
 			"error",
 			"1tbs",
@@ -77,10 +53,7 @@
 				"allowSingleLine": true
 			}
 		],
-		"comma-dangle": [
-			"error",
-			"never"
-		],
+		"comma-dangle": ["error", "never"],
 		"comma-spacing": [
 			"error",
 			{
@@ -88,27 +61,12 @@
 				"after": true
 			}
 		],
-		"comma-style": [
-			"error",
-			"last"
-		],
-		"computed-property-spacing": [
-			"error",
-			"never"
-		],
+		"comma-style": ["error", "last"],
+		"computed-property-spacing": ["error", "never"],
 		"curly": "error",
-		"dot-location": [
-			"error",
-			"property"
-		],
-		"func-call-spacing": [
-			"error",
-			"never"
-		],
-		"func-names": [
-			"error",
-			"always"
-		],
+		"dot-location": ["error", "property"],
+		"func-call-spacing": ["error", "never"],
+		"func-names": ["error", "always"],
 		"no-nested-ternary": "error",
 		"func-style": [
 			"error",
@@ -124,10 +82,7 @@
 			}
 		],
 		"keyword-spacing": "error",
-		"lines-between-class-members": [
-			"error",
-			"always"
-		],
+		"lines-between-class-members": ["error", "always"],
 		"no-array-constructor": "error",
 		"no-bitwise": "error",
 		"no-duplicate-imports": "error",
@@ -160,36 +115,18 @@
 				"consistent": true
 			}
 		],
-		"object-curly-spacing": [
-			"error",
-			"always"
-		],
-		"padded-blocks": [
-			"error",
-			"never"
-		],
+		"object-curly-spacing": ["error", "always"],
+		"padded-blocks": ["error", "never"],
 		"prefer-arrow-callback": "error",
 		"prefer-rest-params": "error",
 		"prefer-spread": "error",
 		"prefer-template": "error",
-		"rest-spread-spacing": [
-			"error",
-			"never"
-		],
-		"semi": [
-			"error",
-			"never"
-		],
+		"rest-spread-spacing": ["error", "never"],
+		"semi": ["error", "never"],
 		"semi-spacing": "error",
-		"semi-style": [
-			"error",
-			"last"
-		],
+		"semi-style": ["error", "last"],
 		"space-before-blocks": "error",
-		"space-in-parens": [
-			"error",
-			"never"
-		],
+		"space-in-parens": ["error", "never"],
 		"space-infix-ops": "error",
 		"space-unary-ops": "error",
 		"switch-colon-spacing": "error",
@@ -251,19 +188,10 @@
 		"react/jsx-closing-tag-location": "error",
 		"react/jsx-curly-spacing": "error",
 		"react/jsx-equals-spacing": "error",
-		"react/jsx-first-prop-new-line": [
-			"error",
-			"multiline"
-		],
+		"react/jsx-first-prop-new-line": ["error", "multiline"],
 		"react/jsx-handler-names": "error",
-		"react/jsx-indent": [
-			"error",
-			"tab"
-		],
-		"react/jsx-indent-props": [
-			"error",
-			"tab"
-		],
+		"react/jsx-indent": ["error", "tab"],
+		"react/jsx-indent-props": ["error", "tab"],
 		"react/jsx-curly-brace-presence": "error",
 		"react/jsx-pascal-case": "error",
 		"react/jsx-props-no-multi-spaces": "error",
