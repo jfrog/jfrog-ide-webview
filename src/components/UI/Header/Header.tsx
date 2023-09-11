@@ -97,8 +97,8 @@ export default function Header(props: Props): JSX.Element {
 					{showLocationInPages && (
 						<LocationSpan location={(props.pageData as ISecretsPage).location} />
 					)}
-					{ruleId && <RuleIdSpan ruleId={ruleId} />}
 					{lineOfVuln && <LineOfVulnSpan lineOfVulnerability={lineOfVuln} />}
+					{ruleId && <RuleIdSpan ruleId={ruleId} />}
 				</div>
 			</div>
 		</div>
