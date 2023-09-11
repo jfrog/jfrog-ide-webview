@@ -27,7 +27,7 @@ describe('LoginModal component', () => {
 
 	describe('JFrog CLI', () => {
 		const mockLoginData: ILoginPage = {
-			status: LoginProgressStatus.Verifying,
+			status: LoginProgressStatus.AutoConnect,
 			connectionType: LoginConnectionType.Cli,
 			url: 'example.com',
 			pageType: PageType.Login
@@ -40,11 +40,10 @@ describe('LoginModal component', () => {
 					getByText('It looks like JFrog CLI is installed with the connection details of')
 				).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
-				expect(getByText('Verifying...')).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
 				expect(document.querySelector('.text')).toBeInTheDocument()
 				expect(document.querySelector('.welcome')).toBeInTheDocument()
-				expect(document.querySelector('.autoConnectBtn')).not.toBeInTheDocument()
+				expect(document.querySelector('.autoConnectBtn')).toBeInTheDocument()
 			})
 		})
 
@@ -92,7 +91,7 @@ describe('LoginModal component', () => {
 	})
 	describe('Env Vars', () => {
 		const mockLoginData: ILoginPage = {
-			status: LoginProgressStatus.Verifying,
+			status: LoginProgressStatus.AutoConnect,
 			connectionType: LoginConnectionType.EnvVars,
 			url: 'example.com',
 			pageType: PageType.Login
@@ -105,11 +104,10 @@ describe('LoginModal component', () => {
 					getByText('Environment variables are set with the connection details of')
 				).toBeInTheDocument()
 				expect(getByText('example.com')).toBeInTheDocument()
-				expect(getByText('Verifying...')).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
 				expect(document.querySelector('.text')).toBeInTheDocument()
 				expect(document.querySelector('.welcome')).toBeInTheDocument()
-				expect(document.querySelector('.autoConnectBtn')).not.toBeInTheDocument()
+				expect(document.querySelector('.autoConnectBtn')).toBeInTheDocument()
 			})
 		})
 
@@ -212,7 +210,9 @@ describe('LoginModal component', () => {
 					queryByText('We found environment variables with connection details for')
 				).not.toBeInTheDocument()
 				expect(getByText('Almost there!')).toBeInTheDocument()
-				expect(getByText('Waiting for you to sign in...')).toBeInTheDocument()
+				expect(
+					getByText('Please go ahead and complete the login process in the opened browser')
+				).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
 				expect(document.querySelector('.text')).toBeInTheDocument()
 				expect(document.querySelector('.welcome')).toBeInTheDocument()
