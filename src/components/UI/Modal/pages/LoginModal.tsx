@@ -70,36 +70,6 @@ function createSpinnerState(s: LoginProgressStatus): State {
 function createBody(data: ILoginPage): JSX.Element {
 	let pageBody = <> </>
 
-	switch (data.connectionType) {
-		case LoginConnectionType.Cli:
-			pageBody = (
-				<div className={css.autoLoginText}>
-					<span> It looks like JFrog CLI is installed with the connection details of</span>
-					<div>
-						<span className={css.textBold}>{data.url}</span>
-					</div>
-					<div />
-					<span>Would you like to use this configuration?</span>
-				</div>
-			)
-			break
-		case LoginConnectionType.EnvVars:
-			pageBody = (
-				<div className={css.autoLoginText}>
-					<span>Environment variables are set with the connection details of</span>
-					<div>
-						<span className={css.textBold}>{data.url}</span>
-					</div>
-					<div />
-					<span>Would you like to use this configuration?</span>
-				</div>
-			)
-			break
-		case LoginConnectionType.Sso:
-			pageBody = <div>Waiting for you to sign in...</div>
-			break
-	}
-
 	switch (data.status) {
 		case LoginProgressStatus.Failed:
 			pageBody = <div>Connection could not be established.</div>
@@ -119,39 +89,77 @@ function createBody(data: ILoginPage): JSX.Element {
 		case LoginProgressStatus.Success:
 			pageBody = <div>Your credentials will be securely stored on the machine for future use.</div>
 			break
+		case LoginProgressStatus.AutoConnect:
+			pageBody = getAutoConnectBody(data)
+			break
+		case LoginProgressStatus.Verifying:
+			pageBody = getVerifyingBody(data)
+			break
 	}
 
 	return <div className={css.text}>{pageBody}</div>
 }
 
+function getAutoConnectBody(data: ILoginPage): JSX.Element {
+	switch (data.connectionType) {
+		case LoginConnectionType.Cli:
+			return (
+				<div className={css.autoLoginText}>
+					<span> It looks like JFrog CLI is installed with the connection details of</span>
+					<div>
+						<span className={css.textBold}>{data.url}</span>
+					</div>
+					<div />
+					<span>Would you like to use this configuration?</span>
+				</div>
+			)
+		case LoginConnectionType.EnvVars:
+			return (
+				<div className={css.autoLoginText}>
+					<span>Environment variables are set with the connection details of</span>
+					<div>
+						<span className={css.textBold}>{data.url}</span>
+					</div>
+					<div />
+					<span>Would you like to use this configuration?</span>
+				</div>
+			)
+		case LoginConnectionType.Sso:
+			return <div>Waiting for you to sign in...</div>
+	}
+
+	return <> </>
+}
+
+function getVerifyingBody(data: ILoginPage): JSX.Element {
+	if (data.connectionType === LoginConnectionType.Sso) {
+		return <div>Waiting for you to sign in...</div>
+	}
+
+	return <> </>
+}
+
 function createTitle(data: ILoginPage): JSX.Element {
-	let title = <> </>
+	let title = ''
 
 	switch (data.status) {
 		case LoginProgressStatus.Failed:
 		case LoginProgressStatus.FailedBadCredentials:
 		case LoginProgressStatus.FailedTimeout:
 		case LoginProgressStatus.FailedServerNotFound:
-			title = <span>Sign in failed</span>
+			title = 'Sign in failed'
 			break
 		case LoginProgressStatus.Success:
-			title = <span>You&apos;re in!</span>
+			title = "You're in!"
 			break
 		case LoginProgressStatus.AutoConnect:
 			title =
-				data.connectionType === LoginConnectionType.Cli ? (
-					<span>Sign In Using JFrog CLI</span>
-				) : (
-					<span>Sign In Using Env-Var</span>
-				)
+				data.connectionType === LoginConnectionType.Cli
+					? 'Sign In Using JFrog CLI'
+					: 'Sign In Using Env-Var'
 			break
 		case LoginProgressStatus.Verifying:
-			title =
-				data.connectionType === LoginConnectionType.Sso ? (
-					<span>Almost there!</span>
-				) : (
-					<span>Verifying...</span>
-				)
+			title = data.connectionType === LoginConnectionType.Sso ? 'Almost there!' : 'Verifying...'
 	}
 
 	return <div className={css.welcome}>{title}</div>
