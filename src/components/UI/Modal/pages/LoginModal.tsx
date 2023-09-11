@@ -124,8 +124,6 @@ function getAutoConnectBody(data: ILoginPage): JSX.Element {
 					<span>Would you like to use this configuration?</span>
 				</div>
 			)
-		case LoginConnectionType.Sso:
-			return <div>Waiting for you to sign in...</div>
 	}
 
 	return <> </>
@@ -133,7 +131,7 @@ function getAutoConnectBody(data: ILoginPage): JSX.Element {
 
 function getVerifyingBody(data: ILoginPage): JSX.Element {
 	if (data.connectionType === LoginConnectionType.Sso) {
-		return <div>Waiting for you to sign in...</div>
+		return <div>Please go ahead and complete the login process in the opened browser</div>
 	}
 
 	return <> </>
