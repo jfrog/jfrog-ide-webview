@@ -4,7 +4,7 @@ import css from './AnalysisStepsListElement.module.css'
 import { ReactComponent as AttackerEntry } from '../../../assets/icons/attacker_entry.svg'
 import { ReactComponent as ExploitExecution } from '../../../assets/icons/exploit_execution.svg'
 const SNIPPET_TRIM_LENGTH = 40
-const FILE_NAME_TRIM_LENGTH = 16
+const FILE_NAME_TRIM_LENGTH = 12
 export const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
 interface TimelineContentLogicProps {
 	item: IAnalysisStep
