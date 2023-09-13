@@ -28,6 +28,8 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .showMoreLabel {
@@ -91,6 +93,14 @@
 	width: 100%;
 }
 
+.rowContainer {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	width: 100%;
+	gap: 8px;
+}
+
 .connector {
 	width: 1px !important;
 	background-color: #7f7f7f;
@@ -112,10 +122,12 @@
 .timeline {
 	flex: 1;
 	cursor: pointer;
+	overflow: hidden;
 }
 .timeline:hover {
 	background: #3b3b3b;
 }
 .timeline:before {
 	max-width: 0;
+	padding: 0;
 }

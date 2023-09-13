@@ -8,7 +8,8 @@
 	border-radius: 6px;
 	background: #333;
 	max-height: 100px;
-	min-width: 390px;
+	min-width: 190px;
+	overflow: hidden;
 }
 
 .labelContainer {
@@ -56,6 +57,7 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 18px;
+	text-wrap: nowrap;
 }
 .cveInformationContainerCol {
 	display: flex;

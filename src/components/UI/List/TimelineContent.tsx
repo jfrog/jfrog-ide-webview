@@ -3,9 +3,15 @@ import { IAnalysisStep } from '../../../model'
 import css from './AnalysisStepsListElement.module.css'
 import { ReactComponent as AttackerEntry } from '../../../assets/icons/attacker_entry.svg'
 import { ReactComponent as ExploitExecution } from '../../../assets/icons/exploit_execution.svg'
-const SNIPPET_TRIM_LENGTH = 40
+
 const FILE_NAME_TRIM_LENGTH = 20
-export const timelineContentStyle = { display: 'flex', alignItems: 'center', gap: 6 }
+export const timelineContentStyle = {
+	display: 'flex',
+	alignItems: 'center',
+	gap: 6,
+	textWrap: 'nowrap',
+	overflow: 'hidden'
+}
 interface TimelineContentLogicProps {
 	item: IAnalysisStep
 	totalItems: number
@@ -30,14 +36,12 @@ export const TimelineContentLogic = ({
 
 	return (
 		<TimelineContent style={timelineContentStyle}>
-			<div className={css.flexCenter}>
+			<div className={css.rowContainer}>
 				<span className={css.row}>
 					{item.fileName && hideOverflowText(item.fileName, FILE_NAME_TRIM_LENGTH)} ({item.startRow}
 					):
 				</span>
-				<span className={css.snippet}>
-					{item.snippet && <div>{hideOverflowText(item.snippet, SNIPPET_TRIM_LENGTH)}</div>}
-				</span>
+				<span className={css.snippet}>{item.snippet}</span>
 				<span className={css.badge}>
 					{isFirstStep && <AttackerEntry />}
 					{isLastStep && <ExploitExecution />}
