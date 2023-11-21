@@ -1,13 +1,13 @@
 import { queryByAttribute, render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import {
-	IDependencyPage,
-	PageType,
-	ISeverity,
 	IApplicableDetails,
 	ICve,
+	IDependencyPage,
 	IEvidence,
-	IExtendedInformation
+	IExtendedInformation,
+	ISeverity,
+	PageType
 } from '../../../model'
 import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
@@ -50,7 +50,6 @@ describe('Dependency page component', () => {
 			root: {
 				name: 'Impact Graph'
 			},
-			pathsCount: 1,
 			pathsLimit: 10
 		},
 		references: [{ url: 'url' }]

@@ -52,7 +52,6 @@ describe('InformationTabs component', () => {
 			root: {
 				name: 'Impact Graph'
 			},
-			pathsCount: 1,
 			pathsLimit: 10
 		},
 		references: [{ url: 'url' }]

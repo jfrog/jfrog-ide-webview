@@ -60,9 +60,7 @@ describe('Model - WebviewPage', () => {
 							children: []
 						}
 					]
-				},
-				pathsCount: 2,
-				pathsLimit: 10
+				}
 			},
 			severity: ISeverity.High,
 			edited: '2022-01-01',

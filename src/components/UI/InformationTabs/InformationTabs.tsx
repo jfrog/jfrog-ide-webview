@@ -208,7 +208,6 @@ function InformationTabs(props: Props): JSX.Element {
 						<ImpactGraph
 							treeNode={treeNode}
 							pathsLimit={(props.data as IDependencyPage).impactGraph.pathsLimit}
-							pathsCount={(props.data as IDependencyPage).impactGraph.pathsCount}
 						/>
 					</CustomTabPanel>
 				)}

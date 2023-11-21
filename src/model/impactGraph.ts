@@ -1,6 +1,5 @@
 export interface IImpactGraph {
 	root: IImpactGraphNode
-	pathsCount?: number
 	pathsLimit?: number
 }
 
