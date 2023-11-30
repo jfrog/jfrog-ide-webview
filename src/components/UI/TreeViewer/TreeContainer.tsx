@@ -7,7 +7,6 @@ import Wrapper from '../Wrapper/Wrapper'
 
 export interface Props {
 	root: TreeNode
-	pathsCount?: number
 	pathsLimit?: number
 }
 
@@ -39,8 +38,8 @@ export default function TreeContainer(props: Props): JSX.Element {
 						<div className={css.noteWrapper}>
 							<span className={css.title}>Note: </span>
 							<span>
-								Graph size limit reached. The Impact Graph shows only {props.pathsLimit} out of{' '}
-								{props.pathsCount?.toLocaleString()} paths to this dependency.
+								Graph size limit reached. The Impact Graph shows only {props.pathsLimit} paths to
+								this dependency.
 							</span>
 						</div>
 					)}
@@ -62,5 +61,5 @@ export default function TreeContainer(props: Props): JSX.Element {
 }
 
 function graphSizeLimitReached(props: Props): boolean {
-	return (props.pathsCount && props.pathsLimit && props.pathsCount > props.pathsLimit) as boolean
+	return (props.pathsLimit && props.pathsLimit > 0) as boolean
 }

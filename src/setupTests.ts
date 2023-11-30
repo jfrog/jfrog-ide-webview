@@ -119,9 +119,7 @@ const fakeDependencyPage: IDependencyPage = {
 					]
 				}
 			]
-		},
-		pathsCount: 2,
-		pathsLimit: 10
+		}
 	}
 } as IDependencyPage
 

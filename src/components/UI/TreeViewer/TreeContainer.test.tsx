@@ -74,7 +74,6 @@ describe('TreeContainer component', () => {
 		const root: TreeNode = new TreeNode('root', 'Root Node')
 		const props: Props = {
 			root: root,
-			pathsCount: 15,
 			pathsLimit: 10
 		}
 
@@ -82,7 +81,7 @@ describe('TreeContainer component', () => {
 
 		expect(
 			screen.getByText(
-				'Graph size limit reached. The Impact Graph shows only 10 out of 15 paths to this dependency.'
+				'Graph size limit reached. The Impact Graph shows only 10 paths to this dependency.'
 			)
 		).toBeInTheDocument()
 	})
@@ -91,15 +90,14 @@ describe('TreeContainer component', () => {
 		const root: TreeNode = new TreeNode('root', 'Root Node')
 		const props: Props = {
 			root: root,
-			pathsCount: 5,
-			pathsLimit: 10
+			pathsLimit: -1
 		}
 
 		render(<TreeContainer {...props} />)
 
 		expect(
 			screen.queryByText(
-				'Graph size limit reached. The Impact Graph shows only 10 out of 15 paths to this dependency.'
+				'Graph size limit reached. The Impact Graph shows only 10 paths to this dependency.'
 			)
 		).not.toBeInTheDocument()
 	})
