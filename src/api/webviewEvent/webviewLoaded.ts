@@ -1,5 +1,5 @@
-import { WebviewEventType } from ".."
+import { WebviewEventType } from '..'
 
 export interface WebviewLoaded {
-    type: WebviewEventType.WebviewLoaded
+	type: WebviewEventType.WebviewLoaded
 }
