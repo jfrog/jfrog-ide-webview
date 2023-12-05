@@ -48,4 +48,18 @@ describe('EventManager util', () => {
 		// The consoleLogSpy should be called with the new emitter function
 		expect(consoleLogSpy).toHaveBeenCalledWith({ data: data, type: 'JUMP_TO_CODE' })
 	})
+
+	test('does not call sendEvent if setEmitter is invoked after already being loaded', async () => {
+		const setEmitterEvent = {
+			type: IdeEventType.SetEmitter,
+			data: 'return console.warn'
+		}
+
+		const sendEventSpy = jest.spyOn(console, 'warn')
+
+		await sendWebviewPage(setEmitterEvent)
+		await sendWebviewPage(setEmitterEvent)
+
+		expect(sendEventSpy).toHaveBeenCalledTimes(1)
+	})
 })
