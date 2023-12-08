@@ -7,7 +7,7 @@ import { ISeverity } from './severity'
 import { IAnalysisStep } from './analysisStep'
 import { ISecretFindings } from './secret'
 import { IIacFindings } from './iac'
-import { LoginProgressStatus, LoginConnectionType } from './login'
+import { LoginProgressStatus, LoginConnectionType, ISsoVerification } from './login'
 
 export enum PageType {
 	Empty = 'EMPTY',
@@ -75,6 +75,7 @@ export interface ILoginPage {
 	url: string
 	status: LoginProgressStatus
 	connectionType: LoginConnectionType
+	ssoVerification?: ISsoVerification
 }
 
 export type WebviewPage = IDependencyPage | IEosPage | IIaCPage | ISecretsPage | ILoginPage

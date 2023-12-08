@@ -28,3 +28,8 @@ export interface ISendLoginEventData {
 	accessToken?: string
 	loginConnectionType: LoginConnectionType
 }
+
+export interface ISsoVerification {
+	code: string
+	codeTimeoutMs: number
+}

@@ -1,0 +1,19 @@
+.arrowDown {
+	display: inline-flex;
+	transform: rotate(180deg);
+	transition: transform 800ms ease;
+}
+
+.arrowUp {
+	display: inline-flex;
+	transition: transform 800ms ease;
+}
+
+.text {
+	color: #fff;
+	margin-left: 7px;
+}
+
+.btn {
+	min-width: 0px;
+}
