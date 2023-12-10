@@ -198,7 +198,11 @@ describe('LoginModal component', () => {
 			status: LoginProgressStatus.Verifying,
 			connectionType: LoginConnectionType.Sso,
 			url: 'example.com',
-			pageType: PageType.Login
+			pageType: PageType.Login,
+			ssoVerification: {
+				code: '1234',
+				codeTimeoutMs: 10
+			}
 		}
 
 		test('renders the login modal correctly', async () => {
@@ -209,9 +213,11 @@ describe('LoginModal component', () => {
 				expect(
 					queryByText('We found environment variables with connection details for')
 				).not.toBeInTheDocument()
-				expect(getByText('Almost there!')).toBeInTheDocument()
+				expect(queryByText('Verification Code')).toBeInTheDocument()
 				expect(
-					getByText('Please go ahead and complete the login process in the opened browser')
+					getByText(
+						'Upon logging in through your browser, you might receive a prompt to enter the verification code above.'
+					)
 				).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
 				expect(document.querySelector('.text')).toBeInTheDocument()

@@ -11,6 +11,8 @@ import { Modal } from '../Modal'
 import css from './LoginModal.module.css'
 import { useContext } from 'react'
 import { XMark } from './../../Icons/XMark'
+import CopyButton from '../../CopyButton/CopyButton'
+import TimeoutProgress from '../../Progress/TimeoutProgress'
 
 export interface Props {
 	onClose: () => void
@@ -131,6 +133,25 @@ function getAutoConnectBody(data: ILoginPage): JSX.Element {
 
 function getVerifyingBody(data: ILoginPage): JSX.Element {
 	if (data.connectionType === LoginConnectionType.Sso) {
+		if (data.ssoVerification) {
+			return (
+				<div>
+					<div className={css.codeContainer}>
+						<div className={css.codeBody}>Verification Code</div>
+						<div className={css.codeBody}>
+							<div>{data.ssoVerification.code}</div>
+							<div>
+								<CopyButton copyText={data.ssoVerification.code} />
+							</div>
+						</div>
+						<TimeoutProgress timeoutMs={data.ssoVerification.codeTimeoutMs} />
+					</div>
+					Upon logging in through your browser, you might receive a prompt to enter the verification
+					code above.
+				</div>
+			)
+		}
+
 		return <div>Please go ahead and complete the login process in the opened browser</div>
 	}
 
@@ -157,7 +178,7 @@ function createTitle(data: ILoginPage): JSX.Element {
 					: 'Sign In Using Env-Var'
 			break
 		case LoginProgressStatus.Verifying:
-			title = data.connectionType === LoginConnectionType.Sso ? 'Almost there!' : 'Verifying...'
+			title = data.connectionType === LoginConnectionType.Sso ? '' : 'Verifying...'
 	}
 
 	return <div className={css.welcome}>{title}</div>

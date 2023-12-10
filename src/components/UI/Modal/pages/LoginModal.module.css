@@ -8,6 +8,27 @@
 	margin-top: 30px;
 }
 
+.codeContainer {
+	display: flex;
+	flex-direction: column;
+	background: #000000;
+	border-radius: 5px;
+	font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue';
+	line-height: 25px;
+	padding: 8px;
+	margin: 8px;
+	color: rgb(242, 243, 245);
+}
+
+.codeBody {
+	font-size: 16px;
+	color: rgb(242, 243, 245);
+	flex-direction: row;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 8px;
+}
+
 .welcome {
 	color: rgb(242, 243, 245);
 	font-size: 15px;
