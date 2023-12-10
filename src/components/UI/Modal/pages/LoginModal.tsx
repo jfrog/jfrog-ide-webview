@@ -146,7 +146,7 @@ function getVerifyingBody(data: ILoginPage): JSX.Element {
 						</div>
 						<TimeoutProgress timeoutMs={data.ssoVerification.codeTimeoutMs} />
 					</div>
-					After you login using the browser, you’ll be asked to enter the verification code above.
+					Upon logging in through your browser, you might receive a prompt to enter the verification code above.
 				</div>
 			)
 		}
