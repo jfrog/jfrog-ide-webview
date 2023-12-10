@@ -216,7 +216,7 @@ describe('LoginModal component', () => {
 				expect(queryByText('Verification Code')).toBeInTheDocument()
 				expect(
 					getByText(
-						'After you login using the browser, you’ll be asked to enter the verification code above.'
+						'Upon logging in through your browser, you might receive a prompt to enter the verification code above.'
 					)
 				).toBeInTheDocument()
 				expect(document.querySelector('.closeBtn')).toBeInTheDocument()
