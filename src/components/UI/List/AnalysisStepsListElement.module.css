@@ -131,3 +131,26 @@
 	max-width: 0;
 	padding: 0;
 }
+
+.timelineDot {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	font-size: 12px;
+	align-items: center;
+	justify-content: center;
+	color: #F0F0F0;
+	cursor: pointer;
+	box-shadow: none;
+	background-color: #454545;
+}
+.timelineDotBlue {
+	background-color: #007ACC;
+}
+.timelineDotFirst {
+	margin-top: 19px;
+}
+.timelineDotExpandMinimizeButton {
+	background-color: #BBB;
+}

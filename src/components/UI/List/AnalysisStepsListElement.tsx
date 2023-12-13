@@ -8,11 +8,9 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineDot from '@mui/lab/TimelineDot'
-import { COLORS } from '../../../styles'
 import { ButtonBase } from '@mui/material'
 import { ReactComponent as ExpandSvg } from '../../../assets/icons/expand.svg'
 import { ReactComponent as MinimizeSvg } from '../../../assets/icons/minimize.svg'
-import { SxProps } from '@mui/system'
 import { TimelineContentLogic, timelineContentStyle } from './TimelineContent'
 
 export interface Props {
@@ -30,21 +28,20 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		ctx.jumpToCode(item)
 	}
 
-	const timelineDotStyle = (i: number): SxProps => ({
-		display: 'flex',
-		width: 20,
-		height: 20,
-		margin: 0,
-		fontSize: 12,
-		alignItems: 'center',
-		justifyContent: 'center',
-		color: COLORS.WHITE_100,
-		backgroundColor: i === 0 || i === props.items.length - 1 ? COLORS.BLUE : COLORS.GRAY_500,
-		marginTop: i === 0 ? '19px' : '0px',
-		marginBottom: 0,
-		cursor: 'pointer',
-		boxShadow: 'none'
-	})
+	const timelineDotClasses = (i: number): string => {
+		const classNames = [css.timelineDot]
+
+		if (i === 0 || i === props.items.length - 1) {
+			classNames.push(css.timelineDotBlue)
+
+			if (i === 0) {
+				classNames.push(css.timelineDotFirst)
+			}
+		}
+
+		return classNames.join(" ")
+	}
+
 	const ExpandedTimeline = (): JSX.Element => (
 		<>
 			{props.items.map((item, i) => (
@@ -58,10 +55,10 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<TimelineItem className={css.timeline}>
 						<TimelineSeparator>
 							{i !== 0 && <Connector />}
-							<TimelineDot sx={timelineDotStyle(i)}>
+							<TimelineDot className={timelineDotClasses(i)}>
 								<span>{i + 1}</span>
 							</TimelineDot>
-							{/* when there are 2 items dont add the bottom connector*/}
+							{/* when there are 2 items don't add the bottom connector*/}
 							{(props.items.length > 2 || i != 1) && <Connector />}
 						</TimelineSeparator>
 						<TimelineContentLogic item={item} totalItems={props.items.length} index={i} />
@@ -79,11 +76,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 						<TimelineSeparator>
 							<Connector />
 							<TimelineDot
-								sx={{
-									...timelineDotStyle(1),
-									color: COLORS.WHITE_100,
-									backgroundColor: COLORS.GRAY_100
-								}}
+								className={`${timelineDotClasses(1)} ${css.timelineDotExpandMinimizeButton}`}
 							>
 								<MinimizeSvg />
 							</TimelineDot>
@@ -109,7 +102,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 			>
 				<TimelineItem className={css.timeline}>
 					<TimelineSeparator>
-						<TimelineDot sx={timelineDotStyle(0)}>
+						<TimelineDot className={timelineDotClasses(0)}>
 							<span>{1}</span>
 						</TimelineDot>
 						<Connector />
@@ -127,11 +120,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<TimelineSeparator>
 						<Connector />
 						<TimelineDot
-							sx={{
-								...timelineDotStyle(1),
-								color: COLORS.WHITE_100,
-								backgroundColor: COLORS.GRAY_100
-							}}
+							className={`${timelineDotClasses(1)} ${css.timelineDotExpandMinimizeButton}`}
 						>
 							<ExpandSvg />
 						</TimelineDot>
@@ -153,7 +142,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 				<TimelineItem className={css.timeline}>
 					<TimelineSeparator>
 						<Connector />
-						<TimelineDot sx={timelineDotStyle(props.items.length - 1)}>
+						<TimelineDot className={timelineDotClasses(props.items.length - 1)}>
 							<span>{props.items.length}</span>
 						</TimelineDot>
 					</TimelineSeparator>
