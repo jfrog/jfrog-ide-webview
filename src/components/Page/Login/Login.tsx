@@ -20,6 +20,7 @@ export function Login(props: Props): JSX.Element {
 
 	const closeModal = (): void => {
 		setModal(false)
+		props.data.status = LoginProgressStatus.Initial
 	}
 
 	return (

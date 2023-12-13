@@ -22,7 +22,11 @@ describe('Login component', () => {
 		pageType: PageType.Login,
 		url: 'https://example.com',
 		status: LoginProgressStatus.Initial,
-		connectionType: LoginConnectionType.BasicAuthOrToken
+		connectionType: LoginConnectionType.BasicAuthOrToken,
+		ssoVerification: {
+			code: '123456',
+			codeTimeoutMs: 1000
+		}
 	}
 
 	test('renders Login component', () => {

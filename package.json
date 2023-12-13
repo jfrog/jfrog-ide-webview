@@ -1,6 +1,6 @@
 {
 	"name": "jfrog-ide-webview",
-	"version": "0.2.12",
+	"version": "0.2.13",
 	"main": "types/index.js",
 	"homepage": ".",
 	"files": [
@@ -9,6 +9,7 @@
 	],
 	"types": "types/index.d.ts",
 	"dependencies": {
+		"@mui/icons-material": "^5.14.19",
 		"@mui/lab": "^5.0.0-alpha.142",
 		"@mui/material": "^5.14.7",
 		"clone": "^2.1.2",
