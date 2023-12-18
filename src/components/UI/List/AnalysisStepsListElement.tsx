@@ -39,7 +39,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 			}
 		}
 
-		return classNames.join(" ")
+		return classNames.join(' ')
 	}
 
 	const ExpandedTimeline = (): JSX.Element => (

@@ -140,14 +140,14 @@
 	font-size: 12px;
 	align-items: center;
 	justify-content: center;
-	color: #F0F0F0;
+	color: #f0f0f0;
 	cursor: pointer;
 	box-shadow: none;
 	background-color: #454545;
 }
 
 .timelineDotBlue {
-	background-color: #007ACC;
+	background-color: #007acc;
 }
 
 .timelineDotFirst {
@@ -155,7 +155,7 @@
 }
 
 .timelineDotExpandMinimizeButton {
-	background-color: #BBB;
+	background-color: #bbb;
 }
 
 .timelineContent {
