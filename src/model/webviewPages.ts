@@ -12,7 +12,7 @@ import { LoginProgressStatus, LoginConnectionType, ISsoVerification } from './lo
 export enum PageType {
 	Empty = 'EMPTY',
 	Dependency = 'DEPENDENCY',
-	Eos = 'EOS',
+	Sast = 'SAST',
 	CveApplicability = 'CVE_APPLICABILITY',
 	IaC = 'IAC',
 	Secrets = 'SECRETS',
@@ -48,8 +48,8 @@ export interface ISecretsPage {
 	finding?: ISecretFindings
 }
 
-export interface IEosPage {
-	pageType: PageType.Eos
+export interface ISastPage {
+	pageType: PageType.Sast
 	header: string
 	location: IAnalysisStep
 	description?: string
@@ -78,4 +78,4 @@ export interface ILoginPage {
 	ssoVerification?: ISsoVerification
 }
 
-export type WebviewPage = IDependencyPage | IEosPage | IIaCPage | ISecretsPage | ILoginPage
+export type WebviewPage = IDependencyPage | ISastPage | IIaCPage | ISecretsPage | ILoginPage

@@ -2,7 +2,7 @@ import { LoginConnectionType, LoginProgressStatus } from './login'
 import { ISeverity } from './severity'
 import {
 	IDependencyPage,
-	IEosPage,
+	ISastPage,
 	IIaCPage,
 	ILoginPage,
 	ISecretsPage,
@@ -135,11 +135,11 @@ describe('Model - WebviewPage', () => {
 		expect(secretsPage.abbreviation).toBe('ABC')
 	})
 
-	test('should have the correct properties for IEosPage', () => {
-		// Create a sample EOS page object
-		const eosPage: IEosPage = {
-			pageType: PageType.Eos,
-			header: 'EOS Page',
+	test('should have the correct properties for ISastPage', () => {
+		// Create a sample SAST page object
+		const sastPage: ISastPage = {
+			pageType: PageType.Sast,
+			header: 'SAST Page',
 			location: {
 				file: 'file/path',
 				startRow: 1,
@@ -170,9 +170,9 @@ describe('Model - WebviewPage', () => {
 		}
 
 		// Assert the properties
-		expect(eosPage.pageType).toBe(PageType.Eos)
-		expect(eosPage.header).toBe('EOS Page')
-		expect(eosPage.location.file).toBe('file/path')
+		expect(sastPage.pageType).toBe(PageType.Sast)
+		expect(sastPage.header).toBe('SAST Page')
+		expect(sastPage.location.file).toBe('file/path')
 	})
 
 	test('should have the correct properties for IIaCPage', () => {

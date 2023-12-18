@@ -1,4 +1,4 @@
-export const eosSuppressExample = `\`\`\`javascript 
+export const sastSuppressExample = `\`\`\`javascript 
 // Javascript Example 
 export: (req, res) => {
     res = set_cors(req, res)

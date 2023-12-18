@@ -4,7 +4,7 @@ import Markdown from '../Markdown/Markdown'
 import { IImpactGraph, PageType } from '../../../model'
 import Row from '../Row/Row'
 import { ReactComponent as SadFace } from '../../../assets/icons/sad_face.svg'
-import { eosSuppressExample, secretsSuppressExample } from './texts'
+import { sastSuppressExample, secretsSuppressExample } from './texts'
 
 interface Props {
 	pageType: PageType
@@ -77,7 +77,7 @@ function PatchTheCode(props: { pageType: PageType; remediation: string[] }): JSX
 			header={
 				<h1>
 					{LABELS.PATCH_THE_CODE}
-					{[PageType.Eos].includes(props.pageType) && (
+					{[PageType.Sast].includes(props.pageType) && (
 						<span className={css.recommendedLabel}>Recommended</span>
 					)}
 				</h1>
@@ -97,7 +97,7 @@ function PatchTheCode(props: { pageType: PageType; remediation: string[] }): JSX
 
 function SuppressTheFinding(props: { pageType: PageType }): JSX.Element {
 	const suppressIssueMarkdownExample =
-		props.pageType === PageType.Eos ? eosSuppressExample : secretsSuppressExample
+		props.pageType === PageType.Sast ? sastSuppressExample : secretsSuppressExample
 	return (
 		<Collapse header={<h1>{LABELS.SUPPRESS_THE_FINDING}</h1>}>
 			<div>
@@ -129,7 +129,7 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 	)
 
 	const hasFixedVersion = props.fixedVersion && props.fixedVersion.length > 0
-	const showSuppressFinding = [PageType.Eos, PageType.Secrets].includes(props.pageType)
+	const showSuppressFinding = [PageType.Sast, PageType.Secrets].includes(props.pageType)
 
 	const hasAction = hasFixedVersion ?? props.remediation ?? showSuppressFinding
 	return (

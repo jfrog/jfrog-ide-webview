@@ -3,7 +3,7 @@ import { getSeverityImage } from '../../../utils/utils'
 import {
 	IAnalysisStep,
 	IDependencyPage,
-	IEosPage,
+	ISastPage,
 	IIaCPage,
 	ISecretsPage,
 	PageType
@@ -14,7 +14,7 @@ import { ReactComponent as NotApplicableIcon } from '../../../assets/icons/not_a
 
 export interface Props {
 	text: string
-	pageData: Partial<IDependencyPage | ISecretsPage | IIaCPage | IEosPage>
+	pageData: Partial<IDependencyPage | ISecretsPage | IIaCPage | ISastPage>
 }
 
 const LocationSpan = (props: { location: IAnalysisStep }): JSX.Element => (
@@ -59,7 +59,7 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 )
 
 export default function Header(props: Props): JSX.Element {
-	const showLocationInPages = [PageType.IaC, PageType.Secrets, PageType.Eos].includes(
+	const showLocationInPages = [PageType.IaC, PageType.Secrets, PageType.Sast].includes(
 		props.pageData.pageType as PageType
 	)
 	const showCVEInfoInPages = PageType.Dependency === props.pageData.pageType
@@ -67,10 +67,10 @@ export default function Header(props: Props): JSX.Element {
 		(props.pageData as IDependencyPage).extendedInformation !== undefined
 	const applicableData = (props.pageData as IDependencyPage).cve?.applicableData
 
-	const ruleId = (props.pageData as IEosPage).ruleId
+	const ruleId = (props.pageData as ISastPage).ruleId
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-	const lineOfVuln = (props.pageData as IEosPage).location
-		? (props.pageData as IEosPage).location.startRow
+	const lineOfVuln = (props.pageData as ISastPage).location
+		? (props.pageData as ISastPage).location.startRow
 		: undefined
 
 	const metadataClassName = showCVEInfoInPages

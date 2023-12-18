@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import App from './App'
 import {
 	IDependencyPage,
-	IEosPage,
+	ISastPage,
 	IIaCPage,
 	ILoginPage,
 	ISecretsPage,
@@ -39,22 +39,22 @@ describe('App component', () => {
 		expect(screen.getAllByText('Dependency-ID')).toHaveLength(1)
 	})
 
-	test('renders the Eos page when the page type is "Eos"', async () => {
+	test('renders the SAST page when the page type is "Sast"', async () => {
 		render(<App />)
 
-		// Load Eos page.
+		// Load SAST page.
 		const data = {
 			type: IdeEventType.ShowPage,
 			data: {
-				pageType: PageType.Eos,
-				header: 'Header-eos',
+				pageType: PageType.Sast,
+				header: 'Header-sast',
 				location: { file: 'file' } as IAnalysisStep
-			} as IEosPage
+			} as ISastPage
 		}
 		await sendWebviewPage(data)
 
-		// Assert that the Eos component is rendered
-		expect(screen.getByText('Header-eos')).toBeInTheDocument()
+		// Assert that the SAST component is rendered
+		expect(screen.getByText('Header-sast')).toBeInTheDocument()
 	})
 
 	test('renders the IaC page when the page type is "IaC"', async () => {

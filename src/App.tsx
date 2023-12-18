@@ -1,7 +1,7 @@
 import css from './App.module.css'
 import Dependency from './components/Page/Dependency/Dependency'
 import { useState, useMemo } from 'react'
-import Eos from './components/Page/Eos/Eos'
+import Sast from './components/Page/Sast/Sast'
 import IaC from './components/Page/IaC/IaC'
 import Secrets from './components/Page/Secrets/Secrets'
 import { WebviewPage, PageType } from './model'
@@ -24,8 +24,8 @@ function App(): JSX.Element {
 		case PageType.Dependency:
 			page = <Dependency data={data} />
 			break
-		case PageType.Eos:
-			page = <Eos data={data} />
+		case PageType.Sast:
+			page = <Sast data={data} />
 			break
 		case PageType.IaC:
 			page = <IaC data={data} />

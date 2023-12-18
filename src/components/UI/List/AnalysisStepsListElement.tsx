@@ -11,7 +11,7 @@ import TimelineDot from '@mui/lab/TimelineDot'
 import { ButtonBase } from '@mui/material'
 import { ReactComponent as ExpandSvg } from '../../../assets/icons/expand.svg'
 import { ReactComponent as MinimizeSvg } from '../../../assets/icons/minimize.svg'
-import { TimelineContentLogic, timelineContentStyle } from './TimelineContent'
+import { TimelineContentLogic } from './TimelineContent'
 
 export interface Props {
 	items: IAnalysisStep[]
@@ -81,7 +81,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 								<MinimizeSvg />
 							</TimelineDot>
 						</TimelineSeparator>
-						<TimelineContent style={timelineContentStyle}>
+						<TimelineContent className={css.timelineContent}>
 							<div className={css.flexCenter}>
 								<span className={css.showMoreLabel}>Show less</span>
 							</div>
@@ -126,7 +126,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 						</TimelineDot>
 						<Connector />
 					</TimelineSeparator>
-					<TimelineContent style={timelineContentStyle}>
+					<TimelineContent className={css.timelineContent}>
 						<div className={css.flexCenter}>
 							<span className={css.showMoreLabel}>Show All Steps</span>
 						</div>
@@ -156,7 +156,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		</>
 	)
 	return (
-		<Timeline style={{ display: 'flex', justifyContent: 'left', padding: 0 }}>
+		<Timeline className={css.analysisStepsListElement}>
 			{expanded ? <ExpandedTimeline /> : <MinimizedTimeline />}
 		</Timeline>
 	)

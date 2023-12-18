@@ -145,12 +145,29 @@
 	box-shadow: none;
 	background-color: #454545;
 }
+
 .timelineDotBlue {
 	background-color: #007ACC;
 }
+
 .timelineDotFirst {
 	margin-top: 19px;
 }
+
 .timelineDotExpandMinimizeButton {
 	background-color: #BBB;
+}
+
+.timelineContent {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	text-wrap: nowrap;
+	overflow: hidden;
+}
+
+.analysisStepsListElement {
+	display: flex;
+	justify-content: left;
+	padding: 0;
 }

@@ -23,10 +23,10 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 			<div className={css.defaultContainer}>
 				{props.data.isApplicable && (
 					<>
+						<h6 className={css.subtitle}>
+							Why is this CVE applicable?
+						</h6>
 						<div>
-							<h6 className={css.subtitle} style={{ marginBottom: '20px' }}>
-								Why is this CVE applicable?
-							</h6>
 							<div className={css.rowList}>
 								{props.data.evidence?.map((evidence, i) => (
 									<div key={i}>
