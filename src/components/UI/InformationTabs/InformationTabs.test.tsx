@@ -4,7 +4,7 @@ import {
 	IApplicableDetails,
 	ICve,
 	IDependencyPage,
-	IEosPage,
+	ISastPage,
 	IEvidence,
 	IExtendedInformation,
 	IIaCPage,
@@ -56,9 +56,9 @@ describe('InformationTabs component', () => {
 		},
 		references: [{ url: 'url' }]
 	}
-	const eosPageData: IEosPage = {
+	const sastPageData: ISastPage = {
 		severity: ISeverity.High,
-		pageType: PageType.Eos,
+		pageType: PageType.Sast,
 		header: 'Header example',
 		location: {
 			file: '/path/to/file',
@@ -164,11 +164,11 @@ describe('InformationTabs component', () => {
 		expect(screen.getByText(TABS.MORE_INFORMATION.label)).toBeInTheDocument()
 	})
 
-	test('renders the InformationTabs component with Eos page tabs: what_can_i_do, more_information', () => {
+	test('renders the InformationTabs component with SAST page tabs: what_can_i_do, more_information', () => {
 		render(
 			<InformationTabs
 				tabs={[TABS.WHAT_CAN_I_DO.key, TABS.MORE_INFORMATION.key]}
-				data={eosPageData}
+				data={sastPageData}
 			/>
 		)
 		expect(screen.getByText(TABS.WHAT_CAN_I_DO.label)).toBeInTheDocument()

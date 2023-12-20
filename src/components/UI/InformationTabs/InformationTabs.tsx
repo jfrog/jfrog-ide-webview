@@ -1,7 +1,6 @@
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import React, { useEffect, useState } from 'react'
-import { COLORS } from '../../../styles'
 import { Collapse } from '../Collapse/Collapse'
 import css from './InformationTabs.module.css'
 import { ReactComponent as DocumentSvg } from '../../../assets/icons/document.svg'
@@ -10,7 +9,7 @@ import { ReactComponent as InfoIcon } from '../../../assets/icons/info.svg'
 import { ReactComponent as ReferenceIcon } from '../../../assets/icons/refrence.svg'
 import {
 	IDependencyPage,
-	IEosPage,
+	ISastPage,
 	IIaCPage,
 	IReference,
 	ISecretsPage,
@@ -48,7 +47,7 @@ export const LABELS = {
 }
 
 export interface Props {
-	data: ISecretsPage | IDependencyPage | IEosPage | IIaCPage
+	data: ISecretsPage | IDependencyPage | ISastPage | IIaCPage
 	tabs: string[]
 }
 
@@ -98,11 +97,11 @@ function InformationTabs(props: Props): JSX.Element {
 	const extendedInformation = (props.data as IDependencyPage).extendedInformation
 
 	switch (props.data.pageType) {
-		case PageType.Eos:
-			remediation = (props.data as IEosPage).remediation
+		case PageType.Sast:
+			remediation = (props.data as ISastPage).remediation
 
 			if (!remediation) {
-				const content = (props.data as IEosPage).description
+				const content = (props.data as ISastPage).description
 				const descriptionSplit = content?.split('### Remediation')
 
 				if (descriptionSplit && descriptionSplit.length > 1) {
@@ -123,7 +122,7 @@ function InformationTabs(props: Props): JSX.Element {
 	// set default patch the code text in no remediation
 	if (!remediation) {
 		switch (props.data.pageType) {
-			case PageType.Eos:
+			case PageType.Sast:
 			case PageType.IaC:
 				remediation = [
 					"Read about the vulnerability in the 'More information' tab and change the code accordingly"
@@ -138,122 +137,120 @@ function InformationTabs(props: Props): JSX.Element {
 	}
 
 	const showMoreInformationTab =
-		props.tabs.includes(TABS.MORE_INFORMATION.key) && (props.data as IEosPage).description
+		props.tabs.includes(TABS.MORE_INFORMATION.key) && (props.data as ISastPage).description
 
 	return (
-		<div style={{ overflow: 'hidden' }}>
-			<div className={css.tabsContainer}>
-				<Tabs
-					className={css.borderBottom}
-					TabIndicatorProps={{ style: { backgroundColor: COLORS.PRIMARY } }}
-					value={selectedTabIndex}
-					onChange={handleChange}
-				>
-					{showWhatCanIDoTab && (
-						<Tab
-							className={tabClass(TABS.WHAT_CAN_I_DO.key)}
-							value={TABS.WHAT_CAN_I_DO.key}
-							label={TABS.WHAT_CAN_I_DO.label}
-						/>
-					)}
-					{showCveInformationTab && (
-						<Tab
-							className={tabClass(TABS.CVE_INFORMATION.key)}
-							value={TABS.CVE_INFORMATION.key}
-							label={TABS.CVE_INFORMATION.label}
-						/>
-					)}
-					{showImpactGraphTab && (
-						<Tab
-							className={tabClass(TABS.IMPACT_GRAPH.key)}
-							value={TABS.IMPACT_GRAPH.key}
-							label={TABS.IMPACT_GRAPH.label}
-						/>
-					)}
-					{showMoreInformationTab && (
-						<Tab
-							className={tabClass(TABS.MORE_INFORMATION.key)}
-							value={TABS.MORE_INFORMATION.key}
-							label={TABS.MORE_INFORMATION.label}
-						/>
-					)}
-				</Tabs>
+		<div className={css.tabsContainer}>
+			<Tabs
+				className={css.borderBottom}
+				TabIndicatorProps={{ className: css.chosenTab }}
+				value={selectedTabIndex}
+				onChange={handleChange}
+			>
 				{showWhatCanIDoTab && (
-					<CustomTabPanel value={selectedTabIndex} index={TABS.WHAT_CAN_I_DO.key}>
-						<WhatCanIDoTab
-							pageType={props.data.pageType}
-							component={(props.data as IDependencyPage).component}
-							impactGraph={(props.data as IDependencyPage).impactGraph}
-							fixedVersion={(props.data as IDependencyPage).fixedVersion}
-							remediation={remediation}
-						/>
-					</CustomTabPanel>
+					<Tab
+						className={tabClass(TABS.WHAT_CAN_I_DO.key)}
+						value={TABS.WHAT_CAN_I_DO.key}
+						label={TABS.WHAT_CAN_I_DO.label}
+					/>
+				)}
+				{showCveInformationTab && (
+					<Tab
+						className={tabClass(TABS.CVE_INFORMATION.key)}
+						value={TABS.CVE_INFORMATION.key}
+						label={TABS.CVE_INFORMATION.label}
+					/>
+				)}
+				{showImpactGraphTab && (
+					<Tab
+						className={tabClass(TABS.IMPACT_GRAPH.key)}
+						value={TABS.IMPACT_GRAPH.key}
+						label={TABS.IMPACT_GRAPH.label}
+					/>
 				)}
 				{showMoreInformationTab && (
-					<CustomTabPanel value={selectedTabIndex} index={TABS.MORE_INFORMATION.key}>
+					<Tab
+						className={tabClass(TABS.MORE_INFORMATION.key)}
+						value={TABS.MORE_INFORMATION.key}
+						label={TABS.MORE_INFORMATION.label}
+					/>
+				)}
+			</Tabs>
+			{showWhatCanIDoTab && (
+				<CustomTabPanel value={selectedTabIndex} index={TABS.WHAT_CAN_I_DO.key}>
+					<WhatCanIDoTab
+						pageType={props.data.pageType}
+						component={(props.data as IDependencyPage).component}
+						impactGraph={(props.data as IDependencyPage).impactGraph}
+						fixedVersion={(props.data as IDependencyPage).fixedVersion}
+						remediation={remediation}
+					/>
+				</CustomTabPanel>
+			)}
+			{showMoreInformationTab && (
+				<CustomTabPanel value={selectedTabIndex} index={TABS.MORE_INFORMATION.key}>
+					<Collapse
+						header={
+							<h1>
+								<DocumentSvg /> {LABELS.DESCRIPTION}
+							</h1>
+						}
+					>
+						{/* @ts-ignore*/}
+						<Markdown text={(props.data as ISastPage).description} />
+					</Collapse>
+				</CustomTabPanel>
+			)}
+			{props.tabs.includes(TABS.IMPACT_GRAPH.key) && treeNode && (
+				<CustomTabPanel value={selectedTabIndex} index={TABS.IMPACT_GRAPH.key}>
+					<ImpactGraph
+						treeNode={treeNode}
+						pathsLimit={(props.data as IDependencyPage).impactGraph.pathsLimit}
+					/>
+				</CustomTabPanel>
+			)}
+			{showCveInformationTab && (
+				<CustomTabPanel value={selectedTabIndex} index={TABS.CVE_INFORMATION.key}>
+					{(props.data as IDependencyPage).extendedInformation && (
 						<Collapse
 							header={
 								<h1>
-									<DocumentSvg /> {LABELS.DESCRIPTION}
+									<JfrogResearchIcon /> JFrog Research
 								</h1>
 							}
 						>
 							{/* @ts-ignore*/}
-							<Markdown text={(props.data as IEosPage).description} />
+							<Research data={(props.data as IDependencyPage).extendedInformation} />
 						</Collapse>
-					</CustomTabPanel>
-				)}
-				{props.tabs.includes(TABS.IMPACT_GRAPH.key) && treeNode && (
-					<CustomTabPanel value={selectedTabIndex} index={TABS.IMPACT_GRAPH.key}>
-						<ImpactGraph
-							treeNode={treeNode}
-							pathsLimit={(props.data as IDependencyPage).impactGraph.pathsLimit}
+					)}
+					<br />
+					<Collapse
+						header={
+							<h1>
+								<InfoIcon /> Public Sources
+							</h1>
+						}
+					>
+						<PublicSources
+							summary={(props.data as IDependencyPage).summary}
+							cve={(props.data as IDependencyPage).cve}
+							infectedVersions={(props.data as IDependencyPage).infectedVersion}
 						/>
-					</CustomTabPanel>
-				)}
-				{showCveInformationTab && (
-					<CustomTabPanel value={selectedTabIndex} index={TABS.CVE_INFORMATION.key}>
-						{(props.data as IDependencyPage).extendedInformation && (
-							<Collapse
-								header={
-									<h1>
-										<JfrogResearchIcon /> JFrog Research
-									</h1>
-								}
-							>
-								{/* @ts-ignore*/}
-								<Research data={(props.data as IDependencyPage).extendedInformation} />
-							</Collapse>
-						)}
-						<br />
+					</Collapse>
+					<br />
+					{(props.data as IDependencyPage).references && (
 						<Collapse
 							header={
 								<h1>
-									<InfoIcon /> Public Sources
+									<ReferenceIcon /> References
 								</h1>
 							}
 						>
-							<PublicSources
-								summary={(props.data as IDependencyPage).summary}
-								cve={(props.data as IDependencyPage).cve}
-								infectedVersions={(props.data as IDependencyPage).infectedVersion}
-							/>
+							<Reference data={(props.data as IDependencyPage).references as IReference[]} />
 						</Collapse>
-						<br />
-						{(props.data as IDependencyPage).references && (
-							<Collapse
-								header={
-									<h1>
-										<ReferenceIcon /> References
-									</h1>
-								}
-							>
-								<Reference data={(props.data as IDependencyPage).references as IReference[]} />
-							</Collapse>
-						)}
-					</CustomTabPanel>
-				)}
-			</div>
+					)}
+				</CustomTabPanel>
+			)}
 		</div>
 	)
 }

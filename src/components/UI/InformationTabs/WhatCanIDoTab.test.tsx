@@ -3,7 +3,7 @@ import {
 	IApplicableDetails,
 	ICve,
 	IDependencyPage,
-	IEosPage,
+	ISastPage,
 	IEvidence,
 	IExtendedInformation,
 	IIaCPage,
@@ -57,9 +57,9 @@ describe('WhatCanIDoTab component', () => {
 		},
 		references: [{ url: 'url' }]
 	}
-	const eosPageData: IEosPage = {
+	const sastPageData: ISastPage = {
 		severity: ISeverity.High,
-		pageType: PageType.Eos,
+		pageType: PageType.Sast,
 		header: 'Header example',
 		location: {
 			file: '/path/to/file',
@@ -132,7 +132,7 @@ describe('WhatCanIDoTab component', () => {
 		}
 	}
 	test('renders the WhatCanIDoTab component with remediation section', () => {
-		render(<WhatCanIDoTab pageType={PageType.Eos} remediation={['Remediation 1']} />)
+		render(<WhatCanIDoTab pageType={PageType.Sast} remediation={['Remediation 1']} />)
 		expect(screen.getByText('Remediation 1')).toBeInTheDocument()
 	})
 	test('renders the WhatCanIDoTab for dependency page', () => {
@@ -193,8 +193,8 @@ describe('WhatCanIDoTab component', () => {
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.SUPPRESS_THE_FINDING)).toBeInTheDocument()
 	})
-	test('renders the WhatCanIDoTab for EOS page', () => {
-		render(<WhatCanIDoTab pageType={eosPageData.pageType} remediation={['Remediation 1']} />)
+	test('renders the WhatCanIDoTab for SAST page', () => {
+		render(<WhatCanIDoTab pageType={sastPageData.pageType} remediation={['Remediation 1']} />)
 		expect(screen.getByText(LABELS.PATCH_THE_CODE)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.REMEDIATION)).toBeInTheDocument()
 		expect(screen.getByText(LABELS.SUPPRESS_THE_FINDING)).toBeInTheDocument()

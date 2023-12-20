@@ -1,14 +1,14 @@
-import css from './Eos.module.css'
+import css from './Sast.module.css'
 import Header from '../../UI/Header/Header'
 import ContextualAnalysis from './ContextualAnalysis'
-import { IEosPage } from '../../../model'
+import { ISastPage } from '../../../model'
 import InformationTabs, { TABS } from '../../UI/InformationTabs/InformationTabs'
 
 export interface Props {
-	data: IEosPage
+	data: ISastPage
 }
 
-export default function Eos(props: Props): JSX.Element {
+export default function Sast(props: Props): JSX.Element {
 	return (
 		<div className={css.PageContainer}>
 			<Header pageData={props.data} text={props.data.header} />

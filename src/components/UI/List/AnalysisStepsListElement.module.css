@@ -131,3 +131,45 @@
 	max-width: 0;
 	padding: 0;
 }
+
+.timelineDot {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	font-size: 12px;
+	align-items: center;
+	justify-content: center;
+	color: #f0f0f0;
+	cursor: pointer;
+	box-shadow: none;
+	background-color: #454545;
+}
+
+.timelineDotBlue {
+	composes: timelineDot;
+	background-color: #007acc;
+}
+
+.timelineDotFirst {
+	composes: timelineDotBlue;
+	margin-top: 19px;
+}
+
+.timelineDotExpandMinimizeButton {
+	background-color: #bbb;
+}
+
+.timelineContent {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	text-wrap: nowrap;
+	overflow: hidden;
+}
+
+.analysisStepsListElement {
+	display: flex;
+	justify-content: left;
+	padding: 0;
+}

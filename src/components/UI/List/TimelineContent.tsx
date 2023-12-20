@@ -5,13 +5,7 @@ import { ReactComponent as AttackerEntry } from '../../../assets/icons/attacker_
 import { ReactComponent as ExploitExecution } from '../../../assets/icons/exploit_execution.svg'
 
 const FILE_NAME_TRIM_LENGTH = 20
-export const timelineContentStyle = {
-	display: 'flex',
-	alignItems: 'center',
-	gap: 6,
-	textWrap: 'nowrap',
-	overflow: 'hidden'
-}
+
 interface TimelineContentLogicProps {
 	item: IAnalysisStep
 	totalItems: number
@@ -35,7 +29,7 @@ export const TimelineContentLogic = ({
 	const isLastStep = index === totalItems - 1
 
 	return (
-		<TimelineContent style={timelineContentStyle}>
+		<TimelineContent className={css.timelineContent}>
 			<div className={css.rowContainer}>
 				<span className={css.row}>
 					{item.fileName && hideOverflowText(item.fileName, FILE_NAME_TRIM_LENGTH)} ({item.startRow}
