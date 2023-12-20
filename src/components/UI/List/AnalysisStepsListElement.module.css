@@ -147,10 +147,12 @@
 }
 
 .timelineDotBlue {
+	composes: timelineDot;
 	background-color: #007acc;
 }
 
 .timelineDotFirst {
+	composes: timelineDotBlue;
 	margin-top: 19px;
 }
 

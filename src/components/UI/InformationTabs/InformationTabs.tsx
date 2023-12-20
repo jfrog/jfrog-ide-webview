@@ -1,7 +1,6 @@
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import React, { useEffect, useState } from 'react'
-import { COLORS } from '../../../styles'
 import { Collapse } from '../Collapse/Collapse'
 import css from './InformationTabs.module.css'
 import { ReactComponent as DocumentSvg } from '../../../assets/icons/document.svg'
@@ -144,7 +143,7 @@ function InformationTabs(props: Props): JSX.Element {
 		<div className={css.tabsContainer}>
 			<Tabs
 				className={css.borderBottom}
-				TabIndicatorProps={{ style: { backgroundColor: COLORS.PRIMARY } }}
+				TabIndicatorProps={{ className: css.chosenTab }}
 				value={selectedTabIndex}
 				onChange={handleChange}
 			>

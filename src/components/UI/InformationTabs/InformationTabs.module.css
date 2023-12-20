@@ -112,6 +112,10 @@ span {
 	border-bottom: 1px solid #454545;
 }
 
+.chosenTab {
+	background-color: #3EB065;
+}
+
 .columns {
 	display: flex;
 	gap: 8px;

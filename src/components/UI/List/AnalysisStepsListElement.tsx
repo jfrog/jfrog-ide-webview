@@ -28,18 +28,16 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 		ctx.jumpToCode(item)
 	}
 
-	const timelineDotClasses = (i: number): string => {
-		const classNames = [css.timelineDot]
-
-		if (i === 0 || i === props.items.length - 1) {
-			classNames.push(css.timelineDotBlue)
-
-			if (i === 0) {
-				classNames.push(css.timelineDotFirst)
-			}
+	const timelineDotClass = (i: number): string => {
+		if (i === 0) {
+			return css.timelineDotFirst
 		}
 
-		return classNames.join(' ')
+		if (i === props.items.length - 1) {
+			return css.timelineDotBlue
+		}
+
+		return css.timelineDot
 	}
 
 	const ExpandedTimeline = (): JSX.Element => (
@@ -55,7 +53,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<TimelineItem className={css.timeline}>
 						<TimelineSeparator>
 							{i !== 0 && <Connector />}
-							<TimelineDot className={timelineDotClasses(i)}>
+							<TimelineDot className={timelineDotClass(i)}>
 								<span>{i + 1}</span>
 							</TimelineDot>
 							{/* when there are 2 items don't add the bottom connector*/}
@@ -76,7 +74,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 						<TimelineSeparator>
 							<Connector />
 							<TimelineDot
-								className={`${timelineDotClasses(1)} ${css.timelineDotExpandMinimizeButton}`}
+								className={`${timelineDotClass(1)} ${css.timelineDotExpandMinimizeButton}`}
 							>
 								<MinimizeSvg />
 							</TimelineDot>
@@ -102,7 +100,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 			>
 				<TimelineItem className={css.timeline}>
 					<TimelineSeparator>
-						<TimelineDot className={timelineDotClasses(0)}>
+						<TimelineDot className={timelineDotClass(0)}>
 							<span>{1}</span>
 						</TimelineDot>
 						<Connector />
@@ -120,7 +118,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 					<TimelineSeparator>
 						<Connector />
 						<TimelineDot
-							className={`${timelineDotClasses(1)} ${css.timelineDotExpandMinimizeButton}`}
+							className={`${timelineDotClass(1)} ${css.timelineDotExpandMinimizeButton}`}
 						>
 							<ExpandSvg />
 						</TimelineDot>
@@ -142,7 +140,7 @@ export default function AnalysisStepsListElement(props: Props): JSX.Element {
 				<TimelineItem className={css.timeline}>
 					<TimelineSeparator>
 						<Connector />
-						<TimelineDot className={timelineDotClasses(props.items.length - 1)}>
+						<TimelineDot className={timelineDotClass(props.items.length - 1)}>
 							<span>{props.items.length}</span>
 						</TimelineDot>
 					</TimelineSeparator>
