@@ -68,6 +68,19 @@ span {
 	line-height: 18px;
 }
 
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+ol {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+li {
+	margin-bottom: 20px;
+}
+
 .label {
 	color: #bbb;
 	font-size: 12px;
@@ -134,4 +147,43 @@ code {
 .activeTab {
 	color: #3eb065 !important;
 	text-transform: none;
+}
+pre {
+	background-color: #F4F4F4;
+	padding: 10px;
+	border: 1px solid #ddd;
+	overflow-x: auto;
+}
+a {
+	font-size: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-decoration: underline;
+	word-break: keep-all;
+	width: auto;
+	display: inline-block;
+	margin: 6px;
+	padding: 5px 10px;
+}
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -60px;
+}
+.tooltip:hover .tooltiptext {
+	visibility: visible;
 }
