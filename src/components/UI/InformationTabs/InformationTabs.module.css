@@ -96,6 +96,15 @@ li {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 18px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-decoration: underline;
+	word-break: keep-all;
+	width: auto;
+	display: inline-block;
+	margin: 6px;
+	padding: 5px 10px;
 }
 
 .recommendedLabel {
@@ -165,25 +174,4 @@ a {
 	display: inline-block;
 	margin: 6px;
 	padding: 5px 10px;
-}
-.tooltip {
-	position: relative;
-	display: inline-block;
-}
-.tooltip .tooltiptext {
-	visibility: hidden;
-	width: 120px;
-	background-color: black;
-	color: white;
-	text-align: center;
-	border-radius: 6px;
-	padding: 5px 0;
-	position: absolute;
-	z-index: 1;
-	bottom: 100%;
-	left: 50%;
-	margin-left: -60px;
-}
-.tooltip:hover .tooltiptext {
-	visibility: visible;
 }
