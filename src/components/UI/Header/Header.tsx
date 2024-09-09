@@ -17,13 +17,13 @@ export interface Props {
 	pageData: Partial<IDependencyPage | ISecretsPage | IIaCPage | ISastPage>
 }
 
-const MetadataSpan = (props: { metadata: string}): JSX.Element => (
+const MetadataSpan = (props: { metadata: string }): JSX.Element => (
 	<span className={css.locationLabel}>
 		<b>Token Info:</b> {props.metadata}
 	</span>
 )
 
-const TokenValidationSpan = (props: { tokenValidation: string}): JSX.Element => (
+const TokenValidationSpan = (props: { tokenValidation: string }): JSX.Element => (
 	<span className={css.locationLabel}>
 		<b>Token Validation</b> {props.tokenValidation}
 	</span>
@@ -79,8 +79,12 @@ export default function Header(props: Props): JSX.Element {
 		(props.pageData as IDependencyPage).extendedInformation !== undefined
 	const applicableData = (props.pageData as IDependencyPage).cve?.applicableData
 
-	const tokenValidation = (props.pageData as ISecretsPage).tokenValidation ? (props.pageData as ISecretsPage).tokenValidation : undefined
-	const metadata = (props.pageData as ISecretsPage).metadata ? (props.pageData as ISecretsPage).metadata : undefined
+	const tokenValidation = (props.pageData as ISecretsPage).tokenValidation
+		? (props.pageData as ISecretsPage).tokenValidation
+		: undefined
+	const metadata = (props.pageData as ISecretsPage).metadata
+		? (props.pageData as ISecretsPage).metadata
+		: undefined
 	const ruleId = (props.pageData as ISastPage).ruleId
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 	const lineOfVuln = (props.pageData as ISastPage).location
@@ -114,7 +118,7 @@ export default function Header(props: Props): JSX.Element {
 					{lineOfVuln && <LineOfVulnSpan lineOfVulnerability={lineOfVuln} />}
 					{ruleId && <RuleIdSpan ruleId={ruleId} />}
 					{tokenValidation && <TokenValidationSpan tokenValidation={tokenValidation} />}
-					{metadata && <MetadataSpan metadata={metadata}/>}
+					{metadata && <MetadataSpan metadata={metadata} />}
 				</div>
 			</div>
 		</div>
