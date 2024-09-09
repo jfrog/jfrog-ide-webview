@@ -46,6 +46,8 @@ export interface ISecretsPage {
 	location: IAnalysisStep
 	description: string
 	finding?: ISecretFindings
+	tokenValidation?: string
+	metadata?: string
 }
 
 export interface ISastPage {
