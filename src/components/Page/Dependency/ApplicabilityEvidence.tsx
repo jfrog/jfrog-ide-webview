@@ -33,33 +33,33 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 										<Row title="Evidence file path" data={evidence.filePathEvidence} />
 										<Row title="Evidence code" data={evidence.codeEvidence} />
 									</div>
-						))}
+								))}
 							</div>
 						</div>
 						<Divider />
 					</>
-			) : (
-			// If CVE is not applicable
-				<>
-					<h6 className={css.subtitle}>Why is this CVE not applicable?</h6>
-					<div>
-						<div className={css.rowList}>
-							{props.data.evidence?.map((evidence, i) => (
-								<div key={i}>
-									<Row title="Reason" data={evidence.reason} />
-								</div>
-							))}
+				) : (
+					// If CVE is not applicable
+					<>
+						<h6 className={css.subtitle}>Why is this CVE not applicable?</h6>
+						<div>
+							<div className={css.rowList}>
+								{props.data.evidence?.map((evidence, i) => (
+									<div key={i}>
+										<Row title="Reason" data={evidence.reason} />
+									</div>
+								))}
+							</div>
 						</div>
-					</div>
-					<Divider />
-				</>
-			)}
+						<Divider />
+					</>
+				)}
 				{props.data.searchTarget && (
-				<>
-					<h6 className={css.subtitle}>What does the scanner check/look for?</h6>
-					<Markdown text={props.data.searchTarget} />
-				</>
-			)}
+					<>
+						<h6 className={css.subtitle}>What does the scanner check/look for?</h6>
+						<Markdown text={props.data.searchTarget} />
+					</>
+				)}
 			</div>
 		</Collapse>
 	)
