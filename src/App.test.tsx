@@ -89,8 +89,8 @@ describe('App component', () => {
 				location: { file: 'file' },
 				severity: ISeverity.High,
 				description: 'description',
-				tokenValidation: "tokenValidation",
-				metadata: "metadata"
+				tokenValidation: 'tokenValidation',
+				metadata: 'metadata'
 			} as ISecretsPage
 		}
 		await sendWebviewPage(mockPage)
