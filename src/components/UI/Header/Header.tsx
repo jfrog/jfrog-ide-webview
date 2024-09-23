@@ -25,7 +25,7 @@ const MetadataSpan = (props: { metadata: string }): JSX.Element => (
 
 const TokenValidationSpan = (props: { tokenValidation: string }): JSX.Element => (
 	<span className={css.locationLabel}>
-		<b>Token Validation</b> {props.tokenValidation}
+		<b>Token Validation:</b> {props.tokenValidation}
 	</span>
 )
 
