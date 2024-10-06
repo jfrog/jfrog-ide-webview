@@ -116,6 +116,7 @@ describe('Dependency page component', () => {
 
 		const expectedTexts = [
 			TABS.WHAT_CAN_I_DO.label,
+			TABS.CONTEXTUAL_ANALYSIS.label,
 			TABS.CVE_INFORMATION.label,
 			TABS.IMPACT_GRAPH.label
 		]
