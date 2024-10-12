@@ -147,7 +147,8 @@ function InformationTabs(props: Props): JSX.Element {
 	const showApplicabilityEvidence =
 		pageTypeDependency.cve?.applicableData?.evidence ??
 		pageTypeDependency.cve?.applicableData?.searchTarget
-	const showContextualAnalysisTab = showApplicabilityEvidence && props.tabs.includes(TABS.CONTEXTUAL_ANALYSIS.key)
+	const showContextualAnalysisTab =
+		showApplicabilityEvidence && props.tabs.includes(TABS.CONTEXTUAL_ANALYSIS.key)
 
 	return (
 		<div className={css.tabsContainer}>
