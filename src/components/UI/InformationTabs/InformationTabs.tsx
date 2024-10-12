@@ -98,7 +98,6 @@ function InformationTabs(props: Props): JSX.Element {
 	const showWhatCanIDoTab = props.tabs.includes(TABS.WHAT_CAN_I_DO.key)
 	const showCveInformationTab = props.tabs.includes(TABS.CVE_INFORMATION.key)
 	const showImpactGraphTab = props.tabs.includes(TABS.IMPACT_GRAPH.key)
-	const showContextualAnalysisTab = props.tabs.includes(TABS.CONTEXTUAL_ANALYSIS.key)
 	let remediation: string[] | undefined
 	const extendedInformation = (props.data as IDependencyPage).extendedInformation
 
@@ -148,6 +147,7 @@ function InformationTabs(props: Props): JSX.Element {
 	const showApplicabilityEvidence =
 		pageTypeDependency.cve?.applicableData?.evidence ??
 		pageTypeDependency.cve?.applicableData?.searchTarget
+	const showContextualAnalysisTab = showApplicabilityEvidence && props.tabs.includes(TABS.CONTEXTUAL_ANALYSIS.key)
 
 	return (
 		<div className={css.tabsContainer}>
