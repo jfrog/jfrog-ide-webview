@@ -1,0 +1,41 @@
+.rowList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+.defaultContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+.subtitle {
+	color: #f0f0f0;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+ul.bulletList {
+	list-style-type: disc;
+	padding-left: 20px;
+}
+ul.bulletList li {
+	color: white;
+	font-family: 'Arial', sans-serif;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+ol {
+	list-style-type: decimal;
+	margin-left: 20px;
+}
+li {
+	margin-bottom: 20px;
+}

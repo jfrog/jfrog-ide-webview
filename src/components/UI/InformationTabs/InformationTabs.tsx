@@ -23,6 +23,7 @@ import { TreeNode } from '../../../model/treeNode'
 import { toTreeNode } from '../../../utils/utils'
 import WhatCanIDoTab from './WhatCanIDoTab'
 import Markdown from '../Markdown/Markdown'
+import ApplicabilityEvidence from './ApplicabilityEvidence'
 
 export const TABS = {
 	WHAT_CAN_I_DO: {
@@ -40,6 +41,10 @@ export const TABS = {
 	IMPACT_GRAPH: {
 		label: 'Impact Graph',
 		key: 'impact_graph'
+	},
+	CONTEXTUAL_ANALYSIS: {
+		label: 'Contextual Analysis',
+		key: 'contextual_analysis'
 	}
 }
 export const LABELS = {
@@ -138,6 +143,12 @@ function InformationTabs(props: Props): JSX.Element {
 
 	const showMoreInformationTab =
 		props.tabs.includes(TABS.MORE_INFORMATION.key) && (props.data as ISastPage).description
+	const pageTypeDependency = props.data as IDependencyPage
+	const showApplicabilityEvidence =
+		pageTypeDependency.cve?.applicableData?.evidence ??
+		pageTypeDependency.cve?.applicableData?.searchTarget
+	const showContextualAnalysisTab =
+		showApplicabilityEvidence && props.tabs.includes(TABS.CONTEXTUAL_ANALYSIS.key)
 
 	return (
 		<div className={css.tabsContainer}>
@@ -152,6 +163,13 @@ function InformationTabs(props: Props): JSX.Element {
 						className={tabClass(TABS.WHAT_CAN_I_DO.key)}
 						value={TABS.WHAT_CAN_I_DO.key}
 						label={TABS.WHAT_CAN_I_DO.label}
+					/>
+				)}
+				{showContextualAnalysisTab && (
+					<Tab
+						className={tabClass(TABS.CONTEXTUAL_ANALYSIS.key)}
+						value={TABS.CONTEXTUAL_ANALYSIS.key}
+						label={TABS.CONTEXTUAL_ANALYSIS.label}
 					/>
 				)}
 				{showCveInformationTab && (
@@ -180,11 +198,18 @@ function InformationTabs(props: Props): JSX.Element {
 				<CustomTabPanel value={selectedTabIndex} index={TABS.WHAT_CAN_I_DO.key}>
 					<WhatCanIDoTab
 						pageType={props.data.pageType}
-						component={(props.data as IDependencyPage).component}
-						impactGraph={(props.data as IDependencyPage).impactGraph}
-						fixedVersion={(props.data as IDependencyPage).fixedVersion}
+						component={pageTypeDependency.component}
+						impactGraph={pageTypeDependency.impactGraph}
+						fixedVersion={pageTypeDependency.fixedVersion}
 						remediation={remediation}
 					/>
+				</CustomTabPanel>
+			)}
+			{showContextualAnalysisTab && (
+				<CustomTabPanel value={selectedTabIndex} index={TABS.CONTEXTUAL_ANALYSIS.key}>
+					{pageTypeDependency.cve?.applicableData && showApplicabilityEvidence && (
+						<ApplicabilityEvidence data={pageTypeDependency.cve.applicableData} />
+					)}
 				</CustomTabPanel>
 			)}
 			{showMoreInformationTab && (
