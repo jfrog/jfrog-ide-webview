@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import ApplicabilityEvidence from './ApplicabilityEvidence'
-import { IApplicableDetails, IEvidence } from '../../../model'
+import { Applicability, IApplicableDetails, IEvidence } from '../../../model'
 
 // Sample data for testing
 const applicableData: IApplicableDetails = {
-	isApplicable: true,
+	applicability: Applicability.APPLICABLE,
 	searchTarget: 'Example search target',
 	evidence: [
 		{
@@ -16,7 +16,7 @@ const applicableData: IApplicableDetails = {
 }
 
 const notApplicableData: IApplicableDetails = {
-	isApplicable: false,
+	applicability: Applicability.APPLICABLE,
 	searchTarget: 'Example search target',
 	evidence: [
 		{
@@ -48,7 +48,7 @@ describe('ApplicabilityEvidence component', () => {
 
 	test('renders evidence section correctly when no evidence provided', () => {
 		const noEvidenceData: IApplicableDetails = {
-			isApplicable: true,
+			applicability: Applicability.APPLICABLE,
 			searchTarget: 'Example search target',
 			evidence: []
 		}
@@ -61,7 +61,7 @@ describe('ApplicabilityEvidence component', () => {
 
 	test('renders correctly without searchTarget', () => {
 		const noSearchTargetData: IApplicableDetails = {
-			isApplicable: true,
+			applicability: Applicability.APPLICABLE,
 			evidence: [
 				{
 					filePathEvidence: 'file/path/evidence',

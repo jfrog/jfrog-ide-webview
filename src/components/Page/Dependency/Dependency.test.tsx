@@ -1,13 +1,7 @@
 import { queryByAttribute, render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import {
-	IApplicableDetails,
-	ICve,
-	IDependencyPage,
-	IEvidence,
-	IExtendedInformation,
-	ISeverity,
-	PageType
+	Applicability, IApplicableDetails, ICve, IDependencyPage, IEvidence, IExtendedInformation, ISeverity, PageType
 } from '../../../model'
 import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
@@ -27,7 +21,7 @@ describe('Dependency page component', () => {
 			cvssV3Score: '6.5',
 			cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H',
 			applicableData: {
-				isApplicable: true,
+				applicability: Applicability.APPLICABLE,
 				searchTarget: 'search target',
 				evidence: [
 					{
@@ -73,7 +67,7 @@ describe('Dependency page component', () => {
 	test('should render "not_applicable_icon"', () => {
 		const el = render(
 			<Dependency
-				data={{ ...mockData, cve: { id: mockData.id, applicableData: { isApplicable: false } } }}
+				data={{ ...mockData, cve: { id: mockData.id, applicableData: { applicability: Applicability.APPLICABLE } } }}
 			/>
 		)
 		const getById = queryByAttribute.bind(null, 'id')

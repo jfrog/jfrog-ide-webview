@@ -1,16 +1,14 @@
 import css from './Header.module.css'
 import { getSeverityImage } from '../../../utils/utils'
 import {
-	IAnalysisStep,
-	IDependencyPage,
-	ISastPage,
-	IIaCPage,
-	ISecretsPage,
-	PageType
+	Applicability, IAnalysisStep, IDependencyPage, IIaCPage, ISastPage, ISecretsPage, PageType
 } from '../../../model'
 import { ReactComponent as JfrogResearchIcon } from '../../../assets/icons/jfrog_research_icon.svg'
 import { ReactComponent as ApplicableIcon } from '../../../assets/icons/applicable.svg'
 import { ReactComponent as NotApplicableIcon } from '../../../assets/icons/not_applicable.svg'
+import { ReactComponent as UndeterminedIcon } from '../../../assets/icons/undetermined.svg'
+import { ReactComponent as NotCoveredIcon } from '../../../assets/icons/not_covered.svg'
+import { ReactComponent as MissingContextIcon } from '../../../assets/icons/missing_context.svg'
 
 export interface Props {
 	text: string
@@ -102,12 +100,7 @@ export default function Header(props: Props): JSX.Element {
 					<h6 className={css.flexCenter}>
 						{props.text}
 						{showJFrogResearchIcon && <JfrogResearchIcon id="jfrog_research_icon" />}
-						{applicableData &&
-							(applicableData.isApplicable ? (
-								<ApplicableIcon id="applicable_icon" />
-							) : (
-								<NotApplicableIcon id="not_applicable_icon" />
-							))}
+						{applicableData && ApplicabilityIcon(applicableData.applicability)}
 					</h6>
 				</div>
 				<div className={metadataClassName}>
@@ -123,4 +116,19 @@ export default function Header(props: Props): JSX.Element {
 			</div>
 		</div>
 	)
+}
+
+const ApplicabilityIcon = (applicability: Applicability): JSX.Element | null => {
+	switch (applicability) {
+		case Applicability.APPLICABLE:
+			return <ApplicableIcon id="applicable_icon" />
+		case Applicability.NOT_APPLICABLE:
+			return <NotApplicableIcon id="not_applicable_icon" />
+		case Applicability.NOT_COVERED:
+			return <NotCoveredIcon id="not_covered_icon" />
+		case Applicability.UNDETERMINED:
+			return <UndeterminedIcon id="undetermined_icon"/>
+		case Applicability.MISSING_CONTEXT:
+			return <MissingContextIcon id="missing_context_icon"/>
+	}
 }

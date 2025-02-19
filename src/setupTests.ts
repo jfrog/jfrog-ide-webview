@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import { IDependencyPage, ISeverity, PageType } from './model'
+import { Applicability, IDependencyPage, ISeverity, PageType } from './model'
 import { MatcherFunction } from '@testing-library/react'
 
 const fakeDependencyPage: IDependencyPage = {
@@ -15,7 +15,7 @@ const fakeDependencyPage: IDependencyPage = {
 		cvssV3Score: '6.5',
 		cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H',
 		applicableData: {
-			isApplicable: true,
+			applicability: Applicability.APPLICABLE,
 			searchTarget: 'search target',
 			evidence: [
 				{

@@ -1,5 +1,5 @@
-import { IApplicableDetails } from '../../../model'
-import { Collapse } from '../../UI/Collapse/Collapse'
+import { Applicability, IApplicableDetails, IEvidence } from '../../../model'
+import { Collapse } from '../Collapse/Collapse'
 import css from './ApplicabilityEvidence.module.css'
 import { ReactComponent as EvidenceSvg } from '../../../assets/icons/evidence.svg'
 import Row from '../../UI/Row/Row'
@@ -7,10 +7,49 @@ import Divider from '../../UI/Divider/Divider'
 import Markdown from '../../UI/Markdown/Markdown'
 
 export interface Props {
-	data: IApplicableDetails
+	data: IApplicableDetails;
+}
+
+const APPLICABILITY_TITLES: Record<Applicability, string> = {
+	[Applicability.APPLICABLE]: 'Why is this CVE applicable?',
+	[Applicability.NOT_APPLICABLE]: 'Why is this CVE not applicable?',
+	[Applicability.UNDETERMINED]: 'Why is this CVE undetermined?',
+	[Applicability.NOT_COVERED]: 'Why is this CVE not covered?',
+	[Applicability.MISSING_CONTEXT]: 'Why is this CVE missing context?'
+}
+
+const renderRow = (title: string, data: string): JSX.Element => (
+	<Row title={title} data={data} />
+)
+
+const renderEvidenceList = (evidenceList: IEvidence[], type: Applicability): JSX.Element => {
+	const rows = evidenceList.map((evidence, index) => {
+		const rowComponents: JSX.Element[] = [renderRow('Reason', evidence.reason)]
+
+		if (type === Applicability.APPLICABLE) {
+			rowComponents.push(
+				renderRow('Evidence file path', evidence.filePathEvidence),
+				renderRow('Evidence code', evidence.codeEvidence)
+			)
+		}
+
+		return <div key={index}>{rowComponents}</div>
+	})
+
+	return (
+		<>
+			<h6 className={css.subtitle}>{APPLICABILITY_TITLES[type]}</h6>
+			<div>
+				<div className={css.rowList}>{rows}</div>
+			</div>
+			<Divider />
+		</>
+	)
 }
 
 export default function ApplicabilityEvidence(props: Props): JSX.Element {
+	const { data } = props
+
 	return (
 		<Collapse
 			expanded
@@ -21,43 +60,11 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 			}
 		>
 			<div className={css.defaultContainer}>
-				{/* If CVE is applicable */}
-				{props.data.isApplicable ? (
-					<>
-						<h6 className={css.subtitle}>Why is this CVE applicable?</h6>
-						<div>
-							<div className={css.rowList}>
-								{props.data.evidence?.map((evidence, i) => (
-									<div key={i}>
-										<Row title="Reason" data={evidence.reason} />
-										<Row title="Evidence file path" data={evidence.filePathEvidence} />
-										<Row title="Evidence code" data={evidence.codeEvidence} />
-									</div>
-								))}
-							</div>
-						</div>
-						<Divider />
-					</>
-				) : (
-					// If CVE is not applicable
-					<>
-						<h6 className={css.subtitle}>Why is this CVE not applicable?</h6>
-						<div>
-							<div className={css.rowList}>
-								{props.data.evidence?.map((evidence, i) => (
-									<div key={i}>
-										<Row title="Reason" data={evidence.reason} />
-									</div>
-								))}
-							</div>
-						</div>
-						<Divider />
-					</>
-				)}
-				{props.data.searchTarget && (
+				{data.evidence && renderEvidenceList(data.evidence, data.applicability)}
+				{data.searchTarget && (
 					<>
 						<h6 className={css.subtitle}>What does the scanner check/look for?</h6>
-						<Markdown text={props.data.searchTarget} />
+						<Markdown text={data.searchTarget} />
 					</>
 				)}
 			</div>
