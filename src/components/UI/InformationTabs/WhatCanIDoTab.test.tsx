@@ -10,7 +10,8 @@ import {
 	IImpactGraph,
 	ISecretsPage,
 	ISeverity,
-	PageType, Applicability
+	PageType,
+	Applicability
 } from '../../../model'
 import WhatCanIDoTab, { LABELS } from './WhatCanIDoTab'
 

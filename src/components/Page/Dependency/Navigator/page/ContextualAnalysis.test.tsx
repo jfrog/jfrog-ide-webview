@@ -41,7 +41,9 @@ describe('ContextualAnalysis component', () => {
 
 	test('renders the component without search target', () => {
 		const { queryByText } = render(
-			<ContextualAnalysis data={{ evidence: testData.evidence, applicability: Applicability.APPLICABLE }} />
+			<ContextualAnalysis
+				data={{ evidence: testData.evidence, applicability: Applicability.APPLICABLE }}
+			/>
 		)
 
 		expect(queryByText('What does the scanner checks / looking for?')).toBeNull()
@@ -49,7 +51,9 @@ describe('ContextualAnalysis component', () => {
 	})
 
 	test('renders the component without evidence and search target', () => {
-		const { queryByText } = render(<ContextualAnalysis data={{ applicability: Applicability.NOT_APPLICABLE }} />)
+		const { queryByText } = render(
+			<ContextualAnalysis data={{ applicability: Applicability.NOT_APPLICABLE }} />
+		)
 
 		expect(queryByText('What does the scanner checks / looking for?')).toBeNull()
 		expect(queryByText('Search target text')).toBeNull()

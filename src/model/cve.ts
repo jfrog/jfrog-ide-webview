@@ -24,5 +24,5 @@ export enum Applicability {
 	NOT_APPLICABLE = 'not_applicable',
 	NOT_COVERED = 'not_covered',
 	UNDETERMINED = 'undetermined',
-	MISSING_CONTEXT = 'missing_context',
+	MISSING_CONTEXT = 'missing_context'
 }

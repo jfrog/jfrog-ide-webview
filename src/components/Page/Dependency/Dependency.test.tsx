@@ -1,7 +1,14 @@
 import { queryByAttribute, render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import {
-	Applicability, IApplicableDetails, ICve, IDependencyPage, IEvidence, IExtendedInformation, ISeverity, PageType
+	Applicability,
+	IApplicableDetails,
+	ICve,
+	IDependencyPage,
+	IEvidence,
+	IExtendedInformation,
+	ISeverity,
+	PageType
 } from '../../../model'
 import { TABS } from '../../UI/InformationTabs/InformationTabs'
 
@@ -67,13 +74,15 @@ describe('Dependency page component', () => {
 	test('should render "not_applicable_icon"', () => {
 		const el = render(
 			<Dependency
-				data={{ ...mockData, cve: { id: mockData.id, applicableData: { applicability: Applicability.APPLICABLE } } }}
+				data={{
+					...mockData,
+					cve: { id: mockData.id, applicableData: { applicability: Applicability.NOT_APPLICABLE } }
+				}}
 			/>
 		)
 		const getById = queryByAttribute.bind(null, 'id')
 		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
 		const notApplicableIcon = getById(el.container, 'not_applicable_icon')
-
 		expect(jfResearchIcon).not.toBeNull()
 		expect(notApplicableIcon).not.toBeNull()
 	})

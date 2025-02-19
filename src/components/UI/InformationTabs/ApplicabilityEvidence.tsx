@@ -7,7 +7,7 @@ import Divider from '../../UI/Divider/Divider'
 import Markdown from '../../UI/Markdown/Markdown'
 
 export interface Props {
-	data: IApplicableDetails;
+	data: IApplicableDetails
 }
 
 const APPLICABILITY_TITLES: Record<Applicability, string> = {
@@ -18,9 +18,7 @@ const APPLICABILITY_TITLES: Record<Applicability, string> = {
 	[Applicability.MISSING_CONTEXT]: 'Why is this CVE missing context?'
 }
 
-const renderRow = (title: string, data: string): JSX.Element => (
-	<Row title={title} data={data} />
-)
+const renderRow = (title: string, data: string): JSX.Element => <Row title={title} data={data} />
 
 const renderEvidenceList = (evidenceList: IEvidence[], type: Applicability): JSX.Element => {
 	const rows = evidenceList.map((evidence, index) => {

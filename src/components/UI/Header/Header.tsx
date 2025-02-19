@@ -1,7 +1,13 @@
 import css from './Header.module.css'
 import { getSeverityImage } from '../../../utils/utils'
 import {
-	Applicability, IAnalysisStep, IDependencyPage, IIaCPage, ISastPage, ISecretsPage, PageType
+	Applicability,
+	IAnalysisStep,
+	IDependencyPage,
+	IIaCPage,
+	ISastPage,
+	ISecretsPage,
+	PageType
 } from '../../../model'
 import { ReactComponent as JfrogResearchIcon } from '../../../assets/icons/jfrog_research_icon.svg'
 import { ReactComponent as ApplicableIcon } from '../../../assets/icons/applicable.svg'
@@ -127,8 +133,8 @@ const ApplicabilityIcon = (applicability: Applicability): JSX.Element | null => 
 		case Applicability.NOT_COVERED:
 			return <NotCoveredIcon id="not_covered_icon" />
 		case Applicability.UNDETERMINED:
-			return <UndeterminedIcon id="undetermined_icon"/>
+			return <UndeterminedIcon id="undetermined_icon" />
 		case Applicability.MISSING_CONTEXT:
-			return <MissingContextIcon id="missing_context_icon"/>
+			return <MissingContextIcon id="missing_context_icon" />
 	}
 }

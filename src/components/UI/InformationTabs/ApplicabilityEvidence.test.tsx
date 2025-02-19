@@ -16,7 +16,7 @@ const applicableData: IApplicableDetails = {
 }
 
 const notApplicableData: IApplicableDetails = {
-	applicability: Applicability.APPLICABLE,
+	applicability: Applicability.NOT_APPLICABLE,
 	searchTarget: 'Example search target',
 	evidence: [
 		{

@@ -10,7 +10,8 @@ import {
 	IIaCPage,
 	ISecretsPage,
 	ISeverity,
-	PageType, Applicability
+	PageType,
+	Applicability
 } from '../../../model'
 
 describe('InformationTabs component', () => {
