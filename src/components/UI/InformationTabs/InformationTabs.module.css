@@ -56,6 +56,8 @@ ul.bulletList li {
 	color: white;
 	font-family: 'Arial', sans-serif;
 	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
 }
 
 h6 {
@@ -73,6 +75,19 @@ span {
 	line-height: 18px;
 }
 
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+ol {
+	list-style-type: decimal;
+	margin-left: 20px;
+}
+li {
+	margin-bottom: 20px;
+}
+
 .label {
 	color: #bbb;
 	font-size: 12px;
@@ -88,6 +103,15 @@ span {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 18px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-decoration: underline;
+	word-break: keep-all;
+	width: auto;
+	display: inline-block;
+	margin: 6px;
+	padding: 5px 10px;
 }
 
 .recommendedLabel {
@@ -139,4 +163,54 @@ code {
 .activeTab {
 	color: #3eb065 !important;
 	text-transform: none;
+}
+pre {
+	background-color: #f4f4f4;
+	padding: 10px;
+	border: 1px solid #ddd;
+	overflow-x: auto;
+}
+p > a {
+	--text-link-decoration: underline;
+	text-decoration: var(--text-link-decoration);
+}
+a {
+	font-size: 12px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-decoration: underline;
+	word-break: keep-all;
+	width: auto;
+	position: relative;
+}
+a.tooltip-wrapper {
+	position: relative;
+}
+a:hover::after {
+	content: attr(href);
+	position: absolute;
+	left: 0;
+	top: 100%;
+	background: #333;
+	color: #fff;
+	padding: 5px;
+	border-radius: 3px;
+	white-space: nowrap;
+	z-index: 10;
+	font-size: 12px;
+	margin-top: 5px;
+}
+a:hover::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #333;
+	margin-top: 1px;
 }
