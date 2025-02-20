@@ -10,11 +10,10 @@ export interface Props {
 	data: IApplicableDetails
 }
 
-const APPLICABILITY_TITLES: Record<Applicability, string> = {
+const APPLICABILITY_TITLES: Partial<Record<Applicability, string>> = {
 	[Applicability.APPLICABLE]: 'Why is this CVE applicable?',
 	[Applicability.NOT_APPLICABLE]: 'Why is this CVE not applicable?',
-	[Applicability.UNDETERMINED]: 'Why is this CVE undetermined?',
-	[Applicability.NOT_COVERED]: 'Why is this CVE not covered?',
+	[Applicability.UNDETERMINED]: 'Why is this CVE applicability result undetermined?',
 	[Applicability.MISSING_CONTEXT]: 'Why is this CVE missing context?'
 }
 

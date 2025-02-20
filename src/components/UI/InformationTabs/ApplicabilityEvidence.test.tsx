@@ -25,6 +25,26 @@ const notApplicableData: IApplicableDetails = {
 	]
 }
 
+const undeterminedData: IApplicableDetails = {
+	applicability: Applicability.UNDETERMINED,
+	searchTarget: 'Example search target',
+	evidence: [
+		{
+			reason: 'Reason for undetermined'
+		} as IEvidence
+	]
+}
+
+const missingContextData: IApplicableDetails = {
+	applicability: Applicability.MISSING_CONTEXT,
+	searchTarget: 'Example search target',
+	evidence: [
+		{
+			reason: 'Reason for missing context'
+		} as IEvidence
+	]
+}
+
 describe('ApplicabilityEvidence component', () => {
 	test('renders applicable CVE information correctly', () => {
 		render(<ApplicabilityEvidence data={applicableData} />)
@@ -42,6 +62,26 @@ describe('ApplicabilityEvidence component', () => {
 		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
 		expect(screen.getByText('Why is this CVE not applicable?')).toBeInTheDocument()
 		expect(screen.getByText('Reason for non-applicability')).toBeInTheDocument()
+		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
+		expect(screen.getByText('Example search target')).toBeInTheDocument()
+	})
+
+	test('renders undetermined CVE information correctly', () => {
+		render(<ApplicabilityEvidence data={undeterminedData} />)
+		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
+		expect(
+			screen.getByText('Why is this CVE applicability result undetermined?')
+		).toBeInTheDocument()
+		expect(screen.getByText('Reason for undetermined')).toBeInTheDocument()
+		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
+		expect(screen.getByText('Example search target')).toBeInTheDocument()
+	})
+
+	test('renders missing context CVE information correctly', () => {
+		render(<ApplicabilityEvidence data={missingContextData} />)
+		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
+		expect(screen.getByText('Why is this CVE missing context?')).toBeInTheDocument()
+		expect(screen.getByText('Reason for missing context')).toBeInTheDocument()
 		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
 		expect(screen.getByText('Example search target')).toBeInTheDocument()
 	})

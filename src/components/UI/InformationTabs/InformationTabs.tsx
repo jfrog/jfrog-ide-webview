@@ -87,6 +87,10 @@ function InformationTabs(props: Props): JSX.Element {
 		}
 	}, [impactGraph])
 
+	useEffect(() => {
+		setSelectedTabIndex(defaultTab)
+	}, [props.data, defaultTab])
+
 	const handleChange = (event: React.SyntheticEvent, newValue: string): void => {
 		setSelectedTabIndex(newValue)
 	}
