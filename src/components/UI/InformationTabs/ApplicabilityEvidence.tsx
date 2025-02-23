@@ -5,6 +5,7 @@ import { ReactComponent as EvidenceSvg } from '../../../assets/icons/evidence.sv
 import Row from '../../UI/Row/Row'
 import Divider from '../../UI/Divider/Divider'
 import Markdown from '../../UI/Markdown/Markdown'
+import { useEffect } from 'react'
 
 export interface Props {
 	data: IApplicableDetails
@@ -16,6 +17,9 @@ const APPLICABILITY_TITLES: Partial<Record<Applicability, string>> = {
 	[Applicability.UNDETERMINED]: 'Why is this CVE applicability result undetermined?',
 	[Applicability.MISSING_CONTEXT]: 'Why is this CVE missing context?'
 }
+
+const MISSING_CONTEXT_REASON =
+	'The applicability for this CVE could be determined in binary files only'
 
 const renderRow = (title: string, data: string): JSX.Element => <Row title={title} data={data} />
 
@@ -47,6 +51,12 @@ const renderEvidenceList = (evidenceList: IEvidence[], type: Applicability): JSX
 export default function ApplicabilityEvidence(props: Props): JSX.Element {
 	const { data } = props
 
+	useEffect(() => {
+		if (props.data.applicability === Applicability.MISSING_CONTEXT) {
+			data.evidence = [{ reason: MISSING_CONTEXT_REASON } as IEvidence]
+			data.searchTarget = ''
+		}
+	}, [data, props.data.applicability])
 	return (
 		<Collapse
 			expanded
@@ -57,8 +67,10 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 			}
 		>
 			<div className={css.defaultContainer}>
-				{data.evidence && renderEvidenceList(data.evidence, data.applicability)}
-				{data.searchTarget && (
+				{data.evidence &&
+					data.evidence.length > 0 &&
+					renderEvidenceList(data.evidence, data.applicability)}
+				{data.searchTarget && data.searchTarget !== '' && (
 					<>
 						<h6 className={css.subtitle}>What does the scanner check/look for?</h6>
 						<Markdown text={data.searchTarget} />

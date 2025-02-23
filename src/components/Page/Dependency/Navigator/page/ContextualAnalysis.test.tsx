@@ -42,7 +42,7 @@ describe('ContextualAnalysis component', () => {
 	test('renders the component without search target', () => {
 		const { queryByText } = render(
 			<ContextualAnalysis
-				data={{ evidence: testData.evidence, applicability: Applicability.APPLICABLE }}
+				data={{ evidence: testData.evidence, applicability: Applicability.NOT_APPLICABLE }}
 			/>
 		)
 

@@ -37,10 +37,9 @@ const undeterminedData: IApplicableDetails = {
 
 const missingContextData: IApplicableDetails = {
 	applicability: Applicability.MISSING_CONTEXT,
-	searchTarget: 'Example search target',
 	evidence: [
 		{
-			reason: 'Reason for missing context'
+			reason: 'The applicability for this CVE could be determined in binary files only'
 		} as IEvidence
 	]
 }
@@ -81,24 +80,12 @@ describe('ApplicabilityEvidence component', () => {
 		render(<ApplicabilityEvidence data={missingContextData} />)
 		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
 		expect(screen.getByText('Why is this CVE missing context?')).toBeInTheDocument()
-		expect(screen.getByText('Reason for missing context')).toBeInTheDocument()
-		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
-		expect(screen.getByText('Example search target')).toBeInTheDocument()
+		expect(
+			screen.getByText('The applicability for this CVE could be determined in binary files only')
+		).toBeInTheDocument()
+		expect(screen.queryByText('What does the scanner check/look for?')).not.toBeInTheDocument()
+		expect(screen.queryByText('Example search target')).not.toBeInTheDocument()
 	})
-
-	test('renders evidence section correctly when no evidence provided', () => {
-		const noEvidenceData: IApplicableDetails = {
-			applicability: Applicability.APPLICABLE,
-			searchTarget: 'Example search target',
-			evidence: []
-		}
-		render(<ApplicabilityEvidence data={noEvidenceData} />)
-		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
-		expect(screen.getByText('Why is this CVE applicable?')).toBeInTheDocument()
-		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
-		expect(screen.getByText('Example search target')).toBeInTheDocument()
-	})
-
 	test('renders correctly without searchTarget', () => {
 		const noSearchTargetData: IApplicableDetails = {
 			applicability: Applicability.APPLICABLE,
