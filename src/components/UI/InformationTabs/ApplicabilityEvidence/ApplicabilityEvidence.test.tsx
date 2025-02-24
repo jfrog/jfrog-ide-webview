@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import ApplicabilityEvidence from './ApplicabilityEvidence'
-import { Applicability, IApplicableDetails, IEvidence } from '../../../model'
+import { Applicability, IApplicableDetails, IEvidence } from '../../../../model'
 
 // Sample data for testing
 const applicableData: IApplicableDetails = {
@@ -85,6 +85,18 @@ describe('ApplicabilityEvidence component', () => {
 		).toBeInTheDocument()
 		expect(screen.queryByText('What does the scanner check/look for?')).not.toBeInTheDocument()
 		expect(screen.queryByText('Example search target')).not.toBeInTheDocument()
+	})
+	test('renders evidence section correctly when no evidence provided', () => {
+		const noEvidenceData: IApplicableDetails = {
+			applicability: Applicability.APPLICABLE,
+			searchTarget: 'Example search target',
+			evidence: []
+		}
+		render(<ApplicabilityEvidence data={noEvidenceData} />)
+		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
+		expect(screen.getByText('Why is this CVE applicable?')).toBeInTheDocument()
+		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
+		expect(screen.getByText('Example search target')).toBeInTheDocument()
 	})
 	test('renders correctly without searchTarget', () => {
 		const noSearchTargetData: IApplicableDetails = {
