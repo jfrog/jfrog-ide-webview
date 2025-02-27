@@ -39,7 +39,7 @@ const missingContextData: IApplicableDetails = {
 	applicability: Applicability.MISSING_CONTEXT,
 	evidence: [
 		{
-			reason: 'The applicability for this CVE could be determined in binary files only'
+			reason: 'Irrelevant reason that should be override'
 		} as IEvidence
 	]
 }
@@ -81,7 +81,9 @@ describe('ApplicabilityEvidence component', () => {
 		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
 		expect(screen.getByText('Why is this CVE missing context?')).toBeInTheDocument()
 		expect(
-			screen.getByText('The applicability for this CVE could be determined in binary files only')
+			screen.getByText(
+				'Reachability analysis cannot determine the vulnerability’s applicability. Applicability can be determined by scanning the artifact in a Docker repository in the JFrog Platform'
+			)
 		).toBeInTheDocument()
 		expect(screen.queryByText('What does the scanner check/look for?')).not.toBeInTheDocument()
 		expect(screen.queryByText('Example search target')).not.toBeInTheDocument()
