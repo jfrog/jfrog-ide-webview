@@ -1,6 +1,7 @@
 import { queryByAttribute, render, screen } from '@testing-library/react'
 import Dependency from './Dependency'
 import {
+	Applicability,
 	IApplicableDetails,
 	ICve,
 	IDependencyPage,
@@ -27,7 +28,7 @@ describe('Dependency page component', () => {
 			cvssV3Score: '6.5',
 			cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H',
 			applicableData: {
-				isApplicable: true,
+				applicability: Applicability.APPLICABLE,
 				searchTarget: 'search target',
 				evidence: [
 					{
@@ -73,23 +74,84 @@ describe('Dependency page component', () => {
 	test('should render "not_applicable_icon"', () => {
 		const el = render(
 			<Dependency
-				data={{ ...mockData, cve: { id: mockData.id, applicableData: { isApplicable: false } } }}
+				data={{
+					...mockData,
+					cve: { id: mockData.id, applicableData: { applicability: Applicability.NOT_APPLICABLE } }
+				}}
 			/>
 		)
 		const getById = queryByAttribute.bind(null, 'id')
 		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
 		const notApplicableIcon = getById(el.container, 'not_applicable_icon')
-
 		expect(jfResearchIcon).not.toBeNull()
 		expect(notApplicableIcon).not.toBeNull()
 	})
+	test('should render "not_covered_icon"', () => {
+		const el = render(
+			<Dependency
+				data={{
+					...mockData,
+					cve: { id: mockData.id, applicableData: { applicability: Applicability.NOT_COVERED } }
+				}}
+			/>
+		)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const notCoveredIcon = getById(el.container, 'not_covered_icon')
+		expect(jfResearchIcon).not.toBeNull()
+		expect(notCoveredIcon).not.toBeNull()
+	})
+
+	test('should render "not_covered_icon"', () => {
+		const el = render(
+			<Dependency
+				data={{
+					...mockData,
+					cve: { id: mockData.id, applicableData: { applicability: Applicability.MISSING_CONTEXT } }
+				}}
+			/>
+		)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const missingContext = getById(el.container, 'missing_context_icon')
+		expect(jfResearchIcon).not.toBeNull()
+		expect(missingContext).not.toBeNull()
+	})
+	test('should render "undetermined_icon"', () => {
+		const el = render(
+			<Dependency
+				data={{
+					...mockData,
+					cve: { id: mockData.id, applicableData: { applicability: Applicability.UNDETERMINED } }
+				}}
+			/>
+		)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const undetermined = getById(el.container, 'undetermined_icon')
+		expect(jfResearchIcon).not.toBeNull()
+		expect(undetermined).not.toBeNull()
+	})
+	test('should render "missing_context_icon"', () => {
+		const el = render(
+			<Dependency
+				data={{
+					...mockData,
+					cve: { id: mockData.id, applicableData: { applicability: Applicability.MISSING_CONTEXT } }
+				}}
+			/>
+		)
+		const getById = queryByAttribute.bind(null, 'id')
+		const jfResearchIcon = getById(el.container, 'jfrog_research_icon')
+		const missingContext = getById(el.container, 'missing_context_icon')
+		expect(jfResearchIcon).not.toBeNull()
+		expect(missingContext).not.toBeNull()
+	})
 	test('should render "Fixed version"', () => {
 		render(<Dependency data={mockData} />)
-
 		expect(screen.getByText(/Fix version:/i)).toBeInTheDocument()
 		expect(screen.getByText(/5.0.0/i)).toBeInTheDocument()
 	})
-
 	test('should render "Severity"', () => {
 		const el = render(<Dependency data={mockData} />)
 		const getById = queryByAttribute.bind(null, 'id')

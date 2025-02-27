@@ -10,7 +10,8 @@ import {
 	IImpactGraph,
 	ISecretsPage,
 	ISeverity,
-	PageType
+	PageType,
+	Applicability
 } from '../../../model'
 import WhatCanIDoTab, { LABELS } from './WhatCanIDoTab'
 
@@ -30,7 +31,7 @@ describe('WhatCanIDoTab component', () => {
 			cvssV3Score: '6.5',
 			cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H',
 			applicableData: {
-				isApplicable: true,
+				applicability: Applicability.APPLICABLE,
 				searchTarget: 'search target',
 				evidence: [
 					{

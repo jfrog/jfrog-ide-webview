@@ -23,7 +23,7 @@ import { TreeNode } from '../../../model/treeNode'
 import { toTreeNode } from '../../../utils/utils'
 import WhatCanIDoTab from './WhatCanIDoTab'
 import Markdown from '../Markdown/Markdown'
-import ApplicabilityEvidence from './ApplicabilityEvidence'
+import ApplicabilityEvidence from './ApplicabilityEvidence/ApplicabilityEvidence'
 
 export const TABS = {
 	WHAT_CAN_I_DO: {
@@ -86,6 +86,10 @@ function InformationTabs(props: Props): JSX.Element {
 			setTreeNode(toTreeNode(impactGraph.root))
 		}
 	}, [impactGraph])
+
+	useEffect(() => {
+		setSelectedTabIndex(defaultTab)
+	}, [props.data, defaultTab])
 
 	const handleChange = (event: React.SyntheticEvent, newValue: string): void => {
 		setSelectedTabIndex(newValue)

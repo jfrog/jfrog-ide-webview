@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import ApplicabilityEvidence from './ApplicabilityEvidence'
-import { IApplicableDetails, IEvidence } from '../../../model'
+import { Applicability, IApplicableDetails, IEvidence } from '../../../../model'
 
 // Sample data for testing
 const applicableData: IApplicableDetails = {
-	isApplicable: true,
+	applicability: Applicability.APPLICABLE,
 	searchTarget: 'Example search target',
 	evidence: [
 		{
@@ -16,11 +16,30 @@ const applicableData: IApplicableDetails = {
 }
 
 const notApplicableData: IApplicableDetails = {
-	isApplicable: false,
+	applicability: Applicability.NOT_APPLICABLE,
 	searchTarget: 'Example search target',
 	evidence: [
 		{
 			reason: 'Reason for non-applicability'
+		} as IEvidence
+	]
+}
+
+const undeterminedData: IApplicableDetails = {
+	applicability: Applicability.UNDETERMINED,
+	searchTarget: 'Example search target',
+	evidence: [
+		{
+			reason: 'Reason for undetermined'
+		} as IEvidence
+	]
+}
+
+const missingContextData: IApplicableDetails = {
+	applicability: Applicability.MISSING_CONTEXT,
+	evidence: [
+		{
+			reason: 'Irrelevant reason that should be override'
 		} as IEvidence
 	]
 }
@@ -46,9 +65,32 @@ describe('ApplicabilityEvidence component', () => {
 		expect(screen.getByText('Example search target')).toBeInTheDocument()
 	})
 
+	test('renders undetermined CVE information correctly', () => {
+		render(<ApplicabilityEvidence data={undeterminedData} />)
+		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
+		expect(
+			screen.getByText('Why is this CVE applicability result undetermined?')
+		).toBeInTheDocument()
+		expect(screen.getByText('Reason for undetermined')).toBeInTheDocument()
+		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
+		expect(screen.getByText('Example search target')).toBeInTheDocument()
+	})
+
+	test('renders missing context CVE information correctly', () => {
+		render(<ApplicabilityEvidence data={missingContextData} />)
+		expect(screen.getByText('Contextual Analysis')).toBeInTheDocument()
+		expect(screen.getByText('Why is this CVE missing context?')).toBeInTheDocument()
+		expect(
+			screen.getByText(
+				'Reachability analysis cannot determine the vulnerability’s applicability. Applicability can be determined by scanning the artifact in a Docker repository in the JFrog Platform'
+			)
+		).toBeInTheDocument()
+		expect(screen.queryByText('What does the scanner check/look for?')).not.toBeInTheDocument()
+		expect(screen.queryByText('Example search target')).not.toBeInTheDocument()
+	})
 	test('renders evidence section correctly when no evidence provided', () => {
 		const noEvidenceData: IApplicableDetails = {
-			isApplicable: true,
+			applicability: Applicability.APPLICABLE,
 			searchTarget: 'Example search target',
 			evidence: []
 		}
@@ -58,10 +100,9 @@ describe('ApplicabilityEvidence component', () => {
 		expect(screen.getByText('What does the scanner check/look for?')).toBeInTheDocument()
 		expect(screen.getByText('Example search target')).toBeInTheDocument()
 	})
-
 	test('renders correctly without searchTarget', () => {
 		const noSearchTargetData: IApplicableDetails = {
-			isApplicable: true,
+			applicability: Applicability.APPLICABLE,
 			evidence: [
 				{
 					filePathEvidence: 'file/path/evidence',

@@ -1,4 +1,4 @@
-import { ICve, IEvidence } from './cve'
+import { Applicability, ICve, IEvidence } from './cve'
 
 describe('Model - ICve', () => {
 	test('defines the ICve interface', () => {
@@ -9,7 +9,7 @@ describe('Model - ICve', () => {
 			cvssV3Score: '9.0',
 			cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
 			applicableData: {
-				isApplicable: true,
+				applicability: Applicability.APPLICABLE,
 				evidence: [
 					{
 						reason: 'Vulnerability found',
@@ -28,7 +28,7 @@ describe('Model - ICve', () => {
 		expect(cve.cvssV3Vector).toEqual('CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H')
 
 		expect(cve.applicableData).toBeDefined()
-		expect(cve.applicableData?.isApplicable).toBe(true)
+		expect(cve.applicableData?.applicability).toBe(Applicability.APPLICABLE)
 		expect(cve.applicableData?.evidence).toBeDefined()
 		expect(cve.applicableData?.evidence?.length).toBe(1)
 

@@ -8,6 +8,7 @@ import {
 	ISecretsPage,
 	PageType
 } from './webviewPages'
+import { Applicability } from './cve'
 
 describe('Model - WebviewPage', () => {
 	test('should have the correct properties for IDependencyPage', () => {
@@ -25,7 +26,7 @@ describe('Model - WebviewPage', () => {
 				cvssV3Score: '9.2',
 				cvssV3Vector: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
 				applicableData: {
-					isApplicable: true,
+					applicability: Applicability.APPLICABLE,
 					evidence: [
 						{
 							reason: 'Reason',
