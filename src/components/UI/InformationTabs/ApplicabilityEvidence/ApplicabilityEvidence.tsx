@@ -3,7 +3,7 @@ import { Collapse } from '../../Collapse/Collapse'
 import css from './ApplicabilityEvidence.module.css'
 import { ReactComponent as EvidenceSvg } from '../../../../assets/icons/evidence.svg'
 import Markdown from '../../Markdown/Markdown'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import EvidenceList from './EvidenceList'
 
 export interface Props {
@@ -18,17 +18,22 @@ const APPLICABILITY_TITLES: Partial<Record<Applicability, string>> = {
 }
 
 const MISSING_CONTEXT_REASON =
-	'The applicability for this CVE could be determined in binary files only'
+	'Reachability analysis cannot determine the vulnerability’s applicability. Applicability can be determined by scanning the artifact in a Docker repository in the JFrog Platform'
 
 export default function ApplicabilityEvidence(props: Props): JSX.Element {
-	const { data } = props
+	const [evidence, setEvidence] = useState<IEvidence[]>([])
+	const [searchTarget, setSearchTarget] = useState<string>('')
 
 	useEffect(() => {
 		if (props.data.applicability === Applicability.MISSING_CONTEXT) {
-			data.evidence = [{ reason: MISSING_CONTEXT_REASON } as IEvidence]
-			data.searchTarget = ''
+			const updatedEvidence = [{ reason: MISSING_CONTEXT_REASON } as IEvidence]
+			setEvidence(updatedEvidence)
+			setSearchTarget('')
+		} else {
+			setEvidence(props.data.evidence ?? [])
+			setSearchTarget(props.data.searchTarget ?? '')
 		}
-	}, [data, props.data.applicability])
+	}, [props.data.applicability, props.data.evidence, props.data.searchTarget])
 
 	return (
 		<Collapse
@@ -41,13 +46,13 @@ export default function ApplicabilityEvidence(props: Props): JSX.Element {
 		>
 			<div className={css.defaultContainer}>
 				<h6 className={css.subtitle}>{APPLICABILITY_TITLES[props.data.applicability]}</h6>
-				{data.evidence && data.evidence.length > 0 && (
-					<EvidenceList evidenceList={data.evidence} type={data.applicability} />
+				{evidence.length > 0 && (
+					<EvidenceList evidenceList={evidence} type={props.data.applicability} />
 				)}
-				{data.searchTarget && data.searchTarget !== '' && (
+				{searchTarget && (
 					<>
 						<h6 className={css.subtitle}>What does the scanner check/look for?</h6>
-						<Markdown text={data.searchTarget} />
+						<Markdown text={searchTarget} />
 					</>
 				)}
 			</div>
