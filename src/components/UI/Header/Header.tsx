@@ -15,7 +15,7 @@ import { ReactComponent as NotApplicableIcon } from '../../../assets/icons/not_a
 import { ReactComponent as UndeterminedIcon } from '../../../assets/icons/undetermined.svg'
 import { ReactComponent as NotCoveredIcon } from '../../../assets/icons/not_covered.svg'
 import { ReactComponent as MissingContextIcon } from '../../../assets/icons/missing_context.svg'
-import { Tooltip, Box, Typography } from '@mui/material'
+import { Tooltip } from '@mui/material'
 
 export interface Props {
 	text: string
