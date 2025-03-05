@@ -69,7 +69,11 @@ const CveInformation = (props: { data: IDependencyPage }): JSX.Element => (
 		{props.data.extendedInformation?.jfrogResearchSeverity && (
 			<span className={css.cveLabel}>
 				JFrog severity rank:{' '}
-				{getSeverityImage(props.data.extendedInformation.jfrogResearchSeverity, 16)}
+				{getSeverityImage(
+					props.data.extendedInformation.jfrogResearchSeverity,
+					16,
+					props.data.cve?.applicableData?.applicability === Applicability.NOT_APPLICABLE
+				)}
 			</span>
 		)}
 	</>
@@ -103,7 +107,7 @@ export default function Header(props: Props): JSX.Element {
 		<div className={css.container}>
 			<div className={css.content}>
 				<div className={css.titleContainer}>
-					{props.pageData.severity && getSeverityImage(props.pageData.severity)}
+					{props.pageData.severity && getSeverityImage(props.pageData.severity, 16, applicableData?.applicability === Applicability.NOT_APPLICABLE)}
 					<h6 className={css.flexCenter}>
 						{props.text}
 						{showJFrogResearchIcon && <JfrogResearchIcon id="jfrog_research_icon" />}
@@ -125,13 +129,23 @@ export default function Header(props: Props): JSX.Element {
 	)
 }
 
-const ApplicabilityTooltipIcon = ({ icon: Icon, text }: { icon: JSX.Element; text: string }): JSX.Element => (
+const ApplicabilityTooltipIcon = ({
+	icon: Icon,
+	text
+}: {
+	icon: JSX.Element
+	text: string
+}): JSX.Element => (
 	<Tooltip title={text} arrow>
 		<span>{Icon}</span>
 	</Tooltip>
 )
 
-const ApplicabilityIcon = ({ applicability }: { applicability: Applicability }): JSX.Element | null => {
+const ApplicabilityIcon = ({
+	applicability
+}: {
+	applicability: Applicability
+}): JSX.Element | null => {
 	const getText = (applicability: Applicability): string => {
 		switch (applicability) {
 			case Applicability.APPLICABLE:
@@ -139,7 +153,7 @@ const ApplicabilityIcon = ({ applicability }: { applicability: Applicability }):
 			case Applicability.NOT_APPLICABLE:
 				return 'The vulnerability cannot be exploited in the context of the scanned artifact'
 			case Applicability.NOT_COVERED:
-				return 'Scanner isn\'t available'
+				return "Scanner isn't available"
 			case Applicability.UNDETERMINED:
 				return 'Undetermined'
 			case Applicability.MISSING_CONTEXT:
