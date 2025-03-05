@@ -15,6 +15,7 @@ import { ReactComponent as NotApplicableIcon } from '../../../assets/icons/not_a
 import { ReactComponent as UndeterminedIcon } from '../../../assets/icons/undetermined.svg'
 import { ReactComponent as NotCoveredIcon } from '../../../assets/icons/not_covered.svg'
 import { ReactComponent as MissingContextIcon } from '../../../assets/icons/missing_context.svg'
+import { Tooltip, Box, Typography } from '@mui/material'
 
 export interface Props {
 	text: string
@@ -106,7 +107,7 @@ export default function Header(props: Props): JSX.Element {
 					<h6 className={css.flexCenter}>
 						{props.text}
 						{showJFrogResearchIcon && <JfrogResearchIcon id="jfrog_research_icon" />}
-						{applicableData && ApplicabilityIcon(applicableData.applicability)}
+						{applicableData && <ApplicabilityIcon applicability={applicableData.applicability} />}
 					</h6>
 				</div>
 				<div className={metadataClassName}>
@@ -124,17 +125,39 @@ export default function Header(props: Props): JSX.Element {
 	)
 }
 
-const ApplicabilityIcon = (applicability: Applicability): JSX.Element | null => {
-	switch (applicability) {
-		case Applicability.APPLICABLE:
-			return <ApplicableIcon id="applicable_icon" />
-		case Applicability.NOT_APPLICABLE:
-			return <NotApplicableIcon id="not_applicable_icon" />
-		case Applicability.NOT_COVERED:
-			return <NotCoveredIcon id="not_covered_icon" />
-		case Applicability.UNDETERMINED:
-			return <UndeterminedIcon id="undetermined_icon" />
-		case Applicability.MISSING_CONTEXT:
-			return <MissingContextIcon id="missing_context_icon" />
+const ApplicabilityTooltipIcon = ({ icon: Icon, text }: { icon: JSX.Element; text: string }): JSX.Element => (
+	<Tooltip title={text} arrow>
+		<span>{Icon}</span>
+	</Tooltip>
+)
+
+const ApplicabilityIcon = ({ applicability }: { applicability: Applicability }): JSX.Element | null => {
+	const getText = (applicability: Applicability): string => {
+		switch (applicability) {
+			case Applicability.APPLICABLE:
+				return 'The vulnerability can be exploited in the context of the scanned artifact'
+			case Applicability.NOT_APPLICABLE:
+				return 'The vulnerability cannot be exploited in the context of the scanned artifact'
+			case Applicability.NOT_COVERED:
+				return 'Scanner isn\'t available'
+			case Applicability.UNDETERMINED:
+				return 'Undetermined'
+			case Applicability.MISSING_CONTEXT:
+				return 'Reachability analysis cannot determine the vulnerability’s applicability. Applicability can be determined by scanning the artifact in a Docker repository in the JFrog Platform'
+			default:
+				return ''
+		}
 	}
+
+	const applicabilityIcons = {
+		[Applicability.APPLICABLE]: <ApplicableIcon id="applicable_icon" />,
+		[Applicability.NOT_APPLICABLE]: <NotApplicableIcon id="not_applicable_icon" />,
+		[Applicability.NOT_COVERED]: <NotCoveredIcon id="not_covered_icon" />,
+		[Applicability.UNDETERMINED]: <UndeterminedIcon id="undetermined_icon" />,
+		[Applicability.MISSING_CONTEXT]: <MissingContextIcon id="missing_context_icon" />
+	}
+
+	const icon = applicabilityIcons[applicability]
+	const tooltipText = getText(applicability)
+	return <ApplicabilityTooltipIcon icon={icon} text={tooltipText} />
 }
