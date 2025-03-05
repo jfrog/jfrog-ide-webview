@@ -107,7 +107,12 @@ export default function Header(props: Props): JSX.Element {
 		<div className={css.container}>
 			<div className={css.content}>
 				<div className={css.titleContainer}>
-					{props.pageData.severity && getSeverityImage(props.pageData.severity, 16, applicableData?.applicability === Applicability.NOT_APPLICABLE)}
+					{props.pageData.severity &&
+						getSeverityImage(
+							props.pageData.severity,
+							16,
+							applicableData?.applicability === Applicability.NOT_APPLICABLE
+						)}
 					<h6 className={css.flexCenter}>
 						{props.text}
 						{showJFrogResearchIcon && <JfrogResearchIcon id="jfrog_research_icon" />}

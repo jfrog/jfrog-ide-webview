@@ -15,24 +15,48 @@ import { ReactComponent as NotApplicableLow } from '../assets/icons/notApplicabl
 
 import { Tooltip } from '@mui/material'
 
-export function getSeverityImage(severity: ISeverity, width = 24, isNotApplicable?: boolean): JSX.Element {
+export function getSeverityImage(
+	severity: ISeverity,
+	width = 24,
+	isNotApplicable?: boolean
+): JSX.Element {
 	let icon: JSX.Element
 
 	switch (severity) {
 		case ISeverity.Unknown:
-			icon = isNotApplicable ? <NotApplicableUnknown style={{ width: width }} id="unknown" /> : <Unknown style={{ width: width }} id="unknown" />
+			icon = isNotApplicable ? (
+				<NotApplicableUnknown style={{ width: width }} id="unknown" />
+			) : (
+				<Unknown style={{ width: width }} id="unknown" />
+			)
 			break
 		case ISeverity.Low:
-			icon = isNotApplicable ? <NotApplicableLow style={{ width: width }} id="low" /> : <Low style={{ width: width }} id="low" />
+			icon = isNotApplicable ? (
+				<NotApplicableLow style={{ width: width }} id="low" />
+			) : (
+				<Low style={{ width: width }} id="low" />
+			)
 			break
 		case ISeverity.Medium:
-			icon = isNotApplicable ? <NotApplicableMedium style={{ width: width }} id="medium" /> : <Medium style={{ width: width }} id="medium" />
+			icon = isNotApplicable ? (
+				<NotApplicableMedium style={{ width: width }} id="medium" />
+			) : (
+				<Medium style={{ width: width }} id="medium" />
+			)
 			break
 		case ISeverity.High:
-			icon = isNotApplicable ? <NotApplicableHigh style={{ width: width }} id="high" /> : <High style={{ width: width }} id="high" />
+			icon = isNotApplicable ? (
+				<NotApplicableHigh style={{ width: width }} id="high" />
+			) : (
+				<High style={{ width: width }} id="high" />
+			)
 			break
 		case ISeverity.Critical:
-			icon = isNotApplicable ? <NotApplicableCritical style={{ width: width }} id="critical" /> : <Critical style={{ width: width }} id="critical" />
+			icon = isNotApplicable ? (
+				<NotApplicableCritical style={{ width: width }} id="critical" />
+			) : (
+				<Critical style={{ width: width }} id="critical" />
+			)
 			break
 	}
 
