@@ -160,7 +160,7 @@ const ApplicabilityIcon = ({
 			case Applicability.NOT_COVERED:
 				return "Scanner isn't available"
 			case Applicability.UNDETERMINED:
-				return 'Undetermined'
+				return 'The applicability cannot be determined by static analysis (e.g. the exploitation requires user interaction)'
 			case Applicability.MISSING_CONTEXT:
 				return 'Reachability analysis cannot determine the vulnerability’s applicability. Applicability can be determined by scanning the artifact in a Docker repository in the JFrog Platform'
 			default:
