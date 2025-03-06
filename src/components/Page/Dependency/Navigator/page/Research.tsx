@@ -8,6 +8,7 @@ import { ReactComponent as MoreRiskIcon } from '../../../../../assets/icons/more
 
 export interface Props {
 	data: IExtendedInformation
+	isApplicable?: boolean
 }
 export const LABELS = {
 	SUMMARY: 'Summary',
@@ -25,7 +26,8 @@ export default function Research(props: Props): JSX.Element {
 		<div className={css.container}>
 			<span className={css.alignCenterFlex}>
 				<span className={css.label}>Severity:</span>{' '}
-				{getSeverityImage(props.data.jfrogResearchSeverity)} {props.data.jfrogResearchSeverity}
+				{getSeverityImage(props.data.jfrogResearchSeverity, 16, props.isApplicable)}{' '}
+				{props.data.jfrogResearchSeverity}
 			</span>
 			<Divider />
 			<div className={css.group}>

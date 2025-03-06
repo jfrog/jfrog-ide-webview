@@ -13,7 +13,9 @@ import {
 	IIaCPage,
 	IReference,
 	ISecretsPage,
-	PageType
+	PageType,
+	Applicability,
+	IExtendedInformation
 } from '../../../model'
 import PublicSources from '../../Page/Dependency/Navigator/page/PublicSources'
 import Research from '../../Page/Dependency/Navigator/page/Research'
@@ -248,8 +250,13 @@ function InformationTabs(props: Props): JSX.Element {
 								</h1>
 							}
 						>
-							{/* @ts-ignore*/}
-							<Research data={(props.data as IDependencyPage).extendedInformation} />
+							<Research
+								data={(props.data as IDependencyPage).extendedInformation as IExtendedInformation}
+								isApplicable={
+									pageTypeDependency.cve?.applicableData?.applicability ===
+									Applicability.NOT_APPLICABLE
+								}
+							/>
 						</Collapse>
 					)}
 					<br />
