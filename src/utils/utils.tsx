@@ -7,26 +7,56 @@ import { ReactComponent as Critical } from '../assets/icons/severity/critical.sv
 import { ReactComponent as High } from '../assets/icons/severity/high.svg'
 import { ReactComponent as Medium } from '../assets/icons/severity/medium.svg'
 import { ReactComponent as Low } from '../assets/icons/severity/low.svg'
+import { ReactComponent as NotApplicableUnknown } from '../assets/icons/notApplicableSeverity/unknown.svg'
+import { ReactComponent as NotApplicableCritical } from '../assets/icons/notApplicableSeverity/critical.svg'
+import { ReactComponent as NotApplicableHigh } from '../assets/icons/notApplicableSeverity/high.svg'
+import { ReactComponent as NotApplicableMedium } from '../assets/icons/notApplicableSeverity/medium.svg'
+import { ReactComponent as NotApplicableLow } from '../assets/icons/notApplicableSeverity/low.svg'
+
 import { Tooltip } from '@mui/material'
 
-export function getSeverityImage(severity: ISeverity, width = 24): JSX.Element {
+export function getSeverityImage(
+	severity: ISeverity,
+	width = 24,
+	isNotApplicable?: boolean
+): JSX.Element {
 	let icon: JSX.Element
 
 	switch (severity) {
 		case ISeverity.Unknown:
-			icon = <Unknown style={{ width: width }} id="unknown" />
+			icon = isNotApplicable ? (
+				<NotApplicableUnknown style={{ width: width }} id="unknown" />
+			) : (
+				<Unknown style={{ width: width }} id="unknown" />
+			)
 			break
 		case ISeverity.Low:
-			icon = <Low style={{ width: width }} id="low" />
+			icon = isNotApplicable ? (
+				<NotApplicableLow style={{ width: width }} id="low" />
+			) : (
+				<Low style={{ width: width }} id="low" />
+			)
 			break
 		case ISeverity.Medium:
-			icon = <Medium style={{ width: width }} id="medium" />
+			icon = isNotApplicable ? (
+				<NotApplicableMedium style={{ width: width }} id="medium" />
+			) : (
+				<Medium style={{ width: width }} id="medium" />
+			)
 			break
 		case ISeverity.High:
-			icon = <High style={{ width: width }} id="high" />
+			icon = isNotApplicable ? (
+				<NotApplicableHigh style={{ width: width }} id="high" />
+			) : (
+				<High style={{ width: width }} id="high" />
+			)
 			break
 		case ISeverity.Critical:
-			icon = <Critical style={{ width: width }} id="critical" />
+			icon = isNotApplicable ? (
+				<NotApplicableCritical style={{ width: width }} id="critical" />
+			) : (
+				<Critical style={{ width: width }} id="critical" />
+			)
 			break
 	}
 
