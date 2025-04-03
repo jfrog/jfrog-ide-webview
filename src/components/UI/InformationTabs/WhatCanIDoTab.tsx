@@ -95,7 +95,9 @@ function PatchTheCode(props: { pageType: PageType; remediation: string[] }): JSX
 	)
 }
 
-function SuppressTheFinding(props: { pageType: keyof typeof suppressionExamplesDict }): JSX.Element {
+function SuppressTheFinding(props: {
+	pageType: keyof typeof suppressionExamplesDict
+}): JSX.Element {
 	const suppressIssueMarkdownExample: string = suppressionExamplesDict[props.pageType]!
 	return (
 		<Collapse header={<h1>{LABELS.SUPPRESS_THE_FINDING}</h1>}>

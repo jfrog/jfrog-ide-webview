@@ -9,8 +9,7 @@ export: (req, res) => {
     // jfrog-ignore
     var data = serialize.unserialize(payload.toString());
 \`\`\``
- const secretsSuppressExample =
-	'```javascript \n// jfrog-ignore \nconst api_key = "2VTHzn1mKZ..."'
+const secretsSuppressExample = '```javascript \n// jfrog-ignore \nconst api_key = "2VTHzn1mKZ..."'
 
 const iacSuppressExample = `\`\`\`hcl
 // kms_key_id is not set example
