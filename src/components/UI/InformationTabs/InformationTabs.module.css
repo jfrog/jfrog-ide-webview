@@ -140,3 +140,7 @@ code {
 	color: #3eb065 !important;
 	text-transform: none;
 }
+
+.suppressFindingTitle {
+	text-align: left;
+}
