@@ -4,7 +4,7 @@ import Markdown from '../Markdown/Markdown'
 import { IImpactGraph, PageType } from '../../../model'
 import Row from '../Row/Row'
 import { ReactComponent as SadFace } from '../../../assets/icons/sad_face.svg'
-import { sastSuppressExample, secretsSuppressExample } from './texts'
+import { suppressionExamplesDict } from './texts'
 
 interface Props {
 	pageType: PageType
@@ -95,14 +95,14 @@ function PatchTheCode(props: { pageType: PageType; remediation: string[] }): JSX
 	)
 }
 
-function SuppressTheFinding(props: { pageType: PageType }): JSX.Element {
-	const suppressIssueMarkdownExample =
-		props.pageType === PageType.Sast ? sastSuppressExample : secretsSuppressExample
+function SuppressTheFinding(props: {
+	pageType: keyof typeof suppressionExamplesDict
+}): JSX.Element {
+	const suppressIssueMarkdownExample: string = suppressionExamplesDict[props.pageType]!
 	return (
 		<Collapse header={<h1>{LABELS.SUPPRESS_THE_FINDING}</h1>}>
 			<div>
-				{/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-				<p>
+				<p className={css.suppressFindingTitle}>
 					Add <code>jfrog-ignore</code> comment above the vulnerable line to suppress it
 				</p>
 				<Markdown text={suppressIssueMarkdownExample} />
@@ -129,7 +129,7 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 	)
 
 	const hasFixedVersion = props.fixedVersion && props.fixedVersion.length > 0
-	const showSuppressFinding = [PageType.Sast, PageType.Secrets].includes(props.pageType)
+	const showSuppressFinding = suppressionExamplesDict[props.pageType] != null
 
 	const hasAction = hasFixedVersion ?? props.remediation ?? showSuppressFinding
 	return (
