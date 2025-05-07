@@ -131,7 +131,7 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 	const hasFixedVersion = props.fixedVersion && props.fixedVersion.length > 0
 	const showSuppressFinding = suppressionExamplesDict[props.pageType] != null
 
-	const hasAction = hasFixedVersion ?? props.remediation ?? showSuppressFinding
+	const hasAction = props.remediation ?? hasFixedVersion ?? showSuppressFinding
 	return (
 		<div className={css.container}>
 			{!hasAction && <EmptyStateContainer />}
