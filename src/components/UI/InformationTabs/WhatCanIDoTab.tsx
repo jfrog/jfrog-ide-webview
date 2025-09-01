@@ -83,7 +83,7 @@ function PatchTheCode(props: { pageType: PageType; remediation: string[] }): JSX
 				</h1>
 			}
 		>
-			<div>
+			<div className={css.remediation}>
 				<p>
 					<b>{LABELS.REMEDIATION}</b>
 				</p>
