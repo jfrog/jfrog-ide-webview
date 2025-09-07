@@ -124,8 +124,8 @@ export default function WhatCanIDoTab(props: Props): JSX.Element {
 		(props.impactGraph?.root.children ?? []).findIndex(
 			node => node.name.split(':').slice(0, -1).join(':') === props.component
 		) > -1
-	const directDependenciesNames = (props.impactGraph?.root.children ?? []).map(
-		node => node.name.split(':').slice(0, -1).join(':')
+	const directDependenciesNames = (props.impactGraph?.root.children ?? []).map(node =>
+		node.name.split(':').slice(0, -1).join(':')
 	)
 
 	const hasFixedVersion = props.fixedVersion && props.fixedVersion.length > 0
