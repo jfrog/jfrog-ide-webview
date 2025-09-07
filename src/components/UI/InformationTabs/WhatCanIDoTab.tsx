@@ -122,10 +122,10 @@ export const LABELS = {
 export default function WhatCanIDoTab(props: Props): JSX.Element {
 	const isDirectDependency =
 		(props.impactGraph?.root.children ?? []).findIndex(
-			node => node.name.split(':')[0] === props.component
+			node => node.name.split(':').slice(0, -1).join(':') === props.component
 		) > -1
 	const directDependenciesNames = (props.impactGraph?.root.children ?? []).map(
-		node => node.name.split(':')[0]
+		node => node.name.split(':').slice(0, -1).join(':')
 	)
 
 	const hasFixedVersion = props.fixedVersion && props.fixedVersion.length > 0
